@@ -737,12 +737,23 @@ class AviaNZ(QMainWindow):
         self.w_files = pg.LayoutWidget()
         self.d_files.addWidget(self.w_files)
 
+        # Button to move to the previous file in the list
+        self.previousFileBtn=QToolButton()
+        self.previousFileBtn.setIcon(self.style().standardIcon(QtGui.QStyle.SP_MediaSkipBackward))
+        self.previousFileBtn.clicked.connect(self.openPreviousFile)
+        self.previousFileBtn.setToolTip("Open next file")
+        self.w_files.addWidget(self.previousFileBtn,row=0,col=1)
+        self.skipBackwardKey = QShortcut(QKeySequence("Alt+Left"), self)
+        self.skipBackwardKey.activated.connect(self.openPreviousFile)
+
         # Button to move to the next file in the list
         self.nextFileBtn=QToolButton()
         self.nextFileBtn.setIcon(self.style().standardIcon(QtGui.QStyle.SP_MediaSkipForward))
         self.nextFileBtn.clicked.connect(self.openNextFile)
         self.nextFileBtn.setToolTip("Open next file")
-        self.w_files.addWidget(self.nextFileBtn,row=0,col=1)
+        self.w_files.addWidget(self.nextFileBtn,row=1,col=1)
+        self.skipForwardKey = QShortcut(QKeySequence("Alt+Right"), self)
+        self.skipForwardKey.activated.connect(self.openNextFile)
 
         # The buttons inside the controls dock
         self.playButton = QtGui.QToolButton()
@@ -1698,6 +1709,24 @@ class AviaNZ(QMainWindow):
             dlg.update()
             self.w_spec.setFocus()
             self.statusLeft.setText("Ready")
+
+    def openPreviousFile(self):
+        """ Listener for previous file << button.
+        Get the previous file in the list and call the loader. """
+
+        # If the user has navigated away from the dir with currently open file, return:
+        if self.listFiles.soundDir != os.path.dirname(self.filename):
+            self.SoundFileDir = os.path.dirname(self.filename)
+            self.fillFileList(self.SoundFileDir, os.path.basename(self.filename))
+
+        i=self.listFiles.currentRow()
+        if i>1:
+            self.listFiles.setCurrentRow(i-1)
+            self.listLoadFile(self.listFiles.currentItem())
+        else:
+            # Tell the user they've finished
+            msg = SupportClasses_GUI.MessagePopup("d", "First file", "This is already the first file")
+            msg.exec_()
 
     def openNextFile(self):
         """ Listener for next file >> button.
