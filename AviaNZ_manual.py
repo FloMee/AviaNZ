@@ -50,6 +50,7 @@ import WaveletFunctions
 import Clustering
 import colourMaps
 import Shapes
+import BirdNET
 
 import librosa
 import webbrowser, copy, math
@@ -146,6 +147,10 @@ class AviaNZ(QMainWindow):
         self.DOC = self.config['DOC']
         self.extra = "none"
         self.slowSpeed = 2
+
+        # placeholder for BirdNET-Lite and BirdNET-Analyzer 
+        self.BirdNETLite = None
+        self.BirdNETAnalyzer = None
 
         # Whether or not the context menu allows multiple birds.
         self.multipleBirds = self.config['MultipleSpecies']
@@ -425,6 +430,8 @@ class AviaNZ(QMainWindow):
         recMenu.addAction("Test a recogniser", self.testRecogniser)
         recMenu.addAction("Manage recognisers", self.manageFilters)
         recMenu.addAction("Customise a recogniser (use existing ROC)", self.customiseFiltersROC)
+
+        recMenu.addAction("Classify recordings with BirdNET", self.classifyBirdNET)
 
         # "Utilities" menu
         utilMenu = self.menuBar().addMenu("&Utilities")
@@ -5520,6 +5527,10 @@ class AviaNZ(QMainWindow):
         self.filterManager = DialogsTraining.FilterCustomiseROC(self.filtersDir)
         self.filterManager.btnSave.clicked.connect(self.saveRecogniserROC)
         self.filterManager.exec_()
+
+    def classifyBirdNET(self):
+        self.BirdNETDialog = BirdNET.BirdNETDialog(self)
+        self.BirdNETDialog.exec_()
 
     def addNoiseData(self):
         """ Listener for the adding metadata about noise action """
