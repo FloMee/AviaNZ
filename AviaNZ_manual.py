@@ -149,8 +149,7 @@ class AviaNZ(QMainWindow):
         self.slowSpeed = 2
 
         # placeholder for BirdNET-Lite and BirdNET-Analyzer 
-        self.BirdNETLite = None
-        self.BirdNETAnalyzer = None
+        self.BirdNET = None
 
         # Whether or not the context menu allows multiple birds.
         self.multipleBirds = self.config['MultipleSpecies']
