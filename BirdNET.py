@@ -31,6 +31,7 @@ class BirdNETDialog(QDialog):
         super(BirdNETDialog, self).__init__(parent)
         self.parent = parent
 
+        self.slist_path = ""
         self.setWindowTitle("Classify Recordings with BirdNET")
         self.setWindowIcon(QIcon('img/Avianz.ico'))
 
@@ -621,22 +622,55 @@ class BirdNET():
 
         return detections
 
-    def writeAvianzOutput(self, detections, file, white_list):
+    def writeAvianzOutput(self, detections, file, white_list, append=True):
         # TODO: get Duration from file
-        output = [{"Operator": self.AviaNZ.operator, "Reviewer": self.AviaNZ.reviewer, "Duration": 60}]
-        for d in detections:
-            seg = [float(d.split(",")[1]), float(d.split(",")[2]), 0.0, 0.0]
-            labels = []
-            for entry in detections[d]:
-                if entry[1] >= self.min_conf and (entry[0] in white_list or len(white_list) == 0):
-                    labels.append({"species": entry[0].split("_")[1], "certainty": float(entry[1])*100, "filter": "BirdNET-Lite" if self.lite else "BirdNET-Analyzer", "calltype": "non-specified"})
+        rfilepath = file + ".data"
+        if append and os.path.exists(rfilepath):
+            with open(rfilepath, "r") as infile:
+                output = json.load(infile)
+            
+            for d in detections:
+                start = float(d.split(",")[1])
+                end = float(d.split(",")[2])
+                seg_index = -1
+                for e in output[1:]:
+                    if e[0] == start and e[1] == end:
+                        seg_index = output.index(e)
+                        break
+                
+                if seg_index >= 0:
+                    seg = output[seg_index]
+                    labels = output[seg_index][4]
+                    for entry in detections[d]:
+                        if entry[1] >= self.min_conf and (entry[0] in white_list or len(white_list) == 0):
+                            output[seg_index][4].append({"species": entry[0].split("_")[1], "certainty": float(entry[1])*100, "filter": "BirdNET-Lite" if self.lite else "BirdNET-Analyzer", "calltype": "non-specified"})
+                        
+                else:
+                    seg = [float(d.split(",")[1]), float(d.split(",")[2]), 0.0, 0.0]
+                    labels = []
+                    for entry in detections[d]:
+                        if entry[1] >= self.min_conf and (entry[0] in white_list or len(white_list) == 0):
+                            labels.append({"species": entry[0].split("_")[1], "certainty": float(entry[1])*100, "filter": "BirdNET-Lite" if self.lite else "BirdNET-Analyzer", "calltype": "non-specified"})
 
-            if len(labels) > 0:
-                seg.append(labels)
-                output.append(seg)
+                    if len(labels) > 0:
+                        seg.append(labels)
+                        output.append(seg)
+                    
+        else:
+            output = [{"Operator": self.AviaNZ.operator, "Reviewer": self.AviaNZ.reviewer, "Duration": 60}]
+            for d in detections:
+                seg = [float(d.split(",")[1]), float(d.split(",")[2]), 0.0, 0.0]
+                labels = []
+                for entry in detections[d]:
+                    if entry[1] >= self.min_conf and (entry[0] in white_list or len(white_list) == 0):
+                        labels.append({"species": entry[0].split("_")[1], "certainty": float(entry[1])*100, "filter": "BirdNET-Lite" if self.lite else "BirdNET-Analyzer", "calltype": "non-specified"})
+
+                if len(labels) > 0:
+                    seg.append(labels)
+                    output.append(seg)
 
         if len(output) > 1:
-            with open(file + ".data", "w") as rfile:
+            with open(rfilepath, "w") as rfile:
                 json.dump(output, rfile)
 
     def movingExpAverage(self, timetable, n=3):
