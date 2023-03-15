@@ -1210,9 +1210,10 @@ class LightedFileList(QListWidget):
         self.listOfFiles = []
         self.minCertainty = 100
         self.setMinimumWidth(150)
+        self.setIconSize(QSize(50,10))
 
         # for the traffic light icons
-        self.pixmap = QPixmap(10, 10)
+        self.pixmap = QPixmap(50, 10)
         self.blackpen = fn.mkPen(color=(160,160,160,255), width=2)
         self.tempsl = Segment.SegmentList()
 
@@ -1337,7 +1338,7 @@ class LightedFileList(QListWidget):
             else:
                 self.setCurrentRow(0)
 
-    def refreshFile(self, fileName, cert):
+    def refreshFile(self, fileName, mincert, maxcert):
         """ Repaint a single file icon with the provided certainty.
             fileName: file stem (dir will be read from self)
             cert:     0-100, or -1 if no annotations
@@ -1350,7 +1351,7 @@ class LightedFileList(QListWidget):
 
         curritem = index[0]
         # Repainting identical to paintItem
-        if cert == -1:
+        if mincert == -1:
             # .data exists, but no annotations
             self.pixmap.fill(QColor(255,255,255,0))
             painter = QPainter(self.pixmap)
@@ -1359,20 +1360,23 @@ class LightedFileList(QListWidget):
             painter.end()
             curritem.setIcon(QIcon(self.pixmap))
             # no change to self.minCertainty
-        elif cert == 0:
+        elif mincert == 0:
             self.pixmap.fill(self.ColourNone)
             curritem.setIcon(QIcon(self.pixmap))
             self.minCertainty = 0
-        elif cert < 100:
+        elif mincert < 100:
             self.pixmap.fill(self.ColourPossibleDark)
+            painter = QPainter(self.pixmap)
+            painter.setPen(self.blackpen)
+            painter.drawRect(QPixmap(maxcert//2, 10).rect())            
             curritem.setIcon(QIcon(self.pixmap))
-            self.minCertainty = min(self.minCertainty, cert)
+            self.minCertainty = min(self.minCertainty, mincert)
         else:
             self.pixmap.fill(self.ColourNamed)
             curritem.setIcon(QIcon(self.pixmap))
             # self.minCertainty cannot be changed by a cert=100 segment
 
-    def paintItem(self, item, datafile):
+    def paintItem(self, item, datafile, species = "All"):
         """ Read the JSON and draw the traffic light for a single item """
         filesp = []
         if os.path.isfile(datafile):
@@ -1383,11 +1387,13 @@ class LightedFileList(QListWidget):
                     # .data exists, but empty - "file was looked at"
                     mincert = -1
                 else:
-                    cert = [lab["certainty"] for seg in self.tempsl for lab in seg[4]]
+                    cert = [lab["certainty"] for seg in self.tempsl for lab in seg[4] if lab["species"] == species or species == "All"]
                     if cert:
                         mincert = min(cert)
+                        maxcert = max(cert)
                     else:
                         mincert = -1
+                        maxcert = 0
                     # also collect any species present
                     filesp = [lab["species"] for seg in self.tempsl for lab in seg[4]]
             except Exception as e:
@@ -1412,6 +1418,9 @@ class LightedFileList(QListWidget):
                 self.minCertainty = 0
             elif mincert < 100:
                 self.pixmap.fill(self.ColourPossibleDark)
+                painter = QPainter(self.pixmap)
+                painter.setPen(self.blackpen)
+                painter.drawRect(QPixmap(maxcert//2, 10).rect())
                 item.setIcon(QIcon(self.pixmap))
                 self.minCertainty = min(self.minCertainty, mincert)
             else:
@@ -1426,6 +1435,17 @@ class LightedFileList(QListWidget):
         # collect some extra info about this file as we've read it anyway
         self.spList.update(filesp)
 
+    def restrict(self, species):
+
+        for item in self.iterAllItems():
+            if not item.text().endswith("/"):
+                filename = os.path.join(self.soundDir, item.text()+".data")
+                self.paintItem(item, filename, species)
+
+    
+    def iterAllItems(self):
+        for i in range(self.count()):
+            yield self.item(i)
 
 class MainPushButton(QPushButton):
     """ QPushButton with a standard styling """

@@ -919,10 +919,14 @@ class AviaNZ(QMainWindow):
         # List to hold the list of files
         self.listFiles = SupportClasses_GUI.LightedFileList(self.ColourNone, self.ColourPossibleDark, self.ColourNamed)
         self.listFiles.itemDoubleClicked.connect(self.listLoadFile)
+        self.listSpecies = QComboBox()
+        self.listSpecies.currentIndexChanged.connect(self.updateListFiles)
+        self.currentSpecies = "All"
 
         self.w_files.addWidget(QLabel('Double click to open'),row=0,col=0)
         self.w_files.addWidget(QLabel('Icon marks annotation certainty'),row=1,col=0)
-        self.w_files.addWidget(self.listFiles,row=2,colspan=2)
+        self.w_files.addWidget(self.listSpecies, row = 2, col = 0)
+        self.w_files.addWidget(self.listFiles,row=3,colspan=2)
 
         # The context menu (drops down on mouse click) to select birds
         self.setContextMenuPolicy(Qt.CustomContextMenu)
@@ -1247,6 +1251,21 @@ class AviaNZ(QMainWindow):
             return
 
         self.listFiles.fill(dir, fileName)
+        self.updateListSpecies()
+    
+    def updateListSpecies(self):
+
+        currentSpecies = self.listSpecies.currentText()
+        self.currentSpecies = ""
+        self.listSpecies.clear()
+        self.listSpecies.insertItem(0, "All")
+        self.listSpecies.insertItems(1, sorted(list(self.listFiles.spList)))
+        idx = self.listSpecies.findText(currentSpecies)
+        if currentSpecies and idx != -1:           
+            self.listSpecies.setCurrentIndex(idx)
+        else:
+            self.listSpecies.setCurrentIndex(0)
+        self.currentSpecies = self.listSpecies.currentText()
 
     def resetStorageArrays(self):
         """ Called when new files are loaded.
@@ -1431,6 +1450,16 @@ class AviaNZ(QMainWindow):
         # self.listFiles.setCurrentItem(current)
 
         return(0)
+
+    def updateListFiles(self):
+        oldSpecies = self.currentSpecies
+        self.currentSpecies = self.listSpecies.currentText()
+        if oldSpecies:
+            if oldSpecies != "All" and self.currentSpecies == "All":
+                self.fillFileList(self.SoundFileDir, os.path.basename(self.filename))
+            # elif oldSpecies != self.currentSpecies:
+            else:
+                self.listFiles.restrict(self.currentSpecies)
 
     def loadFile(self, name=None, cs=False):
         """ This does the work of loading a file.
@@ -6000,9 +6029,16 @@ class AviaNZ(QMainWindow):
             of this file in the file list. """
         if len(self.segments)==0:
             mincert = -1
+            maxcert = 0
         else:
-            mincert = min([lab["certainty"] for seg in self.segments for lab in seg[4]])
-        self.listFiles.refreshFile(os.path.basename(self.filename), mincert)
+            cert = [lab["certainty"] for seg in self.segments for lab in seg[4] if lab["species"] == "All" or lab["species"] == self.currentSpecies]
+            if cert:
+                mincert = min(cert)
+                maxcert = max(cert)
+            else:
+                mincert = -1
+                maxcert = 0
+        self.listFiles.refreshFile(os.path.basename(self.filename), mincert, maxcert)
 
     def saveSegments(self):
         """ Save the segmentation data as a json file.
