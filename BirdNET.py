@@ -10,6 +10,7 @@ import math
 import time
 import glob
 import concurrent.futures
+from concurrent.futures import ProcessPoolExecutor
 from multiprocessing import Pool
 import copy
 import sys
@@ -212,6 +213,11 @@ class BirdNETDialog(QDialog):
                                             self.batchsize.text(),
                                             self.sf_thresh.text())
             self.parent.BirdNET.main()
+            self.parent.loadFile(name=self.parent.filename)
+            self.parent.fillFileList(
+              self.parent.SoundFileDir,
+              os.path.basename(self.parent.filename)
+              )
         else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Critical)
@@ -240,11 +246,21 @@ class BirdNETDialog(QDialog):
             self.sf_thresh.setVisible(True)
             self.sf_thresh_label.setVisible(True)
 
+MODEL = None
+M_INTERPRETER = None
+SLIST = None
+M_INPUT_LAYER_INDEX = None
+M_OUTPUT_LAYER_INDEX = None
 
 class BirdNET():
     def __init__(self, AviaNZmanual):
-        self.AviaNZ = AviaNZmanual
+        # self.AviaNZ = AviaNZmanual
+        self.filelist = [file.absoluteFilePath() for file in AviaNZmanual.listFiles.listOfFiles if file.isFile()]
+
+        self.operator = AviaNZmanual.operator
+        self.reviewer = AviaNZmanual.reviewer
         self.m_interpreter = None
+        self.model = None       
 
     def set_parameters(self, lite, lat, lon, week, overlap, sensitivity, min_conf, slist, threads, mea, datetime_format, locale, batchsize, sf_thresh):
         self.lite = lite
@@ -259,13 +275,14 @@ class BirdNET():
         # TODO: check if self.labels works or if deepcopy is needed
         self.labels = self.loadLabels()
         print(slist)
-        self.slist = self.getSpeciesList(slist)
+        # self.slist = self.getSpeciesList(slist)
+        self.slist = None
         self.threads = int(threads)
         self.mea = mea
         self.datetime_format = datetime_format
         self.batchsize = int(batchsize)
 
-    def loadModel(self):
+    def loadModel(self):        
         try:
             print('Loading BirdNET model...', end=' ')
 
@@ -277,7 +294,6 @@ class BirdNET():
             # Load TFLite model and allocate tensors.
             interpreter = tflite.Interpreter(model_path=mdlpath)
             interpreter.allocate_tensors()
-            print("loaded")
             # Get input and output tensors.
             input_details = interpreter.get_input_details()
             output_details = interpreter.get_output_details()
@@ -296,21 +312,25 @@ class BirdNET():
             print('DONE!')
         except Exception() as e:
             print(traceback.format_exc())
+        
         return model
 
     def loadMetaModel(self):
-
+        global M_INTERPRETER
+        global M_INPUT_LAYER_INDEX
+        global M_OUTPUT_LAYER_INDEX
+        print("load MetaModel", flush = True)
         # Load TFLite model and allocate tensors.
-        self.m_interpreter = tflite.Interpreter(model_path=os.path.join('models', 'Analyzer', 'BirdNET_GLOBAL_3K_V2.2_MData_Model_FP16.tflite'))
-        self.m_interpreter.allocate_tensors()
+        M_INTERPRETER = tflite.Interpreter(model_path=os.path.join('models', 'Analyzer', 'BirdNET_GLOBAL_3K_V2.2_MData_Model_FP16.tflite'))
+        M_INTERPRETER.allocate_tensors()
 
         # Get input and output tensors.
-        input_details = self.m_interpreter.get_input_details()
-        output_details = self.m_interpreter.get_output_details()
+        input_details = M_INTERPRETER.get_input_details()
+        output_details = M_INTERPRETER.get_output_details()
 
         # Get input tensor index
-        self.m_input_layer_index = input_details[0]['index']
-        self.m_output_layer_index = output_details[0]['index']
+        M_INPUT_LAYER_INDEX = input_details[0]['index']
+        M_OUTPUT_LAYER_INDEX = output_details[0]['index']
 
     def loadLabels(self):
         # Load labels
@@ -371,19 +391,21 @@ class BirdNET():
         return l_filter
 
     def predictFilter(self):
-
+        global M_INTERPRETER
+        global M_INPUT_LAYER_INDEX
+        global M_OUTPUT_LAYER_INDEX
         # Does interpreter exist?
-        if self.m_interpreter is None:
+        if M_INTERPRETER is None:
             self.loadMetaModel()
 
         # Prepare mdata as sample
         sample = np.expand_dims(np.array([self.lat, self.lon, self.week], dtype='float32'), 0)
 
         # Run inference
-        self.m_interpreter.set_tensor(self.m_input_layer_index, sample)
-        self.m_interpreter.invoke()
+        M_INTERPRETER.set_tensor(M_INPUT_LAYER_INDEX, sample)
+        M_INTERPRETER.invoke()
 
-        return self.m_interpreter.get_tensor(self.m_output_layer_index)[0]
+        return M_INTERPRETER.get_tensor(M_OUTPUT_LAYER_INDEX)[0]
 
     def splitSignal(self, sig, rate, seconds=3.0, minlen=1.5):
 
@@ -472,12 +494,12 @@ class BirdNET():
 
         return 1 / (1.0 + np.exp(sensitivity * np.clip(x, -15, 15)))
 
-    def predict(self, samples, model):
-
-        interpreter = model[4]
-        input_layer_index = model[0]
-        mdata_input_index = model[1]
-        output_layer_index = model[2]
+    def predict(self, samples):
+        global MODEL
+        interpreter = MODEL[4]
+        input_layer_index = MODEL[0]
+        mdata_input_index = MODEL[1]
+        output_layer_index = MODEL[2]
         # labels = model[3]
 
         if self.lite:
@@ -509,11 +531,12 @@ class BirdNET():
 
         return p_sigmoid
 
-    def analyzeAudioData(self, chunks, file, model):
+    def analyzeAudioData(self, chunks, file):
+        global MODEL
 
         # different format for standard and post-processing (mea) approach
         detections = {}
-        detections_mea = np.zeros(shape=(len(chunks), len(model[3])))
+        detections_mea = np.zeros(shape=(len(chunks), len(MODEL[3])))
 
         start = time.time()
         print('ANALYZING AUDIO FROM {} ...'.format(os.path.basename(file)), end=' ', flush=True)
@@ -523,7 +546,7 @@ class BirdNET():
         pred_start = 0.0
         sig_length = 3.0
 
-        labels = model[3]
+        labels = MODEL[3]
 
         i = 0
         if self.lite:
@@ -538,7 +561,7 @@ class BirdNET():
                 # Make prediction
                 # p1, p2 = self.predict([sig, mdata], model)
 
-                p_sigmoid = self.predict([sig, mdata], model)
+                p_sigmoid = self.predict([sig, mdata])
 
                 # Get label and scores for pooled predictions
                 p_labels = dict(zip(labels, p_sigmoid))
@@ -582,7 +605,7 @@ class BirdNET():
                     continue
 
                 # Predict
-                p = self.predict(samples, model)
+                p = self.predict(samples)
 
                 # Add to results
                 for i in range(len(samples)):
@@ -657,7 +680,7 @@ class BirdNET():
                         output.append(seg)
                     
         else:
-            output = [{"Operator": self.AviaNZ.operator, "Reviewer": self.AviaNZ.reviewer, "Duration": 60}]
+            output = [{"Operator": self.operator, "Reviewer": self.reviewer, "Duration": 60}]
             for d in detections:
                 seg = [float(d.split(",")[1]), float(d.split(",")[2]), 0.0, 0.0]
                 labels = []
@@ -688,63 +711,72 @@ class BirdNET():
             i += 1
         return timetable
 
-    def whiteListing(self, timetable, white_list, model):
+    def whiteListing(self, timetable, white_list):
+        global MODEL
         detections = {}
         i = 0
         for j in timetable:
-            if (model[3][i] in white_list) or (len(white_list) == 0 and model[3][i] not in ['Human_Human', 'Non-bird_Non-bird', 'Noise_Noise']):
-                detections[model[3][i]] = j
+            if (MODEL[3][i] in white_list) or (len(white_list) == 0 and MODEL[3][i] not in ['Human_Human', 'Non-bird_Non-bird', 'Noise_Noise']):
+                detections[MODEL[3][i]] = j
             i += 1
         return detections
 
-    def analyze(self, filelist, white_list):
+    def analyze(self, file):
+        global MODEL
+        global SLIST
         try:
-            model = self.loadModel()
-            for file in filelist:
-                # Read audio data
-                audioData = self.readAudioData(file)
+            white_list = SLIST
+        
+            # Read audio data
+            audioData = self.readAudioData(file)
 
-                #     # If no chunks, show error and skip
-                #     if len(audioData) == 0:
-                #         msg = 'Error: Cannot open audio file {}'.format(fpath)
-                #         print(msg, flush=True)
-                #         writeErrorLog(msg)
-                #         return False
+            #     # If no chunks, show error and skip
+            #     if len(audioData) == 0:
+            #         msg = 'Error: Cannot open audio file {}'.format(fpath)
+            #         print(msg, flush=True)
+            #         writeErrorLog(msg)
+            #         return False
 
-                # Process audio data and get detections
-                pp_det, timestamps, def_det = self.analyzeAudioData(audioData, file, model)
+            # Process audio data and get detections
+            pp_det, timestamps, def_det = self.analyzeAudioData(audioData, file)
 
-                if self.mea is False:
-                    self.writeAvianzOutput(def_det, file, white_list)
+            if self.mea is False:
+                self.writeAvianzOutput(def_det, file, white_list)
 
-                elif self.mea is True:
-                    # apply moving exponential average to pp_det and write results to tempfile
-                    mea_det = self.whiteListing(self.movingExpAverage(pp_det), white_list, model)
-                    mea_det_convert = self.convert_mea_output(mea_det, file, timestamps)
-                    self.writeAvianzOutput(mea_det_convert, file, white_list)
+            elif self.mea is True:
+                # apply moving exponential average to pp_det and write results to tempfile
+                mea_det = self.whiteListing(self.movingExpAverage(pp_det), white_list)
+                mea_det_convert = self.convert_mea_output(mea_det, file, timestamps)
+                self.writeAvianzOutput(mea_det_convert, file, white_list)
         except:
             print(traceback.format_exc())
+
+    def initProcess(self):
+        global MODEL
+        global SLIST
+        MODEL = self.loadModel()
+        SLIST = self.getSpeciesList(self.slist)
 
     def main(self):
 
         try:
             # create list of filenames
-            filelist = [file.absoluteFilePath() for file in self.AviaNZ.listFiles.listOfFiles if file.isFile()]
+            # filelist = [file.absoluteFilePath() for file in self.AviaNZ.listFiles.listOfFiles if file.isFile()]
 
             # create list of lists of filenames to pass to different threads
-            step = -(-len(filelist)//self.threads)
-            file_threads = [filelist[i:i + step] for i in range(0, len(filelist), step)]
+            # step = -(-len(filelist)//self.threads)
+            # file_threads = [filelist[i:i + step] for i in range(0, len(filelist), step)]
 
             # run analyze on different threads
-            with concurrent.futures.ThreadPoolExecutor() as executer:
-                futures = [executer.submit(self.analyze, flist, copy.deepcopy(self.slist)) for flist in file_threads]
+            # with concurrent.futures.ThreadPoolExecutor() as executer:
+            #     futures = [executer.submit(self.analyze, flist, copy.deepcopy(self.slist)) for flist in file_threads]
+            # with Pool(self.threads) as p:
+            #     p.map(self.analyze, self.filelist)
+            with ProcessPoolExecutor(self.threads, initializer=self.initProcess) as executer:
+                executer.map(self.analyze, self.filelist)
 
             # self.analyze(filelist, self.slist)
-            self.AviaNZ.loadFile(name=self.AviaNZ.filename)
-            self.AviaNZ.fillFileList(
-              self.AviaNZ.SoundFileDir,
-              os.path.basename(self.AviaNZ.filename)
-              )
+            
 
         except:
             print(traceback.format_exc())
