@@ -129,6 +129,7 @@ class AviaNZ(QMainWindow):
         self.startTime = 0
         self.segmentsToSave = False
         self.viewCallType = False
+        self.viewCertainty = True
         self.batmode = False
 
         # Spectrogram default settings
@@ -3531,12 +3532,20 @@ class AviaNZ(QMainWindow):
         if not self.viewCallType:
             # produce text from list of dicts
             text = []
-            for lab in seg[4]:
-                if lab["certainty"] == 50:
-                    text.append(lab["species"] + '?')
-                else:
-                    text.append(lab["species"])
-            text = ','.join(text)
+            if self.viewCertainty:
+                for lab in seg[4]:
+                    if lab["certainty"] == 100:
+                        text.append(lab["species"])
+                    else:
+                        text.append("{}:{}%".format(lab["species"], int(lab["certainty"])))
+                text = ','.join(text)
+            else:
+                for lab in seg[4]:
+                    if lab["certainty"] == 50:
+                        text.append(lab["species"] + '?')
+                    else:
+                        text.append(lab["species"])
+                text = ','.join(text)
         else:
             text = []
             for lab in seg[4]:
