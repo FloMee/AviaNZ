@@ -8,19 +8,14 @@ import librosa
 import numpy as np
 import math
 import time
-import glob
-import concurrent.futures
 from concurrent.futures import ProcessPoolExecutor
-from multiprocessing import Pool
 import copy
-import sys
-import json
 import traceback
-from PyQt5.QtGui import QIcon, QDoubleValidator, QIntValidator
+from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QDialog, QSlider, QGridLayout, QGridLayout, QLabel, QComboBox, QHBoxLayout, QLineEdit, QPushButton, QRadioButton, QVBoxLayout, QCheckBox, QFileDialog, QMessageBox
+from PyQt5.QtWidgets import QDialog, QSlider, QGridLayout, QGridLayout, QLabel, QComboBox, QHBoxLayout, QLineEdit, QPushButton, QRadioButton, QVBoxLayout, QCheckBox, QFileDialog, QMessageBox, QDoubleSpinBox, QSpinBox, QGroupBox
 
-import AviaNZ_manual
+import Segment
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 os.environ['CUDA_VISIBLE_DEVICES'] = ''
@@ -47,129 +42,172 @@ class BirdNETDialog(QDialog):
         self.lite.clicked.connect(self.updateDialog)
         self.analyzer.clicked.connect(self.updateDialog)
 
-        self.lat = QLineEdit()
-        self.lat.setValidator(QDoubleValidator(-90, 90, 2))
+        self.lat_label = QLabel("Latitude")
+        self.lat = QDoubleSpinBox()
+        self.lat.setRange(-90, 90)
+        self.lat.setValue(-1.0)
 
-        self.lon = QLineEdit()
-        self.lon.setValidator(QDoubleValidator(-180, 180, 2))
+        self.lon_label = QLabel("Longitude")
+        self.lon = QDoubleSpinBox()
+        self.lon.setRange(-180, 180)
+        self.lon.setValue(-1.0)
 
-        self.week = QLineEdit()
-        self.week.setValidator(QIntValidator(1, 48))
+        self.week_label = QLabel("Week")
+        self.week = QSpinBox()
+        self.week.setRange(0, 48)
 
-        self.overlap = QLineEdit()
-        self.overlap.setText("0.0")
-        self.overlap.setValidator(QDoubleValidator(0, 2.9, 1))
+        self.overlap_label = QLabel("Overlap")
+        self.overlap = QDoubleSpinBox()
+        self.overlap.setRange(0, 2.9)
+        self.overlap.setValue(0.0)
 
-        self.sensitivity = QLineEdit()
-        self.sensitivity.setText("1.0")
-        self.sensitivity.setValidator(QDoubleValidator(0.5, 1.5, 2))
+        self.sensitivity_label = QLabel("Sensitivity")
+        self.sensitivity = QDoubleSpinBox()
+        self.sensitivity.setRange(0.5, 1.5)
+        self.sensitivity.setValue(1.0)
 
-        self.min_conf = QLineEdit()
-        self.min_conf.setText("0.1")
-        self.min_conf.setValidator(QDoubleValidator(0.01, 0.99, 2))
+        self.min_conf_label = QLabel("Minimum Confidence")
+        self.min_conf = QDoubleSpinBox()
+        self.min_conf.setRange(0.01, 0.99)
+        self.min_conf.setValue(0.1)
 
         self.slist = QLineEdit()
         self.slist.setReadOnly(True)
 
-        self.btn_slist = QPushButton("Choose file")
+        self.btn_slist = QPushButton("Select Custom Species List")
         self.btn_slist.clicked.connect(self.chooseSpeciesList)
 
-        self.threads = QLineEdit()
-        self.threads.setText("1")
-        self.threads.setValidator(QIntValidator(0, os.cpu_count()))
-
-        # Lite specific options
+        self.threads_label = QLabel("Number of Threads")
+        self.threads = QSpinBox()
+        self.threads.setRange(1, os.cpu_count())
+        self.threads.setValue(os.cpu_count())
 
         self.mea = QCheckBox("Calculate moving exponential average?")
+        self.datetime_format_label = QLabel("Datetime format")
         self.datetime_format = QLineEdit()
-
-        # Analyzer specific options
-
-        self.batchsize = QLineEdit()
-        self.batchsize.setText("1")
-        self.batchsize.setValidator(QIntValidator(1, 99))
 
         self.locale = QComboBox()
         # TODO: get list of possible languages from labels_directory?
-        self.locale.addItems(['af', 'ar', 'cs', 'da', 'de', 'en', 'es', 'fi', 'fr', 'hu', 'it', 'ja', 'ko', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sv', 'th', 'tr', 'uk', 'zh'])
+        self.locale.addItems(['af',
+                              'ar',
+                              'cs',
+                              'da',
+                              'de',
+                              'en',
+                              'es',
+                              'fi',
+                              'fr',
+                              'hu',
+                              'it',
+                              'ja',
+                              'ko',
+                              'nl',
+                              'no',
+                              'pl',
+                              'pt',
+                              'ro',
+                              'ru',
+                              'sk',
+                              'sl',
+                              'sv',
+                              'th',
+                              'tr',
+                              'uk',
+                              'zh'])
         self.locale.setCurrentIndex(5)
 
-        self.sf_thresh = QLineEdit()
-        self.sf_thresh.setText("0.03")
-        self.sf_thresh.setValidator(QDoubleValidator(0.01, 0.99, 2))
+        # Analyzer specific options
+
+        self.batchsize_label = QLabel("Batchsize")
+        self.batchsize = QSpinBox()
+        self.batchsize.setValue(1)
+
+        self.sf_thresh_label = QLabel("Threshold for location filter")
+        self.sf_thresh = QDoubleSpinBox()
+        self.sf_thresh.setRange(0.01, 0.99)
+        self.sf_thresh.setValue(0.03)
+
+        self.btnAdvanced = QPushButton('Show Advanced Settings')
+        self.btnAdvanced.clicked.connect(self.updateSettings)
 
         # Button to start analysis
         self.btnAnalyze = QPushButton('Analyze')
         self.btnAnalyze.clicked.connect(self.onClickanalyze)
 
         # labels for QLineEdit analyze options
-        self.lat_label = QLabel("Latitude")
-        self.lon_label = QLabel("Longitude")
-        self.week_label = QLabel("Week")
-        self.overlap_label = QLabel("Overlap")
-        self.sensitivity_label = QLabel("Sensitivity")
-        self.min_conf_label = QLabel("Minimum Confidence")
-        self.threads_label = QLabel("Number of Threads")
-        self.datetime_format_label = QLabel("Datetime format")
-        self.batchsize_label = QLabel("Batchsize")
-        self.sf_thresh_label = QLabel("Threshold for location filter")
 
         # parameter layout
-        param_grid = QGridLayout()
+        self.basic = QGroupBox()
+        self.advanced = QGroupBox()
+        param_basic = QGridLayout()
+        param_advanced = QGridLayout()
 
-        param_grid.addWidget(self.lite, 0, 0)
-        param_grid.addWidget(self.analyzer, 1, 0)
+        param_basic.addWidget(self.lite, 0, 0)
+        param_basic.addWidget(self.analyzer, 1, 0)
 
-        param_grid.addWidget(self.lat_label, 2, 0)
-        param_grid.addWidget(self.lat, 2, 1)
+        param_basic.addWidget(self.lat_label, 2, 0)
+        param_basic.addWidget(self.lat, 2, 1)
 
-        param_grid.addWidget(self.lon_label, 3, 0)
-        param_grid.addWidget(self.lon, 3, 1)
+        param_basic.addWidget(self.lon_label, 3, 0)
+        param_basic.addWidget(self.lon, 3, 1)
 
-        param_grid.addWidget(self.week_label, 4, 0)
-        param_grid.addWidget(self.week, 4, 1)
+        param_basic.addWidget(self.week_label, 4, 0)
+        param_basic.addWidget(self.week, 4, 1)
 
-        param_grid.addWidget(self.overlap_label, 5, 0)
-        param_grid.addWidget(self.overlap, 5, 1)
+        param_advanced.addWidget(self.overlap_label, 5, 0)
+        param_advanced.addWidget(self.overlap, 5, 1)
 
-        param_grid.addWidget(self.sensitivity_label, 6, 0)
-        param_grid.addWidget(self.sensitivity, 6, 1)
+        param_advanced.addWidget(self.sensitivity_label, 6, 0)
+        param_advanced.addWidget(self.sensitivity, 6, 1)
 
-        param_grid.addWidget(self.min_conf_label, 7, 0)
-        param_grid.addWidget(self.min_conf, 7, 1)
+        param_advanced.addWidget(self.min_conf_label, 7, 0)
+        param_advanced.addWidget(self.min_conf, 7, 1)
 
-        param_grid.addWidget(self.slist, 8, 0)
-        param_grid.addWidget(self.btn_slist, 8, 1)
+        param_basic.addWidget(self.slist, 8, 0)
+        param_basic.addWidget(self.btn_slist, 8, 1)
 
-        param_grid.addWidget(self.threads_label, 9, 0)
-        param_grid.addWidget(self.threads, 9, 1)
+        param_advanced.addWidget(self.threads_label, 9, 0)
+        param_advanced.addWidget(self.threads, 9, 1)
 
-        param_grid.addWidget(self.mea, 10, 1)
+        param_advanced.addWidget(self.mea, 10, 1)
 
-        param_grid.addWidget(self.datetime_format_label, 11, 0)
-        param_grid.addWidget(self.datetime_format, 11, 1)
+        param_advanced.addWidget(self.datetime_format_label, 11, 0)
+        param_advanced.addWidget(self.datetime_format, 11, 1)
 
-        param_grid.addWidget(QLabel("Language of the labels"), 12, 0)
-        param_grid.addWidget(self.locale, 12, 1)
+        param_basic.addWidget(QLabel("Language of the labels"), 12, 0)
+        param_basic.addWidget(self.locale, 12, 1)
 
-        param_grid.addWidget(self.batchsize_label, 13, 0)
-        param_grid.addWidget(self.batchsize, 13, 1)
+        param_advanced.addWidget(self.batchsize_label, 13, 0)
+        param_advanced.addWidget(self.batchsize, 13, 1)
 
-        param_grid.addWidget(self.sf_thresh_label, 14, 0)
-        param_grid.addWidget(self.sf_thresh, 14, 1)
+        param_advanced.addWidget(self.sf_thresh_label, 14, 0)
+        param_advanced.addWidget(self.sf_thresh, 14, 1)
 
-        param_grid.addWidget(self.btnAnalyze, 15, 1)
+        param_basic.addWidget(self.btnAdvanced, 14, 1)
+        param_basic.addWidget(self.btnAnalyze, 15, 1)
 
         # overall Layout
         layout = QVBoxLayout()
         layout.addWidget(lbltitle)
-        layout.addLayout(param_grid)
+        self.basic.setLayout(param_basic)
+        self.advanced.setLayout(param_advanced)
+        layout.addWidget(self.basic)
+        layout.addWidget(self.advanced)
         layout.setSpacing(25)
         self.setLayout(layout)
 
         # default: BirdNET-Lite
         self.lite.setChecked(True)
+        self.advanced.hide()
         self.updateDialog()
+
+    def updateSettings(self):
+        if self.btnAdvanced.text() == "Show Advanced Settings":
+            self.advanced.show()
+            self.btnAdvanced.setText("Hide Advanced Settings")
+        else:
+            self.advanced.hide()
+            self.btnAdvanced.setText("Show Advanced Settings")
 
     def chooseSpeciesList(self):
         species_list = QFileDialog.getOpenFileName(self, 'Choose filter species list', filter='Text (*.txt)')
@@ -197,21 +235,23 @@ class BirdNETDialog(QDialog):
         if self.validateInputParameters():
             if not self.parent.BirdNET:
                 self.parent.BirdNET = BirdNET(self.parent)
-            self.parent.BirdNET.set_parameters(
-                                            self.lite.isChecked(),
-                                            self.lat.text(),
-                                            self.lon.text(),
-                                            self.week.text(),
-                                            self.overlap.text(),
-                                            self.sensitivity.text(),
-                                            self.min_conf.text(),
-                                            self.slist_path,
-                                            self.threads.text(),
-                                            self.mea.isChecked(),
-                                            self.datetime_format.text(),
-                                            self.locale.currentText(),
-                                            self.batchsize.text(),
-                                            self.sf_thresh.text())
+            birdnet = self.parent.BirdNET
+
+            setattr(birdnet, "lite", self.lite.isChecked())
+            setattr(birdnet, "lat", self.lat.value())
+            setattr(birdnet, "lon", self.lon.value())
+            setattr(birdnet, "week", self.week.value() if self.week.value() > 0 else -1)
+            setattr(birdnet, "overlap", self.overlap.value())
+            setattr(birdnet, "sensitivity", (1 - (self.sensitivity.value() - 1)))
+            setattr(birdnet, "min_conf", self.min_conf.value())
+            setattr(birdnet, "slist", self.slist_path)
+            setattr(birdnet, "threads", self.threads.value())
+            setattr(birdnet, "mea", self.mea.isChecked())
+            setattr(birdnet, "datetime_format", self.datetime_format.text())
+            setattr(birdnet, "locale", self.locale.currentText())
+            setattr(birdnet, "batchsize", self.batchsize.value())
+            setattr(birdnet, "sf_thresh", self.sf_thresh.value())
+
             self.parent.BirdNET.main()
             self.parent.loadFile(name=self.parent.filename)
             self.parent.fillFileList(
@@ -246,43 +286,38 @@ class BirdNETDialog(QDialog):
             self.sf_thresh.setVisible(True)
             self.sf_thresh_label.setVisible(True)
 
+
 MODEL = None
 M_INTERPRETER = None
 SLIST = None
 M_INPUT_LAYER_INDEX = None
 M_OUTPUT_LAYER_INDEX = None
 
+
 class BirdNET():
     def __init__(self, AviaNZmanual):
         # self.AviaNZ = AviaNZmanual
         self.filelist = [file.absoluteFilePath() for file in AviaNZmanual.listFiles.listOfFiles if file.isFile()]
-
         self.operator = AviaNZmanual.operator
         self.reviewer = AviaNZmanual.reviewer
         self.m_interpreter = None
-        self.model = None       
-
-    def set_parameters(self, lite, lat, lon, week, overlap, sensitivity, min_conf, slist, threads, mea, datetime_format, locale, batchsize, sf_thresh):
-        self.lite = lite
-        self.lat = float(lat) if lat else -1
-        self.lon = float(lon) if lon else -1
-        self.week = int(week) if week else -1
-        self.overlap = float(overlap)
-        self.sensitivity = max(0.5, min(1.0 - (float(sensitivity) - 1.0), 1.5))
-        self.min_conf = float(min_conf)
-        self.sf_tresh = float(sf_thresh)
-        self.locale = locale
-        # TODO: check if self.labels works or if deepcopy is needed
-        self.labels = self.loadLabels()
-        print(slist)
-        # self.slist = self.getSpeciesList(slist)
+        self.model = None
+        self.lite = None
+        self.lat = -1
+        self.lon = -1
+        self.week = -1
+        self.overlap = 0.0
+        self.sensitivity = 1.0
+        self.min_conf = 0.1
+        self.sf_tresh = 0.03
+        self.locale = "en"
         self.slist = None
-        self.threads = int(threads)
-        self.mea = mea
-        self.datetime_format = datetime_format
-        self.batchsize = int(batchsize)
+        self.threads = os.cpu_count()
+        self.mea = False
+        self.datetime_format = None
+        self.batchsize = 1
 
-    def loadModel(self):        
+    def loadModel(self):
         try:
             print('Loading BirdNET model...', end=' ')
 
@@ -312,14 +347,14 @@ class BirdNET():
             print('DONE!')
         except Exception() as e:
             print(traceback.format_exc())
-        
+
         return model
 
     def loadMetaModel(self):
         global M_INTERPRETER
         global M_INPUT_LAYER_INDEX
         global M_OUTPUT_LAYER_INDEX
-        print("load MetaModel", flush = True)
+        print("load MetaModel", flush=True)
         # Load TFLite model and allocate tensors.
         M_INTERPRETER = tflite.Interpreter(model_path=os.path.join('models', 'Analyzer', 'BirdNET_GLOBAL_3K_V2.2_MData_Model_FP16.tflite'))
         M_INTERPRETER.allocate_tensors()
@@ -646,58 +681,43 @@ class BirdNET():
         return detections
 
     def writeAvianzOutput(self, detections, file, white_list, append=True):
-        # TODO: get Duration from file
+        """ Write detections to Segments, write Segments to SegmentList, save
+            SegmentList.
+        """
+        seg_list = Segment.SegmentList()
         rfilepath = file + ".data"
+
         if append and os.path.exists(rfilepath):
-            with open(rfilepath, "r") as infile:
-                output = json.load(infile)
-            
-            for d in detections:
-                start = float(d.split(",")[1])
-                end = float(d.split(",")[2])
-                seg_index = -1
-                for e in output[1:]:
-                    if e[0] == start and e[1] == end:
-                        seg_index = output.index(e)
-                        break
-                
-                if seg_index >= 0:
-                    seg = output[seg_index]
-                    labels = output[seg_index][4]
-                    for entry in detections[d]:
-                        if entry[1] >= self.min_conf and (entry[0] in white_list or len(white_list) == 0):
-                            output[seg_index][4].append({"species": entry[0].split("_")[1], "certainty": float(entry[1])*100, "filter": "BirdNET-Lite" if self.lite else "BirdNET-Analyzer", "calltype": "non-specified"})
-                        
-                else:
-                    seg = [float(d.split(",")[1]), float(d.split(",")[2]), 0.0, 0.0]
-                    labels = []
-                    for entry in detections[d]:
-                        if entry[1] >= self.min_conf and (entry[0] in white_list or len(white_list) == 0):
-                            labels.append({"species": entry[0].split("_")[1], "certainty": float(entry[1])*100, "filter": "BirdNET-Lite" if self.lite else "BirdNET-Analyzer", "calltype": "non-specified"})
+            # TODO: get Duration from file
 
-                    if len(labels) > 0:
-                        seg.append(labels)
-                        output.append(seg)
-                    
+            seg_list.parseJSON(rfilepath)
+
         else:
-            output = [{"Operator": self.operator, "Reviewer": self.reviewer, "Duration": 60}]
-            for d in detections:
-                seg = [float(d.split(",")[1]), float(d.split(",")[2]), 0.0, 0.0]
-                labels = []
-                for entry in detections[d]:
-                    if entry[1] >= self.min_conf and (entry[0] in white_list or len(white_list) == 0):
-                        labels.append({"species": entry[0].split("_")[1], "certainty": float(entry[1])*100, "filter": "BirdNET-Lite" if self.lite else "BirdNET-Analyzer", "calltype": "non-specified"})
+            # TODO: get Duration from file
 
-                if len(labels) > 0:
-                    seg.append(labels)
-                    output.append(seg)
+            seg_list.metadata = {"Operator": "Auto", "Reviewer": "", "Duration": 60}
 
-        if len(output) > 1:
-            with open(rfilepath, "w") as rfile:
-                json.dump(output, rfile)
+        for d in detections:
+            save = True
+            seg = seg_list.getSegment([float(d.split(",")[1]), float(d.split(",")[2]), 0.0, 0.0, []])
+            if len(seg[4]) > 0:
+                save = False
+            for entry in detections[d]:
+                if entry[1] >= self.min_conf and (entry[0] in white_list or len(white_list) == 0):
+                    seg.addLabel(
+                            entry[0].split("_")[1],
+                            float(entry[1])*100,
+                            filter="BirdNET-Lite" if self.lite else "BirdNET-Analyzer",
+                            calltype="non-specified"
+                            )
+            if len(seg[4]) > 0 and save:
+                seg_list.addSegment(seg)
+
+        seg_list.saveJSON(rfilepath)
 
     def movingExpAverage(self, timetable, n=3):
-        """calculate moving exponential average"""
+        """Calculate moving exponential average over 3 Segments per Default.
+        """
 
         weights = np.exp(np.linspace(-1., 0., n))
         weights /= weights.sum()
@@ -726,7 +746,7 @@ class BirdNET():
         global SLIST
         try:
             white_list = SLIST
-        
+
             # Read audio data
             audioData = self.readAudioData(file)
 
@@ -760,6 +780,7 @@ class BirdNET():
     def main(self):
 
         try:
+            self.labels = self.loadLabels()
             # create list of filenames
             # filelist = [file.absoluteFilePath() for file in self.AviaNZ.listFiles.listOfFiles if file.isFile()]
 
@@ -776,7 +797,6 @@ class BirdNET():
                 executer.map(self.analyze, self.filelist)
 
             # self.analyze(filelist, self.slist)
-            
 
         except:
             print(traceback.format_exc())

@@ -45,6 +45,7 @@ try:
 except:
     pass
 
+
 class Segment(list):
     """ A single AviaNZ annotation ("segment" or "box" type).
         Deals with identifying the right Label from this list.
@@ -52,15 +53,16 @@ class Segment(list):
         Labels should be added either when initiating Segment,
         or through Segment.addLabel.
     """
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if len(self) != 5:
             print("ERROR: incorrect number of args provided to Segment (need 5, not %d)" % len(self))
             return
-        if self[0]<0 or self[1]<0:
+        if self[0] < 0 or self[1] < 0:
             print("ERROR: Segment times must be positive or 0")
             return
-        if self[2]<0 or self[3]<0:
+        if self[2] < 0 or self[3] < 0:
             print("ERROR: Segment frequencies must be positive or 0")
             return
         if not isinstance(self[4], list):
@@ -78,7 +80,7 @@ class Segment(list):
             if "certainty" not in lab or not isinstance(lab["certainty"], (int, float)):
                 print("ERROR: certainty bad or missing from label")
                 return
-            if "filter" in lab and lab["filter"]!="M" and "calltype" not in lab:
+            if "filter" in lab and lab["filter"] != "M" and "calltype" not in lab:
                 print("ERROR: calltype required when automated filter provided in label")
                 return
 
@@ -89,7 +91,7 @@ class Segment(list):
         self[3] = int(self[3])
 
         self.keys = [(lab['species'], lab['certainty']) for lab in self[4]]
-        if len(self.keys)>len(set(self.keys)):
+        if len(self.keys) > len(set(self.keys)):
             print("ERROR: non-unique species/certainty combo detected")
             return
 
@@ -109,7 +111,7 @@ class Segment(list):
         if not isinstance(certainty, (int, float)):
             print("ERROR: bad certainty provided")
             return
-        if "filter" in label and label["filter"]!="M" and "calltype" not in label:
+        if "filter" in label and label["filter"] != "M" and "calltype" not in label:
             print("ERROR: calltype required when automated filter provided in label")
             return
         if self.hasLabel(species, certainty):
@@ -130,7 +132,7 @@ class Segment(list):
         deletedAll = list(set([lab["species"] for lab in self[4]])) == [species]
         # note that removeLabel will re-add a Don't Know in the end, so can't just check the final label.
         for lab in reversed(self[4]):
-            if lab["species"]==species:
+            if lab["species"] == species:
                 print("Wiping label", lab)
                 self.removeLabel(lab["species"], lab["certainty"])
         return deletedAll
@@ -144,7 +146,7 @@ class Segment(list):
         for labix in range(len(self[4])):
             lab = self[4][labix]
             # check if this label is yellow:
-            if (species is None or lab["species"]==species) and lab["certainty"] < 100 and lab["species"]!="Don't Know":
+            if (species is None or lab["species"] == species) and lab["certainty"] < 100 and lab["species"] != "Don't Know":
                 # check if this segment has a green label for this species already
                 if (lab["species"], 100) in self.keys:
                     # then just delete the yellow label
@@ -167,9 +169,9 @@ class Segment(list):
         for labix in range(len(self[4])):
             lab = self[4][labix]
             # check if this label is green:
-            if (species is None or lab["species"]==species) and lab["certainty"]==100 and lab["species"]!="Don't Know":
+            if (species is None or lab["species"] == species) and lab["certainty"] == 100 and lab["species"] != "Don't Know":
                 # check if this segment has a yellow label for this species already
-                otherLabels = [k[0]==lab["species"] and k[1]<100 for k in self.keys]
+                otherLabels = [k[0] == lab["species"] and k[1] < 100 for k in self.keys]
                 if any(otherLabels):
                     # then just delete this label
                     toremove.append(lab)
@@ -180,7 +182,7 @@ class Segment(list):
         for trlab in toremove:
             self.removeLabel(trlab["species"], trlab["certainty"])
 
-        return(anyChanged)
+        return (anyChanged)
 
     def removeLabel(self, species, certainty):
         """ Removes label from this segment.
@@ -188,20 +190,20 @@ class Segment(list):
         """
         deleted = False
         for lab in self[4]:
-            if lab["species"]==species and lab["certainty"]==certainty:
+            if lab["species"] == species and lab["certainty"] == certainty:
                 self[4].remove(lab)
                 try:
                     self.keys.remove((species, certainty))
                 except Exception as e:
                     text = "************ WARNING ************\n"
                     text += str(e)
-                    text += "\nWhile trying to remove key "+str(species)+"-"+str(certainty) + " from "+ str(self[4])
+                    text += "\nWhile trying to remove key " + str(species)+"-" + str(certainty) + " from " + str(self[4])
                     text += "\nWhich had keys" + str(self.keys)
                     import SupportClasses_GUI
                     msg = SupportClasses_GUI.MessagePopup("w", "ERROR - please report", text)
                     msg.exec_()
                 # if that was the last label, flip to Don't Know
-                if len(self[4])==0:
+                if len(self[4]) == 0:
                     self.addLabel("Don't Know", 0)
                 deleted = True
                 break
@@ -215,7 +217,7 @@ class Segment(list):
         s = []
         for lab in self[4]:
             labs = "sp.: %s, cert.: %d%%" % (lab["species"], lab["certainty"])
-            if "filter" in lab and lab["filter"]!="M":
+            if "filter" in lab and lab["filter"] != "M":
                 labs += ", filter: " + lab["filter"]
             if "calltype" in lab:
                 labs += ", call: " + lab["calltype"]
@@ -251,9 +253,9 @@ class SegmentList(list):
             self.metadata = {"Operator": annots[0][2], "Reviewer": annots[0][3]}
             # when file is loaded, true duration can be passed. Otherwise,
             # some old files have duration in samples, so need a rough check
-            if duration>0:
+            if duration > 0:
                 self.metadata["Duration"] = duration
-            elif isinstance(annots[0][1], (int, float)) and annots[0][1]>0 and annots[0][1]<100000:
+            elif isinstance(annots[0][1], (int, float)) and annots[0][1] > 0 and annots[0][1] < 100000:
                 self.metadata["Duration"] = annots[0][1]
             else:
                 # fallback to reading the wav:
@@ -265,7 +267,7 @@ class SegmentList(list):
                     print(e)
                 return
             # noise metadata
-            if len(annots[0])<5 or not isinstance(annots[0][4], list):
+            if len(annots[0]) < 5 or not isinstance(annots[0][4], list):
                 self.metadata["noiseLevel"] = None
                 self.metadata["noiseTypes"] = []
             else:
@@ -276,7 +278,7 @@ class SegmentList(list):
         elif isinstance(annots[0], dict):
             # New format has 3 required fields:
             self.metadata = annots[0]
-            if duration>0:
+            if duration > 0:
                 self.metadata["Duration"] = duration
             if "Operator" not in self.metadata or "Reviewer" not in self.metadata or "Duration" not in self.metadata:
                 print("ERROR: required metadata fields not found")
@@ -286,7 +288,7 @@ class SegmentList(list):
         # read the segments
         self.clear()
         for annot in annots:
-            if not isinstance(annot, list) or len(annot)!=5:
+            if not isinstance(annot, list) or len(annot) != 5:
                 print("ERROR: annotation in wrong format:", annot)
                 return
 
@@ -340,7 +342,17 @@ class SegmentList(list):
             segment[4] = [{"species": "Don't Know", "certainty": 0}]
         self.append(Segment(segment))
 
-    def addBasicSegments(self, seglist, freq=[0,0], **kwd):
+    def getSegment(self, segment):
+        """ Check if specific segment exists, return this segment if True,
+            otherwise return clean segment.
+        """
+        for seg in self:
+            if seg[:4] == segment[:4]:
+                return Segment(seg)
+
+        return Segment(segment)
+
+    def addBasicSegments(self, seglist, freq=[0, 0], **kwd):
         """ Allows to add bunch of basic segments from segmentation
             with identical species/certainty/freq values.
             seglist - list of 2-col segments [[t1, t2],prob]
@@ -348,7 +360,7 @@ class SegmentList(list):
             These will be converted to [[t1, t2, freq[0], freq[1], label], ...]
             and stored.
         """
-        if not isinstance(freq, list) or freq[0]<0 or freq[1]<0:
+        if not isinstance(freq, list) or freq[0] < 0 or freq[1] < 0:
             print("ERROR: cannot use frequencies", freq)
             return
 
@@ -367,7 +379,7 @@ class SegmentList(list):
                     out.append(segi)
                     # go to next seg
                     break
-        return(out)
+        return (out)
 
     def getCalltype(self, species, calltype):
         """ Returns indices of all segments that have the indicated species & calltype in label. """
@@ -383,7 +395,7 @@ class SegmentList(list):
                         break
                 except:
                     pass
-        return(out)
+        return (out)
 
     def saveJSON(self, file, reviewer=""):
         """ Returns 1 on succesful save."""
@@ -407,7 +419,7 @@ class SegmentList(list):
         sttimes = np.argsort(sttimes)
         self.sort(key=lambda s: s[0])
 
-        return(sttimes)
+        return (sttimes)
 
     def splitLongSeg(self, maxlen=10, species=None):
         """
@@ -426,7 +438,7 @@ class SegmentList(list):
                 d = l/n
                 # adjust current seg to be the first piece
                 seg[1] = seg[0]+d
-                for i in range(1,n):
+                for i in range(1, n):
                     end = min(l, d * (i+1))
                     segpiece = copy.deepcopy(seg)
                     segpiece[0] = seg[0] + d*i
@@ -450,7 +462,7 @@ class SegmentList(list):
             ASSUMES sorted input!
         """
         todelete = []
-        if len(self)==0:
+        if len(self) == 0:
             return []
 
         # ideally, we'd loop over different labels, but not easy since they're unhashable.
@@ -460,7 +472,7 @@ class SegmentList(list):
             firstsegi = None
             for segi in range(len(self)):
                 # was this already reviewed (when mergin another sp combo)?
-                if done[segi]==1:
+                if done[segi] == 1:
                     continue
                 # sets the first segment of this label
                 # (and the sp combo that will be merged now)
@@ -469,10 +481,10 @@ class SegmentList(list):
                     done[segi] = 1
                     continue
                 # ignore segments with labels other than the current one
-                if self[segi][4]!=self[firstsegi][4]:
+                if self[segi][4] != self[firstsegi][4]:
                     continue
                 # for subsequent segs, see if this can be merged to the previous one
-                if self[segi][0]<=self[firstsegi][1]:
+                if self[segi][0] <= self[firstsegi][1]:
                     self[firstsegi][1] = max(self[segi][1], self[firstsegi][1])
                     done[segi] = 1
                     # mark this for deleting
@@ -490,7 +502,7 @@ class SegmentList(list):
         """ Calculates some summary parameters relevant for populating training dialogs.
             and returns other parameters for populating the training dialogs.
         """
-        if len(self)==0:
+        if len(self) == 0:
             print("ERROR: no annotations for this calltype found")
             return
 
@@ -502,7 +514,7 @@ class SegmentList(list):
         lenMin = np.min([seg[1] - seg[0] for seg in self])
         lenMax = np.max([seg[1] - seg[0] for seg in self])
 
-        return(lenMin, lenMax, fLow, fHigh)
+        return (lenMin, lenMax, fLow, fHigh)
 
     def exportGT(self, filename, species, resolution):
         """ Given the AviaNZ annotations, exports a 0/1 ground truth as a txt file
@@ -529,10 +541,10 @@ class SegmentList(list):
         #         pass
         #     return
 
-        GT = np.tile([0, 0, None], (duration,1))
+        GT = np.tile([0, 0, None], (duration, 1))
         # fill first column with "time"
-        GT[:,0] = range(1, duration+1)
-        GT[:,0] = GT[:,0] * resolution
+        GT[:, 0] = range(1, duration+1)
+        GT[:, 0] = GT[:, 0] * resolution
 
         print("exporting GT with resolution", resolution)
 
@@ -542,19 +554,20 @@ class SegmentList(list):
             s = int(max(0, math.floor(seg[0] / resolution)))
             e = int(min(duration, math.ceil(seg[1] / resolution)))
             for i in range(s, e):
-                GT[i,1] = 1
-                GT[i,2] = species
+                GT[i, 1] = 1
+                GT[i, 2] = species
         GT = GT.tolist()
 
         # now save the resulting txt:
         with open(eFile, "w") as f:
             for l, el in enumerate(GT):
-                string = '\t'.join(map(str,el))
+                string = '\t'.join(map(str, el))
                 for item in string:
                     f.write(item)
                 f.write('\n')
             f.write('\n')
             print("output successfully saved to file", eFile)
+
 
 class Segmenter:
     """ This class implements six forms of segmentation for the AviaNZ interface:
@@ -610,7 +623,7 @@ class Segmenter:
         self.window_width = sp.window_width
         self.incr = sp.incr
 
-    def bestSegments(self,FIRthr=0.7, medianClipthr=3.0, yinthr=0.9):
+    def bestSegments(self, FIRthr=0.7, medianClipthr=3.0, yinthr=0.9):
         """ A reasonably good segmentaion - a merged version of FIR, median clipping, and fundamental frequency using yin
         """
         segs1 = self.segmentByFIR(FIRthr)
@@ -639,7 +652,6 @@ class Segmenter:
         out = self.checkSegmentOverlap(segs1)
         return out
 
-
     def convert01(self, presabs, window=1):
         """ Turns a list of presence/absence [0 1 1 1]
             into a list of start-end segments [[1,4]].
@@ -650,9 +662,9 @@ class Segmenter:
         out = []
         t = 0
         while t < len(presabs):
-            if presabs[t]==1:
+            if presabs[t] == 1:
                 start = t
-                while t<len(presabs) and presabs[t]!=0:
+                while t < len(presabs) and presabs[t] != 0:
                     t += 1
                 out.append([start*window, t*window])
             t += 1
@@ -739,7 +751,7 @@ class Segmenter:
         """
         if isinstance(segments, np.ndarray):
             segments = segments.tolist()
-        if len(segments)==0:
+        if len(segments) == 0:
             return []
 
         segments.sort(key=lambda seg: seg[0])
@@ -765,7 +777,7 @@ class Segmenter:
         """
         if isinstance(segments, np.ndarray):
             segments = segments.tolist()
-        if len(segments)==0:
+        if len(segments) == 0:
             return []
 
         segments.sort(key=lambda seg: seg[0][0])
@@ -794,7 +806,7 @@ class Segmenter:
         """
         if isinstance(segments, np.ndarray):
             segments = segments.tolist()
-        if len(segments)==0:
+        if len(segments) == 0:
             return []
 
         segments.sort(key=lambda seg: seg[0][0])
@@ -856,7 +868,7 @@ class Segmenter:
         """
         if usePercent:
             threshold = threshold*np.max(self.data)
-        seg = np.abs(self.data)>threshold
+        seg = np.abs(self.data) > threshold
         seg = self.convert01(seg, self.fs)
         return seg
 
@@ -871,7 +883,7 @@ class Segmenter:
         data = np.abs(self.data)
         E = np.zeros(len(data))
         E[width] = np.sum(data[:2*width+1])
-        for i in range(width+1,len(data)-width):
+        for i in range(width+1, len(data)-width):
             E[i] = E[i-1] - data[i-width-1] + data[i+width]
         E = E/(2*width)
 
@@ -879,7 +891,7 @@ class Segmenter:
 
         # This thing is noisy, so I'm going to median filter it. SoundID doesn't seem to?
         Em = np.zeros(len(data))
-        for i in range(width,len(data)-width):
+        for i in range(width, len(data)-width):
             Em[i] = np.median(E[i-width:i+width])
         for i in range(width):
             Em[i] = np.median(E[0:2*i])
@@ -894,11 +906,11 @@ class Segmenter:
         insegment = False
         for i in range(len(data)-1):
             if not insegment:
-                if Em[i]<threshold and Em[i+1]>threshold:
+                if Em[i] < threshold and Em[i+1] > threshold:
                     starts.append(i)
                     insegment = True
             if insegment:
-                if Em[i]>threshold and Em[i+1]<threshold:
+                if Em[i] > threshold and Em[i+1] < threshold:
                     ends.append(i)
                     insegment = False
         if insegment:
@@ -915,7 +927,7 @@ class Segmenter:
 
         segs = []
         for i in range(len(starts)):
-            segs.append([float(starts[i])/self.fs,float(ends[i])/self.fs])
+            segs.append([float(starts[i])/self.fs, float(ends[i])/self.fs])
         return segs
 
     def Harma(self, thr=10., stop_thr=0.8, minSegment=50):
@@ -924,30 +936,30 @@ class Segmenter:
         maxFreqs = 10. * np.log10(np.max(self.sg, axis = 1))
         """
         maxFreqs = 10. * np.log10(np.max(self.sg, axis=1))
-        maxFreqs = medfilt(maxFreqs,21)
+        maxFreqs = medfilt(maxFreqs, 21)
         biggest = np.max(maxFreqs)
         segs = []
 
-        while np.max(maxFreqs)>stop_thr*biggest:
+        while np.max(maxFreqs) > stop_thr*biggest:
             t0 = np.argmax(maxFreqs)
             a_n = maxFreqs[t0]
 
             # Go backwards looking for where the syllable stops
             t = t0
-            while maxFreqs[t] > a_n - thr and t>0:
+            while maxFreqs[t] > a_n - thr and t > 0:
                 t -= 1
             t_start = t
 
             # And forwards
             t = t0
-            while maxFreqs[t] > a_n - thr and t<len(maxFreqs)-1:
+            while maxFreqs[t] > a_n - thr and t < len(maxFreqs)-1:
                 t += 1
             t_end = t
 
             # Set the syllable just found to 0
             maxFreqs[t_start:t_end] = 0
             if float(t_end - t_start)*self.incr/self.fs*1000.0 > minSegment:
-                segs.append([float(t_start)* self.incr / self.fs,float(t_end)* self.incr / self.fs])
+                segs.append([float(t_start) * self.incr/self.fs, float(t_end)*self.incr/self.fs])
 
         return segs
 
@@ -974,12 +986,12 @@ class Segmenter:
         sg = self.sg/np.max(self.sg)
 
         # This next line gives an exact match to Lasseck, but screws up bitterns!
-        #sg = sg[4:232, :]
+        # sg = sg[4:232, :]
 
         rowmedians = np.median(sg, axis=1)
         colmedians = np.median(sg, axis=0)
 
-        clipped = np.zeros(np.shape(sg),dtype=int)
+        clipped = np.zeros(np.shape(sg), dtype=int)
         for i in range(np.shape(sg)[0]):
             for j in range(np.shape(sg)[1]):
                 if (sg[i, j] > thr * rowmedians[i]) and (sg[i, j] > thr * colmedians[j]):
@@ -987,16 +999,16 @@ class Segmenter:
         print("Found", np.sum(clipped), "pixels")
 
         # This is the stencil for the closing and dilation. It's a 5x5 diamond. Can also use a 3x3 diamond
-        diamond = np.zeros((5,5),dtype=int)
-        diamond[2,:] = 1
-        diamond[:,2] = 1
-        diamond[1,1] = diamond[1,3] = diamond[3,1] = diamond[3,3] = 1
-        #diamond[2, 1:4] = 1
-        #diamond[1:4, 2] = 1
+        diamond = np.zeros((5,5), dtype=int)
+        diamond[2, :] = 1
+        diamond[:, 2] = 1
+        diamond[1, 1] = diamond[1, 3] = diamond[3, 1] = diamond[3, 3] = 1
+        # diamond[2, 1:4] = 1
+        # diamond[1:4, 2] = 1
 
-        clipped = spi.binary_closing(clipped,structure=diamond).astype(int)
-        clipped = spi.binary_dilation(clipped,structure=diamond).astype(int)
-        clipped = spi.median_filter(clipped,size=medfiltersize)
+        clipped = spi.binary_closing(clipped, structure=diamond).astype(int)
+        clipped = spi.binary_dilation(clipped, structure=diamond).astype(int)
+        clipped = spi.median_filter(clipped, size=medfiltersize)
         clipped = spi.binary_fill_holes(clipped)
 
         blobs = skm.regionprops(skm.label(clipped.astype(int)))
@@ -1064,7 +1076,7 @@ class Segmenter:
 
         segments = []
         for i in range(len(onsets)):
-            segments.append([times[onsets[i]],times[onsets[i]]+0.2])
+            segments.append([times[onsets[i]], times[onsets[i]]+0.2])
         return segments
 
     def yinSegs(self, minfreq=100, minperiods=3, thr=0.5, W=1000):
@@ -1089,7 +1101,7 @@ class Segmenter:
         shape = Shapes.fundFreqShaper(self.data, W, thr, self.fs)
 
         pitch = shape.y
-        if len(pitch)==0:
+        if len(pitch) == 0:
             return np.array([])
         units = shape.tunit
 
@@ -1105,7 +1117,7 @@ class Segmenter:
         from skimage.feature import match_template
 
         # seg and sg have the same $y$ size, so the result of match_template is 1D
-        #m = match_template(sg,seg)
+        # m = match_template(sg,seg)
         matches = np.squeeze(match_template(sg, seg))
 
         import peakutils
@@ -1124,7 +1136,7 @@ class Segmenter:
 
     def dtw(self, x, y, wantDistMatrix=False):
         # Compute the dynamic time warp between two 1D arrays
-        dist = np.zeros((len(x)+1,len(y)+1))
+        dist = np.zeros((len(x)+1, len(y)+1))
         dist[1:, :] = np.inf
         dist[:, 1:] = np.inf
         for i in range(len(x)):
@@ -1141,17 +1153,17 @@ class Segmenter:
         j = np.shape(d)[1]-2
         xpath = [i]
         ypath = [j]
-        while i>0 or j>0:
-                next = np.argmin((d[i,j],d[i+1,j],d[i,j+1]))
-                if next == 0:
-                    i -= 1
-                    j -= 1
-                elif next == 1:
-                    j -= 1
-                else:
-                    i -= 1
-                xpath.insert(0,i)
-                ypath.insert(0,j)
+        while i > 0 or j > 0:
+            next = np.argmin((d[i, j], d[i+1, j], d[i, j+1]))
+            if next == 0:
+                i -= 1
+                j -= 1
+            elif next == 1:
+                j -= 1
+            else:
+                i -= 1
+            xpath.insert(0, i)
+            ypath.insert(0, j)
         return xpath, ypath
 
     # def testDTW(self):
@@ -1184,7 +1196,7 @@ class PostProcess:
         for seg in segments:
             if len(seg) != 2:
                 continue
-            if seg[0]<0 or seg[1]<0:
+            if seg[0] < 0 or seg[1] < 0:
                 continue
             self.segments.append([seg, cert])
 
@@ -1284,7 +1296,7 @@ class PostProcess:
 
             # Generate features for CNN, overlapped windows
             sp = SignalProc.SignalProc(window_width=self.CNNwindowInc[0],
-                                        incr=self.CNNwindowInc[1])
+                                       incr=self.CNNwindowInc[1])
             sp.data = data
             sp.sampleRate = self.sampleRate
             if self.sampleRate != self.tgtsampleRate:
@@ -1334,7 +1346,7 @@ class PostProcess:
         """
         Returns the max length (secs) above thr given the probabilities of the images (overlapped)
         """
-        binaryout = np.asarray(probs>=thr, dtype=int)
+        binaryout = np.asarray(probs >= thr, dtype=int)
         segmenter = Segmenter()
         subsegs = segmenter.convert01(binaryout)
         lengths = [seg[1]-seg[0] for seg in subsegs]
@@ -1350,7 +1362,7 @@ class PostProcess:
         if not self.CNNmodel:
             print("ERROR: no CNN model specified")
             return
-        if len(self.segments)==0:
+        if len(self.segments) == 0:
             print("No segments to classify by CNN")
             return
 
@@ -1365,7 +1377,7 @@ class PostProcess:
                 data = self.audioData
             # generate features for CNN
             sp = SignalProc.SignalProc(window_width=self.CNNwindowInc[0],
-                                        incr=self.CNNwindowInc[1])
+                                       incr=self.CNNwindowInc[1])
             sp.data = data
             sp.sampleRate = self.sampleRate
             if self.sampleRate != self.tgtsampleRate:
