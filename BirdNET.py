@@ -8,11 +8,10 @@ import librosa
 import numpy as np
 import math
 import time
-from concurrent.futures import ProcessPoolExecutor
 import copy
 import traceback
 from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QThreadPool, QRunnable
 from PyQt5.QtWidgets import QDialog, QSlider, QGridLayout, QGridLayout, QLabel, QComboBox, QHBoxLayout, QLineEdit, QPushButton, QRadioButton, QVBoxLayout, QCheckBox, QFileDialog, QMessageBox, QDoubleSpinBox, QSpinBox, QGroupBox
 
 import Segment
@@ -237,21 +236,23 @@ class BirdNETDialog(QDialog):
                 self.parent.BirdNET = BirdNET(self.parent)
             birdnet = self.parent.BirdNET
 
-            setattr(birdnet, "lite", self.lite.isChecked())
-            setattr(birdnet, "lat", self.lat.value())
-            setattr(birdnet, "lon", self.lon.value())
-            setattr(birdnet, "week", self.week.value() if self.week.value() > 0 else -1)
-            setattr(birdnet, "overlap", self.overlap.value())
-            setattr(birdnet, "sensitivity", (1 - (self.sensitivity.value() - 1)))
-            setattr(birdnet, "min_conf", self.min_conf.value())
-            setattr(birdnet, "slist", self.slist_path)
-            setattr(birdnet, "threads", self.threads.value())
-            setattr(birdnet, "mea", self.mea.isChecked())
-            setattr(birdnet, "datetime_format", self.datetime_format.text())
-            setattr(birdnet, "locale", self.locale.currentText())
-            setattr(birdnet, "batchsize", self.batchsize.value())
-            setattr(birdnet, "sf_thresh", self.sf_thresh.value())
+            param_dict = {"lite": self.lite.isChecked(),
+                          "lat": self.lat.value(),
+                          "lon": self.lon.value(),
+                          "week": self.week.value() if self.week.value() > 0 else -1,
+                          "overlap": self.overlap.value(),
+                          "sensitivity": (1 - (self.sensitivity.value() - 1)),
+                          "min_conf": self.min_conf.value(),
+                          "slist": self.slist_path,
+                          "threads": self.threads.value(),
+                          "mea": self.mea.isChecked(),
+                          "datetime_format": self.datetime_format.text(),
+                          "locale": self.locale.currentText(),
+                          "batchsize": self.batchsize.value(),
+                          "sf_thresh": self.sf_thresh.value()
+                          }
 
+            setattr(birdnet, "param", param_dict)
             self.parent.BirdNET.main()
             self.parent.loadFile(name=self.parent.filename)
             self.parent.fillFileList(
@@ -287,35 +288,80 @@ class BirdNETDialog(QDialog):
             self.sf_thresh_label.setVisible(True)
 
 
-MODEL = None
-M_INTERPRETER = None
-SLIST = None
-M_INPUT_LAYER_INDEX = None
-M_OUTPUT_LAYER_INDEX = None
-
-
 class BirdNET():
     def __init__(self, AviaNZmanual):
         # self.AviaNZ = AviaNZmanual
         self.filelist = [file.absoluteFilePath() for file in AviaNZmanual.listFiles.listOfFiles if file.isFile()]
-        self.operator = AviaNZmanual.operator
-        self.reviewer = AviaNZmanual.reviewer
+        self.param = None
+
+    def loadLabels(self):
+        # Load labels
+        if self.param["lite"]:
+            lblpath = os.path.join('labels', 'Lite', 'labels_{}.txt'.format(self.param["locale"]))
+        else:
+            lblpath = os.path.join('labels', 'Analyzer', 'BirdNET_GLOBAL_3K_V2.2_Labels_{}.txt'.format(self.param["locale"]))
+
+        with open(lblpath, 'r') as lfile:
+            classes = [line[:-1] for line in lfile]
+
+        return classes
+
+    def main(self):
+
+        try:
+            self.labels = self.loadLabels()
+            self.threadpool = QThreadPool()
+            
+
+            # create list of lists of filenames to pass to different threads
+            step = -(-len(self.filelist)//self.param["threads"])
+            file_threads = [self.filelist[i:i + step] for i in range(0, len(self.filelist), step)]
+            for flist in file_threads:
+                worker = BirdNET_Worker(param=self.param, filelist=flist, labels=self.labels)
+
+                self.threadpool.start(worker)
+
+            # run analyze on different threads
+            # with concurrent.futures.ThreadPoolExecutor() as executer:
+            #     futures = [executer.submit(self.analyze, flist, copy.deepcopy(self.slist)) for flist in file_threads]
+            # with Pool(self.threads) as p:
+            #     p.map(self.analyze, self.filelist)
+            # with ProcessPoolExecutor(self.threads, initializer=self.initProcess) as executer:
+            #     executer.map(self.analyze, self.filelist)
+            #
+            # self.analyze(filelist, self.slist)
+
+        except:
+            print(traceback.format_exc())
+
+
+class BirdNET_Worker(QRunnable):
+
+    def __init__(self, param, filelist, labels, *args, **kwargs):
+        super(BirdNET_Worker, self).__init__()
+        self.filelist = filelist
         self.m_interpreter = None
         self.model = None
-        self.lite = None
-        self.lat = -1
-        self.lon = -1
-        self.week = -1
-        self.overlap = 0.0
-        self.sensitivity = 1.0
-        self.min_conf = 0.1
-        self.sf_tresh = 0.03
-        self.locale = "en"
-        self.slist = None
-        self.threads = os.cpu_count()
-        self.mea = False
-        self.datetime_format = None
-        self.batchsize = 1
+        self.lite = param["lite"]
+        self.lat = param["lat"]
+        self.lon = param["lon"]
+        self.week = param["week"]
+        self.overlap = param["overlap"]
+        self.sensitivity = param["sensitivity"]
+        self.min_conf = param["min_conf"]
+        self.sf_thresh = param["sf_thresh"]
+        self.locale = param["locale"]
+        self.slist = param["slist"]
+        self.threads = param["threads"]
+        self.mea = param["mea"]
+        self.datetime_format = param["datetime_format"]
+        self.batchsize = param["batchsize"]
+        self.labels = labels
+        self.initProcess()
+
+    def run(self, *args, **kwargs):
+        for file in self.filelist:
+            self.analyze(file)
 
     def loadModel(self):
         try:
@@ -351,33 +397,18 @@ class BirdNET():
         return model
 
     def loadMetaModel(self):
-        global M_INTERPRETER
-        global M_INPUT_LAYER_INDEX
-        global M_OUTPUT_LAYER_INDEX
         print("load MetaModel", flush=True)
         # Load TFLite model and allocate tensors.
-        M_INTERPRETER = tflite.Interpreter(model_path=os.path.join('models', 'Analyzer', 'BirdNET_GLOBAL_3K_V2.2_MData_Model_FP16.tflite'))
-        M_INTERPRETER.allocate_tensors()
+        self.m_interpreter = tflite.Interpreter(model_path=os.path.join('models', 'Analyzer', 'BirdNET_GLOBAL_3K_V2.2_MData_Model_FP16.tflite'))
+        self.m_interpreter.allocate_tensors()
 
         # Get input and output tensors.
-        input_details = M_INTERPRETER.get_input_details()
-        output_details = M_INTERPRETER.get_output_details()
+        input_details = self.m_interpreter.get_input_details()
+        output_details = self.m_interpreter.get_output_details()
 
         # Get input tensor index
-        M_INPUT_LAYER_INDEX = input_details[0]['index']
-        M_OUTPUT_LAYER_INDEX = output_details[0]['index']
-
-    def loadLabels(self):
-        # Load labels
-        if self.lite:
-            lblpath = os.path.join('labels', 'Lite', 'labels_{}.txt'.format(self.locale))
-        else:
-            lblpath = os.path.join('labels', 'Analyzer', 'BirdNET_GLOBAL_3K_V2.2_Labels_{}.txt'.format(self.locale))
-
-        with open(lblpath, 'r') as lfile:
-            classes = [line[:-1] for line in lfile]
-
-        return classes
+        self.m_intput_layer_index = input_details[0]['index']
+        self.m_output_layer_index = output_details[0]['index']
 
     def getSpeciesList(self, path):
         if self.lite:
@@ -404,7 +435,7 @@ class BirdNET():
         # cfg.SPECIES_LIST_FILE = None
         slist = []
         for s in l_filter:
-            if s[0] >= self.sf_tresh:
+            if s[0] >= self.sf_thresh:
                 slist.append(s[1])
 
         return slist
@@ -415,7 +446,7 @@ class BirdNET():
         l_filter = self.predictFilter()
 
         # Apply threshold
-        l_filter = np.where(l_filter >= self.sf_tresh, l_filter, 0)
+        l_filter = np.where(l_filter >= self.sf_thresh, l_filter, 0)
 
         # Zip with labels
         l_filter = list(zip(l_filter, self.labels))
@@ -426,21 +457,18 @@ class BirdNET():
         return l_filter
 
     def predictFilter(self):
-        global M_INTERPRETER
-        global M_INPUT_LAYER_INDEX
-        global M_OUTPUT_LAYER_INDEX
         # Does interpreter exist?
-        if M_INTERPRETER is None:
+        if self.m_interpreter is None:
             self.loadMetaModel()
 
         # Prepare mdata as sample
         sample = np.expand_dims(np.array([self.lat, self.lon, self.week], dtype='float32'), 0)
 
         # Run inference
-        M_INTERPRETER.set_tensor(M_INPUT_LAYER_INDEX, sample)
-        M_INTERPRETER.invoke()
+        self.m_interpreter.set_tensor(self.m_intput_layer_index, sample)
+        self.m_interpreter.invoke()
 
-        return M_INTERPRETER.get_tensor(M_OUTPUT_LAYER_INDEX)[0]
+        return self.m_interpreter.get_tensor(self.m_output_layer_index)[0]
 
     def splitSignal(self, sig, rate, seconds=3.0, minlen=1.5):
 
@@ -530,11 +558,10 @@ class BirdNET():
         return 1 / (1.0 + np.exp(sensitivity * np.clip(x, -15, 15)))
 
     def predict(self, samples):
-        global MODEL
-        interpreter = MODEL[4]
-        input_layer_index = MODEL[0]
-        mdata_input_index = MODEL[1]
-        output_layer_index = MODEL[2]
+        interpreter = self.model[4]
+        input_layer_index = self.model[0]
+        mdata_input_index = self.model[1]
+        output_layer_index = self.model[2]
         # labels = model[3]
 
         if self.lite:
@@ -567,11 +594,10 @@ class BirdNET():
         return p_sigmoid
 
     def analyzeAudioData(self, chunks, file):
-        global MODEL
 
         # different format for standard and post-processing (mea) approach
         detections = {}
-        detections_mea = np.zeros(shape=(len(chunks), len(MODEL[3])))
+        detections_mea = np.zeros(shape=(len(chunks), len(self.model[3])))
 
         start = time.time()
         print('ANALYZING AUDIO FROM {} ...'.format(os.path.basename(file)), end=' ', flush=True)
@@ -581,7 +607,7 @@ class BirdNET():
         pred_start = 0.0
         sig_length = 3.0
 
-        labels = MODEL[3]
+        labels = self.model[3]
 
         i = 0
         if self.lite:
@@ -732,20 +758,17 @@ class BirdNET():
         return timetable
 
     def whiteListing(self, timetable, white_list):
-        global MODEL
         detections = {}
         i = 0
         for j in timetable:
-            if (MODEL[3][i] in white_list) or (len(white_list) == 0 and MODEL[3][i] not in ['Human_Human', 'Non-bird_Non-bird', 'Noise_Noise']):
-                detections[MODEL[3][i]] = j
+            if (self.model[3][i] in white_list) or (len(white_list) == 0 and self.model[3][i] not in ['Human_Human', 'Non-bird_Non-bird', 'Noise_Noise']):
+                detections[self.model[3][i]] = j
             i += 1
         return detections
 
     def analyze(self, file):
-        global MODEL
-        global SLIST
         try:
-            white_list = SLIST
+            white_list = self.slist
 
             # Read audio data
             audioData = self.readAudioData(file)
@@ -772,31 +795,5 @@ class BirdNET():
             print(traceback.format_exc())
 
     def initProcess(self):
-        global MODEL
-        global SLIST
-        MODEL = self.loadModel()
-        SLIST = self.getSpeciesList(self.slist)
-
-    def main(self):
-
-        try:
-            self.labels = self.loadLabels()
-            # create list of filenames
-            # filelist = [file.absoluteFilePath() for file in self.AviaNZ.listFiles.listOfFiles if file.isFile()]
-
-            # create list of lists of filenames to pass to different threads
-            # step = -(-len(filelist)//self.threads)
-            # file_threads = [filelist[i:i + step] for i in range(0, len(filelist), step)]
-
-            # run analyze on different threads
-            # with concurrent.futures.ThreadPoolExecutor() as executer:
-            #     futures = [executer.submit(self.analyze, flist, copy.deepcopy(self.slist)) for flist in file_threads]
-            # with Pool(self.threads) as p:
-            #     p.map(self.analyze, self.filelist)
-            with ProcessPoolExecutor(self.threads, initializer=self.initProcess) as executer:
-                executer.map(self.analyze, self.filelist)
-
-            # self.analyze(filelist, self.slist)
-
-        except:
-            print(traceback.format_exc())
+        self.model = self.loadModel()
+        self.slist = self.getSpeciesList(self.slist)
