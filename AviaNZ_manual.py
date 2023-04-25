@@ -26,7 +26,7 @@ from shutil import copyfile
 
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem, QKeySequence, QPixmap
-from PyQt5.QtWidgets import QApplication, QInputDialog, QFileDialog, QMainWindow, QActionGroup, QToolButton, QLabel, QSlider, QScrollBar, QDoubleSpinBox, QPushButton, QListWidgetItem, QMenu, QFrame, QMessageBox, QWidgetAction, QComboBox, QTreeView, QShortcut, QGraphicsProxyWidget, QWidget, QVBoxLayout, QGroupBox, QSizePolicy, QHBoxLayout, QSpinBox, QAbstractSpinBox, QLineEdit
+from PyQt5.QtWidgets import QApplication, QInputDialog, QFileDialog, QMainWindow, QActionGroup, QToolButton, QLabel, QSlider, QScrollBar, QDoubleSpinBox, QPushButton, QListWidgetItem, QMenu, QFrame, QMessageBox, QWidgetAction, QComboBox, QTreeView, QShortcut, QGraphicsProxyWidget, QWidget, QVBoxLayout, QGroupBox, QSizePolicy, QHBoxLayout, QSpinBox, QAbstractSpinBox, QLineEdit, QCheckBox
 from PyQt5.QtCore import Qt, QDir, QTimer, QPoint, QPointF, QLocale, QModelIndex, QRectF
 from PyQt5.QtMultimedia import QAudio
 
@@ -130,6 +130,7 @@ class AviaNZ(QMainWindow):
         self.startTime = 0
         self.segmentsToSave = False
         self.viewCallType = False
+        self.viewCertainty = True
         self.batmode = False
 
         # Spectrogram default settings
@@ -928,11 +929,14 @@ class AviaNZ(QMainWindow):
         self.listSpecies = QComboBox()
         self.listSpecies.currentIndexChanged.connect(self.updateListFiles)
         self.currentSpecies = "All"
+        self.tickSpecies = QCheckBox("Only files with selected species?")
+        self.tickSpecies.stateChanged.connect(self.updateListFiles)
 
         self.w_files.addWidget(QLabel('Double click to open'),row=0,col=0)
         self.w_files.addWidget(QLabel('Icon marks annotation certainty'),row=1,col=0)
-        self.w_files.addWidget(self.listSpecies, row = 2, col = 0)
-        self.w_files.addWidget(self.listFiles,row=3,colspan=2)
+        self.w_files.addWidget(self.listSpecies, row=2, col=0)
+        self.w_files.addWidget(self.tickSpecies, row=3, col=0)
+        self.w_files.addWidget(self.listFiles,row=4, colspan=2)
 
         # The context menu (drops down on mouse click) to select birds
         self.setContextMenuPolicy(Qt.CustomContextMenu)
@@ -1458,6 +1462,7 @@ class AviaNZ(QMainWindow):
         return(0)
 
     def updateListFiles(self):
+        self.listFiles.showAll = not self.tickSpecies.isChecked()
         oldSpecies = self.currentSpecies
         self.currentSpecies = self.listSpecies.currentText()
         if oldSpecies:
@@ -3537,12 +3542,20 @@ class AviaNZ(QMainWindow):
         if not self.viewCallType:
             # produce text from list of dicts
             text = []
-            for lab in seg[4]:
-                if lab["certainty"] == 50:
-                    text.append(lab["species"] + '?')
-                else:
-                    text.append(lab["species"])
-            text = ','.join(text)
+            if self.viewCertainty:
+                for lab in seg[4]:
+                    if lab["certainty"] == 100:
+                        text.append(lab["species"])
+                    else:
+                        text.append("{}:{}%".format(lab["species"], int(lab["certainty"])))
+                text = ','.join(text)
+            else:
+                for lab in seg[4]:
+                    if lab["certainty"] == 50:
+                        text.append(lab["species"] + '?')
+                    else:
+                        text.append(lab["species"])
+                text = ','.join(text)
         else:
             text = []
             for lab in seg[4]:
