@@ -1208,9 +1208,11 @@ class LightedFileList(QListWidget):
         self.spList = set()
         self.fsList = set()
         self.listOfFiles = []
+        self.listOfFileSpecies = []
         self.minCertainty = 100
         self.setMinimumWidth(150)
         self.setIconSize(QSize(50,10))
+        self.showAll = True
 
         # for the traffic light icons
         self.pixmap = QPixmap(50, 10)
@@ -1237,7 +1239,7 @@ class LightedFileList(QListWidget):
 
         with pg.BusyCursor():
             # Read contents of current dir
-            self.listOfFiles = QDir(soundDir).entryInfoList(['..','*.wav','*.bmp'],filters=QDir.AllDirs | QDir.NoDot | QDir.Files,sort=QDir.DirsFirst)
+            self.listOfFiles = QDir(soundDir).entryInfoList(['..','*.wav','*.bmp'], filters=QDir.AllDirs | QDir.NoDot | QDir.Files,sort=QDir.DirsFirst)
             self.soundDir = soundDir
 
             for file in self.listOfFiles:
@@ -1376,7 +1378,7 @@ class LightedFileList(QListWidget):
             curritem.setIcon(QIcon(self.pixmap))
             # self.minCertainty cannot be changed by a cert=100 segment
 
-    def paintItem(self, item, datafile, species = "All"):
+    def paintItem(self, item, datafile, species="All"):
         """ Read the JSON and draw the traffic light for a single item """
         filesp = []
         if os.path.isfile(datafile):
@@ -1410,12 +1412,18 @@ class LightedFileList(QListWidget):
                 painter.drawRect(self.pixmap.rect())
                 painter.end()
                 item.setIcon(QIcon(self.pixmap))
+                if not self.showAll:
+                    item.setHidden(True)
+                else:
+                    item.setHidden(False)
 
                 # no change to self.minCertainty
             elif mincert == 0:
                 self.pixmap.fill(self.ColourNone)
                 item.setIcon(QIcon(self.pixmap))
                 self.minCertainty = 0
+                if not self.showAll:
+                    item.setHidden(False)
             elif mincert < 100:
                 self.pixmap.fill(self.ColourPossibleDark)
                 painter = QPainter(self.pixmap)
@@ -1423,9 +1431,13 @@ class LightedFileList(QListWidget):
                 painter.drawRect(QPixmap(maxcert//2, 10).rect())
                 item.setIcon(QIcon(self.pixmap))
                 self.minCertainty = min(self.minCertainty, mincert)
+                if not self.showAll:
+                    item.setHidden(False)
             else:
                 self.pixmap.fill(self.ColourNamed)
                 item.setIcon(QIcon(self.pixmap))
+                if not self.showAll:
+                    item.setHidden(False)
                 # self.minCertainty cannot be changed by a cert=100 segment
         else:
             # no .data for this sound file
@@ -1442,7 +1454,7 @@ class LightedFileList(QListWidget):
                 filename = os.path.join(self.soundDir, item.text()+".data")
                 self.paintItem(item, filename, species)
 
-    
+
     def iterAllItems(self):
         for i in range(self.count()):
             yield self.item(i)
