@@ -1208,7 +1208,6 @@ class LightedFileList(QListWidget):
         self.spList = set()
         self.fsList = set()
         self.listOfFiles = []
-        self.listOfFileSpecies = []
         self.minCertainty = 100
         self.setMinimumWidth(150)
         self.setIconSize(QSize(50,10))
@@ -1440,6 +1439,10 @@ class LightedFileList(QListWidget):
                     item.setHidden(False)
                 # self.minCertainty cannot be changed by a cert=100 segment
         else:
+            if not self.showAll:
+                item.setHidden(True)
+            else:
+                item.setHidden(False)
             # no .data for this sound file
             self.pixmap.fill(QColor(255,255,255,0))
             item.setIcon(QIcon(self.pixmap))
