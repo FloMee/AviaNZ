@@ -6044,7 +6044,7 @@ class AviaNZ(QMainWindow):
             mincert = -1
             maxcert = 0
         else:
-            cert = [lab["certainty"] for seg in self.segments for lab in seg[4] if lab["species"] == "All" or lab["species"] == self.currentSpecies]
+            cert = [lab["certainty"] for seg in self.segments for lab in seg[4] if self.currentSpecies == "All" or lab["species"] == self.currentSpecies]
             if cert:
                 mincert = min(cert)
                 maxcert = max(cert)
