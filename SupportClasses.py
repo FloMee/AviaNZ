@@ -226,6 +226,38 @@ class ConfigLoader(object):
         print("Loaded filters:", list(goodfilters.keys()))
         return goodfilters
 
+    def calltypes(self, dir):
+
+        print("Loading calltype files from folder %s" % dir)
+        try:
+            callfiles = [f for f in os.listdir(dir) if os.path.isfile(os.path.join(dir, f))]
+        except Exception:
+            print("Folder %s not found, no calltypes loaded" % dir)
+            os.makedirs(dir)
+            return {}
+
+        goodcalltypes = dict()
+        for callfile in callfiles:
+            if not callfile.endswith("txt"):
+                continue
+            try:
+                ct = open(os.path.join(dir, callfile))
+                calltypes = json.load(ct)
+                ct.close()
+
+                # skip this filter if it looks fishy:
+                if not isinstance(calltypes, dict) or "species" not in calltypes or "calltypes" not in calltypes:
+                    raise ValueError("Calltype JSON format wrong, skipping")
+
+                # if filter passed checks, store it,
+                # using filename (without extension) as the key
+                goodcalltypes[callfile[:-4]] = calltypes
+            except Exception as e:
+                print("Could not load Calltype:", callfile, e)
+        print("Loaded Calltypes:", list(goodcalltypes.keys()))
+        return goodcalltypes
+
+
     def CNNmodels(self, filters, dircnn, targetspecies):
         """ Returns a dict of target CNN models
             Filters - dict of loaded filter files
