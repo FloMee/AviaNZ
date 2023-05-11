@@ -100,6 +100,8 @@ class AviaNZ(QMainWindow):
         # Load filters
         self.filtersDir = os.path.join(configdir, self.config['FiltersDir'])
         self.FilterDicts = self.ConfigLoader.filters(self.filtersDir)
+        self.calltypesDir = os.path.join(configdir, 'Calltypes')
+        self.CalltypeDicts = self.ConfigLoader.calltypes(self.calltypesDir)
 
         # Load the birdlists - both are now necessary:
         self.shortBirdList = self.ConfigLoader.shortbl(self.config['BirdListShort'], configdir)
@@ -410,6 +412,7 @@ class AviaNZ(QMainWindow):
             actionMenu.addAction("Analyse shapes", self.showShapesDialog)
             actionMenu.addAction("Cluster segments", self.classifySegments)
 
+        actionMenu.addAction("Export segments to excel", self.exportSeg)
         actionMenu.addSeparator()
         self.showInvSpec = actionMenu.addAction("Save sound file", self.invertSpectrogram)
 
@@ -1179,8 +1182,14 @@ class AviaNZ(QMainWindow):
                 for filt in self.FilterDicts.values():
                     if filt["species"]==lab["species"]:
                         possibleCTs.update([subf["calltype"] for subf in filt["Filters"]])
+
+                # get additional call types from call type files
+                for ctfile in self.CalltypeDicts.values():
+                    if ctfile["species"] == lab["species"]:
+                        possibleCTs.update(ctfile["calltypes"])
                 # add standard extras and self
                 possibleCTs.add("(Other)")
+                possibleCTs.add("Add calltype")
                 if "calltype" in lab:
                     possibleCTs.add(lab["calltype"])
 
@@ -3522,6 +3531,36 @@ class AviaNZ(QMainWindow):
             ctitem = ctitem.text()
         print(ctitem, spmenu)
 
+        if ctitem == 'Add calltype':
+            ctitem, ok = QInputDialog.getText(self, 'Calltype', 'Enter the calltype')
+            if not ok:
+                return
+
+            ctitem = str(ctitem).title()
+
+            if ctitem.lower() == "don't know" or ctitem.lower() == "other":
+                print("ERROR: provided calltype name %s is reserved, cannot create" % ctitem)
+                return
+
+            if "?" in ctitem:
+                print("ERROR: provided calltype name %s contains reserved symbol '?'" % ctitem)
+                return
+
+            if len(ctitem) == 0 or len(ctitem) > 150:
+                print("ERROR: provided calltype name appears to be too short or too long")
+                return
+
+            if spmenu in self.CalltypeDicts:
+                if ctitem in self.CalltypeDicts[spmenu]["calltypes"]:
+                    print("ERROR: provided calltype already present")
+                    return
+                else:
+                    self.CalltypeDicts[spmenu]["calltypes"].append(ctitem)
+            else:
+                self.CalltypeDicts[spmenu] = {"species": spmenu, "calltypes": [ctitem]}
+
+            self.saveCalltypeDicts()
+
         workingSeg = self.segments[self.box1id]
         for lab in workingSeg[4]:
             if lab["species"] == spmenu:
@@ -3530,6 +3569,11 @@ class AviaNZ(QMainWindow):
         self.segInfo.setText(workingSeg.infoString())
         self.segmentsToSave = True
         self.menuBirdList.hide()
+
+    def saveCalltypeDicts(self):
+        for species in self.CalltypeDicts:
+            with open(os.path.join(self.calltypesDir, "{}.txt".format(species)), "w") as out:
+                out.write(json.dumps(self.CalltypeDicts[species]))
 
     def updateText(self, segID=None):
         """ When the user sets or changes the name in a segment, update the text label.
