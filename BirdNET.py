@@ -11,8 +11,8 @@ import time
 import copy
 import traceback
 from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import Qt, QThreadPool, QRunnable
-from PyQt5.QtWidgets import QDialog, QSlider, QGridLayout, QGridLayout, QLabel, QComboBox, QHBoxLayout, QLineEdit, QPushButton, QRadioButton, QVBoxLayout, QCheckBox, QFileDialog, QMessageBox, QDoubleSpinBox, QSpinBox, QGroupBox
+from PyQt5.QtCore import Qt, QThreadPool, QRunnable, Signal, Slot, QObject
+from PyQt5.QtWidgets import QDialog, QSlider, QGridLayout, QGridLayout, QLabel, QComboBox, QHBoxLayout, QLineEdit, QPushButton, QRadioButton, QVBoxLayout, QCheckBox, QFileDialog, QMessageBox, QDoubleSpinBox, QSpinBox, QGroupBox, QWidget, QProgressDialog
 
 import Segment
 
@@ -32,11 +32,11 @@ class BirdNETDialog(QDialog):
 
         self.setWindowFlags((self.windowFlags() ^ Qt.WindowContextHelpButtonHint) | Qt.WindowCloseButtonHint)
 
-        lbltitle = QLabel("To analyze the audiofiles of the current directory, set the parameters for BirdNET-Lite or BirdNET-Analyzer. Be aware that the process might take several hours, depending on the number of audiorecordings, calculation power and number of threads")
+        lbltitle = QLabel("To analyze the audiofiles of the current directory, set the parameters for BirdNET-Lite or BirdNET-Analyzer. Be aware that the process might take several hours, depending on the number of files, calculation power and number of threads.")
         lbltitle.setWordWrap(True)
 
         # BirdNET-Lite/BirdNET-Analyzer options
-        self.lite = QRadioButton("BirdNET-Lite…")
+        self.lite = QRadioButton("BirdNET-Lite")
         self.analyzer = QRadioButton("BirdNET-Analyzer")
         self.lite.clicked.connect(self.updateDialog)
         self.analyzer.clicked.connect(self.updateDialog)
@@ -138,6 +138,10 @@ class BirdNETDialog(QDialog):
         # parameter layout
         self.basic = QGroupBox()
         self.advanced = QGroupBox()
+        self.analyze = QGroupBox()
+
+        analyze_layout = QHBoxLayout()
+
         param_basic = QGridLayout()
         param_advanced = QGridLayout()
 
@@ -183,21 +187,24 @@ class BirdNETDialog(QDialog):
         param_advanced.addWidget(self.sf_thresh, 14, 1)
 
         param_basic.addWidget(self.btnAdvanced, 14, 1)
-        param_basic.addWidget(self.btnAnalyze, 15, 1)
+        analyze_layout.addWidget(self.btnAnalyze)
 
         # overall Layout
         layout = QVBoxLayout()
         layout.addWidget(lbltitle)
         self.basic.setLayout(param_basic)
         self.advanced.setLayout(param_advanced)
+        self.analyze.setLayout(analyze_layout)
         layout.addWidget(self.basic)
         layout.addWidget(self.advanced)
+        layout.addWidget(self.analyze)
         layout.setSpacing(25)
         self.setLayout(layout)
 
         # default: BirdNET-Lite
         self.lite.setChecked(True)
         self.advanced.hide()
+        self.min_size = self.size()
         self.updateDialog()
 
     def updateSettings(self):
@@ -207,6 +214,8 @@ class BirdNETDialog(QDialog):
         else:
             self.advanced.hide()
             self.btnAdvanced.setText("Show Advanced Settings")
+
+        self.adjustSize()
 
     def chooseSpeciesList(self):
         species_list = QFileDialog.getOpenFileName(self, 'Choose filter species list', filter='Text (*.txt)')
@@ -254,11 +263,13 @@ class BirdNETDialog(QDialog):
 
             setattr(birdnet, "param", param_dict)
             self.parent.BirdNET.main()
-            self.parent.loadFile(name=self.parent.filename)
-            self.parent.fillFileList(
-              self.parent.SoundFileDir,
-              os.path.basename(self.parent.filename)
-              )
+            self.close()
+            # if self.parent.BirdNET.threadpool.waitForDone():
+            #     self.parent.loadFile(name=self.parent.filename)
+            #     self.parent.fillFileList(self.parent.SoundFileDir, os.path.basename(self.parent.filename))
+
+
+
         else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Critical)
@@ -270,7 +281,6 @@ class BirdNETDialog(QDialog):
     def updateDialog(self):
         print("Update Dialog")
         if self.lite.isChecked():
-            self.mea.setVisible(True)
             self.datetime_format.setVisible(True)
             self.datetime_format_label.setVisible(True)
             self.batchsize.setVisible(False)
@@ -278,7 +288,6 @@ class BirdNETDialog(QDialog):
             self.sf_thresh.setVisible(False)
             self.sf_thresh_label.setVisible(False)
         else:
-            self.mea.setVisible(False)
             self.mea.setChecked(False)
             self.datetime_format.setVisible(False)
             self.datetime_format_label.setVisible(False)
@@ -287,12 +296,23 @@ class BirdNETDialog(QDialog):
             self.sf_thresh.setVisible(True)
             self.sf_thresh_label.setVisible(True)
 
+        self.adjustSize()
 
-class BirdNET():
+
+class BirdNET(QWidget):
     def __init__(self, AviaNZmanual):
-        # self.AviaNZ = AviaNZmanual
+        super(BirdNET, self).__init__()
+        self.AviaNZ = AviaNZmanual
         self.filelist = [file.absoluteFilePath() for file in AviaNZmanual.listFiles.listOfFiles if file.isFile()]
         self.param = None
+        self.progress = QProgressDialog()
+        self.progress.setCancelButton(None)
+        self.progress.setWindowTitle("AviaNZ")
+        self.progress.setWindowIcon(QIcon("img/Avianz.ico"))
+        self.progress.setAutoClose(True)
+        self.progress.setRange(0, len(self.filelist))
+        self.threadpool = QThreadPool()
+
 
     def loadLabels(self):
         # Load labels
@@ -306,34 +326,44 @@ class BirdNET():
 
         return classes
 
+    @Slot()
+    def updateProgress(self):
+        self.progress.setValue(self.progress.value() + 1)
+        self.progress.setLabelText("Analyzing files... {}/{} done".format(self.progress.value(), len(self.filelist)))
+
+    @Slot()
+    def updateFilelist(self):
+        # self.AviaNZ.loadFile(name=self.AviaNZ.filename)
+        self.AviaNZ.fillFileList(self.AviaNZ.SoundFileDir, os.path.basename(self.AviaNZ.filename))
+
     def main(self):
 
         try:
             self.labels = self.loadLabels()
-            self.threadpool = QThreadPool()
-            
 
             # create list of lists of filenames to pass to different threads
             step = -(-len(self.filelist)//self.param["threads"])
             file_threads = [self.filelist[i:i + step] for i in range(0, len(self.filelist), step)]
+            self.progress.setValue(0)
+            self.progress.setLabelText("Analyzing {} files...".format(len(self.filelist)))
+            self.progress.show()
             for flist in file_threads:
                 worker = BirdNET_Worker(param=self.param, filelist=flist, labels=self.labels)
-
+                worker.fileProcessed.done.connect(self.updateProgress)
+                worker.filelistProcessed.done.connect(self.updateFilelist)
                 self.threadpool.start(worker)
 
-            # run analyze on different threads
-            # with concurrent.futures.ThreadPoolExecutor() as executer:
-            #     futures = [executer.submit(self.analyze, flist, copy.deepcopy(self.slist)) for flist in file_threads]
-            # with Pool(self.threads) as p:
-            #     p.map(self.analyze, self.filelist)
-            # with ProcessPoolExecutor(self.threads, initializer=self.initProcess) as executer:
-            #     executer.map(self.analyze, self.filelist)
+            # if self.threadpool.waitForDone():
+            #     self.progress.autoReset()
+            #     self.progress.autoClose()
+            #     self.AviaNZ.loadFile(name=self.AviaNZ.filename)
+            #     self.AviaNZ.fillFileList(self.AviaNZ.SoundFileDir, os.path.basename(self.AviaNZ.filename))
             #
-            # self.analyze(filelist, self.slist)
-
         except:
             print(traceback.format_exc())
 
+class MyEmitter(QObject):
+    done = Signal()
 
 class BirdNET_Worker(QRunnable):
 
@@ -357,11 +387,14 @@ class BirdNET_Worker(QRunnable):
         self.datetime_format = param["datetime_format"]
         self.batchsize = param["batchsize"]
         self.labels = labels
+        self.fileProcessed = MyEmitter()
+        self.filelistProcessed = MyEmitter()
         self.initProcess()
 
     def run(self, *args, **kwargs):
         for file in self.filelist:
             self.analyze(file)
+        self.filelistProcessed.done.emit()
 
     def loadModel(self):
         try:
@@ -791,6 +824,8 @@ class BirdNET_Worker(QRunnable):
                 mea_det = self.whiteListing(self.movingExpAverage(pp_det), white_list)
                 mea_det_convert = self.convert_mea_output(mea_det, file, timestamps)
                 self.writeAvianzOutput(mea_det_convert, file, white_list)
+
+            self.fileProcessed.done.emit()
         except:
             print(traceback.format_exc())
 
