@@ -171,7 +171,7 @@ Amandava amandava_Red Avadavat
 Amaurolimnas concolor_Uniform Crake
 Amaurornis cinerea_White-browed Crake
 Amaurornis isabellina_Isabelline Bush-hen
-Amaurornis moluccanus_Pale-vented Bush-hen
+Amaurornis moluccana_Pale-vented Bush-hen
 Amaurornis phoenicurus_White-breasted Waterhen
 Amaurospiza aequatorialis_Ecuadorian Seedeater
 Amaurospiza concolor_Blue Seedeater
@@ -215,7 +215,7 @@ Amazona finschi_Lilac-crowned Parrot
 Amazona guatemalae_Northern Mealy Amazon
 Amazona kawalli_Kawall's Parrot
 Amazona leucocephala_Cuban Parrot
-Amazona mercenaria_Scaly-naped Parrot
+Amazona mercenarius_Scaly-naped Parrot
 Amazona ochrocephala_Yellow-crowned Parrot
 Amazona oratrix_Yellow-headed Parrot
 Amazona rhodocorytha_Red-browed Parrot
@@ -238,7 +238,7 @@ Ammomanes deserti_Desert Lark
 Ammomanes phoenicura_Rufous-tailed Lark
 Ammonastes pelzelni_Gray-bellied Antbird
 Ammoperdix heyi_Sand Partridge
-Ammospiza caudacutus_Saltmarsh Sparrow
+Ammospiza caudacuta_Saltmarsh Sparrow
 Ammospiza leconteii_LeConte's Sparrow
 Ammospiza maritima_Seaside Sparrow
 Ammospiza nelsoni_Nelson's Sparrow
@@ -441,7 +441,7 @@ Arachnothera longirostra_Little Spiderhunter
 Arachnothera magna_Streaked Spiderhunter
 Aramides albiventris_Russet-naped Wood-Rail
 Aramides axillaris_Rufous-necked Wood-Rail
-Aramides cajanea_Gray-cowled Wood-Rail
+Aramides cajaneus_Gray-cowled Wood-Rail
 Aramides saracura_Slaty-breasted Wood-Rail
 Aramides wolfi_Brown Wood-Rail
 Aramides ypecaha_Giant Wood-Rail
@@ -747,7 +747,7 @@ Buceros hydrocorax_Rufous Hornbill
 Buceros rhinoceros_Rhinoceros Hornbill
 Bucorvus leadbeateri_Southern Ground-Hornbill
 Buphagus africanus_Yellow-billed Oxpecker
-Buphagus erythrorhynchus_Red-billed Oxpecker
+Buphagus erythrorynchus_Red-billed Oxpecker
 Burhinus bistriatus_Double-striped Thick-knee
 Burhinus capensis_Spotted Thick-knee
 Burhinus grallarius_Bush Thick-knee
@@ -1044,7 +1044,7 @@ Centronyx bairdii_Baird's Sparrow
 Centronyx henslowii_Henslow's Sparrow
 Centropus andamanensis_Andaman Coucal
 Centropus bengalensis_Lesser Coucal
-Centropus burchelli_Burchell's Coucal
+Centropus burchellii_Burchell's Coucal
 Centropus celebensis_Bay Coucal
 Centropus chlororhynchos_Green-billed Coucal
 Centropus goliath_Goliath Coucal
@@ -1167,7 +1167,7 @@ Chasiempis sclateri_Kauai Elepaio
 Chauna chavaria_Northern Screamer
 Chauna torquata_Southern Screamer
 Chelidoptera tenebrosa_Swallow-winged Puffbird
-Chelidorhynx hypoxantha_Yellow-bellied Fairy-Fantail
+Chelidorhynx hypoxanthus_Yellow-bellied Fairy-Fantail
 Chenonetta jubata_Maned Duck
 Chersophilus duponti_Dupont's Lark
 Chiroxiphia boliviana_Yungas Manakin
@@ -1288,7 +1288,7 @@ Cinclodes pabsti_Long-tailed Cinclodes
 Cinclodes patagonicus_Dark-bellied Cinclodes
 Cincloramphus cruralis_Brown Songlark
 Cincloramphus macrurus_Papuan Grassbird
-Cincloramphus mariae_New Caledonian Grassbird
+Cincloramphus mariei_New Caledonian Grassbird
 Cincloramphus mathewsi_Rufous Songlark
 Cincloramphus timoriensis_Tawny Grassbird
 Cinclosoma ajax_Painted Quail-thrush
@@ -1470,7 +1470,7 @@ Conirostrum speciosum_Chestnut-vented Conebill
 Conirostrum tamarugense_Tamarugo Conebill
 Conopias albovittatus_White-ringed Flycatcher
 Conopias cinchoneti_Lemon-browed Flycatcher
-Conopias parva_Yellow-throated Flycatcher
+Conopias parvus_Yellow-throated Flycatcher
 Conopias trivirgatus_Three-striped Flycatcher
 Conopophaga ardesiaca_Slaty Gnateater
 Conopophaga aurita_Chestnut-belted Gnateater
@@ -2123,7 +2123,7 @@ Euchrepomis spodioptila_Ash-winged Antwren
 Eucometis penicillata_Gray-headed Tanager
 Eudocimus albus_White Ibis
 Eudromia elegans_Elegant Crested-Tinamou
-Eudynamys melanorhyncha_Black-billed Koel
+Eudynamys melanorhynchus_Black-billed Koel
 Eudynamys orientalis_Pacific Koel
 Eudynamys scolopaceus_Asian Koel
 Eudyptula minor_Little Penguin
@@ -3527,7 +3527,7 @@ Monasa flavirostris_Yellow-billed Nunbird
 Monasa morphoeus_White-fronted Nunbird
 Monasa nigrifrons_Black-fronted Nunbird
 Montecincla fairbanki_Palani Laughingthrush
-Monticola cinclorhynchus_Blue-capped Rock-Thrush
+Monticola cinclorhyncha_Blue-capped Rock-Thrush
 Monticola gularis_White-throated Rock-Thrush
 Monticola imerina_Littoral Rock-Thrush
 Monticola rufiventris_Chestnut-bellied Rock-Thrush
@@ -3737,7 +3737,7 @@ Nectarinia famosa_Malachite Sunbird
 Nectarinia kilimensis_Bronze Sunbird
 Nemosia pileata_Hooded Tanager
 Neochmia temporalis_Red-browed Firetail
-Neocossyphus finschii_Finsch's Flycatcher-Thrush
+Neocossyphus finschi_Finsch's Flycatcher-Thrush
 Neocossyphus fraseri_Rufous Flycatcher-Thrush
 Neocossyphus rufus_Red-tailed Ant-Thrush
 Neoctantes niger_Black Bushbird
@@ -3821,7 +3821,7 @@ Nothura boraquira_White-bellied Nothura
 Nothura darwinii_Darwin's Nothura
 Nothura maculosa_Spotted Nothura
 Notiomystis cincta_Stitchbird
-Notopholia corrusca_Black-bellied Starling
+Notopholia corusca_Black-bellied Starling
 Nucifraga caryocatactes_Eurasian Nutcracker
 Nucifraga columbiana_Clark's Nutcracker
 Numenius americanus_Long-billed Curlew
@@ -3982,7 +3982,7 @@ Orthogonys chloricterus_Olive-green Tanager
 Orthonyx novaeguineae_Papuan Logrunner
 Orthonyx spaldingii_Chowchilla
 Orthonyx temminckii_Australian Logrunner
-Orthopsittaca manilata_Red-bellied Macaw
+Orthopsittaca manilatus_Red-bellied Macaw
 Orthotomus atrogularis_Dark-necked Tailorbird
 Orthotomus chaktomuk_Cambodian Tailorbird
 Orthotomus cinereiceps_White-eared Tailorbird
@@ -4365,7 +4365,7 @@ Phyllastrephus flavostriatus_Yellow-streaked Greenbul
 Phyllastrephus placidus_Placid Greenbul
 Phyllastrephus strepitans_Northern Brownbul
 Phyllastrephus terrestris_Terrestrial Brownbul
-Phyllergates cuculatus_Mountain Tailorbird
+Phyllergates cucullatus_Mountain Tailorbird
 Phyllergates heterolaemus_Rufous-headed Tailorbird
 Phyllomyias burmeisteri_Rough-legged Tyrannulet
 Phyllomyias cinereiceps_Ashy-headed Tyrannulet
@@ -5618,7 +5618,7 @@ Sylvia melanocephala_Sardinian Warbler
 Sylvia melanothorax_Cyprus Warbler
 Sylvia mystacea_Menetries's Warbler
 Sylvia nana_Asian Desert Warbler
-Sylvia nigricapilla_Bush Blackcap
+Sylvia nigricapillus_Bush Blackcap
 Sylvia nisoria_Barred Warbler
 Sylvia ruppeli_Rüppell's Warbler
 Sylvia sarda_Marmora's Warbler

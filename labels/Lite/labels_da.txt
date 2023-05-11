@@ -3,9 +3,9 @@ Abroscopus albogularis_Brunmasket Sanger
 Abroscopus superciliaris_Gulbuget Sanger
 Aburria aburri_Lappepenelopehøne
 Acanthagenys rufogularis_Grågumpet Honningæder
-Acanthidops bairdi_Peg-billed Finch
-Acanthis cabaret_Lille gråsisken
-Acanthis flammea_Nordlig gråsisken
+Acanthidops bairdi_Spidsnæbbet Finke
+Acanthis cabaret_Lille Gråsisken
+Acanthis flammea_Gråsisken
 Acanthis hornemanni_Hvidsisken
 Acanthisitta chloris_Klatresmutte
 Acanthiza apicalis_Bredhalet Mejsesanger
@@ -42,14 +42,14 @@ Accipiter trivirgatus_Toppet Duehøg
 Accipiter ventralis_Mørkrygget Spurvehøg
 Accipiter virgatus_Besra
 Aceros nipalensis_Rødhalset Rynkenæb
-Acridotheres burmannicus_Burmastær
+Acridotheres burmannicus_Burma-stær
 Acridotheres cristatellus_Topmaina
 Acridotheres fuscus_Brun Maina
 Acridotheres ginginianus_Grå Maina
 Acridotheres grandis_Stor Maina
-Acridotheres tristis_Almindelig mynah
-Acrocephalus agricola_Lille rørsanger
-Acrocephalus arundinaceus_Great Reed Warbler
+Acridotheres tristis_Maina
+Acrocephalus agricola_Lille Rørsanger
+Acrocephalus arundinaceus_Drosselrørsanger
 Acrocephalus australis_Australsk Drosselrørsanger
 Acrocephalus baeticatus_Afrikansk Rørsanger
 Acrocephalus bistrigiceps_Sortbrynet Rørsanger
@@ -71,14 +71,14 @@ Actenoides concretus_Blårygget Skovisfugl
 Actenoides hombroni_Blåkronet Skovisfugl
 Actenoides lindsayi_Plettet Skovisfugl
 Actenoides monachus_Grønrygget Skovisfugl
-Actinodura cyanouroptera_Blue-winged Minla
+Actinodura cyanouroptera_Blåvinget Minla
 Actinodura egertoni_Rødpandet Skælvinge
 Actinodura nipalensis_Nepalskælvinge
 Actinodura ramsayi_Brilleskælvinge
-Actinodura strigula_Chestnut-tailed Minla
+Actinodura strigula_Brunhalet Minla
 Actinodura waldeni_Gråøret Skælvinge
 Actitis hypoleucos_Mudderklire
-Actitis macularius_Plettet mudderklire
+Actitis macularius_Plettet Mudderklire
 Actophilornis africanus_Afrikansk Bladhøne
 Adelomyia melanogenys_Plettet Kolibri
 Aechmophorus clarkii_Gulnæbbet Lappedykker
@@ -95,7 +95,7 @@ Aegolius funereus_Perleugle
 Aegolius harrisii_Okkerbrystet Perleugle
 Aegolius ridgwayi_Hvidbrynet Perleugle
 Aegotheles crinifrons_Molukuglesvale
-Aegotheles cristatus_Australian Owlet-Nightjar
+Aegotheles cristatus_Australsk Uglesvale
 Aeronautes andecolus_Andessejler
 Aeronautes montivagus_Hvidspidset Sejler
 Aeronautes saxatalis_Mesasejler
@@ -118,18 +118,18 @@ Agelaius tricolor_Trefarvet Stærling
 Agelasticus cyanopus_Ensfarvet Stærling
 Agelasticus thilius_Gulvinget Stærling
 Aglaiocercus coelestis_Violethalet Sylfide
-Aglaiocercus kingii_Long-tailed Sylph
+Aglaiocercus kingii_Langhalet Sylfide
 Agriornis montanus_Sortnæbbet Torntyran
-Agropsar philippensis_Chestnut-cheeked Starling
+Agropsar philippensis_Violetrygget Stær
 Ailuroedus crassirostris_Grøn Kattefugl
 Ailuroedus maculosus_Spotted Catbird
 Aimophila notosticta_Oaxacaspurv
 Aimophila rufescens_Rustisset Spurv
 Aimophila ruficeps_Rustkronet Spurv
-Aix galericulata_Mandarinand
+Aix galericulata_Mandarin-and
 Aix sponsa_Brudeand
-Akletos goeldii_Goeldi's Antbird
-Akletos melanoceps_White-shouldered Antbird
+Akletos goeldii_Rødøjet Myrefugl
+Akletos melanoceps_Hvidskuldret Myrefugl
 Alaemon alaudipes_Hærfuglelærke
 Alauda arvensis_Sanglærke
 Alauda gulgula_Lille Sanglærke
@@ -150,7 +150,7 @@ Alcippe peracensis_Perakfulvetta
 Alcippe poioicephala_Brunkindet Fulvetta
 Alcippe pyrrhoptera_Javafulvetta
 Aleadryas rufinucha_Rødnakket Fløjter
-Alectoris barbara_Barbary Partridge
+Alectoris barbara_Berberhøne
 Alectoris chukar_Chukarhøne
 Alectoris graeca_Stenhøne
 Alectoris rufa_Rødhøne
@@ -171,35 +171,35 @@ Amandava amandava_Tigerfinke
 Amaurolimnas concolor_Ensfarvet Rørvagtel
 Amaurornis cinerea_White-browed Crake
 Amaurornis isabellina_Sulawesirørhøne
-Amaurornis moluccanus_Brunhalet Rørhøne
+Amaurornis moluccana_Brunhalet Rørhøne
 Amaurornis phoenicurus_Hvidbrystet Rørhøne
 Amaurospiza aequatorialis_Ecuadorian Seedeater
 Amaurospiza concolor_Blå Frøfinke
 Amaurospiza moesta_Blåsort Frøfinke
-Amazilia amabilis_Blåbrystet Amazilie
-Amazilia amazilia_Amaziliekolibri
-Amazilia beryllina_Berylamazilie
-Amazilia brevirostris_Kortnæbbet Amazilie
-Amazilia candida_Grøn Snebryst
-Amazilia castaneiventris_Kastanjebuget Amazilie
-Amazilia chionogaster_Hvidbuget Amazile
-Amazilia cyanifrons_Indigokronet Amazilie
+Amazilia amabilis_Blue-chested Hummingbird
+Amazilia amazilia_Amazilia Hummingbird
+Amazilia beryllina_Berylline Hummingbird
+Amazilia brevirostris_White-chested Emerald
+Amazilia candida_White-bellied Emerald
+Amazilia castaneiventris_Chestnut-bellied Hummingbird
+Amazilia chionogaster_White-bellied Hummingbird
+Amazilia cyanifrons_Indigo-capped Hummingbird
 Amazilia cyanocephala_Azure-crowned Hummingbird
-Amazilia decora_Costa Rica-amazilie
-Amazilia edward_Bronzehalet Snebryst
-Amazilia fimbriata_Glansstrubet Amazilie
-Amazilia franciae_Andessnebryst
-Amazilia lactea_Safiramazilie
-Amazilia leucogaster_Østlig Snebryst
+Amazilia decora_Charming Hummingbird
+Amazilia edward_Snowy-bellied Hummingbird
+Amazilia fimbriata_Glittering-throated Emerald
+Amazilia franciae_Andean Emerald
+Amazilia lactea_Sapphire-spangled Emerald
+Amazilia leucogaster_Plain-bellied Emerald
 Amazilia luciae_Hondurasamazilie
-Amazilia rosenbergi_Purpurbrystet Amazilie
+Amazilia rosenbergi_Purple-chested Hummingbird
 Amazilia rutila_Kanelfarvet Amazilie
-Amazilia saucerottei_Stålgrøn Amazilie
-Amazilia tobaci_Kobbergumpet Amazilie
+Amazilia saucerottei_Steely-vented Hummingbird
+Amazilia tobaci_Copper-rumped Hummingbird
 Amazilia tzacatl_Brunhalet Amazilie
-Amazilia versicolor_Broget Amazilie
-Amazilia violiceps_Violetkronet Snebryst
-Amazilia viridicauda_Cuzcoamazilie
+Amazilia versicolor_Versicolored Emerald
+Amazilia violiceps_Violet-crowned Hummingbird
+Amazilia viridicauda_Green-and-white Hummingbird
 Amazilia yucatanensis_Brunbuget Amazilie
 Amazona aestiva_Blåpandet Amazone
 Amazona agilis_Sortnæbbet Amazone
@@ -215,7 +215,7 @@ Amazona finschi_Lillakronet Amazone
 Amazona guatemalae_Northern Mealy Amazon
 Amazona kawalli_Kawall-amazone
 Amazona leucocephala_Cubaamazone
-Amazona mercenaria_Soldateramazone
+Amazona mercenarius_Soldateramazone
 Amazona ochrocephala_Gulisset Amazone
 Amazona oratrix_Gulhovedet Amazone
 Amazona rhodocorytha_Rødpandet Amazone
@@ -236,22 +236,22 @@ Ammodramus savannarum_Græshoppespurv
 Ammomanes cinctura_Lille Ørkenlærke
 Ammomanes deserti_Ørkenlærke
 Ammomanes phoenicura_Rødhalet Ørkenlærke
-Ammonastes pelzelni_Gray-bellied Antbird
+Ammonastes pelzelni_Gråbuget Myrefugl
 Ammoperdix heyi_Ørkenhøne
-Ammospiza caudacutus_Saltmarsh Sparrow
-Ammospiza leconteii_LeConte's Sparrow
-Ammospiza maritima_Seaside Sparrow
-Ammospiza nelsoni_Nelson's Sparrow
+Ammospiza caudacuta_Ruststrubet Spurv
+Ammospiza leconteii_Præriespurv
+Ammospiza maritima_Kystspurv
+Ammospiza nelsoni_Spidshalet Spurv
 Ampelioides tschudii_Hvidstrubet Frugtæder
 Ampelion rubrocristatus_Rødtoppet Kotinga
 Ampelion rufaxilla_Kravekotinga
-Ampelornis griseiceps_Gray-headed Antbird
-Amphilais seebohmi_Grå Emusanger
+Ampelornis griseiceps_Gråhovedet Myrefugl
+Amphilais seebohmi_Gray Emutail
 Amphispiza bilineata_Sortstrubet Spurv
 Amphispiza quinquestriata_Femstribet Spurv
 Anabacerthia amaurotis_Hvidbrynet Løvkæmmer
-Anabacerthia lichtensteini_Ochre-breasted Foliage-gleaner
-Anabacerthia ruficaudata_Rufous-tailed Foliage-gleaner
+Anabacerthia lichtensteini_Okkerbrystet Løvkæmmer
+Anabacerthia ruficaudata_Brunhalet Løvkæmmer
 Anabacerthia striaticollis_Bjergløvkæmmer
 Anabacerthia variegaticeps_Skælstrubet Løvkæmmer
 Anabathmis newtonii_São Tomé-solfugl
@@ -266,16 +266,16 @@ Anairetes parulus_Krøltoppet Mejsetyran
 Anairetes reguloides_Sorttoppet Mejsetyran
 Anas acuta_Spidsand
 Anas andium_Andeskrikand
-Anas carolinensis_Amerikansk krikand
+Anas carolinensis_Amerikansk Krikand
 Anas castanea_Kastanjeand
 Anas crecca_Krikand
 Anas diazi_Mexicoand
-Anas flavirostris_Yellow-billed Teal
+Anas flavirostris_Gulnæbbet Krikand
 Anas fulvigula_Floridagråand
 Anas georgica_Sydlig Spidsand
 Anas gracilis_Australsk Grå Krikand
 Anas platyrhynchos_Gråand
-Anas poecilorhyncha_Indian Spot-billed Duck
+Anas poecilorhyncha_Pletnæbbet And
 Anas rubripes_Sortbrun And
 Anas superciliosa_Tøjleand
 Anas undulata_Gulnæbbet And
@@ -302,19 +302,19 @@ Anous minutus_Sort Noddy
 Anous stolidus_Brun Noddy
 Anser albifrons_Blisgås
 Anser anser_Grågås
-Anser brachyrhynchus_Kortnæbbet gås
+Anser brachyrhynchus_Kortnæbbet Gås
 Anser caerulescens_Snegås
 Anser canagicus_Kejsergås
 Anser cygnoides_Svanegås
 Anser erythropus_Dværggås
-Anser fabalis_Tajgasædgås
-Anser indicus_Indisk gås
+Anser fabalis_Sædgås
+Anser indicus_Indisk Gås
 Anser rossii_Dværgsnegås
 Anser serrirostris_Tundrasædgås
 Anseranas semipalmata_Skadegås
 Anthipes monileger_Hvidstrubet Fluesnapper
 Anthipes solitaris_Rustbrynet Fluesnapper
-Anthochaera carunculata_Red Wattlebird
+Anthochaera carunculata_Rødlappet Honningæder
 Anthochaera chrysoptera_Buskhonningæder
 Anthochaera lunulata_Lille Honningæder
 Anthochaera paradoxa_Gullappet Honningæder
@@ -337,16 +337,16 @@ Anthus berthelotii_Kanarisk Piber
 Anthus bogotensis_Paramopiber
 Anthus brevirostris_Puna Pipit
 Anthus campestris_Markpiber
-Anthus cervinus_Rødstrubet piber
+Anthus cervinus_Rødstrubet Piber
 Anthus chacoensis_Chacopiber
 Anthus cinnamomeus_Savannepiber
 Anthus correndera_Correnderapiber
 Anthus crenatus_Stenpiber
 Anthus furcatus_Punapiber
-Anthus godlewskii_Mongolsk piber
-Anthus gustavi_Tundrapiber
+Anthus godlewskii_Mongolsk Piber
+Anthus gustavi_Tundra-piber
 Anthus hellmayri_Pampaspiber
-Anthus hodgsoni_Tajgapiber
+Anthus hodgsoni_Tajga-piber
 Anthus leucophrys_Afrikansk Storpiber
 Anthus lineiventris_Grovstribet Piber
 Anthus lutescens_Sydamerikansk Piber
@@ -364,10 +364,10 @@ Anthus spinoletta_Bjergpiber
 Anthus spragueii_Præriepiber
 Anthus sylvanus_Himalayapiber
 Anthus trivialis_Skovpiber
-Antigone antigone_Sarus Crane
+Antigone antigone_Sarustrane
 Antigone canadensis_Prærietrane
-Antigone rubicunda_Brolga
-Antigone vipio_White-naped Crane
+Antigone rubicunda_Brolgatrane
+Antigone vipio_Hvidhalset Trane
 Antilophia bokermanni_Araripe-manakin
 Antilophia galeata_Hjelmmanakin
 Antrostomus arizonae_Arizonanatravn
@@ -381,7 +381,7 @@ Antrostomus sericocaudatus_Silkehalenatravn
 Antrostomus vociferus_Nordamerikansk Natravn
 Anumara forbesi_Brasiliansk Stærling
 Anumbius annumbi_Brændselssamler
-Anurolimnas castaneiceps_Skyggerikse
+Anurolimnas castaneiceps_Chestnut-headed Crake
 Anurolimnas fasciatus_Black-banded Crake
 Anurolimnas viridis_Russet-crowned Crake
 Apalis chapini_Uluguruapalis
@@ -398,7 +398,7 @@ Apaloderma narina_Narinatrogon
 Apaloderma vittatum_Blåbrystet Trogon
 Aphanotriccus audax_Sortnæbbet Flodtyran
 Aphanotriccus capitalis_Flodtyran
-Aphantochroa cirrochloris_Sørgekolibri
+Aphantochroa cirrochloris_Sombre Hummingbird
 Aphelocephala leucopsis_Hvidmaske
 Aphelocoma californica_Kratskade
 Aphelocoma coerulescens_Floridakratskade
@@ -416,16 +416,16 @@ Aplonis mysolensis_Moluktræstær
 Aplonis opaca_Mikronesisk Træstær
 Aplonis panayensis_Træstær
 Aplonis tabuensis_Polynesisk Træstær
-Aprositornis disjuncta_Yapacana Antbird
+Aprositornis disjuncta_Yapacanamyrefugl
 Aprosmictus erythropterus_Rødvingeparakit
 Aptenodytes patagonicus_Kongepingvin
 Apteryx mantelli_Nordlig Kiwi
-Apus affinis_Little Swift
+Apus affinis_Lille Sejler
 Apus apus_Mursejler
 Apus caffer_Kaffersejler
-Apus melba_Alpesejler
+Apus melba_Alpine Swift
 Apus nipalensis_Klippesejler
-Apus pacificus_Orientsejler
+Apus pacificus_Orient-sejler
 Apus pallidus_Gråsejler
 Apus unicolor_Ensfarvet Sejler
 Aquila adalberti_Spansk Kejserørn
@@ -441,7 +441,7 @@ Arachnothera longirostra_Lille Edderkoppejæger
 Arachnothera magna_Stribet Edderkoppejæger
 Aramides albiventris_Russet-naped Wood-Rail
 Aramides axillaris_Brunhalset Hønserikse
-Aramides cajanea_Gråhalset Hønserikse
+Aramides cajaneus_Gråhalset Hønserikse
 Aramides saracura_Skiferbrystet Hønserikse
 Aramides wolfi_Brun Hønserikse
 Aramides ypecaha_Kæmpehønserikse
@@ -453,7 +453,7 @@ Aratinga weddellii_Gråhovdet Aratinga
 Arborophila ardens_Hainanskovhøne
 Arborophila atrogularis_Burmaskovhøne
 Arborophila campbelli_Malajskovhøne
-Arborophila chloropus_Grønbenet Skovhøne
+Arborophila chloropus_Scaly-breasted Partridge
 Arborophila crudigularis_Taiwanskovhøne
 Arborophila hyperythra_Borneoskovhøne
 Arborophila javanica_Javaskovhøne
@@ -470,7 +470,7 @@ Ardea herodias_Stor Blåhejre
 Ardea intermedia_Mellemhejre
 Ardea purpurea_Purpurhejre
 Ardenna creatopus_Chileskråpe
-Ardenna grisea_Sodfarvet skråpe
+Ardenna grisea_Sodfarvet Skråpe
 Ardenna pacifica_Kilehalet Skråpe
 Ardeola bacchus_Vinhejre
 Ardeola grayii_Rishejre
@@ -511,10 +511,10 @@ Artemisiospiza belli_Sortskægget Spurv
 Artemisiospiza nevadensis_Nevadaspurv
 Artisornis metopias_Afrikansk Skrædderfugl
 Artisornis moreaui_Langnæbbet Skrædderfugl
-Arundinax aedon_Thick-billed Warbler
+Arundinax aedon_Tyknæbbet Sanger
 Arundinicola leucocephala_Hvidhovedet Sumptyran
-Asemospiza fuliginosa_Sooty Grassquit
-Asemospiza obscura_Dull-colored Grassquit
+Asemospiza fuliginosa_Sort Græsfinke
+Asemospiza obscura_Brun Græsfinke
 Asio clamator_Striped Owl
 Asio flammeus_Mosehornugle
 Asio otus_Skovhornugle
@@ -548,11 +548,11 @@ Asthenes wyatti_Nordlig Kurvebygger
 Atalotriccus pilaris_Lysøjet Pygmætyran
 Atelornis crossleyi_Rødbrun Ellekrage
 Atelornis pittoides_Blåpandet Ellekrage
-Athene blewitti_Forest Owlet
+Athene blewitti_Skovkirkeugle
 Athene brama_Indisk Kirkeugle
 Athene cunicularia_Prærieugle
 Athene noctua_Kirkeugle
-Athene superciliaris_White-browed Owl
+Athene superciliaris_Hvidbrynet Høgeugle
 Atimastillas flavicollis_Gulstrubet Grønbulbul
 Atlapetes albinucha_Hvidnakket Kratfinke
 Atlapetes albofrenatus_Skægkratfinke
@@ -574,13 +574,13 @@ Atlapetes rufinucha_Brunkronet Kratfinke
 Atlapetes schistaceus_Sortøret Kratfinke
 Atlapetes seebohmi_Gråkronet Kratfinke
 Atlapetes semirufus_Brunhovedet Kratfinke
-Atlapetes tibialis_Yellow-thighed Brushfinch
+Atlapetes tibialis_Gullåret Finke
 Atlapetes tricolor_Trefarvet Kratfinke
 Atrichornis clamosus_Vestlig Kratfugl
 Atrichornis rufescens_Østlig Kratfugl
 Attagis gayi_Rustbrun Bjergløber
-Atthis ellioti_Guatemalabikolibri
-Atthis heloisa_Mexicansk Bikolibri
+Atthis ellioti_Wine-throated Hummingbird
+Atthis heloisa_Bumblebee Hummingbird
 Atticora fasciata_Hvidbåndet Svale
 Atticora pileata_Black-capped Swallow
 Atticora tibialis_White-thighed Swallow
@@ -610,15 +610,15 @@ Automolus melanopezus_Rødøjet Løvkæmmer
 Automolus ochrolaemus_Gulstrubet Løvkæmmer
 Automolus paraensis_Paraløvkæmmer
 Automolus rufipileatus_Guløjet Løvkæmmer
-Automolus subulatus_Striped Woodhaunter
-Automolus virgatus_Western Woodhaunter
+Automolus subulatus_Stribet Løvkæmmer
+Automolus virgatus_Costa Rica-løvkæmmer
 Aviceda subcristata_Gråfodet Baza
 Aythya americana_Amerikansk Taffeland
 Aythya collaris_Halsbåndstroldand
 Aythya ferina_Taffeland
 Aythya fuligula_Troldand
 Aythya marila_Bjergand
-Aythya nyroca_Hvidøjet and
+Aythya nyroca_Hvidøjet And
 Aythya valisineria_Stor Taffeland
 Baeolophus atricristatus_Sorttoppet Gråmejse
 Baeolophus bicolor_Toppet Topmejse
@@ -634,7 +634,7 @@ Bangsia aureocincta_Gulstribet Bjergtangar
 Bangsia edwardsi_Mosgrøn Bjergtangar
 Bangsia melanochlamys_Sortgul Bjergtangar
 Bangsia rothschildi_Gyldenbrystet Bjergtangar
-Barnardius zonarius_Australian Ringneck
+Barnardius zonarius_Ringparakit
 Bartramia longicauda_Bartramsklire
 Baryphthengus martii_Rødbrun Motmot
 Baryphthengus ruficapillus_Rustbåndet Motmot
@@ -661,7 +661,7 @@ Batrachostomus cornutus_Lavlands-bladfrømund
 Batrachostomus hodgsoni_Nordlig Bladfrømund
 Batrachostomus javensis_Javabladfrømund
 Batrachostomus moniliger_Grårygget Bladfrømund
-Batrachostomus septimus_Philippine Frogmouth
+Batrachostomus septimus_Filippinsk Bladfrømund
 Batrachostomus stellatus_Malajbladfrømund
 Berenicornis comatus_Hvidhovedet Rynkenæb
 Berlepschia rikeri_Palmekryber
@@ -686,16 +686,16 @@ Bombycilla japonica_Japansk Silkehale
 Bonasa umbellus_Kravehjerpe
 Bostrychia hagedash_Hadadaibis
 Bostrychia rara_Plettet Ibis
-Botaurus lentiginosus_American Bittern
+Botaurus lentiginosus_Amerikansk Rørdrum
 Botaurus pinnatus_Sydamerikansk Rørdrum
 Botaurus stellaris_Rørdrum
 Brachygalba albogularis_Hvidstrubet Jacamar
 Brachygalba lugubris_Brun Jacamar
 Brachypodius atriceps_Black-headed Bulbul
 Brachypodius eutilotus_Puff-backed Bulbul
-Brachypodius priocephalus_Gray-headed Bulbul
+Brachypodius priocephalus_Gråhovedet Bulbul
 Brachypodius urostictus_Yellow-wattled Bulbul
-Brachypteryx cruralis_Himalayan Shortwing
+Brachypteryx cruralis_Blå Rundvinge
 Brachypteryx goodfellowi_Taiwan Shortwing
 Brachypteryx hyperythra_Rustbuget Rundvinge
 Brachypteryx leucophris_Lille Rundvinge
@@ -716,7 +716,7 @@ Branta leucopsis_Bramgås
 Branta sandvicensis_Hawaiigås
 Brotogeris chiriri_Kanarievinget Parakit
 Brotogeris chrysoptera_Gyldenvinget Parakit
-Brotogeris cyanoptera_Cobalt-winged Parakeet
+Brotogeris cyanoptera_Smalnæbsparakit
 Brotogeris jugularis_Toviparakit
 Brotogeris pyrrhoptera_Ildvinget Parakit
 Brotogeris sanctithomae_Tuiparakit
@@ -726,9 +726,9 @@ Bubalornis albirostris_Hvidnæbbet Bøffelvæver
 Bubalornis niger_Rødnæbbet Bøffelvæver
 Bubo africanus_Plettet Hornugle
 Bubo ascalaphus_Ørkenhornugle
-Bubo bubo_Stor hornugle
+Bubo bubo_Stor Hornugle
 Bubo lacteus_Savannehornugle
-Bubo magellanicus_Lesser Horned Owl
+Bubo magellanicus_Magellanhornugle
 Bubo nipalensis_Indisk Stor Hornugle
 Bubo scandiacus_Sneugle
 Bubo sumatranus_Malajhornugle
@@ -747,13 +747,13 @@ Buceros hydrocorax_Rødbrun Næsehornsfugl
 Buceros rhinoceros_Næsehornsfugl
 Bucorvus leadbeateri_Sydlig Hornravn
 Buphagus africanus_Gulnæbbet Oksehakker
-Buphagus erythrorhynchus_Rødnæbbet Oksehakker
+Buphagus erythrorynchus_Rødnæbbet Oksehakker
 Burhinus bistriatus_Tostribet Triel
 Burhinus capensis_Plettet Triel
 Burhinus grallarius_Australsk Triel
 Burhinus indicus_Indian Thick-knee
 Burhinus oedicnemus_Triel
-Burhinus senegalensis_Senegaltriel
+Burhinus senegalensis_Senegal-triel
 Burhinus superciliaris_Perutriel
 Burhinus vermiculatus_Vandtriel
 Busarellus nigricollis_Fiskevåge
@@ -780,8 +780,8 @@ Buteogallus meridionalis_Savannevåge
 Buteogallus schistaceus_Skifergrå Våge
 Buteogallus urubitinga_Stor Sortvåge
 Buthraupis montana_Bjergtangar
-Buthraupis wetmorei_Sorthalset Bjergtangar
-Butorides striata_Mangrovehejre
+Buthraupis wetmorei_Masked Mountain-Tanager
+Butorides striata_Mangrove-hejre
 Butorides virescens_Krabbehejre
 Bycanistes albotibialis_Hvidlåret Hornfugl
 Bycanistes brevis_Sølvkindet Hornfugl
@@ -818,7 +818,7 @@ Calamonastes simplex_Gråsanger
 Calamonastes stierlingi_Skællet Gråsanger
 Calamospiza melanocorys_Lærkeværling
 Calandrella acutirostris_Spidsnæbbet Lærke
-Calandrella brachydactyla_Korttået lærke
+Calandrella brachydactyla_Korttået Lærke
 Calandrella cinerea_Rødisset Lærke
 Calcarius lapponicus_Lapværling
 Calcarius ornatus_Rødnakket Sporeværling
@@ -830,27 +830,27 @@ Calendulauda poecilosterna_Rosabrystet Busklærke
 Calendulauda sabota_Sabotabusklærke
 Calicalicus madagascariensis_Rødhalet Vanga
 Calicalicus rufocarpalis_Rødskuldret Vanga
-Calidris acuminata_Spidshalet ryle
+Calidris acuminata_Spidshalet Ryle
 Calidris alba_Sandløber
-Calidris alpina_Almindelig ryle
+Calidris alpina_Almindelig Ryle
 Calidris bairdii_Bairdsryle
-Calidris canutus_Islandsk ryle
+Calidris canutus_Islandsk Ryle
 Calidris falcinellus_Kærløber
-Calidris ferruginea_Krumnæbbet ryle
-Calidris fuscicollis_Hvidrygget ryle
+Calidris ferruginea_Krumnæbbet Ryle
+Calidris fuscicollis_Hvidrygget Ryle
 Calidris himantopus_Klireryle
-Calidris maritima_Sortgrå ryle
-Calidris mauri_Alaskaryle
-Calidris melanotos_Stribet ryle
+Calidris maritima_Sortgrå Ryle
+Calidris mauri_Alaska-ryle
+Calidris melanotos_Stribet Ryle
 Calidris minuta_Dværgryle
-Calidris minutilla_Least Sandpiper
+Calidris minutilla_Amerikansk Dværgryle
 Calidris ptilocnemis_Beringsryle
 Calidris pugnax_Brushane
-Calidris pusilla_Tyknæbbet dværgryle
-Calidris ruficollis_Rødhalset ryle
+Calidris pusilla_Tyknæbbet Dværgryle
+Calidris ruficollis_Rødhalset Ryle
 Calidris subminuta_Langtået Ryle
 Calidris temminckii_Temmincksryle
-Calidris virgata_Surfbird
+Calidris virgata_Stenryle
 Caligavis chrysops_Gultøjlet Honningæder
 Callacanthis burtoni_Brillerosenfinke
 Callaeas wilsoni_Nordkokako
@@ -858,15 +858,15 @@ Calliope calliope_Rubinnattergal
 Calliope pectardens_Orangehals
 Calliope pectoralis_Bjergrubinnattergal
 Calliope tschebaiewi_Chinese Rubythroat
-Callipepla californica_Californisk topvagtel
+Callipepla californica_Californisk Topvagtel
 Callipepla douglasii_Rødtoppet Vagtel
 Callipepla gambelii_Ørkentopvagtel
 Callipepla squamata_Skælvagtel
 Callocephalon fimbriatum_Hjelmkakadu
 Calocitta colliei_Sortbrystet Topskade
 Calocitta formosa_Halsbåndstopskade
-Calonectris borealis_Atlantisk skråpe
-Calonectris diomedea_Kuhls skråpe
+Calonectris borealis_Atlantisk Skråpe
+Calonectris diomedea_Skopolis Skråpe
 Caloperdix oculeus_Rødbrun Skovhøne
 Calothorax lucifer_Mexicansk Skovjuvel
 Calypte anna_Annas Kolibri
@@ -876,10 +876,10 @@ Calyptomena whiteheadi_Sortstrubet Brednæb
 Calyptophilus frugivorus_Drosseltangar
 Calyptophilus tertius_Haitidrosseltangar
 Calyptorhynchus banksii_Rødhalet Ravnekakadu
-Calyptorhynchus baudinii_Hvidhalet Ravnekakadu
-Calyptorhynchus funereus_Gulhalet Ravnekakadu
+Calyptorhynchus baudinii_Baudin's Black-Cockatoo
+Calyptorhynchus funereus_Yellow-tailed Black-Cockatoo
 Calyptorhynchus lathami_Lille Ravnekakadu
-Calyptorhynchus latirostris_Smalnæbbet Ravnekakadu
+Calyptorhynchus latirostris_Carnaby's Black-Cockatoo
 Camaroptera brachyura_Grønrygget Gråsanger
 Camaroptera brevicaudata_Askegråsanger
 Camaroptera chloronota_Oliven Gråsanger
@@ -900,12 +900,12 @@ Campethera nubica_Nubisk Spætte
 Campochaera sloetii_Gylden Larveæder
 Camptostoma imberbe_Nordlig Camptostoma
 Camptostoma obsoletum_Sydlig Camptostoma
-Campylopterus curvipennis_Krumvinget Sabelvinge
-Campylopterus excellens_Tuxtlasabelvinge
+Campylopterus curvipennis_Wedge-tailed Sabrewing
+Campylopterus excellens_Long-tailed Sabrewing
 Campylopterus falcatus_Lazurfarvet Sabelvinge
 Campylopterus hemileucurus_Violet Sabelvinge
 Campylopterus largipennis_Gråbrystet Sabelvinge
-Campylopterus rufus_Kanelfarvet Sabelvinge
+Campylopterus rufus_Rufous Sabrewing
 Campylopterus villaviscensio_Naposabelvinge
 Campylorhamphus falcularius_Sortnæbbet Lenæb
 Campylorhamphus procurvoides_Lenæb
@@ -962,13 +962,13 @@ Caprimulgus nigriscapularis_Mørkskuldret Natravn
 Caprimulgus pectoralis_Sydafrikansk Natravn
 Caprimulgus poliocephalus_Etiopisk Natravn
 Caprimulgus pulchellus_Indonesisk Natravn
-Caprimulgus ruficollis_Rødhalset natravn
+Caprimulgus ruficollis_Rødhalset Natravn
 Caprimulgus rufigena_Rødkindet Natravn
 Caprimulgus tristigma_Rødvinget Natravn
 Capsiempis flaveola_Gul Tyrannulet
 Caracara cheriway_Stor Caracara
 Caracara plancus_Caracara
-Cardellina canadensis_Canadasanger
+Cardellina canadensis_Canada-sanger
 Cardellina pusilla_Sortkronet Sanger
 Cardellina rubra_Hvidøret Rødsanger
 Cardellina rubrifrons_Rødmaske
@@ -988,7 +988,7 @@ Carpodacus puniceus_Rosenbrystet Rosenfinke
 Carpodacus rodochroa_Rødbrynet Rosenfinke
 Carpodacus rubicilla_Stor Rosenfinke
 Carpodacus rubicilloides_Stribet Rosenfinke
-Carpodacus sibiricus_Langhalet rosenfinke
+Carpodacus sibiricus_Langhalet Rosenfinke
 Carpodacus synoicus_Sinai-karmindompap
 Carpornis cucullata_Hættekotinga
 Carpornis melanocephala_Grønrygget Hættekotinga
@@ -1000,7 +1000,7 @@ Caryothraustes canadensis_Grøn Kernebider
 Caryothraustes poliogaster_Sortmasket Kernebider
 Casiornis rufus_Rødbrun Casiornis
 Cassiculus melanicterus_Gulvinget Pungstær
-Castanozoster thoracicus_Bay-chested Warbling-Finch
+Castanozoster thoracicus_Gråkappet Dansefinke
 Casuarius casuarius_Hjelmkasuar
 Catamblyrhynchus diadema_Diademfinke
 Catamenia analis_Båndklerkefinke
@@ -1023,7 +1023,7 @@ Catharus ustulatus_Olivenskovdrossel
 Catherpes mexicanus_Canyonsmutte
 Cecropis abyssinica_Stribesvale
 Cecropis cucullata_Sydlig Stribesvale
-Cecropis daurica_Rødrygget svale
+Cecropis daurica_Rødrygget Svale
 Cecropis semirufa_Rødbrystet Svale
 Cecropis striolata_Asiatisk Stribsvale
 Celeus castaneus_Kastanjespætte
@@ -1040,11 +1040,11 @@ Celeus spectabilis_Rødtoppet Spætte
 Celeus torquatus_Kravespætte
 Celeus undatus_Vatret Spætte
 Centrocercus urophasianus_Salviehøne
-Centronyx bairdii_Baird's Sparrow
-Centronyx henslowii_Henslow's Sparrow
+Centronyx bairdii_Lysøret Spurv
+Centronyx henslowii_Rødvingespurv
 Centropus andamanensis_Andamansporegøg
 Centropus bengalensis_Bengalsporegøg
-Centropus burchelli_Kapsporegøg
+Centropus burchellii_Kapsporegøg
 Centropus celebensis_Sulawesisporegøg
 Centropus chlororhynchos_Sri Lanka-sporegøg
 Centropus goliath_Kæmpesporegøg
@@ -1081,11 +1081,11 @@ Cercomacra manu_Manumyrefugl
 Cercomacra melanaria_Mato Grosso-myrefugl
 Cercomacra nigricans_Fløjlsmyrefugl
 Cercomacroides fuscicauda_Riparian Antbird
-Cercomacroides laeta_Willis's Antbird
-Cercomacroides nigrescens_Blackish Antbird
-Cercomacroides parkeri_Parker's Antbird
-Cercomacroides serva_Black Antbird
-Cercomacroides tyrannina_Dusky Antbird
+Cercomacroides laeta_Várzeamyrefugl
+Cercomacroides nigrescens_Sodgrå Myrefugl
+Cercomacroides parkeri_Magdalenamyrefugl
+Cercomacroides serva_Sort Myrefugl
+Cercomacroides tyrannina_Mørk Myrefugl
 Cercotrichas coryphoeus_Karootrænattergal
 Cercotrichas galactotes_Trænattergal
 Cercotrichas hartlaubi_Savannetrænattergal
@@ -1095,12 +1095,12 @@ Cercotrichas podobe_Sort Trænattergal
 Cercotrichas quadrivirgata_Orangebrystet Trænattergal
 Cercotrichas signata_Sydafrikansk Trænattergal
 Certhia americana_Amerikansk Træløber
-Certhia brachydactyla_Korttået træløber
+Certhia brachydactyla_Korttået Træløber - Parktræløber
 Certhia discolor_Brunhalset Træløber
 Certhia familiaris_Træløber
 Certhia himalayana_Himalayatræløber
 Certhia manipurensis_Hume's Treecreeper
-Certhiasomus stictolaemus_Spot-throated Woodcreeper
+Certhiasomus stictolaemus_Pletstrubet Tyrankryber
 Certhiaxis cinnamomeus_Gulstrubet Spidshale
 Certhiaxis mustelinus_Rødhvid Spidshale
 Certhilauda semitorquata_Natal-langnæbslærke
@@ -1116,7 +1116,7 @@ Ceuthmochares australis_Green Malkoha
 Ceyx azureus_Azurisfugl
 Ceyx erithaca_Orientalsk Dværgisfugl
 Chaetocercus mulsant_Hvidbuget Skovstjerne
-Chaetornis striata_Børstenæbbet Græssanger
+Chaetornis striata_Bristled Grassbird
 Chaetura brachyura_Korthalet Tornhalesejler
 Chaetura cinereiventris_Grågumpet Tornhalesejler
 Chaetura meridionalis_Gråhalet Tornhalesejler
@@ -1128,29 +1128,29 @@ Chalcomitra senegalensis_Skarlagenbrystet Solfugl
 Chalcoparia singalensis_Rubinkindet Solfugl
 Chalcophaps indica_Dove Grønvingedue
 Chalcophaps longirostris_Pacific Emerald Dove
-Chalcophaps stephani_Stephan's Dove
+Chalcophaps stephani_Brunrygget Due
 Chalcopsitta cardinalis_Cardinal Lory
 Chalcostigma stanleyi_Blårygget Tornnæb
 Chalybura buffonii_Silkekolibri
 Chalybura urochrysia_Bronzehalet Silkekolibri
 Chamaea fasciata_Gærdesmuttemejse
 Chamaepetes goudotii_Seglvinget Penelopehøne
-Chamaetylas fuelleborni_White-chested Alethe
+Chamaetylas fuelleborni_Hvidbrystet Alethe
 Chamaeza campanisona_Korthalet Myredrossel
 Chamaeza meruloides_Mellemmyredrossel
 Chamaeza mollissima_Perlemyredrossel
 Chamaeza nobilis_Stribet Myredrossel
 Chamaeza ruficauda_Brasiliansk Myredrossel
 Chamaeza turdina_Skællet Myredrossel
-Charadrius alexandrinus_Hvidbrystet præstekrave
+Charadrius alexandrinus_Hvidbrystet Præstekrave
 Charadrius bicinctus_Dobbeltbåndet Præstekrave
 Charadrius collaris_Sydamerikansk Præstekrave
-Charadrius dubius_Lille præstekrave
-Charadrius hiaticula_Stor præstekrave
+Charadrius dubius_Lille Præstekrave
+Charadrius hiaticula_Stor Præstekrave
 Charadrius leschenaultii_Ørkenpræstekrave
 Charadrius melodus_Kortnæbbet Præstekrave
 Charadrius modestus_Rødbrystet Præstekrave
-Charadrius mongolus_Mongolsk præstekrave
+Charadrius mongolus_Mongolsk Præstekrave
 Charadrius montanus_Præriepræstekrave
 Charadrius morinellus_Pomeransfugl
 Charadrius nivosus_Snepræstekrave
@@ -1167,7 +1167,7 @@ Chasiempis sclateri_Kauai Elepaio
 Chauna chavaria_Toppet Chaja
 Chauna torquata_Sorthalset Chaja
 Chelidoptera tenebrosa_Svaledovenfugl
-Chelidorhynx hypoxantha_Gulbuget Viftehale
+Chelidorhynx hypoxanthus_Gulbuget Viftehale
 Chenonetta jubata_Mankegås
 Chersophilus duponti_Duponts Lærke
 Chiroxiphia boliviana_Yungasmanakin
@@ -1177,8 +1177,8 @@ Chiroxiphia linearis_Langhalet Manakin
 Chiroxiphia pareola_Pragtmanakin
 Chlamydera maculata_Plettet Løvhyttefugl
 Chlamydera nuchalis_Stor Løvhyttefugl
-Chlidonias hybrida_Hvidskægget terne
-Chlidonias leucopterus_Hvidvinget terne
+Chlidonias hybrida_Hvidskægget Terne
+Chlidonias leucopterus_Hvidvinget Terne
 Chlidonias niger_Sortterne
 Chloephaga picta_Magellangås
 Chlorestes notata_Safirkolibri
@@ -1190,7 +1190,7 @@ Chloroceryle aenea_Dværgstødfisker
 Chloroceryle amazona_Amazonstødfisker
 Chloroceryle americana_Grøn Stødfisker
 Chloroceryle inda_Mellemstødfisker
-Chlorocharis emiliae_Sortøjet Brillefugl
+Chlorocharis emiliae_Mountain Black-eye
 Chlorochrysa nitidissima_Mangefarvet Organist
 Chlorochrysa phoenicotis_Rødøret Organist
 Chlorocichla flaviventris_Gulbuget Bulbul
@@ -1217,12 +1217,12 @@ Chlorornis riefferii_Grøntangar
 Chlorospingus canigularis_Gråstrubet Krattangar
 Chlorospingus flavigularis_Gulstrubet Krattangar
 Chlorospingus flavopectus_Gulbrystet Krattangar
-Chlorospingus flavovirens_Gyldengrøn Krattangar
+Chlorospingus flavovirens_Yellow-green Chlorospingus
 Chlorospingus pileatus_Stribehovedet Krattangar
 Chlorospingus semifuscus_Olivenbrun Krattangar
-Chlorostilbon canivetii_Kløfthalet Smaragd
+Chlorostilbon canivetii_Canivet's Emerald
 Chlorostilbon gibsoni_Magdalenasmaragd
-Chlorostilbon lucidus_Glittering-bellied Emerald
+Chlorostilbon lucidus_Glanssmaragd
 Chlorostilbon mellisugus_Blåhalet Smaragd
 Chlorothraupis carmioli_Gulstrubet Oliventangar
 Chlorothraupis frenata_Grønrygget Oliventangar
@@ -1237,7 +1237,7 @@ Chordeiles minor_Nathøg
 Chordeiles nacunda_Nacunda Nathøg
 Chordeiles pusillus_Dværgnathøg
 Chroicocephalus cirrocephalus_Gråhovedet Måge
-Chroicocephalus genei_Tyndnæbbet måge
+Chroicocephalus genei_Tyndnæbbet Måge
 Chroicocephalus maculipennis_Argentinsk Hættemåge
 Chroicocephalus novaehollandiae_Perlegrå Måge
 Chroicocephalus philadelphia_Bonapartemåge
@@ -1276,8 +1276,8 @@ Cichlopsis leucogenys_Brun Klarinetfugl
 Cicinnurus magnificus_Magnificent Bird-of-Paradise
 Cicinnurus regius_Kongeparadisfugl
 Cicinnurus respublica_Wilson's Bird-of-Paradise
-Ciconia ciconia_Hvid stork
-Ciconia nigra_Sort stork
+Ciconia ciconia_Hvid Stork
+Ciconia nigra_Sort Stork
 Cinclidium frontale_Blåpandet Bambusdrossel
 Cinclodes albidiventris_Chestnut-winged Cinclodes
 Cinclodes albiventris_Cream-winged Cinclodes
@@ -1286,11 +1286,11 @@ Cinclodes fuscus_Båndvinget Cinclodes
 Cinclodes oustaleti_Gråflanket Cinclodes
 Cinclodes pabsti_Langhalet Cinclodes
 Cinclodes patagonicus_Mørkbuget Cinclodes
-Cincloramphus cruralis_Brown Songlark
-Cincloramphus macrurus_Papuan Grassbird
-Cincloramphus mariae_New Caledonian Grassbird
-Cincloramphus mathewsi_Rufous Songlark
-Cincloramphus timoriensis_Tawny Grassbird
+Cincloramphus cruralis_Sodbrun Lærkesanger
+Cincloramphus macrurus_Papuasumpsanger
+Cincloramphus mariei_New Caledonian Grassbird
+Cincloramphus mathewsi_Rødbrun Lærkesanger
+Cincloramphus timoriensis_Gulbrun Sumpsanger
 Cinclosoma ajax_Ny Guinea-vagteldrossel
 Cinclosoma punctatum_Vagteldrossel
 Cinclus cinclus_Vandstær
@@ -1315,7 +1315,7 @@ Cinnyris mariquensis_Mariquasolfugl
 Cinnyris mediocris_Østlig Halsbåndsolfugl
 Cinnyris moreaui_Ngurusolfugl
 Cinnyris notatus_Madagaskarsolfugl
-Cinnyris osea_Palæstinasolfugl
+Cinnyris osea_Palæstina-solfugl
 Cinnyris pulchellus_Langhalet Pragtsolfugl
 Cinnyris regius_Gulflanket Solfugl
 Cinnyris reichenowi_Nordlig Halsbåndsolfugl
@@ -1367,14 +1367,14 @@ Clamator coromandus_Rødvinget Skadegøg
 Clamator glandarius_Skadegøg
 Clamator jacobinus_Jacobinergøg
 Clamator levaillantii_Akacieskadegøg
-Clanga clanga_Stor skrigeørn
-Clanga pomarina_Lille skrigeørn
+Clanga clanga_Stor Skrigeørn
+Clanga pomarina_Lille Skrigeørn
 Clangula hyemalis_Havlit
 Claravis pretiosa_Grådue
 Clibanornis dendrocolaptoides_Bambusjordløber
-Clibanornis erythrocephalus_Henna-hooded Foliage-gleaner
-Clibanornis rectirostris_Chestnut-capped Foliage-gleaner
-Clibanornis rubiginosus_Ruddy Foliage-gleaner
+Clibanornis erythrocephalus_Hennahovedet Løvkæmmer
+Clibanornis rectirostris_Krumnæbbet Løvkæmmer
+Clibanornis rubiginosus_Rødbrun Løvkæmmer
 Clibanornis rufipectus_Santa Marta Foliage-gleaner
 Climacteris picumnus_Brun Barkløber
 Climacteris rufus_Rødbrun Barkløber
@@ -1382,8 +1382,8 @@ Clytoctantes alixii_Bådnæbsmyrefugl
 Clytolaema rubricauda_Brasiliansk Rubinstrube
 Clytorhynchus hamlini_Rennellskadenæb
 Clytorhynchus vitiensis_Fijiskadenæb
-Cnemathraupis aureodorsalis_Golden-backed Mountain-Tanager
-Cnemathraupis eximia_Black-chested Mountain-Tanager
+Cnemathraupis aureodorsalis_Gyldenrygget Bjergtangar
+Cnemathraupis eximia_Sortbrystet Bjergtangar
 Cnemoscopus rubrirostris_Rødnæbbet Krattangar
 Cnemotriccus fuscatus_Sodbrun Tyran
 Cnipodectes subbrunneus_Brun Vridvinge
@@ -1394,8 +1394,8 @@ Coccothraustes abeillei_Hooded Grosbeak
 Coccothraustes coccothraustes_Kernebider
 Coccothraustes vespertinus_Evening Grosbeak
 Coccycua minuta_Dværgegerngøg
-Coccyzus americanus_Gulnæbbet gøg
-Coccyzus erythropthalmus_Sortnæbbet gøg
+Coccyzus americanus_Gulnæbbet Gøg
+Coccyzus erythropthalmus_Sortnæbbet Gøg
 Coccyzus euleri_Gråhalset Gøg
 Coccyzus longirostris_Hispaniolaøglegøg
 Coccyzus melacoryphus_Mørknæbbet Gøg
@@ -1431,7 +1431,7 @@ Colibri thalassinus_Lille Violetøre
 Colinus cristatus_Toptrævagtel
 Colinus leucopogon_Hvidstrubet Trævagtel
 Colinus nigrogularis_Yucatántrævagtel
-Colinus virginianus_Virginsk vagtel
+Colinus virginianus_Bobwhite
 Colius colius_Hvidrygget Musefugl
 Colius striatus_Brun Musefugl
 Collocalia affinis_Plume-toed Swiftlet
@@ -1439,7 +1439,7 @@ Colluricincla boweri_Grårygget Tornskadedrossel
 Colluricincla harmonica_Grå Tornskadedrossel
 Colluricincla megarhyncha_Rødbrun Tornskadedrossel
 Colonia colonus_Spatelhaletyran
-Colorhamphus parvirostris_Patagonian Tyrant
+Colorhamphus parvirostris_Patagontyrannulet
 Columba arquatrix_Olivendue
 Columba delegorguei_Nataldue
 Columba guinea_Guineadue
@@ -1461,7 +1461,7 @@ Compsothraupis loricata_Rødbrystet Tangar
 Conioptilon mcilhennyi_Sortmasket Kotinga
 Conirostrum albifrons_Hvidkronet Keglenæb
 Conirostrum bicolor_Blågrå Keglenæb
-Conirostrum binghami_Giant Conebill
+Conirostrum binghami_Kæmpekeglenæb
 Conirostrum cinereum_Hvidbrynet Keglenæb
 Conirostrum margaritae_Perlemorskeglenæb
 Conirostrum rufum_Kastanjebuget Keglenæb
@@ -1470,7 +1470,7 @@ Conirostrum speciosum_Rødgumpet Keglenæb
 Conirostrum tamarugense_Tamarugo-keglenæb
 Conopias albovittatus_Hvidstrubet Tyran
 Conopias cinchoneti_Citronbrynet Tyran
-Conopias parva_Gulstrubet Tyran
+Conopias parvus_Gulstrubet Tyran
 Conopias trivirgatus_Trestribet Tyran
 Conopophaga ardesiaca_Grå Myggesnapper
 Conopophaga aurita_Sortmasket Myggesnapper
@@ -1505,17 +1505,17 @@ Copsychus niger_Sort Shama
 Copsychus pyrropygus_Rødhalet Shama
 Copsychus saularis_Dayal
 Copsychus stricklandii_Hvidkronet Shama
-Coracias abyssinicus_Savanneellekrage
+Coracias abyssinicus_Savanne-ellekrage
 Coracias benghalensis_Blåkronet Ellekrage
 Coracias caudatus_Lillabrystet Ellekrage
 Coracias garrulus_Ellekrage
 Coracina bicolor_Munagråfugl
-Coracina caesia_Ensfarvet Gråfugl
+Coracina caesia_Gray Cuckooshrike
 Coracina longicauda_Langhalet Gråfugl
 Coracina macei_Stor Gråfugl
 Coracina novaehollandiae_Sortmasket Gråfugl
 Coracina papuensis_Papuagråfugl
-Coracina pectoralis_Hvidbrystet Gråfugl
+Coracina pectoralis_White-breasted Cuckooshrike
 Coracina personata_Timorgråfugl
 Coracina striata_Hvidøjet Gråfugl
 Coracopsis nigra_Lille Vasapapegøje
@@ -1532,7 +1532,7 @@ Corvus albicollis_Hvidhalset Ravn
 Corvus albus_Broget Krage
 Corvus brachyrhynchos_Amerikansk Krage
 Corvus capensis_Afrikansk Råge
-Corvus caurinus_Kystkrage
+Corvus caurinus_Northwestern Crow
 Corvus corax_Ravn
 Corvus cornix_Gråkrage
 Corvus corone_Sortkrage
@@ -1550,7 +1550,7 @@ Corvus leucognaphalus_Hispaniolakrage
 Corvus macrorhynchos_Stornæbbet Krage
 Corvus mellori_Dværgravn
 Corvus minutus_Cubapalmekrage
-Corvus monedula_allike
+Corvus monedula_Allike
 Corvus nasicus_Cubakrage
 Corvus orru_Torreskrage
 Corvus ossifragus_Fiskekrage
@@ -1604,7 +1604,7 @@ Coua ruficeps_Brunkronet Silkegøg
 Coua serriana_Rødbrystet Silkegøg
 Cracticus cassicus_Ceramslagterfugl
 Cracticus nigrogularis_Sangslagterfugl
-Cracticus quoyi_Sort Slagterfugl
+Cracticus quoyi_Black Butcherbird
 Cracticus torquatus_Grå Slagterfugl
 Cranioleuca albicapilla_Cremekronet Spidshale
 Cranioleuca albiceps_Lyskronet Spidshale
@@ -1623,8 +1623,8 @@ Cranioleuca semicinerea_Gråhovedet Spidshale
 Cranioleuca subcristata_Venezuelaspidshale
 Cranioleuca vulpecula_Amazonspidshale
 Cranioleuca vulpina_Rustrygget Spidshale
-Crateroscelis murina_Lavlandsmusesanger
-Crateroscelis robusta_Bjergmusesanger
+Crateroscelis murina_Rusty Mouse-Warbler
+Crateroscelis robusta_Mountain Mouse-Warbler
 Crax alberti_Blåknoppet Hokko
 Crax alector_Kamhokko
 Crax fasciolata_Nøgenmasket Hokko
@@ -1675,7 +1675,7 @@ Cuculus clamosus_Sortgøg
 Cuculus gularis_Afrikansk Gøg
 Cuculus lepidus_Lille Skovgøg
 Cuculus micropterus_Kortvinget Gøg
-Cuculus optatus_Orientgøg
+Cuculus optatus_Orient-gøg
 Cuculus poliocephalus_Lille Gøg
 Cuculus rochii_Madagaskargøg
 Cuculus saturatus_Skovgøg
@@ -1711,16 +1711,16 @@ Cyanocorax sanblasianus_San Blas-blåskade
 Cyanocorax violaceus_Violet Blåskade
 Cyanocorax yncas_Grøn Skade
 Cyanocorax yucatanicus_Yucatánblåskade
-Cyanoderma ambiguum_Buff-chested Babbler
-Cyanoderma chrysaeum_Golden Babbler
-Cyanoderma erythropterum_Chestnut-winged Babbler
-Cyanoderma melanothorax_Crescent-chested Babbler
-Cyanoderma pyrrhops_Black-chinned Babbler
-Cyanoderma ruficeps_Rufous-capped Babbler
-Cyanoderma rufifrons_Rufous-fronted Babbler
+Cyanoderma ambiguum_Rustisset Krattimalie
+Cyanoderma chrysaeum_Gylden Krattimalie
+Cyanoderma erythropterum_Kastanjevinget Krattimalie
+Cyanoderma melanothorax_Ringkrattimalie
+Cyanoderma pyrrhops_Sorthaget Krattimalie
+Cyanoderma ruficeps_Brunkronet Krattimalie
+Cyanoderma rufifrons_Brunpandet Krattimalie
 Cyanoliseus patagonus_Patagonsk Parakit
-Cyanoloxia brissonii_Ultramarine Grosbeak
-Cyanoloxia cyanoides_Blue-black Grosbeak
+Cyanoloxia brissonii_Ultramarinkernebider
+Cyanoloxia cyanoides_Cyankernebider
 Cyanoloxia glaucocaerulea_Indigokernebider
 Cyanoloxia rothschildii_Amazonian Grosbeak
 Cyanolyca argentigula_Diademazurskade
@@ -1734,18 +1734,18 @@ Cyanolyca viridicyanus_Hvidpandet Azurskade
 Cyanomitra olivacea_Olivensolfugl
 Cyanomitra veroxii_Grå Solfugl
 Cyanomitra verticalis_Gråbuget Solfugl
-Cyanopica cooki_Blåskade
+Cyanopica cooki_Ibererblåskade
 Cyanopica cyanus_Blåskade
 Cyanoptila cumatilis_Zappey's Flycatcher
 Cyanoptila cyanomelana_Sortbrystet Fluesnapper
 Cyanoramphus novaezelandiae_Gedeparakit
 Cyclarhis gujanensis_Rødbrynet Pebertornskade
 Cyclarhis nigrirostris_Sortnæbbet Pebertornskade
-Cygnus atratus_Sort svane
+Cygnus atratus_Sortsvane
 Cygnus buccinator_Trompetérsvane
 Cygnus columbianus_Pibesvane
 Cygnus cygnus_Sangsvane
-Cygnus melancoryphus_Sorthalset svane
+Cygnus melancoryphus_Sorthalset Svane
 Cygnus olor_Knopsvane
 Cymbilaimus lineatus_Båndmyretornskade
 Cymbilaimus sanctaemariae_Bambusmyretornskade
@@ -1759,7 +1759,7 @@ Cyornis hainanus_Hainanniltava
 Cyornis hoevelli_Blåpandet Niltava
 Cyornis olivaceus_Olivenrygget Junglefluesnapper
 Cyornis omissus_Sulawesiniltava
-Cyornis pallidipes_White-bellied Blue Flycatcher
+Cyornis pallidipes_Hvidbuget Niltava
 Cyornis poliogenys_Hvidstrubet Niltava
 Cyornis rubeculoides_Blåstrubet Niltava
 Cyornis rufigastra_Mangroveniltava
@@ -1790,7 +1790,7 @@ Daphoenositta chrysoptera_Sittella
 Daptrius ater_Sort Caracara
 Dasylophus cumingi_Hvidkindet Malkoha
 Dasyornis brachypterus_Østlig Børstesanger
-Dasyornis broadbenti_Rufous Bristlebird
+Dasyornis broadbenti_Brunhovedet Børstesanger
 Dasyornis longirostris_Vestlig Børstesanger
 Deconychura longicauda_Langhalet Tyrankryber
 Delichon dasypus_Asiatisk Bysvale
@@ -1820,7 +1820,7 @@ Dendrocopos hyperythrus_Brunbuget Flagspætte
 Dendrocopos leucopterus_Hvidvinget Flagspætte
 Dendrocopos leucotos_Hvidrygget Flagspætte
 Dendrocopos macei_Okkerflagspætte
-Dendrocopos major_Stor flagspætte
+Dendrocopos major_Stor Flagspætte
 Dendrocopos noguchii_Okinawaspætte
 Dendrocopos syriacus_Syrisk Flagspætte
 Dendrocoptes auriceps_Brunpandet Flagspætte
@@ -1887,7 +1887,7 @@ Diglossa sittoides_Rustfarvet Blomsterborer
 Dinemellia dinemelli_Hvidhovedet Bøffelvæver
 Dinopium benghalense_Sortgumpet Sultanspætte
 Dinopium javanense_Gylden Sultanspætte
-Dinopium rafflesii_Grønrygget Sultanspætte
+Dinopium rafflesii_Olive-backed Woodpecker
 Diopsittaca nobilis_Blåpandet Dværgara
 Diuca diuca_Finch Diukafinke
 Dives dives_Sangglansstærling
@@ -1928,7 +1928,7 @@ Dryobates frontalis_Dot-fronted Woodpecker
 Dryobates fumigatus_Smoky-brown Woodpecker
 Dryobates kirkii_Red-rumped Woodpecker
 Dryobates lignarius_Striped Woodpecker
-Dryobates minor_Lille flagspætte
+Dryobates minor_Lille Flagspætte
 Dryobates mixtus_Checkered Woodpecker
 Dryobates nigriceps_Bar-bellied Woodpecker
 Dryobates nuttallii_Californisk Flagspætte
@@ -1943,9 +1943,9 @@ Dryocopus lineatus_Stribet Sortspætte
 Dryocopus martius_Sortspætte
 Dryocopus pileatus_Amerikansk Sortspætte
 Dryolimnas cuvieri_Hvidstrubet Rikse
-Dryoscopus cubla_Black-backed Puffback
+Dryoscopus cubla_Sortrygget Kvastryg
 Dryoscopus gambensis_Kvastryg
-Dubusia castaneoventris_Chestnut-bellied Mountain-Tanager
+Dubusia castaneoventris_Kastanjebuget Bjergtangar
 Dubusia taeniata_Sølvbrynet Bjergtangar
 Ducula aenea_Kejserdue
 Ducula badia_Bjergkejserdue
@@ -1956,10 +1956,10 @@ Ducula latrans_Fijikejserdue
 Ducula pacifica_Melanesisk Kejserdue
 Ducula perspicillata_Brillekejserdue
 Ducula pickeringii_Sulukejserdue
-Ducula pinon_Pinon's Imperial-Pigeon
+Ducula pinon_Sortskuldret Kejserdue
 Ducula pistrinaria_Blågrøn Kejserdue
 Ducula rubricera_Rødknoppet Kejserdue
-Ducula zoeae_Zoe's Imperial-Pigeon
+Ducula zoeae_Båndkejserdue
 Dulus dominicus_Palmedrossel
 Dumetella carolinensis_Kattedrossel
 Dumetia hyperythra_Rustbuget Timalie
@@ -1972,12 +1972,12 @@ Dysithamnus stictothorax_Pletbrystet Myrevireo
 Dysithamnus striaticeps_Stregisset Myrevireo
 Dysithamnus xanthopterus_Brunrygget Myrevireo
 Eclectus roratus_Ædelpapegøje
-Edolisoma montanum_Black-bellied Cicadabird
-Edolisoma salomonis_Makira Cicadabird
-Edolisoma tenuirostre_Common Cicadabird
+Edolisoma montanum_Sortbuget Gråfugl
+Edolisoma salomonis_Makiragråfugl
+Edolisoma tenuirostre_Tyndnæbbet Gråfugl
 Egretta caerulea_Blåhejre
 Egretta garzetta_Silkehejre
-Egretta gularis_Revhejre
+Egretta gularis_Vestlig Revhejre
 Egretta novaehollandiae_Hvidmasket Hejre
 Egretta rufescens_Rusthejre
 Egretta thula_Snehejre
@@ -2003,7 +2003,7 @@ Elaenia spectabilis_Stor Elænia
 Elaenia strepera_Skifergrå Elænia
 Elanoides forficatus_Svalehaleglente
 Elanus axillaris_Australsk Blå Glente
-Elanus caeruleus_Blå glente
+Elanus caeruleus_Blå Glente
 Elanus leucurus_Hvidhalet Glente
 Electron carinatum_Kølnæbbet Motmot
 Electron platyrhynchum_Brednæbbet Motmot
@@ -2013,20 +2013,20 @@ Elminia albiventris_Hvidbuget Topmonark
 Elminia albonotata_Hvidhalet Topmonark
 Elminia longicauda_Blå Elminia
 Elseyornis melanops_Sortpandet Præstekrave
-Emberiza aureola_Gulbrystet værling
-Emberiza bruniceps_Brunhovedet værling
+Emberiza aureola_Gulbrystet Værling
+Emberiza bruniceps_Brunhovedet Værling
 Emberiza buchanani_Bjerghortulan
 Emberiza cabanisi_Sortkindet Værling
 Emberiza caesia_Rustværling
 Emberiza calandra_Bomlærke
 Emberiza capensis_Kapværling
-Emberiza chrysophrys_Gulbrynet værling
+Emberiza chrysophrys_Gulbrynet Værling
 Emberiza cia_Klippeværling
-Emberiza cineracea_Gulgrå værling
+Emberiza cineracea_Gulgrå Værling
 Emberiza cioides_Engværling
 Emberiza cirlus_Gærdeværling
 Emberiza citrinella_Gulspurv
-Emberiza elegans_Gulstrubet værling
+Emberiza elegans_Gulstrubet Værling
 Emberiza flaviventris_Gulbuget Værling
 Emberiza fucata_Brunøret Værling
 Emberiza godlewskii_Bjergværling
@@ -2034,7 +2034,7 @@ Emberiza goslingi_Gosling's Bunting
 Emberiza hortulana_Hortulan
 Emberiza impetuani_Sandværling
 Emberiza lathami_Topværling
-Emberiza leucocephalos_Hvidkindet værling
+Emberiza leucocephalos_Hvidkindet Værling
 Emberiza melanocephala_Hætteværling
 Emberiza pallasi_Sibirisk Rørspurv
 Emberiza pusilla_Dværgværling
@@ -2083,7 +2083,7 @@ Entomyzon cyanotis_Blåmasket Honningæder
 Eolophus roseicapilla_Rosakakadu
 Eophona migratoria_Gulnæbbet Kernebider
 Eophona personata_Maskekernebider
-Eopsaltria australis_Eastern Yellow Robin
+Eopsaltria australis_Gul Sangfluesnapper
 Epimachus fastosus_Sort Seglnæb
 Epimachus meyeri_Brun Seglnæb
 Epinecrophylla amazonica_Rio Madeira Stipplethroat
@@ -2112,19 +2112,19 @@ Erythropitta rufiventris_North Moluccan Pitta
 Erythropitta ussheri_Sabahpitta
 Esacus magnirostris_Kysttriel
 Esacus recurvirostris_Stor Triel
-Estrilda astrild_Helenaastrild
+Estrilda astrild_Helena-astrild
 Estrilda nonnula_Nonneastrild
 Estrilda troglodytes_Gråastrild
 Eubucco bourcierii_Rødhovedet Skægfugl
 Eubucco richardsoni_Citronstrubet Skægfugl
-Euchrepomis callinota_Rufous-rumped Antwren
-Euchrepomis humeralis_Chestnut-shouldered Antwren
-Euchrepomis spodioptila_Ash-winged Antwren
+Euchrepomis callinota_Brungumpet Myresmutte
+Euchrepomis humeralis_Kastanjeskuldret Myresmutte
+Euchrepomis spodioptila_Gråvinget Myresmutte
 Eucometis penicillata_Gråhovedet Tangar
 Eudocimus albus_Hvid Ibis
 Eudromia elegans_Toptinamu
-Eudynamys melanorhyncha_Sortnæbbet Koel
-Eudynamys orientalis_Pacific Koel
+Eudynamys melanorhynchus_Sortnæbbet Koel
+Eudynamys orientalis_Molukkoel
 Eudynamys scolopaceus_Koel
 Eudyptula minor_Dværgpingvin
 Eugenes fulgens_Purpurisset Kolibri
@@ -2167,7 +2167,7 @@ Euphonia rufiventris_Rustbuget Skoveuphonia
 Euphonia trinitatis_Trinidadeuphonia
 Euphonia violacea_Violblå Euphonia
 Euphonia xanthogaster_Orangebuget Skoveuphonia
-Euplectes afer_Napoleonsvæver
+Euplectes afer_Napoleons-væver
 Euplectes capensis_Fløjlsvæver
 Euplectes franciscanus_Sortisset Orangevæver
 Euplectes hordeaceus_Flammevæver
@@ -2203,32 +2203,32 @@ Falco deiroleucus_Rødbrystet Falk
 Falco eleonorae_Eleonorafalk
 Falco femoralis_Aplomadofalk
 Falco mexicanus_Præriefalk
-Falco naumanni_Lille tårnfalk
+Falco naumanni_Lille Tårnfalk
 Falco peregrinus_Vandrefalk
 Falco rufigularis_Flagermusfalk
-Falco sparverius_Amerikansk tårnfalk
+Falco sparverius_Amerikansk Tårnfalk
 Falco subbuteo_Lærkefalk
 Falco tinnunculus_Tårnfalk
 Falco vespertinus_Aftenfalk
 Falculea palliata_Seglnæbsvanga
 Falcunculus frontatus_Toppet Tornskademejse
 Ferminia cerverai_Zapatasmutte
-Ficedula albicilla_Tajgafluesnapper
-Ficedula albicollis_Hvidhalset fluesnapper
+Ficedula albicilla_Tajga-fluesnapper
+Ficedula albicollis_Hvidhalset Fluesnapper
 Ficedula basilanica_Basilanfluesnapper
 Ficedula dumetoria_Orangebrystet Fluesnapper
 Ficedula elisae_Kinesisk Fluesnapper
-Ficedula erithacus_Slaty-backed Flycatcher
+Ficedula erithacus_Blårød Fluesnapper
 Ficedula henrici_Damarfluesnapper
 Ficedula hyperythra_Buskfluesnapper
-Ficedula hypoleuca_Broget fluesnapper
-Ficedula mugimaki_Mugimakifluesnapper
+Ficedula hypoleuca_Broget Fluesnapper
+Ficedula mugimaki_Mugimaki-fluesnapper
 Ficedula narcissina_Narcissusfluesnapper
 Ficedula nigrorufa_Hættefluesnapper
-Ficedula parva_Lille fluesnapper
-Ficedula ruficauda_Rusty-tailed Flycatcher
-Ficedula semitorquata_Balkanfluesnapper
-Ficedula speculigera_Berberfluesnapper
+Ficedula parva_Lille Fluesnapper
+Ficedula ruficauda_Rusthalet Fluesnapper
+Ficedula semitorquata_Balkan-fluesnapper
+Ficedula speculigera_Berber-fluesnapper
 Ficedula strophiata_Orangestrubet Fluesnapper
 Ficedula superciliaris_Ultramarin Fluesnapper
 Ficedula tricolor_Skiferblå Fluesnapper
@@ -2323,43 +2323,43 @@ Gallinago hardwickii_Japansk Bekkasin
 Gallinago imperialis_Kejserbekkasin
 Gallinago jamesoni_Andesbekkasin
 Gallinago media_Tredækker
-Gallinago megala_Tajgabekkasin
+Gallinago megala_Tajga-bekkasin
 Gallinago nobilis_Paramobekkasin
 Gallinago paraguaiae_Sydamerikansk Bekkasin
 Gallinago stenura_Sibirisk Bekkasin
 Gallinago undulata_Kæmpebekkasin
-Gallinula chloropus_Grønbenet rørhøne
+Gallinula chloropus_Rørhøne (Grønbenet)
 Gallinula galeata_Common Gallinule
 Gallinula tenebrosa_Mørk Rørhøne
 Gallirallus australis_Weka
-Gallirallus okinawae_Okinawarikse
-Gallirallus philippensis_Båndet Rikse
-Gallirallus torquatus_Hvidskægget Rikse
+Gallirallus okinawae_Okinawa Rail
+Gallirallus philippensis_Buff-banded Rail
+Gallirallus torquatus_Barred Rail
 Galloperdix bicalcarata_Sri Lanka-sporehøne
 Galloperdix spadicea_Rød Sporehøne
 Gallus gallus_Bankivahøne
-Gallus lafayettii_Sri Lanka Junglefowl
+Gallus lafayettii_Sri Lanka-junglehøne
 Gallus sonneratii_Grå Junglehøne
 Gallus varius_Grøn Junglehøne
 Gampsonyx swainsonii_Dværgglente
 Gampsorhynchus rufulus_Hvidhovedet Timalie
 Gampsorhynchus torquatus_Kravetimalie
-Garrulax calvus_Nøgenhovedet Skadedrossel
+Garrulax calvus_Bare-headed Laughingthrush
 Garrulax canorus_Sangskadedrossel
 Garrulax leucolophus_Hvidtoppet Skadedrossel
-Garrulax lugubris_Sort Skadedrossel
+Garrulax lugubris_Black Laughingthrush
 Garrulax milleti_Sorthættet Skadedrossel
 Garrulax monileger_Halsbåndsskadedrossel
 Garrulax palliatus_Skifergrå Skadedrossel
-Garrulax perspicillatus_Brilleskadedrossel
+Garrulax perspicillatus_Masked Laughingthrush
 Garrulax taewanus_Taiwan Sangskadedrossel
 Garrulus glandarius_Skovskade
 Garrulus lanceolatus_Sorthovedet Skovskade
 Garrulus lidthi_Nanseiskovskade
-Gavia arctica_Sortstrubet lom
+Gavia arctica_Sortstrubet Lom
 Gavia immer_Islom
-Gavia pacifica_Stillehavslom
-Gavia stellata_Rødstrubet lom
+Gavia pacifica_Stillehavs-lom
+Gavia stellata_Rødstrubet Lom
 Gavicalis virescens_Sanghonningæder
 Gecinulus grantia_Grønhovedet Spætte
 Gecinulus viridis_Bambusspætte
@@ -2384,8 +2384,8 @@ Geositta poeciloptera_Campominør
 Geositta punensis_Punaminør
 Geositta rufipennis_Orangebåndet Minør
 Geositta tenuirostris_Tyndnæbbet Minør
-Geospizopsis plebejus_Ash-breasted Sierra-Finch
-Geospizopsis unicolor_Plumbeous Sierra-Finch
+Geospizopsis plebejus_Gråbrystet Andesfinke
+Geospizopsis unicolor_Blågrå Andesfinke
 Geothlypis aequinoctialis_Maskegulstrube
 Geothlypis auricularis_Sorttøjlet Gulstrube
 Geothlypis beldingi_Beldinggulstrube
@@ -2407,7 +2407,7 @@ Geranoaetus melanoleucus_Andesvåge
 Geranoaetus polyosoma_Pragtvåge
 Geranospiza caerulescens_Tranehøg
 Geronticus eremita_Eremitibis
-Gerygone chloronota_Green-backed Gerygone
+Gerygone chloronota_Grønrygget Træsanger
 Gerygone flavolateralis_Viftehaletræsanger
 Gerygone fusca_Hvidhalet Træsanger
 Gerygone igata_Grå Træsanger
@@ -2419,9 +2419,9 @@ Gerygone palpebrosa_Sorthovedet Træsanger
 Gerygone ruficollis_Sørgetræsanger
 Gerygone sulphurea_Malajtræsanger
 Glareola lactea_Lille Braksvale
-Glareola maldivarum_Orientbraksvale
+Glareola maldivarum_Orient-braksvale
 Glareola nordmanni_Sortvinget Braksvale
-Glareola pratincola_Rødvinget braksvale
+Glareola pratincola_Rødvinget Braksvale
 Glaucidium bolivianum_Yungasspurveugle
 Glaucidium brasilianum_Rustfarvet Spurveugle
 Glaucidium brodiei_Halsbåndsspurveugle
@@ -2429,14 +2429,14 @@ Glaucidium californicum_Troldspurveugle
 Glaucidium capense_Kapspurveugle
 Glaucidium castanopterum_Indonesisk Spurveugle
 Glaucidium castanotum_Sri Lanka-spurveugle
-Glaucidium costaricanum_Costa Rican Pygmy-Owl
+Glaucidium costaricanum_Costa Rica-spurveugle
 Glaucidium cuculoides_Gøgeugle
 Glaucidium gnoma_Pygmæspurveugle
 Glaucidium griseiceps_Gråhovedet Spurveugle
 Glaucidium hardyi_Amazonspurveugle
 Glaucidium hoskinsii_Bajaspurveugle
 Glaucidium jardinii_Andesspurveugle
-Glaucidium minutissimum_Least Pygmy-Owl
+Glaucidium minutissimum_Brasiliansk Spurveugle
 Glaucidium nana_Patagonsk Spurveugle
 Glaucidium nubicola_Chocóspurveugle
 Glaucidium palmarum_Colimaspurveugle
@@ -2492,17 +2492,17 @@ Grallaria watkinsi_Kratmyrepitta
 Grallaricula cucullata_Hættemyrepitta
 Grallaricula ferrugineipectus_Rustbrystet Myrepitta
 Grallaricula flavirostris_Okkerbrystet Myrepitta
-Grallaricula leymebambae_Leymebamba Antpitta
+Grallaricula leymebambae_Leymebambamyrepitta
 Grallaricula lineifrons_Hvidkindet Myrepitta
 Grallaricula nana_Skiferkronet Myrepitta
 Grallaricula ochraceifrons_Okkerpandet Myrepitta
 Grallaricula peruviana_Perumyrepitta
 Grallina cyanoleuca_Skadelærke
-Grammatoptila striata_Striated Laughingthrush
+Grammatoptila striata_Stribet Skadedrossel
 Granatellus pelzelni_Rosenbrystet Drosselsanger
 Granatellus sallaei_Gråstrubet Skjoldsanger
 Granatellus venustus_Rødbrystet Skjoldsanger
-Granatina ianthinogaster_Purple Grenadier
+Granatina ianthinogaster_Violbuget Granatastrild
 Grantiella picta_Rødnæbbet Honningæder
 Graydidascalus brachyurus_Stumphalepapegøje
 Grus americana_Trompetértrane
@@ -2547,8 +2547,8 @@ Haematortyx sanguiniceps_Rødhovedet Skovhøne
 Haemorhous cassinii_Rødkronet Rosenfinke
 Haemorhous mexicanus_Husfinke
 Haemorhous purpureus_Purpurrosenfinke
-Hafferia fortis_Sooty Antbird
-Hafferia immaculata_Blue-lored Antbird
+Hafferia fortis_Sodmyrefugl
+Hafferia immaculata_Koksgrå Myrefugl
 Hafferia zeledoni_Zeledon's Antbird
 Halcyon albiventris_Brunskuldret Isfugl
 Halcyon badia_Lille Smyrnaisfugl
@@ -2562,7 +2562,7 @@ Halcyon smyrnensis_Smyrnaisfugl
 Haliaeetus albicilla_Havørn
 Haliaeetus humilis_Lille Flodørn
 Haliaeetus ichthyaetus_Flodørn
-Haliaeetus leucocephalus_Hvidhovedet havørn
+Haliaeetus leucocephalus_Hvidhovedet Havørn
 Haliaeetus leucogaster_Hvidbrystet Havørn
 Haliaeetus pelagicus_Beringshavørn
 Haliaeetus vocifer_Afrikansk Flodørn
@@ -2611,8 +2611,8 @@ Hemiprocne longipennis_Grøntoppet Træsejler
 Hemiprocne mystacea_Stor Træsejler
 Hemipus hirundinaceus_Sortvinget Dværgtornskade
 Hemipus picatus_Broget Dværgtornskade
-Hemispingus auricularis_Orangebrystet Oliventangar
-Hemispingus piurae_Piura-oliventangar
+Hemispingus auricularis_White-browed Hemispingus
+Hemispingus piurae_Piura Hemispingus
 Hemithraupis flavicollis_Gulhalset Tangar
 Hemithraupis guira_Guiratangar
 Hemithraupis ruficapilla_Gråflanket Tangar
@@ -2627,7 +2627,7 @@ Hemitriccus inornatus_Rio Icana-todityran
 Hemitriccus iohannis_Amazontodityran
 Hemitriccus josephinae_Bådnæbbet Todityran
 Hemitriccus margaritaceiventer_Perlebuget Todityran
-Hemitriccus minimus_Zimmer's Tody-Tyrant
+Hemitriccus minimus_Tapajós-todityran
 Hemitriccus minor_Lille Todityran
 Hemitriccus mirandae_Sierratodityran
 Hemitriccus nidipendulus_Pungtodityran
@@ -2687,7 +2687,7 @@ Himantopus melanurus_Hvidkronet Stylteløber
 Himantopus mexicanus_Sortnakket Stylteløber
 Himatione sanguinea_Apapane
 Hippolais icterina_Gulbug
-Hippolais languida_Orientgulbug
+Hippolais languida_Orient-gulbug
 Hippolais olivetorum_Olivensanger
 Hippolais polyglotta_Spottesanger
 Hirundinea ferruginea_Klippetyran
@@ -2699,7 +2699,7 @@ Hirundo tahitica_Stillehavssvale
 Histrionicus histrionicus_Strømand
 Horornis acanthizoides_Gulbuget Busksanger
 Horornis brunnescens_Himalayabusksanger
-Horornis canturians_Manchurian Bush Warbler
+Horornis canturians_Manchurbusksanger
 Horornis diphone_Japansk Busksanger
 Horornis flavolivaceus_Olivenbrun Busksanger
 Horornis fortipes_Brunsidet Busksanger
@@ -2708,7 +2708,7 @@ Horornis ruficapilla_Fijibusksanger
 Horornis seebohmi_Luzonbusksanger
 Horornis vulcanius_Indonesisk Busksanger
 Human_Human
-Hydrobates pelagicus_Lille stormsvale
+Hydrobates pelagicus_Lille Stormsvale
 Hydrocoloeus minutus_Dværgmåge
 Hydrophasianus chirurgus_Fasanbladhøne
 Hydroprogne caspia_Rovterne
@@ -2728,8 +2728,8 @@ Hylexetastes stresemanni_Vatret Trækryber
 Hylexetastes uniformis_Ensfarvet Trækryber
 Hylia prasina_Hylia
 Hylocharis chrysura_Gylden Safir
-Hylocharis cyanus_Blåbrystet Safir
-Hylocharis eliciae_Gyldenhalet Safir
+Hylocharis cyanus_White-chinned Sapphire
+Hylocharis eliciae_Blue-throated Goldentail
 Hylocharis leucotis_White-eared Hummingbird
 Hylocharis sapphirina_Okkerstrubet Safir
 Hylocharis xantusii_Xantus's Hummingbird
@@ -2777,7 +2777,7 @@ Hypopyrrhus pyrohypogaster_Rødbuget Stærling
 Hypothymis azurea_Azurmonark
 Hypothymis puella_Sulawesimonark
 Hypsipetes amaurotis_Kastanjeøret Bulbul
-Hypsipetes borbonicus_Reunion Bulbul
+Hypsipetes borbonicus_Réunionbulbul
 Hypsipetes everetti_Mindanaobulbul
 Hypsipetes ganeesa_Indisk Sortbulbul
 Hypsipetes guimarasensis_Visayan Bulbul
@@ -2791,10 +2791,10 @@ Ianthocincla caerulata_Gray-sided Laughingthrush
 Ianthocincla chinensis_Black-throated Laughingthrush
 Ianthocincla davidi_Pere David's Laughingthrush
 Ianthocincla delesserti_Wayanad Laughingthrush
-Ianthocincla lunulata_Barred Laughingthrush
-Ianthocincla maxima_Giant Laughingthrush
+Ianthocincla lunulata_Skælrygget Skadedrossel
+Ianthocincla maxima_Kæmpeskadedrossel
 Ianthocincla nuchalis_Chestnut-backed Laughingthrush
-Ianthocincla ocellata_Spotted Laughingthrush
+Ianthocincla ocellata_Pletskadedrossel
 Ianthocincla pectoralis_Greater Necklaced Laughingthrush
 Ianthocincla poecilorhyncha_Rusty Laughingthrush
 Ianthocincla ruficollis_Rufous-necked Laughingthrush
@@ -2803,8 +2803,8 @@ Ianthocincla treacheri_Chestnut-hooded Laughingthrush
 Ibidorhyncha struthersii_Ibisnæb
 Ibycter americanus_Rødstrubet Caracara
 Ichthyaetus audouinii_Audouinsmåge
-Ichthyaetus ichthyaetus_Stor sorthovedet måge
-Ichthyaetus melanocephalus_Sorthovedet måge
+Ichthyaetus ichthyaetus_Stor Sorthovedet Måge
+Ichthyaetus melanocephalus_Sorthovedet Måge
 Icteria virens_Gulbrystet Kratsmutte
 Icterus abeillei_Sortflanket Trupial
 Icterus auricapillus_Orangekronet Trupial
@@ -2813,7 +2813,7 @@ Icterus cayanensis_Epaulet-trupial
 Icterus chrysater_Gulrygget Trupial
 Icterus croconotus_Safrantrupial
 Icterus cucullatus_Tobåndet Trupial
-Icterus galbula_Baltimoretrupial
+Icterus galbula_Baltimore-trupial
 Icterus graceannae_Hvidbåndet Trupial
 Icterus graduacauda_Sorthovedet Trupial
 Icterus gularis_Altamiratrupial
@@ -2832,10 +2832,10 @@ Icterus wagleri_Sortgumpet Trupial
 Ictinia mississippiensis_Falkeglente
 Ictinia plumbea_Grå Falkeglente
 Idiopsar speculifer_White-winged Diuca-Finch
-Iduna caligata_Lille gulbug
+Iduna caligata_Lille Gulbug
 Iduna natalensis_Afrikansk Gulbug
 Iduna opaca_Vestlig Bleg Gulbug
-Iduna pallida_Bleg gulbug
+Iduna pallida_Bleg Gulbug
 Iduna rama_Steppegulbug
 Iduna similis_Bjerggulbug
 Ifrita kowaldi_Blåkrone
@@ -2861,7 +2861,7 @@ Iodopleura pipra_Lille Purpurkvast
 Iole crypta_Buff-vented Bulbul
 Iole indica_Yellow-browed Bulbul
 Iole propinqua_Gråøjet Oliveniole
-Iole viridescens_Olive Bulbul
+Iole viridescens_Oliveniole
 Irania gutturalis_Hvidhals
 Irena cyanogastra_Filippinsk Blåfugl
 Irena puella_Indisk Blåfugl
@@ -2874,7 +2874,7 @@ Ispidina picta_Afrikansk Dværgisfugl
 Ithaginis cruentus_Blodfasan
 Ixobrychus dubius_Black-backed Bittern
 Ixobrychus exilis_Amerikansk Dværghejre
-Ixobrychus flavicollis_Black Bittern
+Ixobrychus flavicollis_Sort Dværghejre
 Ixobrychus involucris_Stribet Dværghejre
 Ixobrychus minutus_Dværghejre
 Ixobrychus sinensis_Okkergul Dværghejre
@@ -2882,15 +2882,15 @@ Ixonotus guttatus_Plettet Bulbul
 Ixoreus naevius_Flammedrossel
 Ixos malaccensis_Malaccabulbul
 Ixos mcclellandii_Bjergbulbul
-Ixothraupis guttata_Speckled Tanager
-Ixothraupis punctata_Spotted Tanager
-Ixothraupis rufigula_Rufous-throated Tanager
+Ixothraupis guttata_Gulhovedet Dråbetangar
+Ixothraupis punctata_Blåhovedet Dråbetangar
+Ixothraupis rufigula_Kobberstrubet Dråbetangar
 Jacamaralcyon tridactyla_Tretået Jacamar
 Jacamerops aureus_Kæmpejacamar
 Jacana jacana_Jacana
 Jacana spinosa_Nordlig Jacana
-Juliamyia julie_Violetbuget Kolibri
-Junco hyemalis_Mørkøjet junco
+Juliamyia julie_Violet-bellied Hummingbird
+Junco hyemalis_Mørkøjet Junco
 Junco phaeonotus_Guløjet Junco
 Junco vulcani_Gråbrystet Junco
 Jynx ruficollis_Rødstrubet Vendehals
@@ -2899,10 +2899,10 @@ Kaupifalco monogrammicus_Øglehøg
 Kenopia striata_Kenopia-timalie
 Ketupa zeylonensis_Brun Fiskeugle
 Klais guimeti_Violethovedet Kolibri
-Kleinothraupis atropileus_Black-capped Hemispingus
+Kleinothraupis atropileus_Sortkappet Oliventangar
 Knipolegus aterrimus_Hvidvinget Sorttyran
 Knipolegus poecilurus_Rødhalet Sorttyran
-Kurochkinegramma hypogrammicum_Purple-naped Spiderhunter
+Kurochkinegramma hypogrammicum_Purpurnakket Solfugl
 Lacedo pulchella_Tigerisfugl
 Lafresnaya lafresnayi_Fløjlsbrystkolibri
 Lagonosticta rubricata_Mørkerød Amarant
@@ -2911,12 +2911,12 @@ Lagopus lagopus_Dalrype
 Lagopus leucura_Hvidhalet Rype
 Lagopus muta_Fjeldrype
 Lalage aurea_Moluktriller
-Lalage fimbriata_Lesser Cuckooshrike
+Lalage fimbriata_Dværggråfugl
 Lalage leucomela_Hvidbrynet Triller
 Lalage leucopyga_Langhalet Triller
 Lalage maculosa_Polynesisk Triller
-Lalage melanoptera_Black-headed Cuckooshrike
-Lalage melaschistos_Black-winged Cuckooshrike
+Lalage melanoptera_Sorthovedet Gråfugl
+Lalage melaschistos_Sortvinget Gråfugl
 Lalage nigra_Broget Triller
 Lalage sueurii_Hvidskuldret Triller
 Lalage tricolor_Australsk Triller
@@ -2932,14 +2932,14 @@ Lamprotornis chalybaeus_Blåøret Glansstær
 Lamprotornis chloropterus_Nordlig Miomboglansstær
 Lamprotornis mevesii_Mopaneglansstær
 Lamprotornis nitens_Rødskuldret Glansstær
-Lamprotornis purpuroptera_Rüppell's Starling
+Lamprotornis purpuroptera_Blågrøn Glansstær
 Lamprotornis splendidus_Pragtglansstær
 Lamprotornis superbus_Trefarvet Glansstær
 Laniarius aethiopicus_Bubu
 Laniarius atrococcineus_Hvidbåndet Gonolek
 Laniarius atroflavus_Gulbrystet Bubu
 Laniarius barbarus_Fløjtegonolek
-Laniarius bicolor_Gabon Boubou
+Laniarius bicolor_Sumpbubu
 Laniarius erythrogaster_Skarlagengonolek
 Laniarius ferrugineus_Okkerbubu
 Laniarius fuelleborni_Skovbubu
@@ -2962,43 +2962,43 @@ Lanius borealis_Northern Shrike
 Lanius bucephalus_Bøffelhovedet Tornskade
 Lanius cabanisi_Kenyatornskade
 Lanius collaris_Sortrygget Tornskade
-Lanius collurio_Rødrygget tornskade
+Lanius collurio_Rødrygget Tornskade
 Lanius collurioides_Burmatornskade
-Lanius cristatus_Brun tornskade
-Lanius excubitor_Stor tornskade
+Lanius cristatus_Brun Tornskade
+Lanius excubitor_Stor Tornskade
 Lanius humeralis_Northern Fiscal
 Lanius isabellinus_Isabellatornskade
 Lanius ludovicianus_Amerikansk Tornskade
-Lanius meridionalis_Sydlig stor tornskade
-Lanius minor_Rosenbrystet tornskade
+Lanius meridionalis_Sydlig Stor Tornskade
+Lanius minor_Rosenbrystet Tornskade
 Lanius nubicus_Masketornskade
 Lanius phoenicuroides_Turkestantornskade
-Lanius schach_Langhalet tornskade
-Lanius senator_Rødhovedet tornskade
-Lanius somalicus_Somali Fiscal
+Lanius schach_Langhalet Tornskade
+Lanius senator_Rødhovedet Tornskade
+Lanius somalicus_Somalitornskade
 Lanius tephronotus_Himalayatornskade
 Lanius tigrinus_Tigertornskade
 Lanius vittatus_Brunrygget Tornskade
 Larosterna inca_Inkaterne
 Larus argentatus_Sølvmåge
 Larus belcheri_Skarvmåge
-Larus cachinnans_Kaspisk måge
+Larus cachinnans_Kaspisk Måge
 Larus californicus_Canadamåge
 Larus canus_Stormmåge
 Larus crassirostris_Japanmåge
-Larus delawarensis_Ringnæbbet måge
+Larus delawarensis_Ringnæbbet Måge
 Larus dominicanus_Tangmåge
 Larus fuscus_Sildemåge
-Larus glaucescens_Gråvinget måge
-Larus glaucoides_Hvidvinget måge
+Larus glaucescens_Gråvinget Måge
+Larus glaucoides_Hvidvinget Måge
 Larus heermanni_Askemåge
 Larus hyperboreus_Gråmåge
 Larus livens_Golfmåge
 Larus marinus_Svartbag
-Larus michahellis_Middelhavssølvmåge
+Larus michahellis_Middelhavs-sølvmåge
 Larus occidentalis_Amerikansk Svartbag
 Larus schistisagus_Skifermåge
-Larus smithsonianus_Amerikansk sølvmåge
+Larus smithsonianus_Amerikansk Sølvmåge
 Larus vegae_Vegamåge
 Larvivora akahige_Japansk Rødhals
 Larvivora brunnea_Himalayanattergal
@@ -3013,7 +3013,7 @@ Laterallus levraudi_Rustflanket Dværgrikse
 Laterallus melanophaius_Dværgrikse
 Laterallus ruber_Hættedværgrikse
 Laterallus xenopterus_Paraguaydværgrikse
-Lathamus discolor_Swift Parrot
+Lathamus discolor_Svaleparakit
 Lathrotriccus euleri_Eremittyran
 Lathrotriccus griseipectus_Gråbrystet Eremittyran
 Laticilla cinerascens_Sumpprinia
@@ -3022,27 +3022,27 @@ Leiopicus mahrattensis_Gulkronet Flagspætte
 Leiothlypis celata_Orangekronet Sanger
 Leiothlypis crissalis_Colimasanger
 Leiothlypis luciae_Rødgumpet Sanger
-Leiothlypis peregrina_Tennesseesanger
+Leiothlypis peregrina_Tennessee-sanger
 Leiothlypis ruficapilla_Nashvillesanger
 Leiothlypis virginiae_Virginiasanger
 Leiothrix argentauris_Sølvøret Sangtimalie
 Leiothrix lutea_Sangtimalie
-Leistes bellicosus_Peruvian Meadowlark
-Leistes loyca_Long-tailed Meadowlark
-Leistes militaris_Red-breasted Meadowlark
-Leistes superciliaris_White-browed Meadowlark
+Leistes bellicosus_Peruenglærke
+Leistes loyca_Langhalet Englærke
+Leistes militaris_Rødbrystet Stærling
+Leistes superciliaris_Hvidbrynet Stærling
 Lepidocolaptes affinis_Pletkronet Trækryber
 Lepidocolaptes albolineatus_Streget Trækryber
 Lepidocolaptes angustirostris_Tyndnæbbet Trækryber
 Lepidocolaptes duidae_Duida Woodcreeper
 Lepidocolaptes falcinellus_Østkysttrækryber
 Lepidocolaptes fatimalimae_Inambari Woodcreeper
-Lepidocolaptes lacrymiger_Montane Woodcreeper
+Lepidocolaptes lacrymiger_Andestrækryber
 Lepidocolaptes layardi_Layard's Woodcreeper
 Lepidocolaptes leucogaster_Hvidstribet Trækryber
-Lepidocolaptes souleyetii_Streak-headed Woodcreeper
+Lepidocolaptes souleyetii_Streghovedet Trækryber
 Lepidocolaptes squamatus_Skællet Trækryber
-Lepidopyga coeruleogularis_Safirstrubet Kolibri
+Lepidopyga coeruleogularis_Sapphire-throated Hummingbird
 Lepidothrix coronata_Blåkronet Manakin
 Lepidothrix iris_Opalkronet Manakin
 Lepidothrix isidorei_Blågumpet Manakin
@@ -3073,7 +3073,7 @@ Leptopogon taczanowskii_Inkaleptopogon
 Leptoptilos dubius_Adjudant
 Leptosittaca branickii_Højlandsparakit
 Leptosomus discolor_Gøgeellekrage
-Leptotila cassinii_Gray-chested Dove
+Leptotila cassinii_Gråbrystet Jorddue
 Leptotila conoveri_Tolimajorddue
 Leptotila jamaicensis_Cariberjorddue
 Leptotila megalura_Yungasjorddue
@@ -3083,11 +3083,11 @@ Leptotila rufaxilla_Gråpandet Jorddue
 Leptotila verreauxi_Hvidpandet Jorddue
 Lesbia nuna_Grønhalet Slæbbærer
 Lesbia victoriae_Sorthalet Slæbbærer
-Leucippus baeri_Tumbeskolibri
-Leucippus chlorocercus_Olivenplettet Kolibri
+Leucippus baeri_Tumbes Hummingbird
+Leucippus chlorocercus_Olive-spotted Hummingbird
 Leucippus fallax_Okkerbrystet Kolibri
 Leucochloris albicollis_Hvidstrubet Kolibri
-Leucogeranus leucogeranus_Siberian Crane
+Leucogeranus leucogeranus_Snetrane
 Leucophaeus atricilla_Lattermåge
 Leucophaeus modestus_Atacamamåge
 Leucophaeus pipixcan_Præriemåge
@@ -3101,22 +3101,22 @@ Leucosticte australis_Coloradofjeldfinke
 Leucosticte nemoricola_Brun Fjeldfinke
 Leucosticte tephrocotis_Gråkronet Fjeldfinke
 Lewinia pectoralis_Skiferbrystet Rikse
-Lewinia striata_Slaty-breasted Rail
+Lewinia striata_Gråbrystet Skovrikse
 Lichenostomus melanops_Gyldenøret Honningæder
 Lichmera incana_Mørkebrun Honningæder
 Lichmera indistincta_Brun Honningæder
 Lichmera limbata_Indonesisk Honningæder
 Lichmera squamata_Skællet Honningæder
 Limnoctites rectirostris_Retnæbbet Spidshale
-Limnoctites sulphuriferus_Sulphur-bearded Reedhaunter
+Limnoctites sulphuriferus_Svovlstrubet Spidshale
 Limnodromus griseus_Kortnæbbet Sneppeklire
-Limnodromus scolopaceus_Langnæbbet sneppeklire
+Limnodromus scolopaceus_Langnæbbet Sneppeklire
 Limnornis curvirostris_Krumnæbbet Rørkryber
 Limnothlypis swainsonii_Spidsnæbbet Sanger
 Limosa fedoa_Præriekobbersneppe
-Limosa haemastica_Canadisk kobbersneppe
-Limosa lapponica_Lille kobbersneppe
-Limosa limosa_Stor kobbersneppe
+Limosa haemastica_Canadisk Kobbersneppe
+Limosa lapponica_Lille Kobbersneppe
+Limosa limosa_Stor Kobbersneppe
 Linaria cannabina_Tornirisk
 Linaria flavirostris_Bjergirisk
 Liocichla phoenicea_Rødkindet Pragttimalie
@@ -3132,23 +3132,23 @@ Lipaugus weberi_Kastanjekronet Piha
 Lissotis melanogaster_Sortbuget Trappe
 Lochmias nematura_Bækløber
 Locustella alishanensis_Taiwankratsmutte
-Locustella amnicola_Sakhalin-græshoppesanger
+Locustella amnicola_Sakhalin Grasshopper-Warbler
 Locustella castanea_Indonesisk Kratsmutte
 Locustella caudata_Langhalet Kratsmutte
-Locustella certhiola_Pallas Græshoppesanger
+Locustella certhiola_Pallas's Grasshopper-Warbler
 Locustella davidi_Baikalkratsmutte
-Locustella fasciolata_Stor Græshoppesanger
+Locustella fasciolata_Gray's Grasshopper-Warbler
 Locustella fluviatilis_Flodsanger
 Locustella kashmirensis_West Himalayan Bush Warbler
-Locustella lanceolata_Stribet græshoppesanger
+Locustella lanceolata_Stribet Græshoppesanger
 Locustella luscinioides_Savisanger
 Locustella luteoventris_Brun Kratsmutte
 Locustella mandelli_Rødbrun Kratsmutte
 Locustella montis_Javakratsmutte
 Locustella naevia_Græshoppesanger
-Locustella ochotensis_Kamchatkagræshoppesanger
-Locustella pleskei_Koreagræshoppesanger
-Locustella pryeri_Japansk Græshoppesanger
+Locustella ochotensis_Middendorff's Grasshopper-Warbler
+Locustella pleskei_Pleske's Grasshopper-Warbler
+Locustella pryeri_Marsh Grassbird
 Locustella tacsanowskia_Kinesisk Kratsmutte
 Locustella thoracica_Plettet Kratsmutte
 Lonchura atricapilla_Sorthovedet Nonne
@@ -3167,7 +3167,7 @@ Lophonetta specularioides_Kongeand
 Lophophanes cristatus_Topmejse
 Lophophanes dichrous_Gråstrubet Topmejse
 Lophophorus impejanus_Glansfasan
-Lophorina superba_Greater Lophorina
+Lophorina superba_Kraveparadisfugl
 Lophostrix cristata_Langhornet Ugle
 Lophotriccus eulophotes_Toppygmætyran
 Lophotriccus galeatus_Hjelmpygmætyran
@@ -3179,9 +3179,9 @@ Loriculus philippensis_Filippinsk Flagermuspapegøje
 Loriculus stigmatus_Sulawesiflagermuspaegøje
 Loriculus vernalis_Blåstrubet Flagermuspapegøje
 Lorius chlorocercus_Grønhalet Lori
-Loxia curvirostra_Lille korsnæb
-Loxia leucoptera_Hvidvinget korsnæb
-Loxia pytyopsittacus_Stor korsnæb
+Loxia curvirostra_Lille Korsnæb
+Loxia leucoptera_Hvidvinget Korsnæb
+Loxia pytyopsittacus_Stor Korsnæb
 Loxia sinesciuris_Cassia Crossbill
 Loxioides bailleui_Palila
 Loxops caeruleirostris_Akekee
@@ -3190,8 +3190,8 @@ Lullula arborea_Hedelærke
 Lurocalis rufiventris_Rødbuget Nathøg
 Lurocalis semitorquatus_Korthalet Nathøg
 Luscinia luscinia_Nattergal
-Luscinia megarhynchos_Sydlig nattergal
-Luscinia phaenicuroides_White-bellied Redstart
+Luscinia megarhynchos_Sydlig Nattergal
+Luscinia phaenicuroides_Hvidbuget Rødstjert
 Luscinia svecica_Blåhals
 Lybius torquatus_Båndet Tandskægfugl
 Lybius vieilloti_Gulgumpet Tandskægfugl
@@ -3203,7 +3203,7 @@ Machaerirhynchus nigripectus_Sortbrystet Bådnæb
 Machaeropterus deliciosus_Køllevinget Manakin
 Machaeropterus pyrocephalus_Ildkronet Manakin
 Machaeropterus regulus_Stribet Manakin
-Machaeropterus striolatus_Striolated Manakin
+Machaeropterus striolatus_Vestlig Stribet Manakin
 Machetornis rixosa_Kvægtyran
 Machlolophus aplonotus_Indian Yellow Tit
 Machlolophus holsti_Taiwanmejse
@@ -3249,7 +3249,7 @@ Malurus cyaneus_Sortstrubet Alfesmutte
 Malurus cyanocephalus_Blå Alfesmutte
 Malurus elegans_Rødvinget Alfesmutte
 Malurus lamberti_Alfesmutte
-Malurus leucopterus_White-winged Fairywren
+Malurus leucopterus_Hvidvinget Alfesmutte
 Malurus melanocephalus_Rødrygget Alfesmutte
 Malurus splendens_Pragtalfesmutte
 Manacus aurantiacus_Orangekravet Manakin
@@ -3259,17 +3259,17 @@ Manacus vitellinus_Gyldenskægget Manakin
 Manorina flavigula_Gulstrubet Bjældefugl
 Manorina melanocephala_Hvidpandet Bjældefugl
 Manorina melanophrys_Bjældefugl
-Mareca americana_Amerikansk pibeand
+Mareca americana_Amerikansk Pibeand
 Mareca falcata_Segland
 Mareca penelope_Pibeand
-Mareca sibilatrix_Chiloe Wigeon
+Mareca sibilatrix_Chilepibeand
 Mareca strepera_Knarand
 Margarops fuscatus_Antilrøddrossel
 Margarornis rubiginosus_Rødbrun Spidshale
 Margarornis squamiger_Perlespidshale
 Margarornis stellatus_Okkerplettet Spidshale
 Masius chrysopterus_Gladiatormanakin
-Mazaria propinqua_White-bellied Spinetail
+Mazaria propinqua_Hvidbuget Trådhale
 Mecocerculus hellmayri_Yungastyrannulet
 Mecocerculus leucophrys_Hvidstrubet Tyrannulet
 Mecocerculus minor_Svovlbuget Tyrannulet
@@ -3304,7 +3304,7 @@ Megascops ingens_Rødbrun Dværghornugle
 Megascops kennicottii_Vestamerikansk Dværghornugle
 Megascops koepckeae_Perudværghornugle
 Megascops marshalli_Tågeskovsdværghornugle
-Megascops nudipes_Puerto Rico-dværghornugle
+Megascops nudipes_Puerto Rican Screech-Owl
 Megascops petersoni_Kaneldværghornugle
 Megascops roboratus_Tørskovsdværghornugle
 Megascops roraimae_Roraimadværghornugle
@@ -3348,11 +3348,11 @@ Melaniparus funereus_Skifermejse
 Melaniparus leucomelas_Hvidvinget Sodmejse
 Melaniparus niger_Sodmejse
 Melaniparus thruppi_Somalimejse
-Melanitta americana_Amerikansk sortand
+Melanitta americana_Amerikansk Sortand
 Melanitta nigra_Sortand
 Melanitta perspicillata_Brilleand
 Melanochlora sultanea_Sultanmejse
-Melanocorypha bimaculata_Østlig kalanderlærke
+Melanocorypha bimaculata_Østlig Kalanderlærke
 Melanocorypha calandra_Kalanderlærke
 Melanocorypha maxima_Tibetanlærke
 Melanocorypha yeltoniensis_Sortlærke
@@ -3365,7 +3365,7 @@ Melanopareia maximiliani_Chacomånebryst
 Melanopareia torquata_Brasiliansk Månebryst
 Melanoptila glabrirostris_Sort Kattedrossel
 Melanorectes nigrescens_Sort Pitohui
-Melanospiza bicolor_Black-faced Grassquit
+Melanospiza bicolor_Jamaicafinke
 Melanotis caerulescens_Blå Spottedrossel
 Melanotis hypoleucus_Hvidbrystet Spottedrossel
 Meleagris gallopavo_Kalkun
@@ -3374,7 +3374,7 @@ Meliarchus sclateri_Makirahonningæder
 Melidectes belfordi_Blåøjet Honningæder
 Melidora macrorrhina_Krognæbbet Isfugl
 Melilestes megarhynchus_Langnæbbet Honningæder
-Meliphaga gracilis_Lille Guløret Honningæder
+Meliphaga gracilis_Graceful Honeyeater
 Meliphaga lewinii_Guløret Honningæder
 Meliphaga notata_Gulplettet Honningæder
 Melithreptus affinis_Tasmansk Honningæder
@@ -3388,8 +3388,8 @@ Mellisuga helenae_Bikolibri
 Mellisuga minima_Jernurtkolibri
 Melocichla mentalis_Skæggræssanger
 Melopsittacus undulatus_Undulat
-Melopyrrha portoricensis_Puerto Rican Bullfinch
-Melopyrrha violacea_Greater Antillean Bullfinch
+Melopyrrha portoricensis_Puerto Rico-finke
+Melopyrrha violacea_Stor Antilfinke
 Melospiza georgiana_Sumpspurv
 Melospiza lincolnii_Stribet Sangspurv
 Melospiza melodia_Sangspurv
@@ -3403,8 +3403,8 @@ Melozone kieneri_Rustnakket Jordspurv
 Melozone leucotis_Hvidkindet Jordspurv
 Menura alberti_Alberts Lyrehale
 Menura novaehollandiae_Grå Lyrehale
-Mergus merganser_Stor skallesluger
-Mergus serrator_Toppet skallesluger
+Mergus merganser_Stor Skallesluger
+Mergus serrator_Toppet Skallesluger
 Merops albicollis_Hvidstrubet Biæder
 Merops apiaster_Biæder
 Merops bullockoides_Hvidpandet Biæder
@@ -3413,10 +3413,10 @@ Merops leschenaulti_Rustbiæder
 Merops oreobates_Okkerbrystet Biæder
 Merops orientalis_Lille Grøn Biæder
 Merops ornatus_Regnbuebiæder
-Merops persicus_Grøn biæder
+Merops persicus_Grøn Biæder
 Merops philippinus_Blåhalet Biæder
 Merops pusillus_Dværgbiæder
-Merops superciliosus_Madagaskarbiæder
+Merops superciliosus_Madagaskar-biæder
 Merops viridis_Brunnakket Biæder
 Merulaxis ater_Børstefjæs
 Merulaxis stresemanni_Stresemanns Børstefjæs
@@ -3447,20 +3447,20 @@ Micromonacha lanceolata_Munkedovenfugl
 Micronisus gabar_Gabarhøg
 Micropsitta finschii_Grøn Spættepapegøje
 Micropternus brachyurus_Rustfarvet Spætte
-Micropygia schomburgkii_Ocellated Crake
+Micropygia schomburgkii_Perlerørvagtel
 Microrhopias quixensis_Pletvinget Myresmutte
-Microspingus cabanisi_Gray-throated Warbling-Finch
-Microspingus cinereus_Cinereous Warbling-Finch
-Microspingus erythrophrys_Rusty-browed Warbling-Finch
-Microspingus lateralis_Buff-throated Warbling-Finch
-Microspingus melanoleucus_Black-capped Warbling-Finch
-Microspingus torquatus_Ringed Warbling-Finch
+Microspingus cabanisi_Gråstrubet Dansefinke
+Microspingus cinereus_Grå Dansefinke
+Microspingus erythrophrys_Brunhalset Dansefinke
+Microspingus lateralis_Rødgumpet Dansefinke
+Microspingus melanoleucus_Sorthovedet Dansefinke
+Microspingus torquatus_Ringdansefinke
 Microxenops milleri_Rødhalet Xenops
 Milvago chimachima_Lys Caracara
 Milvago chimango_Chimango-caracara
-Milvus aegyptius_Gulnæbbet glente
-Milvus migrans_Sort glente
-Milvus milvus_Rød glente
+Milvus aegyptius_Gulnæbbet Glente
+Milvus migrans_Sort Glente
+Milvus milvus_Rød Glente
 Mimus dorsalis_Boliviaspottedros
 Mimus gilvus_Tropespottedrossel
 Mimus gundlachii_Bahamaspottedrossel
@@ -3499,9 +3499,9 @@ Mitrospingus oleagineus_Gråmasket Tangar
 Mitu salvini_Salvins Hokko
 Mitu tomentosum_Topløs Hokko
 Mitu tuberosum_Kamnæbshokko
-Mixornis bornensis_Bold-striped Tit-Babbler
-Mixornis flavicollis_Gray-cheeked Tit-Babbler
-Mixornis gularis_Pin-striped Tit-Babbler
+Mixornis bornensis_Sortstribet Mejsetimalie
+Mixornis flavicollis_Gråhovedet Mejsetimalie
+Mixornis gularis_Stribet Mejsetimalie
 Mniotilta varia_Sorthvid Sanger
 Modulatrix stictigula_Pletstrube
 Mohoua albicilla_Hvidhovedet Mohoua
@@ -3526,8 +3526,8 @@ Monasa atra_Sort Trappist
 Monasa flavirostris_Gulnæbbet Trappist
 Monasa morphoeus_Hvidmasket Trappist
 Monasa nigrifrons_Sortpandet Trappist
-Montecincla fairbanki_Palani Laughingthrush
-Monticola cinclorhynchus_Himalayastendrossel
+Montecincla fairbanki_Keralaskadedrossel
+Monticola cinclorhyncha_Himalayastendrossel
 Monticola gularis_Manchurerstendrossel
 Monticola imerina_Lavlandsstendrossel
 Monticola rufiventris_Stor Stendrossel
@@ -3541,13 +3541,13 @@ Montifringilla taczanowskii_White-rumped Snowfinch
 Morococcyx erythropygus_Lille Jordgøg
 Morphnarchus princeps_Stribet Våge
 Morus bassanus_Sule
-Motacilla aguimp_African Pied Wagtail
-Motacilla alba_Hvid vipstjert
+Motacilla aguimp_Afrikansk Vipstjert
+Motacilla alba_Hvid Vipstjert
 Motacilla capensis_Kapvipstjert
 Motacilla cinerea_Bjergvipstjert
 Motacilla citreola_Citronvipstjert
 Motacilla clara_Afrikansk Bjergvipstjert
-Motacilla flava_Gul vipstjert
+Motacilla flava_Gul Vipstjert
 Motacilla flaviventris_Madagaskarvipstjert
 Motacilla grandis_Japansk Vipstjert
 Motacilla maderaspatensis_Indisk Vipstjert
@@ -3556,18 +3556,18 @@ Mulleripicus fulvus_Sulawesimyrespætte
 Mulleripicus pulverulentus_Stor Myrespætte
 Muscicapa adusta_Mørk Fluesnapper
 Muscicapa aquatica_Sumpfluesnapper
-Muscicapa dauurica_Brun fluesnapper
+Muscicapa dauurica_Brun Fluesnapper
 Muscicapa ferruginea_Rustfarvet Fluesnapper
 Muscicapa griseisticta_Gråstribet Fluesnapper
 Muscicapa sibirica_Sibirisk Fluesnapper
-Muscicapa striata_Grå fluesnapper
+Muscicapa striata_Grå Fluesnapper
 Muscicapa tyrrhenica_Mediterranean Flycatcher
 Muscigralla brevicauda_Korthalet Jordtyran
 Muscipipra vetula_Kløfthaletyran
 Muscisaxicola albilora_Hvidbrynet Jordtyran
 Muscisaxicola maculirostris_Pletnæbbet Jordtyran
 Musophaga rossae_Gulmasket Turako
-Mustelirallus albicollis_Ash-throated Crake
+Mustelirallus albicollis_Hvidstrubet Rørvagtel
 Mustelirallus erythrops_Paint-billed Crake
 Myadestes coloratus_Panamaklarinetfugl
 Myadestes elisabeth_Cubaklarinetfugl
@@ -3676,23 +3676,23 @@ Myrmecocichla collaris_Ruaha Chat
 Myrmecocichla formicivora_Gråbrun Myrepikker
 Myrmecocichla monticola_Kapstenpikker
 Myrmelastes humaythae_Humaita Antbird
-Myrmelastes hyperythrus_Plumbeous Antbird
-Myrmelastes leucostigma_Spot-winged Antbird
+Myrmelastes hyperythrus_Blygrå Myrefugl
+Myrmelastes leucostigma_Pletvinget Myrefugl
 Myrmelastes rufifacies_Rufous-faced Antbird
 Myrmelastes saturatus_Roraiman Antbird
-Myrmelastes schistaceus_Slate-colored Antbird
+Myrmelastes schistaceus_Skifergrå Myrefugl
 Myrmoborus leucophrys_Hvidbrynet Myrefugl
-Myrmoborus lophotes_White-lined Antbird
+Myrmoborus lophotes_Topmyrefugl
 Myrmoborus lugubris_Gråbrystet Myrefugl
 Myrmoborus melanurus_Skifermyrefugl
 Myrmoborus myotherinus_Sortmasket Myrefugl
 Myrmochanes hemileucus_Broget Myrefugl
 Myrmoderus eowilsoni_Cordillera Azul Antbird
-Myrmoderus ferrugineus_Ferruginous-backed Antbird
-Myrmoderus loricatus_White-bibbed Antbird
-Myrmoderus ruficauda_Scalloped Antbird
-Myrmoderus squamosus_Squamate Antbird
-Myrmophylax atrothorax_Black-throated Antbird
+Myrmoderus ferrugineus_Rustrygget Myrefugl
+Myrmoderus loricatus_Hvidrandet Myrefugl
+Myrmoderus ruficauda_Brunhalet Myrefugl
+Myrmoderus squamosus_Skællet Myrefugl
+Myrmophylax atrothorax_Sortstrubet Myrefugl
 Myrmorchilus strigilatus_Rygstribet Myresmutte
 Myrmornis torquata_Pragtmyrefugl
 Myrmothera campanisona_Drosselmyrepitta
@@ -3728,16 +3728,16 @@ Myzomela obscura_Mørk Honningæder
 Myzomela rosenbergii_Sortrød Honningæder
 Myzomela rubratra_Mikronesisk Honningæder
 Myzomela sanguinolenta_Skarlagen Honningæder
-Napothera albostriata_Sumatran Wren-Babbler
-Napothera danjoui_Short-tailed Scimitar-Babbler
+Napothera albostriata_Sumatrajordtimalie
+Napothera danjoui_Korthalet Segltimalie
 Napothera epilepidota_Dværggærdesmuttetimalie
-Napothera malacoptila_Long-billed Wren-Babbler
+Napothera malacoptila_Himalayajordtimalie
 Nasica longirostris_Langnæbbet Trækryber
 Nectarinia famosa_Malakitsolfugl
 Nectarinia kilimensis_Bronzesolfugl
 Nemosia pileata_Hvidtøjlet Tangar
 Neochmia temporalis_Tornastrild
-Neocossyphus finschii_Finsch's Flycatcher-Thrush
+Neocossyphus finschi_Finsch's Flycatcher-Thrush
 Neocossyphus fraseri_Rufous Flycatcher-Thrush
 Neocossyphus rufus_Rødhalet Fluedrossel
 Neoctantes niger_Sort Myretornskade
@@ -3764,7 +3764,7 @@ Nesoptilotis flavicollis_Gulstrubet Honningæder
 Nesoptilotis leucotis_Hvidøret Honningæder
 Nesospingus speculiferus_Puerto Rico-tangar
 Nestor meridionalis_Kaka
-Netta rufina_Rødhovedet and
+Netta rufina_Rødhovedet And
 Newtonia amphichroa_Mørk Newtonia
 Newtonia brunneicauda_Newtonia
 Nicator chloris_Vestlig Nicator
@@ -3821,13 +3821,13 @@ Nothura boraquira_Hvidbuget Vagteltinamu
 Nothura darwinii_Andesvagteltinamu
 Nothura maculosa_Plettet Vagteltinamu
 Notiomystis cincta_Skæghonningæder
-Notopholia corrusca_Sortbuget Glansstær
+Notopholia corusca_Sortbuget Glansstær
 Nucifraga caryocatactes_Nøddekrige
 Nucifraga columbiana_Amerikansk Nøddekrige
 Numenius americanus_Langnæbbet Spove
-Numenius arquata_Stor regnspove
+Numenius arquata_Storspove
 Numenius madagascariensis_Østspove
-Numenius phaeopus_Lille regnspove
+Numenius phaeopus_Småspove
 Numenius tahitiensis_Alaskaspove
 Numida meleagris_Perlehøne
 Nyctanassa violacea_Gulkronet Nathejre
@@ -3855,8 +3855,8 @@ Nystalus obamai_Western Striolated-Puffbird
 Nystalus radiatus_Vatret Dovenfugl
 Nystalus striatipectus_Chacodovenfugl
 Nystalus striolatus_Stribet Dovenfugl
-Oceanodroma castro_Madeirastormsvale
-Oceanodroma leucorhoa_Stor stormsvale
+Oceanodroma castro_Madeira-stormsvale
+Oceanodroma leucorhoa_Stor Stormsvale
 Ochetorhynchus andaecola_Klippejordlusker
 Ochetorhynchus melanurus_Chilia
 Ochetorhynchus phoenicurus_Båndhalet Jordlusker
@@ -3891,17 +3891,17 @@ Odontophorus stellatus_Perutandvagtel
 Odontophorus strophium_Halsbåndstandvagtel
 Odontorchilus branickii_Gråsmutte
 Odontorchilus cinereus_Brasiliansk Gråsmutte
-Oena capensis_Namaquadue
-Oenanthe cypriaca_Cypernstenpikker
+Oena capensis_Namaqua-due
+Oenanthe cypriaca_Cypern-stenpikker
 Oenanthe deserti_Ørkenstenpikker
 Oenanthe finschii_Hvidrygget Stenpikker
 Oenanthe fusca_Brunbuget Stensmutte
-Oenanthe hispanica_Middelhavsstenpikker
+Oenanthe hispanica_Middelhavs-stenpikker
 Oenanthe isabellina_Isabellastenpikker
-Oenanthe leucopyga_Hvidkronet stenpikker
+Oenanthe leucopyga_Hvidkronet Stenpikker
 Oenanthe leucura_Sørgestenpikker
 Oenanthe melanura_Sortstjert
-Oenanthe moesta_Berberstenpikker
+Oenanthe moesta_Berber-stenpikker
 Oenanthe oenanthe_Stenpikker
 Oenanthe pileata_Sortbrystet Stenpikker
 Oenanthe pleschanka_Nonnestenpikker
@@ -3909,15 +3909,15 @@ Oenanthe scotocerca_Brunhalet Stensmutte
 Ognorhynchus icterotis_Guløret Parakit
 Oncostoma cinereigulare_Krumnæbstyran
 Oncostoma olivaceum_Sydlig Krumnæbstyran
-Oneillornis lunulatus_Lunulated Antbird
-Oneillornis salvini_White-throated Antbird
+Oneillornis lunulatus_Vestlig Várzeamyrefugl
+Oneillornis salvini_Hvidstrubet Myrefugl
 Onychognathus morio_Rødvinget Sortstær
 Onychognathus nabouroup_Lysvinget Sortstær
 Onychognathus tenuirostris_Tyndnæbbet Sortstær
 Onychognathus tristramii_Tristrams Sortstær
 Onychognathus walleri_Korthalet Stær
 Onychoprion aleuticus_Beringsterne
-Onychoprion fuscatus_Sodfarvet terne
+Onychoprion fuscatus_Sodfarvet Terne
 Onychorhynchus coronatus_Viftetyran
 Onychorhynchus swainsoni_Sydlig Viftetyran
 Opisthocomus hoazin_Hoatzin
@@ -3938,7 +3938,7 @@ Oreotrochilus estella_Punastjerne
 Oressochen jubatus_Orinoco Goose
 Oressochen melanopterus_Andean Goose
 Oriolus auratus_Sortmasket Pirol
-Oriolus brachyrynchus_Western Black-headed Oriole
+Oriolus brachyrynchus_Olivenrygget Hættepirol
 Oriolus chinensis_Sortnakket Pirol
 Oriolus chlorocephalus_Grønhovedet Pirol
 Oriolus crassirostris_São Tomé-pirol
@@ -3982,7 +3982,7 @@ Orthogonys chloricterus_Olivengrøn Tangar
 Orthonyx novaeguineae_Almindelig Tømmerløber
 Orthonyx spaldingii_Stor Tømmerløber
 Orthonyx temminckii_Tømmerløber
-Orthopsittaca manilata_Rødbuget Dværgara
+Orthopsittaca manilatus_Rødbuget Dværgara
 Orthotomus atrogularis_Sorthalset Skrædderfugl
 Orthotomus chaktomuk_Cambodian Tailorbird
 Orthotomus cinereiceps_Hvidøret Skrædderfugl
@@ -4019,7 +4019,7 @@ Otus umbra_Umbrodværghornugle
 Oxylabes madagascariensis_Madagaskartimalie
 Oxyruncus cristatus_Spidsnæb
 Oxyura ferruginea_Andesskarveand
-Oxyura jamaicensis_Amerikansk skarveand
+Oxyura jamaicensis_Amerikansk Skarveand
 Pachycare flavogriseum_Fløjter
 Pachycephala chlorura_Vanuatu Whistler
 Pachycephala cinerea_Mangrovefløjter
@@ -4070,12 +4070,12 @@ Panurus biarmicus_Skægmejse
 Panyptila sanctihieronymi_Svalehalesejler
 Parabuteo leucorrhous_Hvidgumpet Våge
 Parabuteo unicinctus_Brunskuldret Våge
-Paraclaravis mondetoura_Maroon-chested Ground Dove
+Paraclaravis mondetoura_Brunbrystet Grådue
 Paradisaea minor_Lille Paradisfugl
 Paradisaea rubra_Rød Paradisfugl
 Paradoxornis flavirostris_Sortøret Papegøjenæb
 Paradoxornis guttaticollis_Skælstrubet Papegøjenæb
-Paradoxornis heudei_Grovnæbbet Papegøjenæb
+Paradoxornis heudei_Reed Parrotbill
 Pardalotus punctatus_Plettet Panterfugl
 Pardalotus rubricatus_Rødbrynet Panterfugl
 Pardalotus striatus_Stribet Panterfugl
@@ -4089,7 +4089,7 @@ Paroaria capitata_Sortstrubet Kardinal
 Paroaria coronata_Grå Kardinal
 Paroaria dominicana_Dominikanerkardinal
 Paroaria gularis_Brunstrubet Kardinal
-Parophasma galinieri_Etiopisk Timalie
+Parophasma galinieri_Abyssinian Catbird
 Paroreomyza montana_Dværgklatrefinke
 Parotia sefilata_Parotia
 Parus cinereus_Grå Musvit
@@ -4097,17 +4097,17 @@ Parus major_Musvit
 Parus minor_Lille Musvit
 Parus monticolus_Grønrygget Musvit
 Passer ammodendri_Saxaulspurv
-Passer cinnamomeus_Russet Sparrow
+Passer cinnamomeus_Rødbrun Spurv
 Passer diffusus_Angolaspurv
 Passer domesticus_Gråspurv
 Passer flaveolus_Peguspurv
 Passer griseus_Gråhovedet Spurv
-Passer hispaniolensis_Spansk spurv
+Passer hispaniolensis_Spansk Spurv
 Passer iagoensis_Kap Verde-spurv
 Passer italiae_Italiensk Spurv
-Passer luteus_Sahelspurv
+Passer luteus_Sahel-spurv
 Passer melanurus_Kapspurv
-Passer moabiticus_Dødehavsspurv
+Passer moabiticus_Dødehavs-spurv
 Passer montanus_Skovspurv
 Passer pyrrhonotus_Indusspurv
 Passer rufocinctus_Kenyaspurv
@@ -4147,16 +4147,16 @@ Pelargopsis amauroptera_Brunvinget Storkenæbsisfugl
 Pelargopsis capensis_Blåvinget Storkenæbsisfugl
 Pelecanus erythrorhynchos_Amerikansk Hvid Pelikan
 Pelecanus occidentalis_Brun Pelikan
-Pelecanus onocrotalus_Almindelig pelikan
+Pelecanus onocrotalus_Hvid Pelikan
 Peliperdix coqui_Coquifrankolin
 Pellorneum albiventre_Skælstrubet Drosseltimalie
-Pellorneum bicolor_Ferruginous Babbler
+Pellorneum bicolor_Rustdrosseltimalie
 Pellorneum capistratum_Sortkronet Drosseltimalie
-Pellorneum celebense_Sulawesi Babbler
+Pellorneum celebense_Sulawesidrosseltimalie
 Pellorneum fuscocapillus_Sri Lanka-drosseltimalie
-Pellorneum malaccense_Short-tailed Babbler
+Pellorneum malaccense_Korthalet Drosseltimalie
 Pellorneum pyrrogenys_Rødbrynet Drosseltimalie
-Pellorneum rostratum_White-chested Babbler
+Pellorneum rostratum_Hvidbrystet Drosseltimalie
 Pellorneum ruficeps_Plettet Drosseltimalie
 Pellorneum tickelli_Lysbrystet Drosseltimalie
 Peltops montanus_Højlandspeltops
@@ -4272,7 +4272,7 @@ Phalacrocorax carbo_Skarv
 Phalaenoptilus nuttallii_Amerikansk Poorwill
 Phalaropus fulicarius_Thorshane
 Phalaropus lobatus_Odinshane
-Phalaropus tricolor_Amerikansk svømmesneppe
+Phalaropus tricolor_Amerikansk Svømmesneppe
 Phapitreron leucotis_Grønnakket Brundue
 Phaps chalcoptera_Bronzevinge
 Phaps elegans_Brunrygget Bronzevinge
@@ -4288,7 +4288,7 @@ Phelpsia inornata_Hvidskægget Tyran
 Pheucticus aureoventris_Sortrygget Kernebider
 Pheucticus chrysogaster_Gulbuget Kernebider
 Pheucticus chrysopeplus_Gul Kernebider
-Pheucticus ludovicianus_Rosenbrystet kernebider
+Pheucticus ludovicianus_Rosenbrystet Kernebider
 Pheucticus melanocephalus_Sorthovedet Kernebider
 Pheucticus tibialis_Sortlåret Kernebider
 Pheugopedius atrogularis_Sortstrubet Smutte
@@ -4318,11 +4318,11 @@ Philetairus socius_Republikaner
 Philortyx fasciatus_Båndvagtel
 Philydor atricapillus_Sortkronet Løvkæmmer
 Philydor erythrocercum_Rustgumpet Løvkæmmer
-Philydor erythropterum_Grårygget Løvkæmmer
+Philydor erythropterum_Chestnut-winged Foliage-gleaner
 Philydor fuscipenne_Mørkvinget Løvkæmmer
 Philydor novaesi_Alagoasløvkæmmer
 Philydor pyrrhodes_Kanelløvkæmmer
-Philydor rufum_Gulpandet Løvkæmmer
+Philydor rufum_Buff-fronted Foliage-gleaner
 Phimosus infuscatus_Brun Ibis
 Phlegopsis erythroptera_Rødvinget Nøgenøje
 Phlegopsis nigromaculata_Sortplettet Nøgenøje
@@ -4334,14 +4334,14 @@ Phoebastria immutabilis_Laysanalbatros
 Phoebastria nigripes_Sortfodet Albatros
 Phoenicircus carnifex_Blodkotinga
 Phoenicircus nigricollis_Rød Kotinga
-Phoeniconaias minor_Lille flamingo
+Phoeniconaias minor_Lille Flamingo
 Phoenicoparrus andinus_Andesflamingo
 Phoenicopterus chilensis_Chileflamingo
-Phoenicopterus roseus_Stor flamingo
+Phoenicopterus roseus_Stor Flamingo
 Phoenicopterus ruber_Cariberflamingo
 Phoeniculus bollei_Hvidhovedet Skovhærfugl
 Phoeniculus purpureus_Purpurskovhærfugl
-Phoenicurus auroreus_Amurrødstjert
+Phoenicurus auroreus_Amur-rødstjert
 Phoenicurus frontalis_Blåpandet Rødstjert
 Phoenicurus fuliginosus_Vandrødstjert
 Phoenicurus hodgsoni_Kinesisk Rødstjert
@@ -4365,7 +4365,7 @@ Phyllastrephus flavostriatus_Gråmasket Bulbul
 Phyllastrephus placidus_Lys Bulbul
 Phyllastrephus strepitans_Nordlig Brunbulbul
 Phyllastrephus terrestris_Jordbulbul
-Phyllergates cuculatus_Bjergskrædderfugl
+Phyllergates cucullatus_Bjergskrædderfugl
 Phyllergates heterolaemus_Mindanaoskrædderfugl
 Phyllomyias burmeisteri_Rufodstyrannulet
 Phyllomyias cinereiceps_Askehovedet Tyrannulet
@@ -4400,11 +4400,11 @@ Phylloscopus bonelli_Bjergløvsanger
 Phylloscopus borealis_Nordsanger
 Phylloscopus borealoides_Sakhalinløvsanger
 Phylloscopus budongoensis_Ugandaløvsanger
-Phylloscopus burkii_Green-crowned Warbler
+Phylloscopus burkii_Gulbrillet Sanger
 Phylloscopus calciatilis_Limestone Leaf Warbler
 Phylloscopus canariensis_Kanarisk Gransanger
 Phylloscopus cantator_Gulmasket Løvsanger
-Phylloscopus castaniceps_Chestnut-crowned Warbler
+Phylloscopus castaniceps_Kastanjekronet Sanger
 Phylloscopus chloronotus_Lysgumpet Sanger
 Phylloscopus claudiae_Claudia's Leaf Warbler
 Phylloscopus collybita_Gransanger
@@ -4413,55 +4413,55 @@ Phylloscopus emeiensis_Emeiløvsanger
 Phylloscopus examinandus_Kamchatka Leaf Warbler
 Phylloscopus forresti_Sichuanløvsanger
 Phylloscopus fuligiventer_Mørk Løvsanger
-Phylloscopus fuscatus_Brun løvsanger
+Phylloscopus fuscatus_Brun Løvsanger
 Phylloscopus goodsoni_Hartert's Leaf Warbler
-Phylloscopus grammiceps_Sunda Warbler
+Phylloscopus grammiceps_Sundasanger
 Phylloscopus griseolus_Sinkiangløvsanger
-Phylloscopus humei_Himalayasanger
+Phylloscopus humei_Himalaya-sanger
 Phylloscopus ibericus_Iberisk Gransanger
 Phylloscopus ijimae_Izuløvsanger
-Phylloscopus inornatus_Hvidbrynet løvsanger
+Phylloscopus inornatus_Hvidbrynet Løvsanger
 Phylloscopus intensior_Davison's Leaf Warbler
-Phylloscopus intermedius_White-spectacled Warbler
+Phylloscopus intermedius_Hvidbrillet Sanger
 Phylloscopus kansuensis_Gansuløvsanger
 Phylloscopus maculipennis_Gråhovedet Løvsanger
-Phylloscopus maforensis_Ny Guinea-løvsanger
+Phylloscopus maforensis_Island Leaf Warbler
 Phylloscopus magnirostris_Langnæbbet Løvsanger
 Phylloscopus makirensis_Makiraløvsanger
-Phylloscopus montis_Yellow-breasted Warbler
+Phylloscopus montis_Gulbrystet Sanger
 Phylloscopus neglectus_Dværgløvsanger
 Phylloscopus nigrorum_Negros Leaf Warbler
-Phylloscopus nitidus_Grøn sanger
+Phylloscopus nitidus_Grøn Lundsanger
 Phylloscopus occipitalis_Vestlig Kronsanger
 Phylloscopus occisinensis_Alpine Leaf Warbler
 Phylloscopus ogilviegranti_Kloss's Leaf Warbler
-Phylloscopus omeiensis_Martens's Warbler
-Phylloscopus orientalis_Balkanløvsanger
-Phylloscopus plumbeitarsus_Østlig lundsanger
-Phylloscopus poliogenys_Gray-cheeked Warbler
+Phylloscopus omeiensis_Omeisanger
+Phylloscopus orientalis_Balkan-løvsanger
+Phylloscopus plumbeitarsus_Østlig Lundsanger
+Phylloscopus poliogenys_Gråkindet Sanger
 Phylloscopus presbytes_Timorløvsanger
 Phylloscopus proregulus_Fuglekongesanger
 Phylloscopus pulcher_Okkerbåndet Løvsanger
 Phylloscopus reguloides_Rhododendronløvsanger
 Phylloscopus ruficapilla_Rødkronet Løvsanger
 Phylloscopus sarasinorum_Sulawesiløvsanger
-Phylloscopus schwarzi_Schwarz' løvsanger
+Phylloscopus schwarzi_Schwarz´ Løvsanger
 Phylloscopus sibilatrix_Skovsanger
 Phylloscopus sindianus_Bjerggransanger
-Phylloscopus soror_Alström's Warbler
+Phylloscopus soror_Hobiachinsanger
 Phylloscopus subaffinis_Kinesisk Løvsanger
 Phylloscopus tenellipes_Lysbenet Løvsanger
-Phylloscopus tephrocephalus_Gray-crowned Warbler
+Phylloscopus tephrocephalus_Gråkronet Sanger
 Phylloscopus trivirgatus_Indonesisk Løvsanger
 Phylloscopus trochiloides_Lundsanger
 Phylloscopus trochilus_Løvsanger
 Phylloscopus tytleri_Tyndnæbbet Løvsanger
 Phylloscopus umbrovirens_Rødbrun Løvsanger
-Phylloscopus valentini_Bianchi's Warbler
-Phylloscopus whistleri_Whistler's Warbler
+Phylloscopus valentini_Bianchisanger
+Phylloscopus whistleri_Nagasanger
 Phylloscopus xanthodryas_Japanese Leaf Warbler
 Phylloscopus xanthoschistos_Hvidbrynet Sanger
-Phylloscopus yunnanensis_Chinese Leaf Warbler
+Phylloscopus yunnanensis_Yunnanløvsanger
 Phytotoma raimondii_Perubladskærer
 Phytotoma rara_Chilebladskærer
 Phytotoma rutila_Rød Bladskærer
@@ -4473,7 +4473,7 @@ Pica pica_Husskade
 Pica serica_Oriental Magpie
 Picoides arcticus_Sortrygget Flagspætte
 Picoides dorsalis_Amerikansk Tretået Spætte
-Picoides tridactylus_Tretået spætte
+Picoides tridactylus_Tretået Spætte
 Piculus aurulentus_Hvidbrynet Spætte
 Piculus callopterus_Panamaspætte
 Piculus chrysochloros_Gyldengrøn Spætte
@@ -4484,7 +4484,7 @@ Picumnus aurifrons_Tværstribet Dværgspætte
 Picumnus cirratus_Hvidbåndet Dværgspætte
 Picumnus dorbignyanus_Olivengrå Dværgspætte
 Picumnus exilis_Glinsende Dværgspætte
-Picumnus fulvescens_Pernambucodværgspætte
+Picumnus fulvescens_Tawny Piculet
 Picumnus granadensis_Grålig Dværgspætte
 Picumnus innominatus_Plettet Dværgspætte
 Picumnus lafresnayi_Pletnakket Dværgspætte
@@ -4502,7 +4502,7 @@ Picus erythropygius_Sorthovedet Grønspætte
 Picus puniceus_Rødvinget Grønspætte
 Picus sharpei_Iberisk Grønspætte
 Picus squamatus_Skælbuget Grønspætte
-Picus vaillantii_Berbergrønspætte
+Picus vaillantii_Berber-grønspætte
 Picus viridis_Grønspætte
 Picus vittatus_Bambusgrønspætte
 Picus xanthopygaeus_Skælstrubet Grønspætte
@@ -4527,7 +4527,7 @@ Pipilo ocai_Rustnakket Buskspurv
 Pipra aureola_Flammemanakin
 Pipra fasciicauda_Halebåndsmanakin
 Pipra filicauda_Trådhalet Manakin
-Pipraeidea bonariensis_Blue-and-yellow Tanager
+Pipraeidea bonariensis_Orangetangar
 Pipraeidea melanonota_Okkerbuget Tangar
 Pipreola arcuata_Tværstribet Frugtæder
 Pipreola aureopectus_Gulbrystet Frugtæder
@@ -4553,7 +4553,7 @@ Piranga rubriceps_Gulskuldret Ildtangar
 Pitangus lictor_Lesser Kiskadee
 Pitangus sulphuratus_Kiskadie
 Pithys albifrons_Hvidpandet Myrefugl
-Pithys castaneus_White-masked Antbird
+Pithys castaneus_Hvidmasket Myrefugl
 Pitohui kirhocephalus_Variabel Pitohui
 Pitta anerythra_Maskepitta
 Pitta brachyura_Indisk Pitta
@@ -4592,7 +4592,7 @@ Plectorhyncha lanceolata_Lancethonningæder
 Plectrophenax hyperboreus_Beringssnespurv
 Plectrophenax nivalis_Snespurv
 Plegadis chihi_Hvidmasket Ibis
-Plegadis falcinellus_Sort ibis
+Plegadis falcinellus_Sort Ibis
 Plegadis ridgwayi_Punaibis
 Plocepasser mahali_Spurvevæver
 Plocepasser superciliosus_Brunisset Spurvevæver
@@ -4618,8 +4618,8 @@ Ploceus vitellinus_Blommegul Maskevæver
 Ploceus xanthops_Safrangul Væver
 Ploceus xanthopterus_Sydlig Brunstrubet Væver
 Pluvialis apricaria_Hjejle
-Pluvialis dominica_Amerikansk hjejle
-Pluvialis fulva_Sibirisk hjejle
+Pluvialis dominica_Amerikansk Hjejle
+Pluvialis fulva_Sibirisk Hjejle
 Pluvialis squatarola_Strandhjejle
 Pluvianus aegyptius_Krokodillevogter
 Pnoepyga albiventer_Skæltimalie
@@ -4629,18 +4629,18 @@ Pnoepyga pusilla_Lille Skæltimalie
 Podargus ocellatus_Hvidbrynet Frømund
 Podargus papuensis_Stor Frømund
 Podargus strigoides_Australsk Frømund
-Podiceps auritus_Nordisk lappedykker
-Podiceps cristatus_Toppet lappedykker
+Podiceps auritus_Nordisk Lappedykker
+Podiceps cristatus_Toppet Lappedykker
 Podiceps gallardoi_Hættelappedykker
-Podiceps grisegena_Gråstrubet lappedykker
+Podiceps grisegena_Gråstrubet Lappedykker
 Podiceps major_Stor Lappedykker
-Podiceps nigricollis_Sorthalset lappedykker
+Podiceps nigricollis_Sorthalset Lappedykker
 Podiceps occipitalis_Sølvlappedykker
 Podiceps taczanowskii_Junínlappedykker
 Podilymbus podiceps_Tyknæbbet Lappedykker
 Poecile atricapillus_Amerikansk Fyrremejse
 Poecile carolinensis_Carolinamejse
-Poecile cinctus_lapmejse
+Poecile cinctus_Lapmejse
 Poecile gambeli_Bjergmejse
 Poecile hudsonicus_Canadamejse
 Poecile hyrcanus_Iransk Sørgemejse
@@ -4651,8 +4651,8 @@ Poecile rufescens_Kastanjerygget Mejse
 Poecile sclateri_Mexicomejse
 Poecile weigoldicus_Sichuan Tit
 Poecilodryas hypoleuca_Sorthvid Sangfluesnapper
-Poecilostreptus cabanisi_Azure-rumped Tanager
-Poecilostreptus palmeri_Gray-and-gold Tanager
+Poecilostreptus cabanisi_Azurtangar
+Poecilostreptus palmeri_Hvidbrynet Tangar
 Poecilotriccus albifacies_Hvidkindet Todityran
 Poecilotriccus calopterus_Gyldenvinget Todityran
 Poecilotriccus capitalis_Sorthvid Todityran
@@ -4678,7 +4678,7 @@ Poicephalus meyeri_Meyers Papegøje
 Poicephalus robustus_Kappapegøje
 Poicephalus rufiventris_Rødbuget Brunpapegøje
 Poicephalus senegalus_Senegalpapegøje
-Poliocrania exsul_Chestnut-backed Antbird
+Poliocrania exsul_Kastanjerygget Myrefugl
 Polioptila albiloris_Hvidtøjlet Snerresmutte
 Polioptila caerulea_Blågrå Snerresmutte
 Polioptila californica_Bajasnerresmutte
@@ -4712,8 +4712,8 @@ Pomatorhinus superciliaris_Langnæbbet Segltimalie
 Pomatostomus ruficeps_Kastanjekronet Buenæb
 Pomatostomus superciliosus_Hvidbrynet Buenæb
 Pomatostomus temporalis_Gråkronet Buenæb
-Poodytes gramineus_Little Grassbird
-Poodytes punctatus_New Zealand Fernbird
+Poodytes gramineus_Lille Sumpsanger
+Poodytes punctatus_Newzealandsk Sumpsanger
 Pooecetes gramineus_Aftenspurv
 Poospiza hispaniolensis_Halsbåndsdansefinke
 Poospiza nigrorufa_Brunbrystet Dansefinke
@@ -4726,11 +4726,11 @@ Porphyrio melanotus_Australasian Swamphen
 Porphyrio poliocephalus_Indisk Sultanhøne
 Porphyrio porphyrio_Sultanhøne
 Porphyriops melanops_Hvidplettet Rørhøne
-Porphyrospiza alaudina_Band-tailed Sierra-Finch
+Porphyrospiza alaudina_Sortmasket Andesfinke
 Porphyrospiza caerulescens_Gulnæbbet Finke
-Porzana carolina_Sorarørvagtel
-Porzana porzana_Plettet rørvagtel
-Porzana spiloptera_Pygmærørvagtel
+Porzana carolina_Sora-rørvagtel
+Porzana porzana_Plettet Rørvagtel
+Porzana spiloptera_Dot-winged Crake
 Premnoplex brunnescens_Plettet Spidshale
 Premnornis guttuliger_Rustvinget Spidshale
 Primolius auricollis_Gulnakket Dværgara
@@ -4775,11 +4775,11 @@ Promerops cafer_Kapsukkerfugl
 Prosopeia personata_Maskefijiparakit
 Prosthemadera novaeseelandiae_Præstefugl
 Protonotaria citrea_Blommegul Sanger
-Prunella collaris_Alpejernspurv
+Prunella collaris_Alpe-jernspurv
 Prunella fulvescens_Brun Jernspurv
 Prunella himalayana_Himalayajernspurv
 Prunella modularis_Jernspurv
-Prunella montanella_Sibirisk jernspurv
+Prunella montanella_Sibirisk Jernspurv
 Prunella ocularis_Kaukasisk Jernspurv
 Prunella rubeculoides_Rødbrystet Jernspurv
 Prunella strophiata_Brunbrystet Jernspurv
@@ -4818,7 +4818,7 @@ Pseudoseisura cristata_Rødbrun Cachalote
 Pseudoseisura gutturalis_Hvidstrubet Cachalote
 Pseudoseisura lophotes_Brun Cachalote
 Pseudoseisura unirufa_Gråtoppet Cachalote
-Pseudospingus verticalis_Black-headed Hemispingus
+Pseudospingus verticalis_Sorthovedet Gråtangar
 Pseudotriccus pelzelni_Bronzedværgtyran
 Pseudotriccus ruficeps_Rødhovedet Dværgtyran
 Psilopogon annamensis_Indochinese Barbet
@@ -4864,7 +4864,7 @@ Psittacara wagleri_Colombiansk Aratinga
 Psittacula alexandri_Skægparakit
 Psittacula columboides_Dueparakit
 Psittacula cyanocephala_Blommehovedet Ædelparakit
-Psittacula eupatria_Stor alexanderparakit
+Psittacula eupatria_Stor Alexanderparakit
 Psittacula finschii_Gråhovedet Ædelparakit
 Psittacula himalayana_Skiferhovedet Ædelparakit
 Psittacula krameri_Alexanderparakit
@@ -4894,11 +4894,11 @@ Pterocles namaqua_Kapsandhøne
 Pterocles orientalis_Sortbuget Sandhøne
 Pterocles senegallus_Plettet Sandhøne
 Pterodroma hypoleuca_Boninpetrel
-Pterodroma madeira_Madeirapetrel
+Pterodroma madeira_Madeira-petrel
 Pteroglossus aracari_Sorthalset Arasari
 Pteroglossus azara_Elfenbensarasari
 Pteroglossus bailloni_Safrantukan
-Pteroglossus beauharnaesii_Krøltoppet Arasari
+Pteroglossus beauharnaesii_Curl-crested Aracari
 Pteroglossus castanotis_Brunøret Arasari
 Pteroglossus erythropygius_Ecuadorarasari
 Pteroglossus inscriptus_Skriftarasari
@@ -4944,16 +4944,16 @@ Ptyonoprogne concolor_Mørk Klippesvale
 Ptyonoprogne fuligula_Bleg Klippesvale
 Ptyonoprogne rupestris_Klippesvale
 Pucrasia macrolopha_Koklassfasan
-Puffinus puffinus_Almindelig skråpe
+Puffinus puffinus_Almindelig Skråpe
 Pulsatrix koeniswaldiana_Okkerbrynet Brilleugle
 Pulsatrix melanota_Harlekinbrilleugle
 Pulsatrix perspicillata_Brilleugle
 Purnella albifrons_Hvidpandet Honningæder
 Purpureicephalus spurius_Rødisset Parakit
 Pycnonotus aurigaster_Sodhovedet Bulbul
-Pycnonotus barbatus_Berberbulbul
+Pycnonotus barbatus_Berber-bulbul
 Pycnonotus brunneus_Gråbrun Bulbul
-Pycnonotus cafer_Rødgumpet bulbul
+Pycnonotus cafer_Rødgumpet Bulbul
 Pycnonotus capensis_Kapbulbul
 Pycnonotus conradi_Streak-eared Bulbul
 Pycnonotus finlaysoni_Gulstreget Bulbul
@@ -4967,11 +4967,11 @@ Pycnonotus nigricans_Rødøjet Bulbul
 Pycnonotus plumosus_Olivenbulbul
 Pycnonotus simplex_Hvidøjet Bulbul
 Pycnonotus sinensis_Kinesisk Bulbul
-Pycnonotus striatus_Stregbulbul
+Pycnonotus striatus_Striated Bulbul
 Pycnonotus taivanus_Taiwanbulbul
 Pycnonotus tricolor_Gulgumpet Bulbul
 Pycnonotus xantholaemus_Gulstrubet Bulbul
-Pycnonotus xanthopygos_Levantbulbul
+Pycnonotus xanthopygos_Levant-bulbul
 Pycnonotus xanthorrhous_Brunbrystet Bulbul
 Pycnonotus zeylanicus_Skægbulbul
 Pycnoptilus floccosus_Lodsfugl
@@ -4999,7 +4999,7 @@ Pyrrholaemus brunneus_Rødstrube
 Pyrrholaemus sagittatus_Marksanger
 Pyrrhomyias cinnamomeus_Kaneltyran
 Pyrrhula erythaca_Gråhovedet Dompap
-Pyrrhula murina_Azorerdompap
+Pyrrhula murina_Azorer-dompap
 Pyrrhula nipalensis_Grå Dompap
 Pyrrhula pyrrhula_Dompap
 Pyrrhura albipectus_Hvidbrystet Conure
@@ -5025,7 +5025,7 @@ Quiscalus mexicanus_Kragegrackel
 Quiscalus nicaraguensis_Nicaraguagrackel
 Quiscalus niger_Antilgrackel
 Quiscalus quiscula_Sortgrackel
-Radjah radjah_Radjah Shelduck
+Radjah radjah_Radjahgravand
 Rallina eurizonoides_Bredstribet Kastanjerikse
 Rallina fasciata_Rødbenet Kastanjerikse
 Rallina tricolor_Grønnæbbet Kastanjerikse
@@ -5050,7 +5050,7 @@ Ramphastos tucanus_Rødnæbbet Tukan
 Ramphastos vitellinus_Gulbrystet Tukan
 Ramphocaenus melanurus_Langnæbbet Myresnapper
 Ramphocaenus sticturus_Chattering Gnatwren
-Ramphocelus bresilius_Purpurtangar
+Ramphocelus bresilius_Brazilian Tanager
 Ramphocelus carbo_Sølvnæbbet Fløjlstangar
 Ramphocelus dimidiatus_Rødrygget Fløjlstangar
 Ramphocelus flammigerus_Flammerygget Fløjlstangar
@@ -5070,8 +5070,8 @@ Recurvirostra andina_Andesklyde
 Recurvirostra avosetta_Klyde
 Regulus calendula_Rubinfuglekonge
 Regulus goodfellowi_Taiwanfuglekonge
-Regulus ignicapilla_Rødtoppet fuglekonge
-Regulus madeirensis_Madeirafuglekonge
+Regulus ignicapilla_Rødtoppet Fuglekonge
+Regulus madeirensis_Madeira Fuglekonge
 Regulus regulus_Fuglekonge
 Regulus satrapa_Amerikansk Fuglekonge
 Reinwardtipicus validus_Orangerygget Spætte
@@ -5107,7 +5107,7 @@ Rhipidura rufifrons_Rødpandet Viftehale
 Rhipidura rufiventris_Timorviftehale
 Rhipidura teysmanni_Rustbuget Viftehale
 Rhipidura threnothorax_Sodfarvet Viftehale
-Rhipidura verreauxi_Streaked Fantail
+Rhipidura verreauxi_Spættet Viftehale
 Rhodinocichla rosea_Rosenbrystet Tangar
 Rhodophoneus cruentus_Rosy-patched Bushshrike
 Rhodospingus cruentus_Purpurkronfinke
@@ -5115,10 +5115,10 @@ Rhodospiza obsoleta_Ørkenfinke
 Rhodostethia rosea_Rosenmåge
 Rhodothraupis celaeno_Rødbuget Kernebider
 Rhopias gularis_Niststrubet Myresmutte
-Rhopocichla atriceps_Sorthovedet Timalie
+Rhopocichla atriceps_Dark-fronted Babbler
 Rhopophilus pekinensis_Kinesisk Bjergsanger
 Rhopornis ardesiacus_Stor Ildøje
-Rhopospina fruticeti_Mourning Sierra-Finch
+Rhopospina fruticeti_Sørgeandesfinke
 Rhynchocyclus brevirostris_Tacaruinafladnæb
 Rhynchocyclus olivaceus_Olivenfladnæb
 Rhynchophanes mccownii_Sortbrystet Sporeværling
@@ -5132,7 +5132,7 @@ Rhynchotus maculicollis_Huaycotinamu
 Rhynchotus rufescens_Pampashøne
 Rhynochetos jubatus_Kagu
 Rhyticeros cassidix_Hvidhalet Rynkenæb
-Rhyticeros plicatus_Blyth's Hornbill
+Rhyticeros plicatus_Papuarynkenæb
 Rhyticeros undulatus_Pungrynkenæb
 Rhytipterna holerythra_Rødbrun Klagetyran
 Rhytipterna immunda_Lysbuget Klagetyran
@@ -5146,8 +5146,8 @@ Rollulus rouloul_Hjelmvagtel
 Rostratula benghalensis_Broget Riksesneppe
 Rostrhamus sociabilis_Snegleglente
 Rubigula erythropthalmos_Spectacled Bulbul
-Rubigula flaviventris_Black-crested Bulbul
-Rubigula gularis_Flame-throated Bulbul
+Rubigula flaviventris_Sorttoppet Bulbul
+Rubigula gularis_Rødstrubebulbul
 Rupicola peruvianus_Rød Klippehane
 Rupicola rupicola_Orange Klippehane
 Rupornis magnirostris_Tyknæbbet Våge
@@ -5170,7 +5170,7 @@ Saltator nigriceps_Hættesaltator
 Saltator orenocensis_Orinocosaltator
 Saltator similis_Grønvinget Saltator
 Saltator striatipectus_Stribet Saltator
-Saltatricula atricollis_Black-throated Saltator
+Saltatricula atricollis_Sortstrubet Saltator
 Saltatricula multicolor_Chacofinke
 Sapayoa aenigma_Sapayoa
 Sappho sparganurus_Sapphokomet
@@ -5183,12 +5183,12 @@ Sasia abnormis_Bambusdværgspætte
 Sasia ochracea_Hvidbrynet Dværgspætte
 Saundersilarus saundersi_Saunders's Gull
 Saxicola caprata_Sort Bynkefugl
-Saxicola ferreus_Gray Bushchat
+Saxicola ferreus_Grå Bynkefugl
 Saxicola gutturalis_Timorbynkefugl
-Saxicola maurus_Sibirisk bynkefugl
+Saxicola maurus_Sibirisk Bynkefugl
 Saxicola rubetra_Bynkefugl
-Saxicola rubicola_Sortstrubet bynkefugl
-Saxicola stejnegeri_Japansk bynkefugl
+Saxicola rubicola_Vestlig Sortstrubet Bynkefugl
+Saxicola stejnegeri_Stejneger's Stonechat
 Saxicola tectes_Réunionbynkefugl
 Saxicola torquatus_Sortstrubet Bynkefugl
 Sayornis nigricans_Sort Fibii
@@ -5209,17 +5209,17 @@ Schistes albogularis_Choco Daggerbill
 Schistes geoffroyi_Kilenæbskolibri
 Schistochlamys melanopis_Grårygget Tangar
 Schistochlamys ruficapillus_Kaneltangar
-Schoenicola brevirostris_Afrikansk Bredhale
+Schoenicola brevirostris_Fan-tailed Grassbird
 Schoenicola platyurus_Indisk Bredhale
 Schoeniophylax phryganophilus_Gulhaget Trådhale
-Schoeniparus brunneus_Dusky Fulvetta
-Schoeniparus castaneceps_Rufous-winged Fulvetta
-Schoeniparus cinereus_Yellow-throated Fulvetta
-Schoeniparus dubius_Rusty-capped Fulvetta
-Schoeniparus klossi_Black-crowned Fulvetta
-Schoeniparus rufogularis_Rufous-throated Fulvetta
-Sciaphylax castanea_Zimmer's Antbird
-Sciaphylax hemimelaena_Chestnut-tailed Antbird
+Schoeniparus brunneus_Brun Fulvetta
+Schoeniparus castaneceps_Brunisset Fulvetta
+Schoeniparus cinereus_Gulstrubet Fulvetta
+Schoeniparus dubius_Rustkronet Fulvetta
+Schoeniparus klossi_Annamfulvetta
+Schoeniparus rufogularis_Halsbåndsfulvetta
+Sciaphylax castanea_Maynasmyrefugl
+Sciaphylax hemimelaena_Sydlig Maynasmyrefugl
 Sclateria naevia_Sølvmyrefugl
 Scleroptila afra_Gråvinget Frankolin
 Scleroptila gutturalis_Oranjefrankolin
@@ -5277,7 +5277,7 @@ Scytalopus unicolor_Cajamarcatapaculo
 Scytalopus vicinior_Nariñotapaculo
 Scytalopus zimmeri_Chuquisaca-tapaculo
 Scythrops novaehollandiae_Kæmpegøg
-Seiurus aurocapilla_Brillevanddrossel
+Seiurus aurocapilla_Brille-vanddrossel
 Selasphorus calliope_Calliopekolibri
 Selasphorus platycercus_Bredhalet Dværgkolibri
 Selasphorus rufus_Rød Dværgkolibri
@@ -5285,7 +5285,7 @@ Selasphorus sasin_Allens Dværgkolibri
 Selasphorus scintilla_Gnistdværgkolibri
 Selenidera gouldii_Lysnæbbet Tukanet
 Selenidera maculirostris_Pletnæbbet Tukanet
-Selenidera piperivora_Guianan Toucanet
+Selenidera piperivora_Guyanatukanet
 Selenidera reinwardtii_Pragttukanet
 Selenidera spectabilis_Guløret Tukanet
 Seleucidis melanoleucus_Tolvtrådet Paradisfugl
@@ -5294,11 +5294,11 @@ Semnornis frantzii_Grønbuget Tukanskægfugl
 Semnornis ramphastinus_Tukanskægfugl
 Sephanoides fernandensis_Juan Fernandez-ildkrone
 Sephanoides sephaniodes_Ildkronekolibri
-Sericornis citreogularis_Gulstrubet Busksanger
+Sericornis citreogularis_Yellow-throated Scrubwren
 Sericornis frontalis_Hvidbrynet Busksanger
 Sericornis humilis_Tasmansk Busksanger
 Sericornis magnirostra_Langnæbbet Busksanger
-Sericornis papuensis_Papuabusksanger
+Sericornis papuensis_Papuan Scrubwren
 Sericossypha albocristata_Kronetangar
 Serilophus lunatus_Sølvbrednæb
 Serinus alario_Alariosisken
@@ -5314,7 +5314,7 @@ Serpophaga nigricans_Sodtyrannulet
 Serpophaga subcristata_Hvidtoppet Tyrannulet
 Setopagis parvula_Lille Natravn
 Setophaga adelaidae_Antilsanger
-Setophaga aestiva_Gul sanger
+Setophaga aestiva_Gul Sanger
 Setophaga americana_Parulasanger
 Setophaga auduboni_Gulstrubet Myrtesanger
 Setophaga caerulescens_Blå Sanger
@@ -5333,18 +5333,18 @@ Setophaga nigrescens_Sortstrubet Gråsanger
 Setophaga occidentalis_Gyldenhovedet Sanger
 Setophaga palmarum_Mossanger
 Setophaga pensylvanica_Brunsidet Sanger
-Setophaga petechia_Gylden Sanger
+Setophaga petechia_Gul Sanger
 Setophaga pinus_Fyrresanger
 Setophaga pitiayumi_Olivenrygget Parula
 Setophaga pityophila_Olivenkronet Sanger
 Setophaga ruticilla_Amerikansk Ildstjert
-Setophaga striata_Stribet sanger
+Setophaga striata_Stribet Sanger
 Setophaga tigrina_Brunkindet Sanger
 Setophaga townsendi_Sortøret Sanger
 Setophaga virens_Sorthalset Sanger
 Sheppardia sharpei_Brunstrubet Akalat
-Sholicola albiventris_White-bellied Sholakili
-Sholicola major_Nilgiri Sholakili
+Sholicola albiventris_Rustbuget Kortvinge
+Sholicola major_Nilgiribambusdrossel
 Sialia currucoides_Bjergsialia
 Sialia mexicana_Vestlig Sialia
 Sialia sialis_Østlig Sialia
@@ -5358,11 +5358,11 @@ Sicalis luteola_Lille Safranfinke
 Sicalis olivascens_Olivensafranfinke
 Sicalis raimondii_Perusafranfinke
 Sicalis uropygialis_Bright-rumped Yellow-Finch
-Sinosuthora webbiana_Kanelpapegøjenæb
+Sinosuthora webbiana_Kanel-papegøjenæb
 Siphonorhis brewsteri_Hispaniolapoorwill
-Sipia berlepschi_Stub-tailed Antbird
-Sipia laemosticta_Dull-mantled Antbird
-Sipia nigricauda_Esmeraldas Antbird
+Sipia berlepschi_Korthalet Myrefugl
+Sipia laemosticta_Mørkrygget Myrefugl
+Sipia nigricauda_Esmeraldasmyrefugl
 Sipia palliata_Magdalena Antbird
 Sirystes albocinereus_White-rumped Sirystes
 Sirystes albogriseus_Hvidgumpet Sirystes
@@ -5374,7 +5374,7 @@ Sitta europaea_Spætmejse
 Sitta frontalis_Fløjlspandet Spætmejse
 Sitta himalayensis_Himalayaspætmejse
 Sitta krueperi_Krüpers Spætmejse
-Sitta ledanti_Kabylerspætmejse
+Sitta ledanti_Kabyler-spætmejse
 Sitta magna_Kæmpespætmejse
 Sitta nagaensis_Højlandsspætmejse
 Sitta neumayer_Klippespætmejse
@@ -5398,8 +5398,8 @@ Somateria spectabilis_Kongeederfugl
 Spartonoica maluroides_Rustpandet Sivkryber
 Spatula clypeata_Skeand
 Spatula cyanoptera_Kaneland
-Spatula discors_Blåvinget and
-Spatula puna_Puna Teal
+Spatula discors_Blåvinget And
+Spatula puna_Punaand
 Spatula querquedula_Atlingand
 Spelaeornis badeigularis_Mishmiskæltimalie
 Spelaeornis caudatus_Ruststrubet Skæltimalie
@@ -5407,19 +5407,19 @@ Spelaeornis chocolatinus_Mørk Skæltimalie
 Spelaeornis longicaudatus_Assamskæltimalie
 Spelaeornis oatesi_Chin-skæltimalie
 Spelaeornis troglodytoides_Båndskæltimalie
-Spermestes cucullata_Bronze Mannikin
+Spermestes cucullata_Skadefinke
 Spermophaga haematina_Rødbrystet Frøknækker
 Sphecotheres vieilloti_Grønbuget Figenfugl
 Spheniscus demersus_Æselpingvin
 Spheniscus magellanicus_Magellanpingvin
 Sphenoeacus afer_Kapgræssanger
-Sphenopsis frontalis_Oleaginous Hemispingus
-Sphenopsis melanotis_Black-eared Hemispingus
+Sphenopsis frontalis_Oliventagar
+Sphenopsis melanotis_Sortøret Oliventangar
 Sphyrapicus nuchalis_Rødnakket Saftspætte
 Sphyrapicus ruber_Rødhovedet Saftspætte
 Sphyrapicus thyroideus_Sortbrystet Saftspætte
 Sphyrapicus varius_Gulbuget Saftspætte
-Spiloptila clamans_Cricket Longtail
+Spiloptila clamans_Sahel-sanger
 Spilornis cheela_Toppet Slangeørn
 Spilornis holospilus_Filippinsk Slangeørn
 Spindalis zena_Antiltangar
@@ -5436,7 +5436,7 @@ Spinus spinescens_Andessisken
 Spinus spinus_Grønsisken
 Spinus tristis_Guldsisken
 Spinus xanthogastrus_Gulbuget Sisken
-Spiza americana_Dickcissel
+Spiza americana_Dicksissel
 Spizaetus isidori_Andesørn
 Spizaetus melanoleucus_Hvidhovedet Høgeørn
 Spizaetus ornatus_Pragthøgeørn
@@ -5456,8 +5456,8 @@ Spodiopsar sericeus_Silkestær
 Spodiornis rusticus_Slaty Finch
 Sporaeginthus subflavus_Zebra Waxbill
 Sporophila albogularis_Hvidstrubet Klerkefinke
-Sporophila angolensis_Chestnut-bellied Seed-Finch
-Sporophila atrirostris_Black-billed Seed-Finch
+Sporophila angolensis_Frøfinke
+Sporophila atrirostris_Sort Frøfinke
 Sporophila bouvreuil_Pomeransklerkefinke
 Sporophila bouvronides_Diamantklerkefinke
 Sporophila caerulescens_Pragtklerkefinke
@@ -5465,11 +5465,11 @@ Sporophila castaneiventris_Kastanjebrystet Klerkefinke
 Sporophila cinnamomea_Kastanjebrun Klerkefinke
 Sporophila collaris_Rustfarvet Klerkefinke
 Sporophila corvina_Brilleklerkefinke
-Sporophila crassirostris_Large-billed Seed-Finch
+Sporophila crassirostris_Grovnæbsfrøfinke
 Sporophila falcirostris_Falsnæbbet Klerkefinke
-Sporophila fringilloides_White-naped Seedeater
+Sporophila fringilloides_Hvidhalset Frøæder
 Sporophila frontalis_Kæmpeklerkefinke
-Sporophila funerea_Thick-billed Seed-Finch
+Sporophila funerea_Tyknæbbet Frøfinke
 Sporophila hypochroma_Okkerbrystet Klerkefinke
 Sporophila hypoxantha_Sortbuget Klerkefinke
 Sporophila intermedia_Grå Klerkefinke
@@ -5489,12 +5489,12 @@ Sporophila simplex_Jordbrun Klerkefinke
 Sporophila telasco_Brunstrubet Klerkefinke
 Sporophila torqueola_Brungumpet Klerkefinke
 Sporopipes frontalis_Skælhovedet Finkevæver
-Stachyris humei_Blackish-breasted Babbler
+Stachyris humei_Kilenæbsskæltimalie
 Stachyris maculata_Skælbrystet Krattimalie
 Stachyris nigriceps_Gråstrubet Krattimalie
 Stachyris nigricollis_Sorthalset Krattimalie
 Stachyris poliocephala_Kastanjekrattimalie
-Stachyris roberti_Chevron-breasted Babbler
+Stachyris roberti_Hvidbrynet Skæltimalie
 Stachyris strialata_Perlehalstimalie
 Stachyris thoracica_Hvidhalset Krattimalie
 Stactolaema olivacea_Grøn Skægfugl
@@ -5507,16 +5507,16 @@ Stenostira scita_Alfesanger
 Stephanoaetus coronatus_Kronørn
 Stephanophorus diadematus_Diademtangar
 Stephanoxis lalandi_Vibekolibri
-Stephanoxis loddigesii_Purple-crowned Plovercrest
+Stephanoxis loddigesii_Violettoppet Vibekolibri
 Stercorarius antarcticus_Sydlig Storkjove
 Stercorarius longicaudus_Lille Kjove
-Stercorarius maccormicki_Sydpolarkjove
+Stercorarius maccormicki_Sydpolar-kjove
 Stercorarius parasiticus_Almindelig Kjove
 Stercorarius pomarinus_Mellemkjove
 Stercorarius skua_Storkjove
 Sterna aurantia_Flodterne
 Sterna dougallii_Rosenterne
-Sterna forsteri_Prærieterne
+Sterna forsteri_Prærie-terne
 Sterna hirundinacea_Sydamerikansk Terne
 Sterna hirundo_Fjordterne
 Sterna paradisaea_Havterne
@@ -5528,20 +5528,20 @@ Sternula antillarum_Amerikansk Dværgterne
 Sternula superciliaris_Amazonterne
 Stigmatura budytoides_Stor Vipstjerttyran
 Stigmatura napensis_Vipstjerttyran
-Stilpnia cayana_Burnished-buff Tanager
-Stilpnia cyanicollis_Blue-necked Tanager
-Stilpnia cyanoptera_Black-headed Tanager
-Stilpnia heinei_Black-capped Tanager
-Stilpnia larvata_Golden-hooded Tanager
-Stilpnia nigrocincta_Masked Tanager
-Stilpnia peruviana_Black-backed Tanager
-Stilpnia preciosa_Chestnut-backed Tanager
-Stilpnia vitriolina_Scrub Tanager
+Stilpnia cayana_Isabellatangar
+Stilpnia cyanicollis_Blåhovedet Tangar
+Stilpnia cyanoptera_Sorthovedet Tangar
+Stilpnia heinei_Sortkronet Tangar
+Stilpnia larvata_Blåmasket Tangar
+Stilpnia nigrocincta_Masketangar
+Stilpnia peruviana_Sortrygget Tangar
+Stilpnia preciosa_Kastanjerygget Tangar
+Stilpnia vitriolina_Brunkronet Tangar
 Stiphrornis erythrothorax_Sortøret Nattergal
 Stipiturus malachurus_Sydlig Emusmutte
 Stomiopera flava_Gul Honningæder
 Strepera fuliginosa_Sort Currawong
-Strepera graculina_Pied Currawong
+Strepera graculina_Broget Currawong
 Strepera versicolor_Grå Currawong
 Streptopelia capicola_Savanneskoggerdue
 Streptopelia chinensis_Spotted Dove
@@ -5585,8 +5585,8 @@ Stymphalornis acutirostris_Paranámyresmutte
 Sublegatus arenarum_Krattyran
 Sublegatus modestus_Kortnæbbet Krattyran
 Sublegatus obscurior_Amazonkrattyran
-Sugomel nigrum_Broget Honningæder
-Suiriri affinis_Chapada Suiriri
+Sugomel nigrum_Black Honeyeater
+Suiriri affinis_Chapada Flycatcher
 Suiriri suiriri_Chaco Suiriri
 Sula dactylatra_Maskesule
 Sula leucogaster_Brun Sule
@@ -5598,39 +5598,39 @@ Surniculus musschenbroeki_Moluccan Drongo-Cuckoo
 Suthora nipalensis_Sortstrubet Papegøjenæb
 Suthora verreauxi_Gulbrun Papegøjenæb
 Swynnertonia swynnertoni_Hvidhalset Nattergal
-Sylvia abyssinica_African Hill Babbler
-Sylvia althaea_Mørk Gærdesanger
+Sylvia abyssinica_Afrikansk Skovmunk
+Sylvia althaea_Hume's Whitethroat
 Sylvia atricapilla_Munk
-Sylvia atriceps_Rwenzori Hill Babbler
-Sylvia balearica_Balearsanger
-Sylvia boehmi_Sortbrystet Sanger
+Sylvia atriceps_Sorthovedet Skovmunk
+Sylvia balearica_Balearic Warbler
+Sylvia boehmi_Banded Parisoma
 Sylvia borin_Havesanger
-Sylvia cantillans_Hvidskægget Sanger
-Sylvia communis_Tornsanger
-Sylvia conspicillata_Brillesanger
+Sylvia cantillans_Subalpine Warbler
+Sylvia communis_Greater Whitethroat
+Sylvia conspicillata_Spectacled Warbler
 Sylvia crassirostris_Eastern Orphean Warbler
-Sylvia curruca_Gærdesanger
-Sylvia deserticola_Berbersanger
-Sylvia hortensis_Mestersanger
-Sylvia layardi_Kapsanger
-Sylvia leucomelaena_Rødehavssanger
-Sylvia melanocephala_Sorthovedet Sanger
-Sylvia melanothorax_Cypernsanger
-Sylvia mystacea_Rosasanger
-Sylvia nana_Asiatisk Ørkensanger
-Sylvia nigricapilla_Bush Blackcap
-Sylvia nisoria_Høgesanger
-Sylvia ruppeli_Sortstrubet Sanger
-Sylvia sarda_Sardinsk Sanger
+Sylvia curruca_Lesser Whitethroat
+Sylvia deserticola_Tristram's Warbler
+Sylvia hortensis_Western Orphean Warbler
+Sylvia layardi_Layard's Warbler
+Sylvia leucomelaena_Arabian Warbler
+Sylvia melanocephala_Sardinian Warbler
+Sylvia melanothorax_Cyprus Warbler
+Sylvia mystacea_Menetries's Warbler
+Sylvia nana_Asian Desert Warbler
+Sylvia nigricapillus_Rødnæbssanger
+Sylvia nisoria_Barred Warbler
+Sylvia ruppeli_Rüppell's Warbler
+Sylvia sarda_Marmora's Warbler
 Sylvia subalpina_Moltoni's Warbler
 Sylvia subcoerulea_Chestnut-vented Warbler
-Sylvia undata_Provencesanger
+Sylvia undata_Dartford Warbler
 Sylvietta brachyura_Okkercrombec
 Sylvietta rufescens_Skifercrombec
 Sylvietta virens_Grøn Crombec
 Sylvietta whytii_Rødbuget Crombec
 Sylviorthorhynchus desmursii_Des Murs's Wiretail
-Sylviorthorhynchus yanacensis_Tawny Tit-Spinetail
+Sylviorthorhynchus yanacensis_Gyldenbrun Trådhale
 Syma torotoro_Gulnæbbet Isfugl
 Symposiachrus mundus_Sundamonark
 Symposiachrus trivirgatus_Maskemonark
@@ -5650,8 +5650,8 @@ Synallaxis erythrothorax_Yucatántrådhale
 Synallaxis frontalis_Sodpandet Trådhale
 Synallaxis fuscorufa_Santa Marta-trådhale
 Synallaxis gujanensis_Gråkronet Trådhale
-Synallaxis hellmayri_Red-shouldered Spinetail
-Synallaxis hypochondriaca_Great Spinetail
+Synallaxis hellmayri_Rødskuldret Trådhale
+Synallaxis hypochondriaca_Hypokondertornhale
 Synallaxis hypospodia_Gråbrystet Trådhale
 Synallaxis infuscata_Pernambucotrådhale
 Synallaxis kollari_Gråstrubet Trådhale
@@ -5670,7 +5670,7 @@ Syndactyla guttulata_Venezuelaløvkæmmer
 Syndactyla ruficollis_Rustnakket Løvkæmmer
 Syndactyla rufosuperciliata_Brunbrynet Løvkæmmer
 Syndactyla subalaris_Højlandsløvkæmmer
-Syndactyla ucayalae_Peruvian Recurvebill
+Syndactyla ucayalae_Perustornæb
 Synoicus chinensis_Blue-breasted Quail
 Synoicus ypsilophorus_Brown Quail
 Syrigma sibilatrix_Pibehejre
@@ -5690,13 +5690,13 @@ Tachycineta bicolor_Træsvale
 Tachycineta leucopyga_Chilesvale
 Tachycineta leucorrhoa_Hvidgumpet Svale
 Tachycineta thalassina_Smaragdsvale
-Tachyeres brachypterus_Falkland Steamer-Duck
+Tachyeres brachypterus_Duck Falklandkæmpeand
 Tachyeres leucocephalus_Duck Chubutkæmpeand
 Tachyeres patachonicus_Flyvende Kæmpeand
 Tachyphonus coronatus_Rødkronet Sorttangar
-Tachyphonus cristatus_Rødtoppet Sorttangar
+Tachyphonus cristatus_Flame-crested Tanager
 Tachyphonus delatrii_Gyldentoppet Sorttangar
-Tachyphonus luctuosus_Hvidskuldret Sorttangar
+Tachyphonus luctuosus_White-shouldered Tanager
 Tachyphonus rufus_Sorttangar
 Tachyphonus surinamus_Okkertoppet Sorttangar
 Tadorna cana_Sydafrikansk Gravand
@@ -5704,7 +5704,7 @@ Tadorna ferruginea_Rustand
 Tadorna tadorna_Gravand
 Tadorna tadornoides_Australsk Gravand
 Tadorna variegata_Paradisgravand
-Taeniopygia bichenovii_Ringastrild
+Taeniopygia bichenovii_Double-barred Finch
 Taeniopygia guttata_Zebrafinke
 Taeniotriccus andrei_Sortbrystet Tyran
 Talegalla fuscirostris_Sortnæbbet Tallegalla
@@ -5728,7 +5728,7 @@ Tangara parzudakii_Rødøret Tangar
 Tangara schrankii_Grøn Masketangar
 Tangara seledon_Trefarvet Tangar
 Tangara vassorii_Blåtangar
-Tangara velia_Blåsort Tangar
+Tangara velia_Opal-rumped Tanager
 Tangara xanthocephala_Safrankronet Tangar
 Tanygnathus sumatranus_Grøn Grovnæbspapegøje
 Tanysiptera galatea_Paradisisfugl
@@ -5784,7 +5784,7 @@ Tesia cyaniventer_Gråbuget Tesia
 Tesia everetti_Brunkronet Tesia
 Tesia olivea_Skiferbuget Tesia
 Tesia superciliaris_Javatesia
-Tetrao tetrix_Black Grouse
+Tetrao tetrix_Urfugl
 Tetrao urogallus_Tjur
 Tetraogallus altaicus_Altaikongehøne
 Tetraogallus himalayensis_Himalayakongehøne
@@ -5796,7 +5796,7 @@ Thalassarche cauta_Hvidkronet Albatros
 Thalassarche melanophris_Sortbrynet Albatros
 Thalassarche salvini_Grårygget Albatros
 Thalasseus acuflavidus_Amerikansk Splitterne
-Thalasseus bergii_Bergiusterne
+Thalasseus bergii_Bergius-terne
 Thalasseus elegans_Aztekerterne
 Thalasseus maximus_Kongeterne
 Thalasseus sandvicensis_Splitterne
@@ -5845,11 +5845,11 @@ Thinocorus orbignyianus_Gråbrystet Bjergløber
 Thinocorus rumicivorus_Bjergløber
 Thlypopsis inornata_Kanelbrystet Rusttangar
 Thlypopsis ornata_Kastanjebrystet Rusttangar
-Thlypopsis pyrrhocoma_Chestnut-headed Tanager
+Thlypopsis pyrrhocoma_Kastanjehættet Gråtangar
 Thlypopsis sordida_Orangehovedet Rusttangar
-Thlypopsis superciliaris_Superciliaried Hemispingus
+Thlypopsis superciliaris_Gulbuget Oliventangar
 Thraupis abbas_Gulvinget Tangar
-Thraupis cyanocephala_Blåhættet Tangar
+Thraupis cyanocephala_Blue-capped Tanager
 Thraupis cyanoptera_Blåskuldret Tangar
 Thraupis episcopus_Blågrå Tangar
 Thraupis ornata_Gulskuldret Tangar
@@ -5928,7 +5928,7 @@ Topaza pyra_Sorthættet Pragttopas
 Touit batavicus_Sortvinget Stumppapegøje
 Touit dilectissimus_Blåpandet Stumppapegøje
 Touit huetii_Blåvinget Stumppapegøje
-Touit melanonotus_Brown-backed Parrotlet
+Touit melanonotus_Sortrygget Stumppapegøje
 Touit purpuratus_Purpur-stumppapegøje
 Touit stictopterus_Brunskuldret Stumppapegøje
 Touit surdus_Gyldenhalet Stumpppapegøje
@@ -5971,10 +5971,10 @@ Trichothraupis melanops_Børstetangar
 Triclaria malachitacea_Blåbuget Papegøje
 Tringa brevipes_Sibirisk Gråklire
 Tringa erythropus_Sortklire
-Tringa flavipes_Lille gulben
+Tringa flavipes_Lille Gulben
 Tringa glareola_Tinksmed
 Tringa incana_Amerikansk Gråklire
-Tringa melanoleuca_Stor gulben
+Tringa melanoleuca_Stor Gulben
 Tringa nebularia_Hvidklire
 Tringa ochropus_Svaleklire
 Tringa semipalmata_Willet
@@ -6026,41 +6026,41 @@ Trogon ramonianus_Amazontrogon
 Trogon rufus_Sortstrubet Trogon
 Trogon surrucura_Surucuatrogon
 Trogon violaceus_Blågul Trogon
-Trogon viridis_Green-backed Trogon
+Trogon viridis_Hvidhalet Trogon
 Tumbezia salvini_Tumbestyran
 Tunchiornis ochraceiceps_Tawny-crowned Greenlet
 Turdinus abbotti_Abbott's Babbler
-Turdinus atrigularis_Black-throated Wren-Babbler
+Turdinus atrigularis_Sortstrubet Gærdesmuttetimalie
 Turdinus brevicaudatus_Streaked Wren-Babbler
 Turdinus crassus_Mountain Wren-Babbler
 Turdinus crispifrons_Limestone Wren-Babbler
-Turdinus macrodactylus_Large Wren-Babbler
-Turdinus marmoratus_Marbled Wren-Babbler
+Turdinus macrodactylus_Stor Gærdesmuttetimalie
+Turdinus marmoratus_Vatret Gærdesmuttetimalie
 Turdinus rufipectus_Rusty-breasted Wren-Babbler
 Turdinus sepiarius_Horsfield's Babbler
-Turdoides affinis_Lyshovedet Larmdrossel
-Turdoides caudata_Stribet Larmdrossel
-Turdoides earlei_Rustflanket Larmdrossel
-Turdoides fulva_Gulbrun Larmdrossel
+Turdoides affinis_Yellow-billed Babbler
+Turdoides caudata_Common Babbler
+Turdoides earlei_Striated Babbler
+Turdoides fulva_Fulvous Chatterer
 Turdoides hartlaubii_Savannelarmdrossel
 Turdoides huttoni_Afghan Babbler
 Turdoides jardineii_Plettet Larmdrossel
 Turdoides leucopygia_Hvidgumpet Larmdrossel
-Turdoides longirostris_Langnæbbet Larmdrossel
-Turdoides malcolmi_Grå Larmdrossel
+Turdoides longirostris_Slender-billed Babbler
+Turdoides malcolmi_Large Gray Babbler
 Turdoides plebejus_Plebejlarmdrossel
 Turdoides reinwardtii_Sorthovedet Larmdrossel
-Turdoides rubiginosa_Rødbrun Larmdrossel
-Turdoides rufescens_Sri Lanka-larmdrossel
+Turdoides rubiginosa_Rufous Chatterer
+Turdoides rufescens_Orange-billed Babbler
 Turdoides sharpei_Victorialarmdrossel
-Turdoides striata_Larmdrossel
-Turdoides subrufa_Gråpandet Larmdrossel
+Turdoides striata_Jungle Babbler
+Turdoides subrufa_Rufous Babbler
 Turdus abyssinicus_Etioperdrossel
 Turdus albicollis_Hvidhalset Drossel
 Turdus albocinctus_Hvidhalset Solsort
 Turdus amaurochalinus_Beigebrystet Drossel
 Turdus assimilis_Sepiadrossel
-Turdus atrogularis_Sortstrubet drossel
+Turdus atrogularis_Sortstrubet Drossel
 Turdus aurantius_Jamaicadrossel
 Turdus boulboul_Lysvinget Solsort
 Turdus cardis_Hvidbuget Solsort
@@ -6094,8 +6094,8 @@ Turdus migratorius_Vandredrossel
 Turdus naumanni_Rustdrossel
 Turdus nigrescens_Hvidøjet Drossel
 Turdus nigriceps_Andes-skiferdrossel
-Turdus nudigenis_Spectacled Thrush
-Turdus obscurus_Gråstrubet drossel
+Turdus nudigenis_Brilledrossel
+Turdus obscurus_Gråstrubet Drossel
 Turdus obsoletus_Kaneldrossel
 Turdus olivaceus_Olivendrossel
 Turdus olivater_Venezueladrossel
@@ -6107,10 +6107,10 @@ Turdus plebejus_Bjergdrossel
 Turdus plumbeus_Rødbenet Drossel
 Turdus poliocephalus_Ødrossel
 Turdus reevei_Blyrygget Drossel
-Turdus rubrocanus_Chestnut Thrush
+Turdus rubrocanus_Kastanjedrossel
 Turdus ruficollis_Rødstrubet Drossel
 Turdus rufitorques_Kravedrossel
-Turdus rufiventris_Rufous-bellied Thrush
+Turdus rufiventris_Orangegumpet Drossel
 Turdus rufopalliatus_Mexicansk Vandredrossel
 Turdus sanchezorum_Varzea Thrush
 Turdus serranus_Andessolsort
@@ -6150,7 +6150,7 @@ Tyrannus verticalis_Vestlig Kongetyran
 Tyrannus vociferans_Nordlig Kongetyran
 Tyto alba_Slørugle
 Tyto furcata_American Barn Owl
-Tyto javanica_Eastern Barn Owl
+Tyto javanica_Australsk Slørugle
 Tyto novaehollandiae_Stor Slørugle
 Tyto rosenbergii_Sulawesislørugle
 Tyto tenebricosa_Sodfarvet Slørugle
@@ -6231,9 +6231,9 @@ Vireo magister_Yucatánvireo
 Vireo masteri_Chocóvireo
 Vireo modestus_Jamaicavireo
 Vireo nelsoni_Mexicansk Dværgvireo
-Vireo olivaceus_Rødøjet vireo
+Vireo olivaceus_Rødøjet Vireo
 Vireo pallens_Mangrovevireo
-Vireo philadelphicus_Philadelphiavireo
+Vireo philadelphicus_Philadelphia-vireo
 Vireo plumbeus_Bleg Brillevireo
 Vireo sclateri_Tepuídværgvireo
 Vireo solitarius_Gråhovedet Brillevireo
@@ -6246,8 +6246,8 @@ Volatinia jacarina_Jakarinifinke
 Wetmorethraupis sterrhopteron_Orangebrystet Bjergtangar
 Willisornis poecilinotus_Skælrygget Myrefugl
 Willisornis vidua_Xingu Scale-backed Antbird
-Woodfordia superciliosa_Nøgenøjet Brillefugl
-Xanthocephalus xanthocephalus_Gulhovedet trupial
+Woodfordia superciliosa_Bare-eyed White-eye
+Xanthocephalus xanthocephalus_Gulhovedet Trupial
 Xanthomixis zosterops_Brilletetraka
 Xanthopsar flavus_Gul Stærling
 Xanthotis macleayanus_Gulstreget Honningæder
@@ -6289,25 +6289,25 @@ Xolmis irupero_Hvid Monchita
 Xolmis pyrope_Ildøjemonchita
 Xolmis velatus_Hvidgumpet Monchita
 Yuhina brunneiceps_Taiwanyuhina
-Yuhina castaniceps_Brunnakket Yuhina
-Yuhina everetti_Borneoyuhina
+Yuhina castaniceps_Striated Yuhina
+Yuhina everetti_Chestnut-crested Yuhina
 Yuhina flavicollis_Gulnakket Yuhina
 Yuhina gularis_Skælstrubet Yuhina
 Yuhina nigrimenta_Sorthaget Yuhina
 Yuhina occipitalis_Rødgumpet Yuhina
-Yuhina torqueola_Brunøret Yuhina
+Yuhina torqueola_Indochinese Yuhina
 Yungipicus canicapillus_Gråisset Flagspætte
 Yungipicus kizuki_Lille Grå Flagspætte
 Yungipicus maculatus_Filippinsk Flagspætte
 Yungipicus moluccensis_Sundaflagspætte
 Yungipicus nanus_Brunisset Flagspætte
-Zapornia bicolor_Black-tailed Crake
-Zapornia flavirostra_Black Crake
-Zapornia fusca_Ruddy-breasted Crake
-Zapornia parva_Lille rørvagtel
-Zapornia paykullii_Band-bellied Crake
+Zapornia bicolor_Sorthalet Rørvagtel
+Zapornia flavirostra_Sort Rørvagtel
+Zapornia fusca_Rødbrystet Rørvagtel
+Zapornia parva_Lille Rørvagtel
+Zapornia paykullii_Mandarinrørvagtel
 Zapornia pusilla_Dværgrørvagtel
-Zapornia tabuensis_Spotless Crake
+Zapornia tabuensis_Sodbrun Rørvagtel
 Zavattariornis stresemanni_Sidamokrage
 Zebrilus undulatus_Zigzaghejre
 Zeledonia coronata_Gærdesmuttedrossel
@@ -6330,22 +6330,22 @@ Zimmerius parvus_Misteltyrannulet
 Zimmerius vilissimus_Hvidbrynet Tyrannulet
 Zimmerius villarejoi_Iquitostyrannulet
 Zimmerius viridiflavus_Perutyrannulet
-Zonotrichia albicollis_Hvidstrubet spurv
+Zonotrichia albicollis_Hvidstrubet Spurv
 Zonotrichia atricapilla_Gulisset Værling
 Zonotrichia capensis_Morgenværling
 Zonotrichia leucophrys_Hvidkronet Spurv
 Zonotrichia querula_Gråkindet Værling
-Zoothera aurea_Gulddrossel
+Zoothera aurea_Nordlig / Tajga Gulddrossel
 Zoothera heinei_Stillehavsgulddrossel
 Zoothera lunulata_Australsk Gulddrossel
 Zoothera major_Amamigulddrossel
 Zosterops anderssoni_Southern Yellow White-eye
-Zosterops atricapilla_Black-capped White-eye
+Zosterops atricapilla_Sortkappet Brillefugl
 Zosterops atriceps_Molukbrillefugl
 Zosterops atrifrons_Sortpandet Molukbrillefugl
 Zosterops auriventer_Hume's White-eye
-Zosterops borbonicus_Reunion Gray White-eye
-Zosterops citrinella_Ashy-bellied White-eye
+Zosterops borbonicus_Brunrygget Brillefugl
+Zosterops citrinella_Gråbuget Brillefugl
 Zosterops erythropleurus_Brunsidet Brillefugl
 Zosterops japonicus_Japansk Brillefugl
 Zosterops lateralis_Grårygget Brillefugl

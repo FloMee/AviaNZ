@@ -71,11 +71,11 @@ Actenoides concretus_นกกะเต็นสร้อยคอสีน้�
 Actenoides hombroni_Blue-capped Kingfisher
 Actenoides lindsayi_Spotted Kingfisher
 Actenoides monachus_Green-backed Kingfisher
-Actinodura cyanouroptera_Blue-winged Minla
+Actinodura cyanouroptera_นกศิวะปีกสีฟ้า
 Actinodura egertoni_Rusty-fronted Barwing
 Actinodura nipalensis_Hoary-throated Barwing
 Actinodura ramsayi_นกปีกลายตาขาว
-Actinodura strigula_Chestnut-tailed Minla
+Actinodura strigula_นกศิวะหางสีตาล
 Actinodura waldeni_Streak-throated Barwing
 Actitis hypoleucos_นกเด้าดิน
 Actitis macularius_Spotted Sandpiper
@@ -120,7 +120,7 @@ Agelasticus thilius_Yellow-winged Blackbird
 Aglaiocercus coelestis_Violet-tailed Sylph
 Aglaiocercus kingii_Long-tailed Sylph
 Agriornis montanus_Black-billed Shrike-Tyrant
-Agropsar philippensis_Chestnut-cheeked Starling
+Agropsar philippensis_นกกิ้งโครงแกลบแก้มสีน้ำตาลแดง
 Ailuroedus crassirostris_Green Catbird
 Ailuroedus maculosus_Spotted Catbird
 Aimophila notosticta_Oaxaca Sparrow
@@ -171,7 +171,7 @@ Amandava amandava_นกกระติ๊ดแดง
 Amaurolimnas concolor_Uniform Crake
 Amaurornis cinerea_White-browed Crake
 Amaurornis isabellina_Isabelline Bush-hen
-Amaurornis moluccanus_Pale-vented Bush-hen
+Amaurornis moluccana_Pale-vented Bush-hen
 Amaurornis phoenicurus_นกกวัก
 Amaurospiza aequatorialis_Ecuadorian Seedeater
 Amaurospiza concolor_Blue Seedeater
@@ -215,7 +215,7 @@ Amazona finschi_Lilac-crowned Parrot
 Amazona guatemalae_Northern Mealy Amazon
 Amazona kawalli_Kawall's Parrot
 Amazona leucocephala_Cuban Parrot
-Amazona mercenaria_Scaly-naped Parrot
+Amazona mercenarius_Scaly-naped Parrot
 Amazona ochrocephala_Yellow-crowned Parrot
 Amazona oratrix_Yellow-headed Parrot
 Amazona rhodocorytha_Red-browed Parrot
@@ -238,7 +238,7 @@ Ammomanes deserti_Desert Lark
 Ammomanes phoenicura_Rufous-tailed Lark
 Ammonastes pelzelni_Gray-bellied Antbird
 Ammoperdix heyi_Sand Partridge
-Ammospiza caudacutus_Saltmarsh Sparrow
+Ammospiza caudacuta_Saltmarsh Sparrow
 Ammospiza leconteii_LeConte's Sparrow
 Ammospiza maritima_Seaside Sparrow
 Ammospiza nelsoni_Nelson's Sparrow
@@ -275,7 +275,7 @@ Anas fulvigula_Mottled Duck
 Anas georgica_Yellow-billed Pintail
 Anas gracilis_Gray Teal
 Anas platyrhynchos_เป็ดหัวเขียว
-Anas poecilorhyncha_Indian Spot-billed Duck
+Anas poecilorhyncha_เป็ดเทาพันธุ์อินเดีย
 Anas rubripes_American Black Duck
 Anas superciliosa_Pacific Black Duck
 Anas undulata_Yellow-billed Duck
@@ -364,7 +364,7 @@ Anthus spinoletta_Water Pipit
 Anthus spragueii_Sprague's Pipit
 Anthus sylvanus_Upland Pipit
 Anthus trivialis_Tree Pipit
-Antigone antigone_Sarus Crane
+Antigone antigone_นกกระเรียนพันธุ์ไทย
 Antigone canadensis_Sandhill Crane
 Antigone rubicunda_Brolga
 Antigone vipio_White-naped Crane
@@ -441,7 +441,7 @@ Arachnothera longirostra_นกปลีกล้วยเล็ก
 Arachnothera magna_นกปลีกล้วยลาย
 Aramides albiventris_Russet-naped Wood-Rail
 Aramides axillaris_Rufous-necked Wood-Rail
-Aramides cajanea_Gray-cowled Wood-Rail
+Aramides cajaneus_Gray-cowled Wood-Rail
 Aramides saracura_Slaty-breasted Wood-Rail
 Aramides wolfi_Brown Wood-Rail
 Aramides ypecaha_Giant Wood-Rail
@@ -453,7 +453,7 @@ Aratinga weddellii_Dusky-headed Parakeet
 Arborophila ardens_Hainan Partridge
 Arborophila atrogularis_White-cheeked Partridge
 Arborophila campbelli_นกกระทาดงมลายู
-Arborophila chloropus_นกกระทาดงแข้งเขียว
+Arborophila chloropus_Scaly-breasted Partridge
 Arborophila crudigularis_Taiwan Partridge
 Arborophila hyperythra_Red-breasted Partridge
 Arborophila javanica_Chestnut-bellied Partridge
@@ -463,7 +463,7 @@ Arborophila torqueola_Hill Partridge
 Arcanator orostruthus_Dapple-throat
 Archilochus alexandri_Black-chinned Hummingbird
 Archilochus colubris_Ruby-throated Hummingbird
-Ardea alba_Great Egret
+Ardea alba_นกยางโทนใหญ่
 Ardea cinerea_นกกระสานวล
 Ardea cocoi_Cocoi Heron
 Ardea herodias_Great Blue Heron
@@ -511,7 +511,7 @@ Artemisiospiza belli_Bell's Sparrow
 Artemisiospiza nevadensis_Sagebrush Sparrow
 Artisornis metopias_African Tailorbird
 Artisornis moreaui_Long-billed Tailorbird
-Arundinax aedon_Thick-billed Warbler
+Arundinax aedon_นกพงปากหนา
 Arundinicola leucocephala_White-headed Marsh Tyrant
 Asemospiza fuliginosa_Sooty Grassquit
 Asemospiza obscura_Dull-colored Grassquit
@@ -747,7 +747,7 @@ Buceros hydrocorax_Rufous Hornbill
 Buceros rhinoceros_นกเงือกหัวแรด
 Bucorvus leadbeateri_Southern Ground-Hornbill
 Buphagus africanus_Yellow-billed Oxpecker
-Buphagus erythrorhynchus_Red-billed Oxpecker
+Buphagus erythrorynchus_Red-billed Oxpecker
 Burhinus bistriatus_Double-striped Thick-knee
 Burhinus capensis_Spotted Thick-knee
 Burhinus grallarius_Bush Thick-knee
@@ -835,7 +835,7 @@ Calidris alba_นกคอสั้นตีนไว
 Calidris alpina_นกชายเลนท้องดำ
 Calidris bairdii_Baird's Sandpiper
 Calidris canutus_นกน็อตเล็ก
-Calidris falcinellus_Broad-billed Sandpiper
+Calidris falcinellus_นกชายเลนปากกว้าง
 Calidris ferruginea_นกชายเลนปากโค้ง
 Calidris fuscicollis_White-rumped Sandpiper
 Calidris himantopus_Stilt Sandpiper
@@ -845,7 +845,7 @@ Calidris melanotos_Pectoral Sandpiper
 Calidris minuta_นกสติ๊นท์เล็ก
 Calidris minutilla_Least Sandpiper
 Calidris ptilocnemis_Rock Sandpiper
-Calidris pugnax_Ruff
+Calidris pugnax_นกรัฟ
 Calidris pusilla_Semipalmated Sandpiper
 Calidris ruficollis_นกสติ๊นท์คอแดง
 Calidris subminuta_นกสติ๊นท์นี้วยาว
@@ -1044,7 +1044,7 @@ Centronyx bairdii_Baird's Sparrow
 Centronyx henslowii_Henslow's Sparrow
 Centropus andamanensis_Andaman Coucal
 Centropus bengalensis_นกกระปูดเล็ก
-Centropus burchelli_Burchell's Coucal
+Centropus burchellii_Burchell's Coucal
 Centropus celebensis_Bay Coucal
 Centropus chlororhynchos_Green-billed Coucal
 Centropus goliath_Goliath Coucal
@@ -1167,7 +1167,7 @@ Chasiempis sclateri_Kauai Elepaio
 Chauna chavaria_Northern Screamer
 Chauna torquata_Southern Screamer
 Chelidoptera tenebrosa_Swallow-winged Puffbird
-Chelidorhynx hypoxantha_นกอีแพรดท้องเหลือง
+Chelidorhynx hypoxanthus_นกอีแพรดท้องเหลือง
 Chenonetta jubata_Maned Duck
 Chersophilus duponti_Dupont's Lark
 Chiroxiphia boliviana_Yungas Manakin
@@ -1288,7 +1288,7 @@ Cinclodes pabsti_Long-tailed Cinclodes
 Cinclodes patagonicus_Dark-bellied Cinclodes
 Cincloramphus cruralis_Brown Songlark
 Cincloramphus macrurus_Papuan Grassbird
-Cincloramphus mariae_New Caledonian Grassbird
+Cincloramphus mariei_New Caledonian Grassbird
 Cincloramphus mathewsi_Rufous Songlark
 Cincloramphus timoriensis_Tawny Grassbird
 Cinclosoma ajax_Painted Quail-thrush
@@ -1470,7 +1470,7 @@ Conirostrum speciosum_Chestnut-vented Conebill
 Conirostrum tamarugense_Tamarugo Conebill
 Conopias albovittatus_White-ringed Flycatcher
 Conopias cinchoneti_Lemon-browed Flycatcher
-Conopias parva_Yellow-throated Flycatcher
+Conopias parvus_Yellow-throated Flycatcher
 Conopias trivirgatus_Three-striped Flycatcher
 Conopophaga ardesiaca_Slaty Gnateater
 Conopophaga aurita_Chestnut-belted Gnateater
@@ -1712,12 +1712,12 @@ Cyanocorax violaceus_Violaceous Jay
 Cyanocorax yncas_Green Jay
 Cyanocorax yucatanicus_Yucatan Jay
 Cyanoderma ambiguum_Buff-chested Babbler
-Cyanoderma chrysaeum_Golden Babbler
-Cyanoderma erythropterum_Chestnut-winged Babbler
+Cyanoderma chrysaeum_นกกินแมลงหัวสีทอง
+Cyanoderma erythropterum_นกกินแมลงปีกแดง
 Cyanoderma melanothorax_Crescent-chested Babbler
 Cyanoderma pyrrhops_Black-chinned Babbler
 Cyanoderma ruficeps_Rufous-capped Babbler
-Cyanoderma rufifrons_Rufous-fronted Babbler
+Cyanoderma rufifrons_นกกินแมลงหน้าผากน้ำตาล
 Cyanoliseus patagonus_Burrowing Parakeet
 Cyanoloxia brissonii_Ultramarine Grosbeak
 Cyanoloxia cyanoides_Blue-black Grosbeak
@@ -1887,7 +1887,7 @@ Diglossa sittoides_Rusty Flowerpiercer
 Dinemellia dinemelli_White-headed Buffalo-Weaver
 Dinopium benghalense_Black-rumped Flameback
 Dinopium javanense_นกหัวขวานสามนิ้วหลังทอง
-Dinopium rafflesii_นกหัวขวานสามนิ้วหลังสีไพล
+Dinopium rafflesii_Olive-backed Woodpecker
 Diopsittaca nobilis_Red-shouldered Macaw
 Diuca diuca_Common Diuca-Finch
 Dives dives_Melodious Blackbird
@@ -2123,7 +2123,7 @@ Euchrepomis spodioptila_Ash-winged Antwren
 Eucometis penicillata_Gray-headed Tanager
 Eudocimus albus_White Ibis
 Eudromia elegans_Elegant Crested-Tinamou
-Eudynamys melanorhyncha_Black-billed Koel
+Eudynamys melanorhynchus_Black-billed Koel
 Eudynamys orientalis_Pacific Koel
 Eudynamys scolopaceus_นกกาเหว่า
 Eudyptula minor_Little Penguin
@@ -2218,7 +2218,7 @@ Ficedula albicollis_Collared Flycatcher
 Ficedula basilanica_Little Slaty Flycatcher
 Ficedula dumetoria_นกจับแมลงอกสีส้ม
 Ficedula elisae_นกจับแมลงหลังสีเขียว
-Ficedula erithacus_Slaty-backed Flycatcher
+Ficedula erithacus_นกจับแมลงหลังสีเทา
 Ficedula henrici_Damar Flycatcher
 Ficedula hyperythra_นกจับแมลงหน้าผากขาว
 Ficedula hypoleuca_European Pied Flycatcher
@@ -2347,7 +2347,7 @@ Gampsorhynchus torquatus_นกเสือแมลงหัวขาว
 Garrulax calvus_Bare-headed Laughingthrush
 Garrulax canorus_Chinese Hwamei
 Garrulax leucolophus_นกกะรางหัวหงอก
-Garrulax lugubris_นกกะรางดำ
+Garrulax lugubris_Black Laughingthrush
 Garrulax milleti_Black-hooded Laughingthrush
 Garrulax monileger_นกกะรางสร้อยคอเล็ก
 Garrulax palliatus_Sunda Laughingthrush
@@ -2861,7 +2861,7 @@ Iodopleura pipra_Buff-throated Purpletuft
 Iole crypta_Buff-vented Bulbul
 Iole indica_Yellow-browed Bulbul
 Iole propinqua_นกปรอดเล็กตาขาว
-Iole viridescens_Olive Bulbul
+Iole viridescens_นกปรอดเล็กสีไพลตาแดง
 Irania gutturalis_White-throated Robin
 Irena cyanogastra_Philippine Fairy-bluebird
 Irena puella_นกเขียวคราม
@@ -2874,7 +2874,7 @@ Ispidina picta_African Pygmy-Kingfisher
 Ithaginis cruentus_Blood Pheasant
 Ixobrychus dubius_Black-backed Bittern
 Ixobrychus exilis_Least Bittern
-Ixobrychus flavicollis_Black Bittern
+Ixobrychus flavicollis_นกยางดำ
 Ixobrychus involucris_Stripe-backed Bittern
 Ixobrychus minutus_Little Bittern
 Ixobrychus sinensis_นกยางไฟหัวดำ
@@ -2902,7 +2902,7 @@ Klais guimeti_Violet-headed Hummingbird
 Kleinothraupis atropileus_Black-capped Hemispingus
 Knipolegus aterrimus_White-winged Black-Tyrant
 Knipolegus poecilurus_Rufous-tailed Tyrant
-Kurochkinegramma hypogrammicum_Purple-naped Spiderhunter
+Kurochkinegramma hypogrammicum_นกกินปลีท้ายทอยน้ำเงิน
 Lacedo pulchella_นกกะเต็นลาย
 Lafresnaya lafresnayi_Mountain Velvetbreast
 Lagonosticta rubricata_African Firefinch
@@ -2911,12 +2911,12 @@ Lagopus lagopus_Willow Ptarmigan
 Lagopus leucura_White-tailed Ptarmigan
 Lagopus muta_Rock Ptarmigan
 Lalage aurea_Rufous-bellied Triller
-Lalage fimbriata_Lesser Cuckooshrike
+Lalage fimbriata_นกเฉี่ยวบุ้งเล็ก
 Lalage leucomela_Varied Triller
 Lalage leucopyga_Long-tailed Triller
 Lalage maculosa_Polynesian Triller
 Lalage melanoptera_Black-headed Cuckooshrike
-Lalage melaschistos_Black-winged Cuckooshrike
+Lalage melaschistos_นกเฉี่ยวบุ้งใหญ่
 Lalage nigra_นกเขนน้อยคิ้วขาว
 Lalage sueurii_White-shouldered Triller
 Lalage tricolor_White-winged Triller
@@ -3101,7 +3101,7 @@ Leucosticte australis_Brown-capped Rosy-Finch
 Leucosticte nemoricola_Plain Mountain-Finch
 Leucosticte tephrocotis_Gray-crowned Rosy-Finch
 Lewinia pectoralis_Lewin's Rail
-Lewinia striata_Slaty-breasted Rail
+Lewinia striata_นกอัญชันอกสีเทา
 Lichenostomus melanops_Yellow-tufted Honeyeater
 Lichmera incana_Dark-brown Honeyeater
 Lichmera indistincta_Brown Honeyeater
@@ -3135,7 +3135,7 @@ Locustella alishanensis_Taiwan Bush Warbler
 Locustella amnicola_Sakhalin Grasshopper-Warbler
 Locustella castanea_Chestnut-backed Bush Warbler
 Locustella caudata_Long-tailed Bush Warbler
-Locustella certhiola_นกพงตั๊กแตนท้ายทอยสีเทา
+Locustella certhiola_Pallas's Grasshopper-Warbler
 Locustella davidi_นกกระจ้อยอกเทา
 Locustella fasciolata_Gray's Grasshopper-Warbler
 Locustella fluviatilis_River Warbler
@@ -3191,7 +3191,7 @@ Lurocalis rufiventris_Rufous-bellied Nighthawk
 Lurocalis semitorquatus_Short-tailed Nighthawk
 Luscinia luscinia_Thrush Nightingale
 Luscinia megarhynchos_Common Nightingale
-Luscinia phaenicuroides_White-bellied Redstart
+Luscinia phaenicuroides_นกเขนแปลง
 Luscinia svecica_นกคอมรกต
 Lybius torquatus_Black-collared Barbet
 Lybius vieilloti_Vieillot's Barbet
@@ -3260,10 +3260,10 @@ Manorina flavigula_Yellow-throated Miner
 Manorina melanocephala_Noisy Miner
 Manorina melanophrys_Bell Miner
 Mareca americana_American Wigeon
-Mareca falcata_Falcated Duck
-Mareca penelope_Eurasian Wigeon
+Mareca falcata_เป็ดเปียหน้าเขียว
+Mareca penelope_เป็ดปากสั้น
 Mareca sibilatrix_Chiloe Wigeon
-Mareca strepera_Gadwall
+Mareca strepera_เป็ดเทาก้นดำ
 Margarops fuscatus_Pearly-eyed Thrasher
 Margarornis rubiginosus_Ruddy Treerunner
 Margarornis squamiger_Pearled Treerunner
@@ -3501,7 +3501,7 @@ Mitu tomentosum_Crestless Curassow
 Mitu tuberosum_Razor-billed Curassow
 Mixornis bornensis_Bold-striped Tit-Babbler
 Mixornis flavicollis_Gray-cheeked Tit-Babbler
-Mixornis gularis_Pin-striped Tit-Babbler
+Mixornis gularis_นกกินแมลงอกเหลือง
 Mniotilta varia_Black-and-white Warbler
 Modulatrix stictigula_Spot-throat
 Mohoua albicilla_Whitehead
@@ -3527,7 +3527,7 @@ Monasa flavirostris_Yellow-billed Nunbird
 Monasa morphoeus_White-fronted Nunbird
 Monasa nigrifrons_Black-fronted Nunbird
 Montecincla fairbanki_Palani Laughingthrush
-Monticola cinclorhynchus_Blue-capped Rock-Thrush
+Monticola cinclorhyncha_Blue-capped Rock-Thrush
 Monticola gularis_นกกระเบื้องคอขาว
 Monticola imerina_Littoral Rock-Thrush
 Monticola rufiventris_นกกระเบื้องท้องแดง
@@ -3737,7 +3737,7 @@ Nectarinia famosa_Malachite Sunbird
 Nectarinia kilimensis_Bronze Sunbird
 Nemosia pileata_Hooded Tanager
 Neochmia temporalis_Red-browed Firetail
-Neocossyphus finschii_Finsch's Flycatcher-Thrush
+Neocossyphus finschi_Finsch's Flycatcher-Thrush
 Neocossyphus fraseri_Rufous Flycatcher-Thrush
 Neocossyphus rufus_Red-tailed Ant-Thrush
 Neoctantes niger_Black Bushbird
@@ -3821,7 +3821,7 @@ Nothura boraquira_White-bellied Nothura
 Nothura darwinii_Darwin's Nothura
 Nothura maculosa_Spotted Nothura
 Notiomystis cincta_Stitchbird
-Notopholia corrusca_Black-bellied Starling
+Notopholia corusca_Black-bellied Starling
 Nucifraga caryocatactes_Eurasian Nutcracker
 Nucifraga columbiana_Clark's Nutcracker
 Numenius americanus_Long-billed Curlew
@@ -3982,7 +3982,7 @@ Orthogonys chloricterus_Olive-green Tanager
 Orthonyx novaeguineae_Papuan Logrunner
 Orthonyx spaldingii_Chowchilla
 Orthonyx temminckii_Australian Logrunner
-Orthopsittaca manilata_Red-bellied Macaw
+Orthopsittaca manilatus_Red-bellied Macaw
 Orthotomus atrogularis_นกกระจิบคอดำ
 Orthotomus chaktomuk_Cambodian Tailorbird
 Orthotomus cinereiceps_White-eared Tailorbird
@@ -4097,7 +4097,7 @@ Parus major_Great Tit
 Parus minor_นกติ๊ดหลังสีไพล
 Parus monticolus_Green-backed Tit
 Passer ammodendri_Saxaul Sparrow
-Passer cinnamomeus_Russet Sparrow
+Passer cinnamomeus_นกกระจอกป่าท้องเหลือง
 Passer diffusus_Southern Gray-headed Sparrow
 Passer domesticus_นกกระจอกใหญ่
 Passer flaveolus_นกกระจอกตาล
@@ -4150,13 +4150,13 @@ Pelecanus occidentalis_Brown Pelican
 Pelecanus onocrotalus_Great White Pelican
 Peliperdix coqui_Coqui Francolin
 Pellorneum albiventre_นกจาบดินสีน้ำตาลคอลาย
-Pellorneum bicolor_Ferruginous Babbler
+Pellorneum bicolor_นกกินแมลงสีน้ำตาลแดง
 Pellorneum capistratum_นกจาบดินหัวดำ
 Pellorneum celebense_Sulawesi Babbler
 Pellorneum fuscocapillus_Brown-capped Babbler
-Pellorneum malaccense_Short-tailed Babbler
+Pellorneum malaccense_นกกินแมลงป่าหางสั้น
 Pellorneum pyrrogenys_Temminck's Babbler
-Pellorneum rostratum_White-chested Babbler
+Pellorneum rostratum_นกกินแมลงป่าโกงกาง
 Pellorneum ruficeps_นกจาบดินอกลาย
 Pellorneum tickelli_นกกินแมลงป่าอกสีน้ำตาล
 Peltops montanus_Mountain Peltops
@@ -4365,7 +4365,7 @@ Phyllastrephus flavostriatus_Yellow-streaked Greenbul
 Phyllastrephus placidus_Placid Greenbul
 Phyllastrephus strepitans_Northern Brownbul
 Phyllastrephus terrestris_Terrestrial Brownbul
-Phyllergates cuculatus_นกกระจิบภูเขา
+Phyllergates cucullatus_นกกระจิบภูเขา
 Phyllergates heterolaemus_Rufous-headed Tailorbird
 Phyllomyias burmeisteri_Rough-legged Tyrannulet
 Phyllomyias cinereiceps_Ashy-headed Tyrannulet
@@ -4404,7 +4404,7 @@ Phylloscopus burkii_Green-crowned Warbler
 Phylloscopus calciatilis_Limestone Leaf Warbler
 Phylloscopus canariensis_Canary Islands Chiffchaff
 Phylloscopus cantator_นกกระจิ๊ดคิ้วดำท้องขาว
-Phylloscopus castaniceps_Chestnut-crowned Warbler
+Phylloscopus castaniceps_นกกระจ้อยกระหม่อมแดง
 Phylloscopus chloronotus_Lemon-rumped Warbler
 Phylloscopus claudiae_นกกระจิ๊ดหางขาวใหญ่
 Phylloscopus collybita_Common Chiffchaff
@@ -4435,10 +4435,10 @@ Phylloscopus nitidus_Green Warbler
 Phylloscopus occipitalis_Western Crowned Warbler
 Phylloscopus occisinensis_Alpine Leaf Warbler
 Phylloscopus ogilviegranti_นกกระจิ๊ดหางขาวท้องเหลือง
-Phylloscopus omeiensis_Martens's Warbler
+Phylloscopus omeiensis_นกกระจ้อยวงตาสีทองพันธุ์จีน
 Phylloscopus orientalis_Eastern Bonelli's Warbler
 Phylloscopus plumbeitarsus_นกกระจิ๊ดเขียวปีกสองแถบ
-Phylloscopus poliogenys_Gray-cheeked Warbler
+Phylloscopus poliogenys_นกกระจ้อยแก้มสีเทา
 Phylloscopus presbytes_Timor Leaf Warbler
 Phylloscopus proregulus_นกกระจิ๊ดตะโพกเหลืองคิ้วเหลือง
 Phylloscopus pulcher_นกกระจิ๊ดแถบปีกสีส้ม
@@ -4448,20 +4448,20 @@ Phylloscopus sarasinorum_Sulawesi Leaf Warbler
 Phylloscopus schwarzi_นกกระจิ๊ดปากหนา
 Phylloscopus sibilatrix_Wood Warbler
 Phylloscopus sindianus_Mountain Chiffchaff
-Phylloscopus soror_Alström's Warbler
+Phylloscopus soror_นกกระจ้อยวงตาสีทองหางสีเรียบ
 Phylloscopus subaffinis_นกกระจิ๊ดท้องสีน้ำตาล
 Phylloscopus tenellipes_นกกระจิ๊ดขาสีเนื้อ
-Phylloscopus tephrocephalus_Gray-crowned Warbler
+Phylloscopus tephrocephalus_นกกระจ้อยวงตาสีทองหัวเทา
 Phylloscopus trivirgatus_นกกระจิ๊ดภูเขา
 Phylloscopus trochiloides_นกกระจิ๊ดเขียวคล้ำ
 Phylloscopus trochilus_Willow Warbler
 Phylloscopus tytleri_Tytler's Leaf Warbler
 Phylloscopus umbrovirens_Brown Woodland-Warbler
-Phylloscopus valentini_Bianchi's Warbler
+Phylloscopus valentini_นกกระจ้อยวงตาสีทองแถบปีกเหลือง
 Phylloscopus whistleri_Whistler's Warbler
 Phylloscopus xanthodryas_Japanese Leaf Warbler
 Phylloscopus xanthoschistos_Gray-hooded Warbler
-Phylloscopus yunnanensis_Chinese Leaf Warbler
+Phylloscopus yunnanensis_นกกระจิ๊ดพันธุ์จีน
 Phytotoma raimondii_Peruvian Plantcutter
 Phytotoma rara_Rufous-tailed Plantcutter
 Phytotoma rutila_White-tipped Plantcutter
@@ -4967,7 +4967,7 @@ Pycnonotus nigricans_Black-fronted Bulbul
 Pycnonotus plumosus_นกปรอดสีไพลใหญ่
 Pycnonotus simplex_นกปรอดสีน้ำตาลตาขาว
 Pycnonotus sinensis_นกปรอดจีน
-Pycnonotus striatus_นกปรอดลาย
+Pycnonotus striatus_Striated Bulbul
 Pycnonotus taivanus_Styan's Bulbul
 Pycnonotus tricolor_Dark-capped Bulbul
 Pycnonotus xantholaemus_Yellow-throated Bulbul
@@ -5146,7 +5146,7 @@ Rollulus rouloul_ไก่จุก
 Rostratula benghalensis_นกโป่งวิด
 Rostrhamus sociabilis_Snail Kite
 Rubigula erythropthalmos_Spectacled Bulbul
-Rubigula flaviventris_Black-crested Bulbul
+Rubigula flaviventris_นกปรอดเหลืองหัวจุก
 Rubigula gularis_Flame-throated Bulbul
 Rupicola peruvianus_Andean Cock-of-the-rock
 Rupicola rupicola_Guianan Cock-of-the-rock
@@ -5183,7 +5183,7 @@ Sasia abnormis_นกหัวขวานจิ๋วอกแดง
 Sasia ochracea_นกหัวขวานจิ๋วคิ้วขาว
 Saundersilarus saundersi_Saunders's Gull
 Saxicola caprata_นกยอดหญ้าสีดำ, นกขี้หมา
-Saxicola ferreus_Gray Bushchat
+Saxicola ferreus_นกยอดหญ้าสีเทา
 Saxicola gutturalis_Timor Bushchat
 Saxicola maurus_Siberian Stonechat
 Saxicola rubetra_Whinchat
@@ -5213,11 +5213,11 @@ Schoenicola brevirostris_Fan-tailed Grassbird
 Schoenicola platyurus_Broad-tailed Grassbird
 Schoeniophylax phryganophilus_Chotoy Spinetail
 Schoeniparus brunneus_Dusky Fulvetta
-Schoeniparus castaneceps_Rufous-winged Fulvetta
+Schoeniparus castaneceps_นกมุ่นรกหัวน้ำตาลแดง
 Schoeniparus cinereus_Yellow-throated Fulvetta
-Schoeniparus dubius_Rusty-capped Fulvetta
+Schoeniparus dubius_นกมุ่นรกหน้าผากสีน้ำตาล
 Schoeniparus klossi_Black-crowned Fulvetta
-Schoeniparus rufogularis_Rufous-throated Fulvetta
+Schoeniparus rufogularis_นกมุ่นรกคอแดง
 Sciaphylax castanea_Zimmer's Antbird
 Sciaphylax hemimelaena_Chestnut-tailed Antbird
 Sclateria naevia_Silvered Antbird
@@ -5396,11 +5396,11 @@ Snowornis subalaris_Gray-tailed Piha
 Somateria mollissima_Common Eider
 Somateria spectabilis_King Eider
 Spartonoica maluroides_Bay-capped Wren-Spinetail
-Spatula clypeata_Northern Shoveler
+Spatula clypeata_เป็ดปากพลั่ว
 Spatula cyanoptera_Cinnamon Teal
 Spatula discors_Blue-winged Teal
 Spatula puna_Puna Teal
-Spatula querquedula_Garganey
+Spatula querquedula_เป็ดลาย
 Spelaeornis badeigularis_Rusty-throated Wren-Babbler
 Spelaeornis caudatus_Rufous-throated Wren-Babbler
 Spelaeornis chocolatinus_นกจู๋เต้น หางยาว
@@ -5609,7 +5609,7 @@ Sylvia cantillans_Subalpine Warbler
 Sylvia communis_Greater Whitethroat
 Sylvia conspicillata_Spectacled Warbler
 Sylvia crassirostris_Eastern Orphean Warbler
-Sylvia curruca_นกคอขาวน้อย
+Sylvia curruca_Lesser Whitethroat
 Sylvia deserticola_Tristram's Warbler
 Sylvia hortensis_Western Orphean Warbler
 Sylvia layardi_Layard's Warbler
@@ -5618,7 +5618,7 @@ Sylvia melanocephala_Sardinian Warbler
 Sylvia melanothorax_Cyprus Warbler
 Sylvia mystacea_Menetries's Warbler
 Sylvia nana_Asian Desert Warbler
-Sylvia nigricapilla_Bush Blackcap
+Sylvia nigricapillus_Bush Blackcap
 Sylvia nisoria_Barred Warbler
 Sylvia ruppeli_Rüppell's Warbler
 Sylvia sarda_Marmora's Warbler
@@ -6034,7 +6034,7 @@ Turdinus atrigularis_Black-throated Wren-Babbler
 Turdinus brevicaudatus_Streaked Wren-Babbler
 Turdinus crassus_Mountain Wren-Babbler
 Turdinus crispifrons_Limestone Wren-Babbler
-Turdinus macrodactylus_Large Wren-Babbler
+Turdinus macrodactylus_นกจู๋เต้นตีนใหญ่
 Turdinus marmoratus_Marbled Wren-Babbler
 Turdinus rufipectus_Rusty-breasted Wren-Babbler
 Turdinus sepiarius_Horsfield's Babbler
@@ -6107,7 +6107,7 @@ Turdus plebejus_Mountain Thrush
 Turdus plumbeus_Red-legged Thrush
 Turdus poliocephalus_Island Thrush
 Turdus reevei_Plumbeous-backed Thrush
-Turdus rubrocanus_Chestnut Thrush
+Turdus rubrocanus_นกเดินดงสีน้ำตาลแดง
 Turdus ruficollis_นกเดินดงคอแดง
 Turdus rufitorques_Rufous-collared Robin
 Turdus rufiventris_Rufous-bellied Thrush
@@ -6289,7 +6289,7 @@ Xolmis irupero_White Monjita
 Xolmis pyrope_Fire-eyed Diucon
 Xolmis velatus_White-rumped Monjita
 Yuhina brunneiceps_Taiwan Yuhina
-Yuhina castaniceps_นกภูหงอนหัวลาย
+Yuhina castaniceps_Striated Yuhina
 Yuhina everetti_Chestnut-crested Yuhina
 Yuhina flavicollis_นกภูหงอนวงตาขาว
 Yuhina gularis_Stripe-throated Yuhina
@@ -6301,12 +6301,12 @@ Yungipicus kizuki_Pygmy Woodpecker
 Yungipicus maculatus_Philippine Woodpecker
 Yungipicus moluccensis_นกหัวขวานด่างแคระปักษ์ใต้
 Yungipicus nanus_Brown-capped Woodpecker
-Zapornia bicolor_Black-tailed Crake
+Zapornia bicolor_นกอัญชันหางดำ
 Zapornia flavirostra_Black Crake
-Zapornia fusca_Ruddy-breasted Crake
+Zapornia fusca_นกหนูแดง
 Zapornia parva_Little Crake
-Zapornia paykullii_Band-bellied Crake
-Zapornia pusilla_Baillon's Crake
+Zapornia paykullii_นกอัญชันจีน
+Zapornia pusilla_นกอัญชันเล็ก
 Zapornia tabuensis_Spotless Crake
 Zavattariornis stresemanni_Stresemann's Bush-Crow
 Zebrilus undulatus_Zigzag Heron
