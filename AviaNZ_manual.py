@@ -1494,6 +1494,10 @@ class AviaNZ(QMainWindow):
         self.resetStorageArrays()
         self.toggleBatMode()
 
+        if self.listFiles.currentItem().isHidden():
+            self.listFiles.currentItem().setHidden(False)
+        self.listFiles.scrollToItem(self.listFiles.currentItem(), 3)
+
         with pg.ProgressDialog("Loading..", 0, 6) as dlg:
             dlg.setCancelButton(None)
             dlg.setWindowIcon(QIcon('img/Avianz.ico'))

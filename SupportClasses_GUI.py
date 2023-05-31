@@ -1411,7 +1411,7 @@ class LightedFileList(QListWidget):
                 painter.drawRect(self.pixmap.rect())
                 painter.end()
                 item.setIcon(QIcon(self.pixmap))
-                if not self.showAll:
+                if not self.showAll and item != self.currentItem():
                     item.setHidden(True)
                 else:
                     item.setHidden(False)
@@ -1439,7 +1439,7 @@ class LightedFileList(QListWidget):
                     item.setHidden(False)
                 # self.minCertainty cannot be changed by a cert=100 segment
         else:
-            if not self.showAll:
+            if not self.showAll and item != self.currentItem():
                 item.setHidden(True)
             else:
                 item.setHidden(False)
