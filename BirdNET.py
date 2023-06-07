@@ -12,7 +12,7 @@ import copy
 import traceback
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt, QThreadPool, QRunnable, Signal, Slot, QObject
-from PyQt5.QtWidgets import QDialog, QSlider, QGridLayout, QGridLayout, QLabel, QComboBox, QHBoxLayout, QLineEdit, QPushButton, QRadioButton, QVBoxLayout, QCheckBox, QFileDialog, QMessageBox, QDoubleSpinBox, QSpinBox, QGroupBox, QWidget, QProgressDialog
+from PyQt5.QtWidgets import QDialog, QSlider, QGridLayout, QGridLayout, QLabel, QComboBox, QHBoxLayout, QLineEdit, QPushButton, QRadioButton, QVBoxLayout, QCheckBox, QFileDialog, QMessageBox, QDoubleSpinBox, QSpinBox, QGroupBox, QWidget, QProgressDialog, QToolButton
 
 import Segment
 
@@ -45,15 +45,18 @@ class BirdNETDialog(QDialog):
         self.lat = QDoubleSpinBox()
         self.lat.setRange(-90, 90)
         self.lat.setValue(-1.0)
+        self.lat.valueChanged.connect(self.updateDialog)
 
         self.lon_label = QLabel("Longitude")
         self.lon = QDoubleSpinBox()
         self.lon.setRange(-180, 180)
         self.lon.setValue(-1.0)
+        self.lon.valueChanged.connect(self.updateDialog)
 
         self.week_label = QLabel("Week")
         self.week = QSpinBox()
         self.week.setRange(0, 48)
+        self.week.valueChanged.connect(self.updateDialog)
 
         self.overlap_label = QLabel("Overlap")
         self.overlap = QDoubleSpinBox()
@@ -72,6 +75,9 @@ class BirdNETDialog(QDialog):
 
         self.slist = QLineEdit()
         self.slist.setReadOnly(True)
+        self.slist.setClearButtonEnabled(True)
+        self.slist.findChild(QToolButton).setEnabled(True)
+        self.slist.textChanged.connect(self.updateDialog)
 
         self.btn_slist = QPushButton("Select Custom Species List")
         self.btn_slist.clicked.connect(self.chooseSpeciesList)
@@ -84,6 +90,7 @@ class BirdNETDialog(QDialog):
         self.mea = QCheckBox("Calculate moving exponential average?")
         self.datetime_format_label = QLabel("Datetime format")
         self.datetime_format = QLineEdit()
+        self.datetime_format.textChanged.connect(self.updateDialog)
 
         self.locale = QComboBox()
         # TODO: get list of possible languages from labels_directory?
@@ -132,7 +139,7 @@ class BirdNETDialog(QDialog):
         # Button to start analysis
         self.btnAnalyze = QPushButton('Analyze')
         self.btnAnalyze.clicked.connect(self.onClickanalyze)
-
+        
         # labels for QLineEdit analyze options
 
         # parameter layout
@@ -221,6 +228,7 @@ class BirdNETDialog(QDialog):
         species_list = QFileDialog.getOpenFileName(self, 'Choose filter species list', filter='Text (*.txt)')
         self.slist.setText(os.path.basename(species_list[0]))
         self.slist_path = species_list[0]
+        #self.updateDialog()
 
     def validateInputParameters(self):
         correct = True
@@ -287,6 +295,18 @@ class BirdNETDialog(QDialog):
             self.batchsize_label.setVisible(False)
             self.sf_thresh.setVisible(False)
             self.sf_thresh_label.setVisible(False)
+            self.lat.setDisabled(False)
+            self.lon.setDisabled(False)
+            self.week.setDisabled(False)
+            if self.datetime_format.text() != "":
+                self.week.setDisabled(True)
+            else:
+                self.week.setDisabled(False)
+            if self.week.value() != 0:
+                self.datetime_format.setDisabled(True)
+            else:
+                self.datetime_format.setDisabled(False)
+
         else:
             self.mea.setChecked(False)
             self.datetime_format.setVisible(False)
@@ -295,6 +315,20 @@ class BirdNETDialog(QDialog):
             self.batchsize_label.setVisible(True)
             self.sf_thresh.setVisible(True)
             self.sf_thresh_label.setVisible(True)
+            if self.lat.value() != -1 or self.lon.value() != -1:
+                self.slist.clear()
+                self.btn_slist.setDisabled(True)
+            else:
+                #self.slist.setText(self.slist_path)
+                self.btn_slist.setDisabled(False)
+            if self.slist.text() != "":
+                self.lat.setDisabled(True)
+                self.lon.setDisabled(True)
+                self.week.setDisabled(True)
+            else:
+                self.lat.setDisabled(False)
+                self.lon.setDisabled(False)
+                self.week.setDisabled(False)
 
         self.adjustSize()
 
