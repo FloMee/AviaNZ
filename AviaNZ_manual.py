@@ -3847,7 +3847,7 @@ class AviaNZ(QMainWindow):
             if targetix is not None and seg[0]>=self.segments[targetix][0]:
                 continue
             for lab in seg[4]:
-                if lab["certainty"]<=maxcert:
+                if lab["certainty"]<=maxcert and (lab["species"] == self.currentSpecies or self.currentSpecies == "All"):
                     targetix = segix
         if targetix is None:
             QApplication.restoreOverrideCursor()
