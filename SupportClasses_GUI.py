@@ -1217,6 +1217,7 @@ class LightedFileList(QListWidget):
         self.pixmap = QPixmap(50, 10)
         self.blackpen = fn.mkPen(color=(160,160,160,255), width=2)
         self.tempsl = Segment.SegmentList()
+        self.setAutoScroll(False)
 
     def fill(self, soundDir, fileName, recursive=False, readFmt=False, addWavNum=False):
         """ read folder contents, populate the list widget.
