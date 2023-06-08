@@ -1217,6 +1217,7 @@ class LightedFileList(QListWidget):
         self.pixmap = QPixmap(50, 10)
         self.blackpen = fn.mkPen(color=(160,160,160,255), width=2)
         self.tempsl = Segment.SegmentList()
+        self.setAutoScroll(False)
 
     def fill(self, soundDir, fileName, recursive=False, readFmt=False, addWavNum=False):
         """ read folder contents, populate the list widget.
@@ -1411,7 +1412,7 @@ class LightedFileList(QListWidget):
                 painter.drawRect(self.pixmap.rect())
                 painter.end()
                 item.setIcon(QIcon(self.pixmap))
-                if not self.showAll:
+                if not self.showAll and item != self.currentItem():
                     item.setHidden(True)
                 else:
                     item.setHidden(False)
@@ -1439,7 +1440,7 @@ class LightedFileList(QListWidget):
                     item.setHidden(False)
                 # self.minCertainty cannot be changed by a cert=100 segment
         else:
-            if not self.showAll:
+            if not self.showAll and item != self.currentItem():
                 item.setHidden(True)
             else:
                 item.setHidden(False)

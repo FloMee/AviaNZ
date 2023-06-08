@@ -1500,6 +1500,10 @@ class AviaNZ(QMainWindow):
         self.resetStorageArrays()
         self.toggleBatMode()
 
+        if self.listFiles.currentItem().isHidden():
+            self.listFiles.currentItem().setHidden(False)
+        # self.listFiles.scrollToItem(self.listFiles.currentItem(), 3)
+
         with pg.ProgressDialog("Loading..", 0, 6) as dlg:
             dlg.setCancelButton(None)
             dlg.setWindowIcon(QIcon('img/Avianz.ico'))
@@ -3849,7 +3853,7 @@ class AviaNZ(QMainWindow):
             if targetix is not None and seg[0]>=self.segments[targetix][0]:
                 continue
             for lab in seg[4]:
-                if lab["certainty"]<=maxcert:
+                if lab["certainty"]<=maxcert and (lab["species"] == self.currentSpecies or self.currentSpecies == "All"):
                     targetix = segix
         if targetix is None:
             QApplication.restoreOverrideCursor()
