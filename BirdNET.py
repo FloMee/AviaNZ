@@ -353,7 +353,7 @@ class BirdNET(QWidget):
         if self.param["lite"]:
             lblpath = os.path.join('labels', 'Lite', 'labels_{}.txt'.format(self.param["locale"]))
         else:
-            lblpath = os.path.join('labels', 'Analyzer', 'BirdNET_GLOBAL_3K_V2.2_Labels_{}.txt'.format(self.param["locale"]))
+            lblpath = os.path.join('labels', 'Analyzer', 'BirdNET_GLOBAL_6K_V2.4_Labels_{}.txt'.format(self.param["locale"]))
 
         with open(lblpath, 'r') as lfile:
             classes = [line[:-1] for line in lfile]
@@ -437,7 +437,7 @@ class BirdNET_Worker(QRunnable):
             if self.lite:
                 mdlpath = os.path.join('models', 'Lite', 'BirdNET_6K_GLOBAL_MODEL.tflite')
             else:
-                mdlpath = os.path.join('models', 'Analyzer', 'BirdNET_GLOBAL_3K_V2.2_Model_FP32.tflite')
+                mdlpath = os.path.join('models', 'Analyzer', 'BirdNET_GLOBAL_6K_V2.4_Model_FP32.tflite')
             print(mdlpath)
             # Load TFLite model and allocate tensors.
             interpreter = tflite.Interpreter(model_path=mdlpath)
@@ -466,7 +466,7 @@ class BirdNET_Worker(QRunnable):
     def loadMetaModel(self):
         print("load MetaModel", flush=True)
         # Load TFLite model and allocate tensors.
-        self.m_interpreter = tflite.Interpreter(model_path=os.path.join('models', 'Analyzer', 'BirdNET_GLOBAL_3K_V2.2_MData_Model_FP16.tflite'))
+        self.m_interpreter = tflite.Interpreter(model_path=os.path.join('models', 'Analyzer', 'BirdNET_GLOBAL_6K_V2.4_MData_Model_FP16.tflite'))
         self.m_interpreter.allocate_tensors()
 
         # Get input and output tensors.
