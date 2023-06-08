@@ -61,16 +61,19 @@ class BirdNETDialog(QDialog):
         self.overlap_label = QLabel("Overlap")
         self.overlap = QDoubleSpinBox()
         self.overlap.setRange(0, 2.9)
+        self.overlap.setSingleStep(0.1)
         self.overlap.setValue(0.0)
 
         self.sensitivity_label = QLabel("Sensitivity")
         self.sensitivity = QDoubleSpinBox()
         self.sensitivity.setRange(0.5, 1.5)
+        self.sensitivity.setSingleStep(0.05)
         self.sensitivity.setValue(1.0)
 
         self.min_conf_label = QLabel("Minimum Confidence")
         self.min_conf = QDoubleSpinBox()
         self.min_conf.setRange(0.01, 0.99)
+        self.min_conf.setSingleStep(0.01)
         self.min_conf.setValue(0.1)
 
         self.slist = QLineEdit()
@@ -131,7 +134,9 @@ class BirdNETDialog(QDialog):
         self.sf_thresh_label = QLabel("Threshold for location filter")
         self.sf_thresh = QDoubleSpinBox()
         self.sf_thresh.setRange(0.01, 0.99)
+        self.sf_thresh.setSingleStep(0.01)
         self.sf_thresh.setValue(0.03)
+        self.sf_thresh.setDisabled(True)
 
         self.btnAdvanced = QPushButton('Show Advanced Settings')
         self.btnAdvanced.clicked.connect(self.updateSettings)
@@ -298,14 +303,14 @@ class BirdNETDialog(QDialog):
             self.lat.setDisabled(False)
             self.lon.setDisabled(False)
             self.week.setDisabled(False)
+            self.btn_slist.setDisabled(False)
             if self.datetime_format.text() != "":
                 self.week.setDisabled(True)
-            else:
-                self.week.setDisabled(False)
-            if self.week.value() != 0:
+            elif self.week.value() != 0:
                 self.datetime_format.setDisabled(True)
             else:
                 self.datetime_format.setDisabled(False)
+                self.week.setDisabled(False)
 
         else:
             self.mea.setChecked(False)
@@ -318,17 +323,21 @@ class BirdNETDialog(QDialog):
             if self.lat.value() != -1 or self.lon.value() != -1:
                 self.slist.clear()
                 self.btn_slist.setDisabled(True)
-            else:
-                #self.slist.setText(self.slist_path)
-                self.btn_slist.setDisabled(False)
-            if self.slist.text() != "":
+                self.sf_thresh.setDisabled(False)
+                self.week.setDisabled(False)
+            elif self.slist.text() != "":
                 self.lat.setDisabled(True)
                 self.lon.setDisabled(True)
-                self.week.setDisabled(True)
+                self.week.sitDisabled(True)
+                self.sf_thresh.setDisabled(True)
             else:
                 self.lat.setDisabled(False)
                 self.lon.setDisabled(False)
                 self.week.setDisabled(False)
+                self.sf_thresh.setDisabled(True)
+                self.week.setDisabled(True)
+                self.btn_slist.setDisabled(False)
+                # self.slist.setText(self.slist_path)
 
         self.adjustSize()
 
