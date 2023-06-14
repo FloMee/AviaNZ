@@ -133,9 +133,10 @@ class BirdNETDialog(QDialog):
 
         self.sf_thresh_label = QLabel("Threshold for location filter")
         self.sf_thresh = QDoubleSpinBox()
-        self.sf_thresh.setRange(0.01, 0.99)
-        self.sf_thresh.setSingleStep(0.01)
-        self.sf_thresh.setValue(0.03)
+        self.sf_thresh.setRange(0.000001, 0.999999)
+        self.sf_thresh.setSingleStep(0.000001)
+        self.sf_thresh.setValue(0.030000)
+        self.sf_thresh.setDecimals(6)
         self.sf_thresh.setDisabled(True)
 
         self.btnAdvanced = QPushButton('Show Advanced Settings')
@@ -254,8 +255,7 @@ class BirdNETDialog(QDialog):
     def onClickanalyze(self):
 
         if self.validateInputParameters():
-            if not self.parent.BirdNET:
-                self.parent.BirdNET = BirdNET(self.parent)
+            self.parent.BirdNET = BirdNET(self.parent)
             birdnet = self.parent.BirdNET
 
             param_dict = {"lite": self.lite.isChecked(),
