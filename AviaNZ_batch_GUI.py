@@ -782,7 +782,12 @@ class AviaNZ_reviewAll(QMainWindow):
         self.certBox.setRange(0,100)
         self.certBox.setSingleStep(10)
         self.certBox.setValue(90)
-        self.certBox.valueChanged.connect(self.changedCert)
+        # certBox.valueChanged.connect(self.changedCert)
+
+        self.minCertBox = QSpinBox()
+        self.minCertBox.setRange(0,100)
+        self.minCertBox.setSingleStep(10)
+        self.minCertBox.setValue(20)
 
         # sliders to select min/max frequencies for ALL SPECIES only
         self.fLow = QSlider(Qt.Horizontal)
@@ -837,25 +842,27 @@ class AviaNZ_reviewAll(QMainWindow):
         self.d_settings.addWidget(self.toggleSettingsBtn, row=0, col=2, colspan=2, rowspan=1)
         self.d_settings.addWidget(QLabel("Skip if certainty above:"), row=1, col=0, colspan=2, rowspan=1)
         self.d_settings.addWidget(self.certBox, row=1, col=2, colspan=2, rowspan=1)
-        self.d_settings.addWidget(self.fLowcheck, row=2, col=0)
-        self.d_settings.addWidget(self.fLowtext, row=2, col=1)
-        self.d_settings.addWidget(self.fLow, row=2, col=2, colspan=2, rowspan=1)
-        self.d_settings.addWidget(self.fLowvalue, row=2, col=4)
-        self.d_settings.addWidget(self.fHighcheck, row=3, col=0)
-        self.d_settings.addWidget(self.fHightext, row=3, col=1)
-        self.d_settings.addWidget(self.fHigh, row=3, col=2, colspan=2, rowspan=1)
-        self.d_settings.addWidget(self.fHighvalue, row=3, col=4)
-        self.d_settings.addWidget(QLabel("FFT window size"), row=4, col=1)
-        self.d_settings.addWidget(self.winwidthBox, row=4, col=2)
-        self.d_settings.addWidget(QLabel("FFT hop size"), row=4, col=3)
-        self.d_settings.addWidget(self.incrBox, row=4, col=4)
+        self.d_settings.addWidget(QLabel("Skip if certainty below:"), row=2, col=0, colspan=2, rowspan=1)
+        self.d_settings.addWidget(self.minCertBox, row=2, col=2, colspan=2, rowspan=1)
+        self.d_settings.addWidget(self.fLowcheck, row=3, col=0)
+        self.d_settings.addWidget(self.fLowtext, row=3, col=1)
+        self.d_settings.addWidget(self.fLow, row=3, col=2, colspan=2, rowspan=1)
+        self.d_settings.addWidget(self.fLowvalue, row=3, col=4)
+        self.d_settings.addWidget(self.fHighcheck, row=4, col=0)
+        self.d_settings.addWidget(self.fHightext, row=4, col=1)
+        self.d_settings.addWidget(self.fHigh, row=4, col=2, colspan=2, rowspan=1)
+        self.d_settings.addWidget(self.fHighvalue, row=4, col=4)
+        self.d_settings.addWidget(QLabel("FFT window size"), row=5, col=1)
+        self.d_settings.addWidget(self.winwidthBox, row=5, col=2)
+        self.d_settings.addWidget(QLabel("FFT hop size"), row=5, col=3)
+        self.d_settings.addWidget(self.incrBox, row=5, col=4)
 
-        self.d_settings.addWidget(self.chunksizeAuto, row=5, col=0, colspan=2, rowspan=1)
-        self.d_settings.addWidget(self.chunksizeManual, row=6, col=0, colspan=2, rowspan=1)
-        self.d_settings.addWidget(self.chunksizeBox, row=6, col=2)
+        self.d_settings.addWidget(self.chunksizeAuto, row=6, col=0, colspan=2, rowspan=1)
+        self.d_settings.addWidget(self.chunksizeManual, row=7, col=0, colspan=2, rowspan=1)
+        self.d_settings.addWidget(self.chunksizeBox, row=7, col=2)
 
-        self.d_settings.addWidget(self.loopBox, row=7, col=0, colspan=2, rowspan=1)
-        self.d_settings.addWidget(self.autoplayBox, row=8, col=0, colspan=2, rowspan=1)
+        self.d_settings.addWidget(self.loopBox, row=8, col=0, colspan=2, rowspan=1)
+        self.d_settings.addWidget(self.autoplayBox, row=9, col=0, colspan=2, rowspan=1)
 
         self.w_browse.clicked.connect(self.browse)
         # print("spList after browse: ", self.spList)
@@ -1081,6 +1088,7 @@ class AviaNZ_reviewAll(QMainWindow):
 
         # find species names from the annotations
         self.spList = list(self.listFiles.spList)
+        self.spList.sort()
         # Can't review only "Don't Knows". Ideally this should call AllSpecies dialog tho
         try:
             self.spList.remove("Don't Know")
@@ -1218,7 +1226,7 @@ class AviaNZ_reviewAll(QMainWindow):
                 for seg in reversed(self.segments):
                     goodenough = True
                     for lab in seg[4]:
-                        if lab["certainty"] <= self.certBox.value():
+                        if lab["certainty"] <= self.certBox.value() and lab["certainty"] >= self.minCertBox.value():
                             goodenough = False
                     if goodenough:
                         self.goodsegments.append(seg)
