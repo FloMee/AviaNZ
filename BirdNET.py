@@ -11,7 +11,7 @@ import time
 import copy
 import traceback
 from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import Qt, QThreadPool, QRunnable, Signal, Slot, QObject
+from PyQt5.QtCore import Qt, QThreadPool, QRunnable, Signal, Slot, QObject, QDir
 from PyQt5.QtWidgets import QDialog, QSlider, QGridLayout, QGridLayout, QLabel, QComboBox, QHBoxLayout, QLineEdit, QPushButton, QRadioButton, QVBoxLayout, QCheckBox, QFileDialog, QMessageBox, QDoubleSpinBox, QSpinBox, QGroupBox, QWidget, QProgressDialog, QToolButton
 
 import Segment
@@ -346,7 +346,10 @@ class BirdNET(QWidget):
     def __init__(self, AviaNZmanual):
         super(BirdNET, self).__init__()
         self.AviaNZ = AviaNZmanual
-        self.filelist = [file.absoluteFilePath() for file in AviaNZmanual.listFiles.listOfFiles if file.isFile()]
+        self.filelist = []
+        # self.filelist = [file.absoluteFilePath() for file in AviaNZmanual.listFiles.listOfFiles if file.isFile()]
+        self.fillFileList(AviaNZmanual.listFiles.listOfFiles)
+        print(len(self.filelist))
         self.param = None
         self.progress = QProgressDialog()
         self.progress.setCancelButton(None)
@@ -356,6 +359,14 @@ class BirdNET(QWidget):
         self.progress.setRange(0, len(self.filelist))
         self.threadpool = QThreadPool()
 
+    def fillFileList(self, filelist):
+        for file in filelist:
+            if file.isFile():
+                self.filelist.append(file.absoluteFilePath())
+            if file.fileName() == "..":
+                continue
+            elif file.isDir():
+                self.fillFileList(QDir(file.absoluteFilePath()).entryInfoList(['..','*.wav','*.bmp'], filters=QDir.AllDirs | QDir.NoDot | QDir.Files,sort=QDir.DirsFirst))
 
     def loadLabels(self):
         # Load labels
