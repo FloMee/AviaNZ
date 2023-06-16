@@ -3851,9 +3851,9 @@ class AviaNZ(QMainWindow):
                     targetix = segix
         if targetix is None:
             QApplication.restoreOverrideCursor()
-            print("No further annotation to jump to found")
-            msg = SupportClasses_GUI.MessagePopup("w", "No more annotations", "No further annotation to jump to found")
-            msg.exec_()
+            # print("No further annotation to jump to found")
+            # msg = SupportClasses_GUI.MessagePopup("w", "No more annotations", "No further annotation to jump to found")
+            # msg.exec_()
             return
 
         target = self.segments[targetix]
