@@ -38,6 +38,7 @@ import os, json
 import re
 from tensorflow.keras.models import model_from_json
 from tensorflow.keras.models import load_model
+from PyQt5.QtCore import QLocale
 
 class Log(object):
     """ Used for logging info during batch processing.
@@ -526,7 +527,7 @@ class ExcelIO():
                     # print species and certainty and call type
                     text = [lab["species"] for lab in seg[4]]
                     ws.cell(row=r, column=6, value=", ".join(text))
-                    text = [str(lab["certainty"]) for lab in seg[4]]
+                    text = [QLocale.toString(QLocale(), lab["certainty"]) for lab in seg[4]]
                     ws.cell(row=r, column=7, value=", ".join(text))
                     strct = []
                     for lab in seg[4]:
@@ -541,7 +542,7 @@ class ExcelIO():
                     strct = []
                     for lab in seg[4]:
                         if lab["species"]==currsp:
-                            strcert.append(str(lab["certainty"]))
+                            strcert.append(QLocale.toString(QLocale(), lab["certainty"]))
                             if "calltype" in lab:
                                 strct.append(str(lab["calltype"]))
                             else:
@@ -562,7 +563,7 @@ class ExcelIO():
         if len(segscert)>0:
             pres = "Yes"
             certainty = [lab[2] for lab in segscert]
-            certainty = max(certainty)
+            certainty = QLocale.toString(QLocale(), max(certainty))
         else:
             pres = "No"
             certainty = 0
@@ -622,7 +623,7 @@ class ExcelIO():
             win_end = min(win_start+resolution, int(pagelen * totpages))
             ws.cell(row=r, column=c, value="%d-%d" % (win_start, win_end))
             ws.cell(row=r, column=c).font = ft
-            ws.cell(row=r+1, column=c, value=detected[t])
+            ws.cell(row=r+1, column=c, value=QLocale.toString(QLocale(), detected[t]))
             c += 1
 
     def export(self, segments, dirName, action, pagelenarg=None, numpages=1, speciesList=[], startTime=None, precisionMS=False, resolution=10):

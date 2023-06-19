@@ -1278,13 +1278,13 @@ class AviaNZ(QMainWindow):
         self.currentSpecies = ""
         self.listSpecies.clear()
         self.listSpecies.insertItem(0, "All")
-        self.listSpecies.insertItems(1, sorted(list(self.listFiles.spList)))
+        self.listSpecies.insertItems(1, sorted(["{} {:.0f}".format(key, value) for key, value in self.listFiles.spListCert.items()]))
         idx = self.listSpecies.findText(currentSpecies)
         if currentSpecies and idx != -1:           
             self.listSpecies.setCurrentIndex(idx)
         else:
             self.listSpecies.setCurrentIndex(0)
-        self.currentSpecies = self.listSpecies.currentText()
+        self.currentSpecies = self.listSpecies.currentText().split(" ")[0]
 
     def resetStorageArrays(self):
         """ Called when new files are loaded.
@@ -1473,7 +1473,7 @@ class AviaNZ(QMainWindow):
     def updateListFiles(self):
         self.listFiles.showAll = not self.tickSpecies.isChecked()
         oldSpecies = self.currentSpecies
-        self.currentSpecies = self.listSpecies.currentText()
+        self.currentSpecies = self.listSpecies.currentText().split(" ")[0]
         if oldSpecies:
             if oldSpecies != "All" and self.currentSpecies == "All":
                 self.fillFileList(self.SoundFileDir, os.path.basename(self.filename))
@@ -3857,9 +3857,9 @@ class AviaNZ(QMainWindow):
                     targetix = segix
         if targetix is None:
             QApplication.restoreOverrideCursor()
-            print("No further annotation to jump to found")
-            msg = SupportClasses_GUI.MessagePopup("w", "No more annotations", "No further annotation to jump to found")
-            msg.exec_()
+            # print("No further annotation to jump to found")
+            # msg = SupportClasses_GUI.MessagePopup("w", "No more annotations", "No further annotation to jump to found")
+            # msg.exec_()
             return
 
         target = self.segments[targetix]

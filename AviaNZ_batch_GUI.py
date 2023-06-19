@@ -62,7 +62,7 @@ class AviaNZ_batchWindow(QMainWindow):
         filtersDir = os.path.join(configdir, self.config['FiltersDir'])
         self.FilterDicts = self.ConfigLoader.filters(filtersDir)
 
-        self.dirName=''
+        self.dirName=os.path.dirname(self.config['RecentFiles'][-1])
         self.statusBar().showMessage("Select a directory to process")
 
         self.setWindowTitle('AviaNZ - Batch Processing')
@@ -433,6 +433,17 @@ class AviaNZ_batchWindow(QMainWindow):
         else:
             self.statusBar().showMessage("Select a directory to process")
             self.w_processButton.setEnabled(False)
+    
+        if self.dirName is not None and self.dirName not in self.config['RecentFiles']:
+            self.config['RecentFiles'].append(os.path.join(self.dirName, ""))
+            if len(self.config['RecentFiles'])>4:
+                del self.config['RecentFiles'][0]
+            # Note: we're making this flag useless as every new file open will update the config
+            self.saveConfig = True
+
+        # Add in the operator and reviewer at the top, and then save the segments and the config file.
+        if self.saveConfig:
+            self.ConfigLoader.configwrite(self.config, self.configfile)
 
     def addSpeciesBox(self):
         """ Deals with adding and moving species comboboxes """
@@ -640,13 +651,13 @@ class AviaNZ_reviewAll(QMainWindow):
         # and sets up the window.
         super(AviaNZ_reviewAll, self).__init__()
         self.root = root
-        self.dirName=''
         self.configdir = configdir
 
         # At this point, the main config file should already be ensured to exist.
         self.configfile = os.path.join(configdir, "AviaNZconfig.txt")
         self.ConfigLoader = SupportClasses.ConfigLoader()
         self.config = self.ConfigLoader.config(self.configfile)
+        self.dirName=os.path.dirname(self.config['RecentFiles'][-1])
 
         # For some calltype functionality, a list of current filters is needed
         filtersDir = os.path.join(configdir, self.config['FiltersDir'])
@@ -1070,6 +1081,17 @@ class AviaNZ_reviewAll(QMainWindow):
             self.w_excelButton.setEnabled(True)
             # this will check if other settings are OK as well
             self.validateInputs()
+        
+        if self.dirName is not None and self.dirName not in self.config['RecentFiles']:
+            self.config['RecentFiles'].append(os.path.join(self.dirName, ""))
+            if len(self.config['RecentFiles'])>4:
+                del self.config['RecentFiles'][0]
+            # Note: we're making this flag useless as every new file open will update the config
+            self.saveConfig = True
+
+        # Add in the operator and reviewer at the top, and then save the segments and the config file.
+        if self.saveConfig:
+            self.ConfigLoader.configwrite(self.config, self.configfile)
 
     def fillFileList(self,fileName=None):
         """ Generates the list of files for the file listbox.
