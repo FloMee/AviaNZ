@@ -1233,6 +1233,7 @@ class LightedFileList(QListWidget):
         self.clear()
         # collect some additional info about the current dir
         self.spList = set()
+        self.spListCert = dict()
         self.fsList = set()
         self.listOfFiles = []
         self.minCertainty = 100     # TODO: not used in training, can remove?
@@ -1297,6 +1298,13 @@ class LightedFileList(QListWidget):
                                             # collect any species present
                                             filesp = [lab["species"] for seg in self.tempsl for lab in seg[4]]
                                             self.spList.update(filesp)
+                                            filespcert = [(lab["species"], lab["certainty"]) for seg in self.tempsl for lab in seg[4]]
+                                            for sp, cert in filespcert:
+                                                if sp in self.spListCert.keys() and self.spListCert[sp] > cert:
+                                                    continue
+                                                else:
+                                                    self.spListCert[sp] = cert
+                                                
                                             # min certainty
                                             cert = [lab["certainty"] for seg in self.tempsl for lab in seg[4]]
                                             if cert:
@@ -1381,6 +1389,7 @@ class LightedFileList(QListWidget):
     def paintItem(self, item, datafile, species="All"):
         """ Read the JSON and draw the traffic light for a single item """
         filesp = []
+        filespcert = []
         if os.path.isfile(datafile):
             # Try loading the segments to get min certainty
             try:
@@ -1398,6 +1407,7 @@ class LightedFileList(QListWidget):
                         maxcert = 0
                     # also collect any species present
                     filesp = [lab["species"] for seg in self.tempsl for lab in seg[4]]
+                    filespcert = [(lab["species"], lab["certainty"]) for seg in self.tempsl for lab in seg[4]]
             except Exception as e:
                 # .data exists, but unreadable
                 print("Could not determine certainty for file", datafile)
@@ -1450,6 +1460,11 @@ class LightedFileList(QListWidget):
 
         # collect some extra info about this file as we've read it anyway
         self.spList.update(filesp)
+        for sp, cert in filespcert:
+            if sp in self.spListCert.keys() and self.spListCert[sp] > cert:
+                continue
+            else:
+                self.spListCert[sp] = cert
 
     def restrict(self, species):
 
