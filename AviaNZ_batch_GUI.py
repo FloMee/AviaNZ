@@ -798,7 +798,7 @@ class AviaNZ_reviewAll(QMainWindow):
         self.minCertBox = QSpinBox()
         self.minCertBox.setRange(0,100)
         self.minCertBox.setSingleStep(10)
-        self.minCertBox.setValue(20)
+        self.minCertBox.setValue(0)
 
         # sliders to select min/max frequencies for ALL SPECIES only
         self.fLow = QSlider(Qt.Horizontal)
