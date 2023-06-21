@@ -114,7 +114,7 @@ class AviaNZ(QMainWindow):
             raise OSError("Bat list missing, cannot continue")
 
         # avoid comma/point problem in number parsing
-        QLocale.setDefault(QLocale(QLocale.English, QLocale.NewZealand))
+        # QLocale.setDefault(QLocale(QLocale.English, QLocale.NewZealand))
         print('Locale is set to ' + QLocale().name())
 
         # The data structures for the segments
@@ -594,11 +594,14 @@ class AviaNZ(QMainWindow):
         self.annotJumpLabel = QLabel("Jump to next mark:")
         self.annotJumpG = QToolButton()
         self.annotJumpG.setIcon(QIcon('img/findnext-g.png'))
-        self.annotJumpG.setToolTip("Any label")
+        self.annotJumpG.setToolTip("Any label [Ctrl+Right]")
         # self.annotJumpG.setAutoRaise(True)
         self.annotJumpG.setMinimumSize(35,30)
         self.annotJumpG.setIconSize(QtCore.QSize(20, 17))
         self.annotJumpG.clicked.connect(lambda: self.annotJumper(100))
+        self.annotJumpGKey = QShortcut(QKeySequence("Ctrl+Right"), self)
+        self.annotJumpGKey.activated.connect(lambda: self.annotJumper(100))
+
         self.annotJumpY = QToolButton()
         self.annotJumpY.setIcon(QIcon('img/findnext-y.png'))
         self.annotJumpY.setToolTip("Uncertain label")
@@ -744,26 +747,30 @@ class AviaNZ(QMainWindow):
         # Button to move to the previous file in the list
         self.previousFileBtn=QToolButton()
         self.previousFileBtn.setIcon(self.style().standardIcon(QtGui.QStyle.SP_MediaSkipBackward))
-        self.previousFileBtn.clicked.connect(self.openPreviousFile)
-        self.previousFileBtn.setToolTip("Open next file")
+        self.previousFileBtn.clicked.connect(lambda: self.openPreviousFile(skipHidden=True))
+        self.previousFileBtn.setToolTip("Open previous file [Up]")
         self.w_files.addWidget(self.previousFileBtn,row=0,col=1)
-        self.skipBackwardKey = QShortcut(QKeySequence("Alt+Left"), self)
-        self.skipBackwardKey.activated.connect(self.openPreviousFile)
+        self.skipBackwardKey = QShortcut(QKeySequence("Up"), self)
+        self.skipBackwardKey.activated.connect(lambda: self.openPreviousFile(skipHidden=True))
+        self.skipBackwardHiddenKey = QShortcut(QKeySequence("Alt+Up"), self)
+        self.skipBackwardHiddenKey.activated.connect(lambda: self.openPreviousFile(skipHidden=False))
 
         # Button to move to the next file in the list
         self.nextFileBtn=QToolButton()
         self.nextFileBtn.setIcon(self.style().standardIcon(QtGui.QStyle.SP_MediaSkipForward))
-        self.nextFileBtn.clicked.connect(self.openNextFile)
-        self.nextFileBtn.setToolTip("Open next file")
+        self.nextFileBtn.clicked.connect(lambda: self.openNextFile(skipHidden=True))
+        self.nextFileBtn.setToolTip("Open next file [Down]")
         self.w_files.addWidget(self.nextFileBtn,row=1,col=1)
-        self.skipForwardKey = QShortcut(QKeySequence("Alt+Right"), self)
-        self.skipForwardKey.activated.connect(self.openNextFile)
+        self.skipForwardKey = QShortcut(QKeySequence("Down"), self)
+        self.skipForwardKey.activated.connect(lambda: self.openNextFile(skipHidden=True))
+        self.skipForwardHiddenKey = QShortcut(QKeySequence("Alt+Down"), self)
+        self.skipForwardHiddenKey.activated.connect(lambda: self.openNextFile(skipHidden=False))
 
         # The buttons inside the controls dock
         self.playButton = QtGui.QToolButton()
         self.playButton.setIcon(self.style().standardIcon(QtGui.QStyle.SP_MediaPlay))
         self.playButton.setIconSize(QtCore.QSize(20, 20))
-        self.playButton.setToolTip("Play visible")
+        self.playButton.setToolTip("Play visible [Space]")
         self.playButton.clicked.connect(self.playVisible)
         self.playKey = QShortcut(QKeySequence("Space"), self)
         self.playKey.activated.connect(self.playVisible)
@@ -814,7 +821,7 @@ class AviaNZ(QMainWindow):
         self.viewSpButton = QtGui.QToolButton()
         self.viewSpButton.setIcon(QIcon('img/splarge-ct.png'))
         self.viewSpButton.setIconSize(QtCore.QSize(35, 20))
-        self.viewSpButton.setToolTip("Toggle between species/calltype views")
+        self.viewSpButton.setToolTip("Toggle between species/calltype views [Tab]")
         self.viewSpButton.clicked.connect(self.toggleViewSp)
 
         self.playBandLimitedSegButton = QtGui.QToolButton()
@@ -834,7 +841,10 @@ class AviaNZ(QMainWindow):
         self.confirmButton.clicked.connect(self.confirmSegment)
         self.confirmButton.setIcon(QIcon(QPixmap('img/check-mark2.png')))
         self.confirmButton.setStyleSheet("QPushButton {padding: 3px 3px 3px 3px}")
-        self.confirmButton.setToolTip("Set all labels in this segment as certain")
+        self.confirmButton.setToolTip("Set all labels in this segment as certain [Return]")
+
+        self.confirmKey = QShortcut(QKeySequence("Return"), self)
+        self.confirmKey.activated.connect(self.confirmSegment)
 
         # Delete segment button. We have to get rid of the extra event args
         self.deleteButton = QPushButton("  Delete segment")
@@ -1757,7 +1767,7 @@ class AviaNZ(QMainWindow):
             self.w_spec.setFocus()
             self.statusLeft.setText("Ready")
 
-    def openPreviousFile(self):
+    def openPreviousFile(self, skipHidden=True):
         """ Listener for previous file << button.
         Get the previous file in the list and call the loader. """
 
@@ -1769,13 +1779,16 @@ class AviaNZ(QMainWindow):
         i=self.listFiles.currentRow()
         if i>1:
             self.listFiles.setCurrentRow(i-1)
-            self.listLoadFile(self.listFiles.currentItem())
+            if skipHidden and self.listFiles.currentItem().isHidden():
+                self.openPreviousFile()
+            else:
+                self.listLoadFile(self.listFiles.currentItem())
         else:
             # Tell the user they've finished
             msg = SupportClasses_GUI.MessagePopup("d", "First file", "This is already the first file")
             msg.exec_()
 
-    def openNextFile(self):
+    def openNextFile(self, skipHidden=True):
         """ Listener for next file >> button.
         Get the next file in the list and call the loader. """
 
@@ -1787,7 +1800,10 @@ class AviaNZ(QMainWindow):
         i=self.listFiles.currentRow()
         if i+1<len(self.listFiles):
             self.listFiles.setCurrentRow(i+1)
-            self.listLoadFile(self.listFiles.currentItem())
+            if skipHidden and self.listFiles.currentItem().isHidden():
+                self.openNextFile()
+            else:
+                self.listLoadFile(self.listFiles.currentItem())
         else:
             # Tell the user they've finished
             msg = SupportClasses_GUI.MessagePopup("d", "Last file", "You've finished processing the folder")
