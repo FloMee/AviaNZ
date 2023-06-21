@@ -375,7 +375,7 @@ class BirdNET(QWidget):
         else:
             lblpath = os.path.join('labels', 'Analyzer', 'BirdNET_GLOBAL_6K_V2.4_Labels_{}.txt'.format(self.param["locale"]))
 
-        with open(lblpath, 'r') as lfile:
+        with open(lblpath, 'r', encoding='utf8') as lfile:
             classes = [line[:-1] for line in lfile]
 
         return classes
