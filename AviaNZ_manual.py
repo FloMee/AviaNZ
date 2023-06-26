@@ -749,7 +749,7 @@ class AviaNZ(QMainWindow):
         self.previousFileBtn.setIcon(self.style().standardIcon(QtGui.QStyle.SP_MediaSkipBackward))
         self.previousFileBtn.clicked.connect(lambda: self.openPreviousFile(skipHidden=True))
         self.previousFileBtn.setToolTip("Open previous file [Up]")
-        self.w_files.addWidget(self.previousFileBtn,row=0,col=1)
+        self.w_files.addWidget(self.previousFileBtn,row=6,col=0)
         self.skipBackwardKey = QShortcut(QKeySequence("Up"), self)
         self.skipBackwardKey.activated.connect(lambda: self.openPreviousFile(skipHidden=True))
         self.skipBackwardHiddenKey = QShortcut(QKeySequence("Alt+Up"), self)
@@ -760,7 +760,7 @@ class AviaNZ(QMainWindow):
         self.nextFileBtn.setIcon(self.style().standardIcon(QtGui.QStyle.SP_MediaSkipForward))
         self.nextFileBtn.clicked.connect(lambda: self.openNextFile(skipHidden=True))
         self.nextFileBtn.setToolTip("Open next file [Down]")
-        self.w_files.addWidget(self.nextFileBtn,row=1,col=1)
+        self.w_files.addWidget(self.nextFileBtn,row=6,col=1)
         self.skipForwardKey = QShortcut(QKeySequence("Down"), self)
         self.skipForwardKey.activated.connect(lambda: self.openNextFile(skipHidden=True))
         self.skipForwardHiddenKey = QShortcut(QKeySequence("Alt+Down"), self)
@@ -934,16 +934,31 @@ class AviaNZ(QMainWindow):
         self.listFiles = SupportClasses_GUI.LightedFileList(self.ColourNone, self.ColourPossibleDark, self.ColourNamed)
         self.listFiles.itemDoubleClicked.connect(self.listLoadFile)
         self.listSpecies = QComboBox()
+        self.listSpecies.setToolTip("Select species and tick the Box to reduce filelist.")
         self.listSpecies.currentIndexChanged.connect(self.updateListFiles)
-        self.currentSpecies = "All"
-        self.tickSpecies = QCheckBox("Only files with selected species?")
+        self.currentSpecies = "Species"
+        # self.tickSpecies = QCheckBox("Only files with selected species?")
+        self.tickSpecies = QCheckBox()
+        self.tickSpecies.setToolTip("Tick to reduce filelist to current species.")
         self.tickSpecies.stateChanged.connect(self.updateListFiles)
+        self.certSlider = QSlider(Qt.Horizontal)
+        self.certSlider.setToolTip("Select Minimum Certainty to reduce filelist.")
+        self.certSlider.setMinimum(0)
+        self.certSlider.setMaximum(100)
+        self.certSlider.setValue(0)
+        self.certSlider.valueChanged.connect(self.updateListFiles)
+        self.certValue = QLabel()
+        self.certValue.setToolTip("Current selected Minimum Certainty value.")
+        self.certValue.setText(str(self.certSlider.value()))
 
-        self.w_files.addWidget(QLabel('Double click to open'),row=0,col=0)
-        self.w_files.addWidget(QLabel('Icon marks annotation certainty'),row=1,col=0)
+        # self.w_files.addWidget(QLabel('Double click to open'),row=0,col=0)
+        # self.w_files.addWidget(QLabel('Icon marks annotation certainty'),row=1,col=0)
         self.w_files.addWidget(self.listSpecies, row=2, col=0)
-        self.w_files.addWidget(self.tickSpecies, row=3, col=0)
-        self.w_files.addWidget(self.listFiles,row=4, colspan=2)
+        self.w_files.addWidget(self.tickSpecies, row=2, col=1)
+        #self.w_files.addWidget(QLabel('Minimum Certainty'), row=4, col=0)
+        self.w_files.addWidget(self.certSlider, row=4, col=0)
+        self.w_files.addWidget(self.certValue, row=4, col=1)
+        self.w_files.addWidget(self.listFiles,row=5, colspan=2)
 
         # The context menu (drops down on mouse click) to select birds
         self.setContextMenuPolicy(Qt.CustomContextMenu)
@@ -1281,7 +1296,7 @@ class AviaNZ(QMainWindow):
         currentSpecies = self.listSpecies.currentText()
         self.currentSpecies = ""
         self.listSpecies.clear()
-        self.listSpecies.insertItem(0, "All ")
+        self.listSpecies.insertItem(0, "Species (All)")
         self.listSpecies.insertItems(1, sorted(["{} {:.0f}".format(key, value) for key, value in self.listFiles.spListCert.items()]))
         idx = self.listSpecies.findText(currentSpecies)
         if currentSpecies and idx != -1:           
@@ -1478,12 +1493,13 @@ class AviaNZ(QMainWindow):
         self.listFiles.showAll = not self.tickSpecies.isChecked()
         oldSpecies = self.currentSpecies
         self.currentSpecies = self.listSpecies.currentText().rpartition(" ")[0]
+        self.certValue.setText(str(self.certSlider.value()))
         if oldSpecies:
-            if oldSpecies != "All" and self.currentSpecies == "All":
+            if oldSpecies != "Species" and self.currentSpecies == "Species":
                 self.fillFileList(self.SoundFileDir, os.path.basename(self.filename))
             # elif oldSpecies != self.currentSpecies:
             else:
-                self.listFiles.restrict(self.currentSpecies)
+                self.listFiles.restrict(self.currentSpecies, self.certSlider.value())
 
     def loadFile(self, name=None, cs=False):
         """ This does the work of loading a file.
@@ -3863,7 +3879,7 @@ class AviaNZ(QMainWindow):
             if targetix is not None and seg[0]>=self.segments[targetix][0]:
                 continue
             for lab in seg[4]:
-                if lab["certainty"]<=maxcert and (lab["species"] == self.currentSpecies or self.currentSpecies == "All"):
+                if lab["certainty"]<=maxcert and (lab["species"] == self.currentSpecies or self.currentSpecies == "Species"):
                     targetix = segix
         if targetix is None:
             QApplication.restoreOverrideCursor()
@@ -6108,7 +6124,7 @@ class AviaNZ(QMainWindow):
             mincert = -1
             maxcert = 0
         else:
-            cert = [lab["certainty"] for seg in self.segments for lab in seg[4] if self.currentSpecies == "All" or lab["species"] == self.currentSpecies]
+            cert = [lab["certainty"] for seg in self.segments for lab in seg[4] if self.currentSpecies == "Species" or lab["species"] == self.currentSpecies]
             if cert:
                 mincert = min(cert)
                 maxcert = max(cert)

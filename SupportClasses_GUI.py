@@ -1219,7 +1219,7 @@ class LightedFileList(QListWidget):
         self.tempsl = Segment.SegmentList()
         self.setAutoScroll(False)
 
-    def fill(self, soundDir, fileName, recursive=False, readFmt=False, addWavNum=False):
+    def fill(self, soundDir, fileName, mincertS, recursive=False, readFmt=False, addWavNum=False):
         """ read folder contents, populate the list widget.
             soundDir: current dir
             fileName: file which should be selected, or None
@@ -1321,7 +1321,7 @@ class LightedFileList(QListWidget):
                     # check for a data file here and color this entry based on that
                     fullname = os.path.join(soundDir, file.fileName())
                     # (also updates the directory info sets, and minCertainty)
-                    self.paintItem(item, fullname+'.data')
+                    self.paintItem(item, fullname+'.data', mincertS)
                     # format collection only implemented for WAVs currently
                     if readFmt:
                         if file.fileName().lower().endswith('.wav'):
@@ -1386,7 +1386,7 @@ class LightedFileList(QListWidget):
             curritem.setIcon(QIcon(self.pixmap))
             # self.minCertainty cannot be changed by a cert=100 segment
 
-    def paintItem(self, item, datafile, species="All"):
+    def paintItem(self, item, datafile, mincertS, species="Species"):
         """ Read the JSON and draw the traffic light for a single item """
         filesp = []
         filespcert = []
@@ -1398,8 +1398,8 @@ class LightedFileList(QListWidget):
                     # .data exists, but empty - "file was looked at"
                     mincert = -1
                 else:
-                    cert = [lab["certainty"] for seg in self.tempsl for lab in seg[4] if lab["species"] == species or species == "All"]
-                    if cert:
+                    cert = [lab["certainty"] for seg in self.tempsl for lab in seg[4] if lab["species"] == species or species == "Species"]
+                    if cert and max(cert) >= mincertS:
                         mincert = min(cert)
                         maxcert = max(cert)
                     else:
@@ -1466,12 +1466,12 @@ class LightedFileList(QListWidget):
             else:
                 self.spListCert[sp] = cert
 
-    def restrict(self, species):
+    def restrict(self, species, mincert):
 
         for item in self.iterAllItems():
             if not item.text().endswith("/"):
                 filename = os.path.join(self.soundDir, item.text()+".data")
-                self.paintItem(item, filename, species)
+                self.paintItem(item, filename, mincert, species)
 
 
     def iterAllItems(self):
