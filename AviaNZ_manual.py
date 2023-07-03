@@ -745,22 +745,22 @@ class AviaNZ(QMainWindow):
         self.d_files.addWidget(self.w_files)
 
         # Button to move to the previous file in the list
-        self.previousFileBtn=QToolButton()
-        self.previousFileBtn.setIcon(self.style().standardIcon(QtGui.QStyle.SP_MediaSkipBackward))
-        self.previousFileBtn.clicked.connect(lambda: self.openPreviousFile(skipHidden=True))
-        self.previousFileBtn.setToolTip("Open previous file [Up]")
-        self.w_files.addWidget(self.previousFileBtn,row=6,col=0)
+        # self.previousFileBtn=QToolButton()
+        # self.previousFileBtn.setIcon(self.style().standardIcon(QtGui.QStyle.SP_MediaSkipBackward))
+        # self.previousFileBtn.clicked.connect(lambda: self.openPreviousFile(skipHidden=True))
+        # self.previousFileBtn.setToolTip("Open previous file [Up]")
+        # self.w_files.addWidget(self.previousFileBtn,row=6,col=0)
         self.skipBackwardKey = QShortcut(QKeySequence("Up"), self)
         self.skipBackwardKey.activated.connect(lambda: self.openPreviousFile(skipHidden=True))
         self.skipBackwardHiddenKey = QShortcut(QKeySequence("Alt+Up"), self)
         self.skipBackwardHiddenKey.activated.connect(lambda: self.openPreviousFile(skipHidden=False))
 
         # Button to move to the next file in the list
-        self.nextFileBtn=QToolButton()
-        self.nextFileBtn.setIcon(self.style().standardIcon(QtGui.QStyle.SP_MediaSkipForward))
-        self.nextFileBtn.clicked.connect(lambda: self.openNextFile(skipHidden=True))
-        self.nextFileBtn.setToolTip("Open next file [Down]")
-        self.w_files.addWidget(self.nextFileBtn,row=6,col=1)
+        # self.nextFileBtn=QToolButton()
+        # self.nextFileBtn.setIcon(self.style().standardIcon(QtGui.QStyle.SP_MediaSkipForward))
+        # self.nextFileBtn.clicked.connect(lambda: self.openNextFile(skipHidden=True))
+        # self.nextFileBtn.setToolTip("Open next file [Down]")
+        # self.w_files.addWidget(self.nextFileBtn,row=6,col=1)
         self.skipForwardKey = QShortcut(QKeySequence("Down"), self)
         self.skipForwardKey.activated.connect(lambda: self.openNextFile(skipHidden=True))
         self.skipForwardHiddenKey = QShortcut(QKeySequence("Alt+Down"), self)
@@ -786,6 +786,8 @@ class AviaNZ(QMainWindow):
         self.playSegButton.setIconSize(QtCore.QSize(20, 20))
         self.playSegButton.setToolTip("Play selected")
         self.playSegButton.clicked.connect(self.playSelectedSegment)
+        self.playSegKey = QShortcut(QKeySequence("Ctrl+Space"), self)
+        self.playSegKey.activated.connect(self.playSelectedSegment)
 
         self.playSlowButton = QtGui.QToolButton()
         self.playSlowButton.setIcon(QIcon('img/playSlow-w.png'))
@@ -940,7 +942,7 @@ class AviaNZ(QMainWindow):
         # self.tickSpecies = QCheckBox("Only files with selected species?")
         self.tickSpecies = QCheckBox()
         self.tickSpecies.setToolTip("Tick to reduce filelist to current species.")
-        self.tickSpecies.stateChanged.connect(self.updateListFiles)
+        self.tickSpecies.stateChanged.connect(lambda: self.updateListFiles(True))
         self.certSlider = QSlider(Qt.Horizontal)
         self.certSlider.setToolTip("Select Minimum Certainty to reduce filelist.")
         self.certSlider.setMinimum(0)
@@ -1288,7 +1290,7 @@ class AviaNZ(QMainWindow):
             print("ERROR: directory %s doesn't exist" % dir)
             return
 
-        self.listFiles.fill(dir, fileName)
+        self.listFiles.fill(dir, fileName, self.certSlider.value(), self.currentSpecies)
         self.updateListSpecies()
     
     def updateListSpecies(self):
@@ -1489,17 +1491,18 @@ class AviaNZ(QMainWindow):
 
         return(0)
 
-    def updateListFiles(self):
+    def updateListFiles(self, force=False):
         self.listFiles.showAll = not self.tickSpecies.isChecked()
         oldSpecies = self.currentSpecies
         self.currentSpecies = self.listSpecies.currentText().rpartition(" ")[0]
         self.certValue.setText(str(self.certSlider.value()))
-        if oldSpecies:
-            if oldSpecies != "Species" and self.currentSpecies == "Species":
-                self.fillFileList(self.SoundFileDir, os.path.basename(self.filename))
-            # elif oldSpecies != self.currentSpecies:
-            else:
-                self.listFiles.restrict(self.currentSpecies, self.certSlider.value())
+        if force or oldSpecies != self.currentSpecies:
+            # if oldSpecies != "Species" and self.currentSpecies == "Species":
+            #     self.fillFileList(self.SoundFileDir, os.path.basename(self.filename))
+            # # elif oldSpecies != self.currentSpecies:
+            # else:
+            self.listFiles.restrict(self.currentSpecies, self.certSlider.value())
+            self.listFiles.scrollToItem(self.listFiles.currentItem(), 3)
 
     def loadFile(self, name=None, cs=False):
         """ This does the work of loading a file.

@@ -1219,7 +1219,7 @@ class LightedFileList(QListWidget):
         self.tempsl = Segment.SegmentList()
         self.setAutoScroll(False)
 
-    def fill(self, soundDir, fileName, mincertS, recursive=False, readFmt=False, addWavNum=False):
+    def fill(self, soundDir, fileName, mincertS, species, recursive=True, readFmt=False, addWavNum=False):
         """ read folder contents, populate the list widget.
             soundDir: current dir
             fileName: file which should be selected, or None
@@ -1273,6 +1273,8 @@ class LightedFileList(QListWidget):
                     # We still might need to walk the subfolders for sp lists and wav formats!
                     if not recursive:
                         continue
+                    
+                    rootspcert = []
                     for root, dirs, files in os.walk(file.filePath()):
                         for filename in files:
                             filenamef = os.path.join(root, filename)
@@ -1299,6 +1301,7 @@ class LightedFileList(QListWidget):
                                             filesp = [lab["species"] for seg in self.tempsl for lab in seg[4]]
                                             self.spList.update(filesp)
                                             filespcert = [(lab["species"], lab["certainty"]) for seg in self.tempsl for lab in seg[4]]
+                                            rootspcert.extend(filespcert)
                                             for sp, cert in filespcert:
                                                 if sp in self.spListCert.keys() and self.spListCert[sp] > cert:
                                                     continue
@@ -1315,6 +1318,8 @@ class LightedFileList(QListWidget):
                                         # .data exists, but unreadable
                                         print("Could not read DATA file", dataf)
                                         print(e)
+                    
+                    item.setData(QtCore.Qt.UserRole, rootspcert)
                 else:
                     item.setText(file.fileName())
 
@@ -1334,7 +1339,7 @@ class LightedFileList(QListWidget):
                         if file.fileName().lower().endswith('.bmp'):
                             # For bitmaps, using hardcoded samplerate as there's no readFmt
                             self.fsList.add(176000)
-
+            self.restrict(species, mincertS)
         if readFmt:
             print("Found the following Fs:", self.fsList)
 
@@ -1390,7 +1395,11 @@ class LightedFileList(QListWidget):
         """ Read the JSON and draw the traffic light for a single item """
         filesp = []
         filespcert = []
+        isfile = False
+        mincert = -1
+        maxcert = 0
         if os.path.isfile(datafile):
+            isfile = True
             # Try loading the segments to get min certainty
             try:
                 self.tempsl.parseJSON(datafile, silent=True)
@@ -1408,12 +1417,28 @@ class LightedFileList(QListWidget):
                     # also collect any species present
                     filesp = [lab["species"] for seg in self.tempsl for lab in seg[4]]
                     filespcert = [(lab["species"], lab["certainty"]) for seg in self.tempsl for lab in seg[4]]
+
+                # write filespcert to item data to later restrict filelist
+                item.setData(QtCore.Qt.UserRole, filespcert)         
+                
             except Exception as e:
                 # .data exists, but unreadable
                 print("Could not determine certainty for file", datafile)
                 print(e)
                 mincert = -1
+        
+        self.paintIcon(item, isfile, mincert, maxcert)
 
+        # collect some extra info about this file as we've read it anyway
+        self.spList.update(filesp)
+        for sp, cert in filespcert:
+            if sp in self.spListCert.keys() and self.spListCert[sp] > cert:
+                continue
+            else:
+                self.spListCert[sp] = cert
+    
+    def paintIcon(self, item, isfile, mincert, maxcert):
+        if isfile:
             if mincert == -1:
                 # .data exists, but no annotations
                 self.pixmap.fill(QColor(255,255,255,0))
@@ -1458,20 +1483,48 @@ class LightedFileList(QListWidget):
             self.pixmap.fill(QColor(255,255,255,0))
             item.setIcon(QIcon(self.pixmap))
 
-        # collect some extra info about this file as we've read it anyway
-        self.spList.update(filesp)
-        for sp, cert in filespcert:
-            if sp in self.spListCert.keys() and self.spListCert[sp] > cert:
-                continue
-            else:
-                self.spListCert[sp] = cert
-
-    def restrict(self, species, mincert):
-
+    def restrict(self, species, mincertS):
+        """restrict the filelist to files where species occures with maxcert > mincertS"""
+        
         for item in self.iterAllItems():
-            if not item.text().endswith("/"):
-                filename = os.path.join(self.soundDir, item.text()+".data")
-                self.paintItem(item, filename, mincert, species)
+            # if not item.text().endswith("/"):
+            if not item.text() == "../":
+                # filename = os.path.join(self.soundDir, item.text()+".data")
+                # self.paintItem(item, filename, mincert, species)
+                # print(item.data(QtCore.Qt.UserRole))
+                data = item.data(QtCore.Qt.UserRole)
+                datafile = True
+                maxcert = 0
+                mincert = -1
+                if not data:
+                    datafile = False
+                elif data == []:
+                    mincert = -1
+                else:
+                    fileSpMaxCert = {}
+                    fileSpMinCert = {}
+                    for sp, cert in data:
+                        if sp in fileSpMaxCert.keys():
+                            if fileSpMaxCert[sp] > cert and fileSpMinCert[sp] < cert:
+                                continue
+                            if fileSpMaxCert[sp] < cert:
+                                fileSpMaxCert[sp] = cert
+                            if fileSpMinCert[sp] > cert:
+                                fileSpMinCert[sp] = cert
+                        else:
+                            fileSpMaxCert[sp] = cert
+                            fileSpMinCert[sp] = cert
+                    
+                    if species == "Species" and fileSpMinCert != {}:
+                        mincert = min(fileSpMinCert.values())
+                        maxcert = max(fileSpMaxCert.values())                        
+                    elif species in fileSpMaxCert.keys():                        
+                        maxcert = fileSpMaxCert[species]                      
+                        mincert = fileSpMinCert[species]
+                        # mincert = maxcert
+                    if mincertS > maxcert:
+                        mincert = -1
+                self.paintIcon(item, datafile, mincert, maxcert)
 
 
     def iterAllItems(self):
