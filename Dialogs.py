@@ -2423,16 +2423,16 @@ class HumanClassify2(QDialog):
 
         label1 = QLabel('Click on the images that are incorrectly labelled.')
         label1.setFont(QtGui.QFont('SansSerif', 10))
-        species = QLabel(label)
-        species.setStyleSheet("padding: 2px 0px 5px 0px")
+        self.species = QLabel(label)
+        self.species.setStyleSheet("padding: 2px 0px 5px 0px")
         font = QtGui.QFont('SansSerif', 12)
         font.setBold(True)
-        species.setFont(font)
+        self.species.setFont(font)
 
         # species label and sliders
         vboxTop = QVBoxLayout()
         vboxTop.addWidget(label1)
-        vboxTop.addWidget(species)
+        vboxTop.addWidget(self.species)
         vboxTop.addWidget(self.specControls)
 
         # Controls at the bottom
@@ -2494,18 +2494,26 @@ class HumanClassify2(QDialog):
         self.flowAxes = pg.LayoutWidget()
         self.flowAxes.setMinimumSize(70, self.specV+20)
         self.flowAxes.setSizePolicy(0, 5)
+        self.flowAxes.layout.setAlignment(Qt.AlignLeft | Qt.AlignBottom)
         # Time axes
         self.flowAxesT = pg.LayoutWidget()
         self.flowAxesT.setMinimumSize(self.specH+20, 40)
         self.flowAxesT.setSizePolicy(5, 0)
         self.flowAxesT.layout.setAlignment(Qt.AlignLeft | Qt.AlignTop)
+        # Certainties
+        self.flowCerts = pg.LayoutWidget()
+        self.flowCerts.setMinimumSize(self.specH+20, 40)
+        self.flowCerts.setSizePolicy(5, 0)
+        self.flowCerts.layout.setAlignment(Qt.AlignLeft | Qt.AlignBottom)
 
         gridFlowAndAxes = QGridLayout()
-        gridFlowAndAxes.addWidget(self.flowAxes, 0, 0)
-        gridFlowAndAxes.addWidget(self.flowLayout, 0, 1)
-        gridFlowAndAxes.addWidget(self.flowAxesT, 1, 1)
-        gridFlowAndAxes.setRowStretch(0, 10)
-        gridFlowAndAxes.setRowStretch(1, 0)
+        #gridFlowAndAxes.addWidget(self.flowCerts, 0, 1)
+        gridFlowAndAxes.addWidget(self.flowAxes, 1, 0)
+        gridFlowAndAxes.addWidget(self.flowLayout, 1, 1)
+        gridFlowAndAxes.addWidget(self.flowAxesT, 2, 1)
+        gridFlowAndAxes.setRowStretch(0, 0)
+        gridFlowAndAxes.setRowStretch(1, 10)
+        gridFlowAndAxes.setRowStretch(2, 0)
 
         # set overall layout of the dialog
         self.vboxFull = QVBoxLayout()
@@ -2523,7 +2531,7 @@ class HumanClassify2(QDialog):
         # we need to know the true size of space available for flowLayout.
         # the idea is that spacer absorbs all height changes
         self.setSizePolicy(1,1)
-        self.setMinimumSize(self.specH+100, self.specV+100)
+        self.setMinimumSize(self.specH+100, self.specV+260)
         self.setLayout(self.vboxFull)
         self.vboxFull.setStretch(1, 100)
         # plan B could be to measure the sizes of the top/bottom boxes and subtract them
@@ -2536,12 +2544,14 @@ class HumanClassify2(QDialog):
             No return, fills out self.buttons.
         """
         self.buttons = []
+        self.certs = []
         self.marked = []
         self.minsg = 1
         self.maxsg = 1
         for i in self.indices2show:
             # This will contain pre-made slices of spec and audio
             sp = self.sps[i]
+            self.certs.append("Certainty: {:.1f}%".format(max([j["certainty"] for j in self.segments[i][4] if j["species"] == self.species.text()])))
             duration = len(sp.data)/sp.sampleRate
 
             # Seems that image is backwards?
@@ -2617,8 +2627,9 @@ class HumanClassify2(QDialog):
             # args: spectrogram height in spec units, min and max frq in kHz for axis ticks
             # print(self.numPicsV)
             sg_axis = SupportClasses_GUI.AxisWidget(SgSize, minFreq/1000, maxFreq/1000)
-            self.flowAxes.addWidget(sg_axis, row, 0)
-            self.flowAxes.layout.setRowMinimumHeight(row, self.specV+10)
+            self.flowAxes.addWidget(sg_axis, row+1, 0)
+            self.flowAxes.layout.setRowMinimumHeight(row, 20)
+            self.flowAxes.layout.setRowMinimumHeight(row+1, self.specV+10)
 
             # draw a row of buttons
             for col in range(1, self.numPicsH+1):
@@ -2630,11 +2641,14 @@ class HumanClassify2(QDialog):
 
                 # resizing shouldn't change which segments are displayed,
                 # so we use a fixed start point for counting shown buttons.
-                self.flowLayout.addWidget(self.buttons[self.butStart+butNum], row, col)
+                self.flowLayout.addWidget(self.buttons[self.butStart+butNum], row+1, col)
                 # just in case, update the bounds of grid on every redraw
                 self.flowLayout.layout.setColumnMinimumWidth(col, self.specH+10)
-                self.flowLayout.layout.setRowMinimumHeight(row, self.specV+10)
+                self.flowLayout.layout.setRowMinimumHeight(row+1, self.specV+10)
                 self.buttons[self.butStart+butNum].show()
+                self.flowLayout.addWidget(QLabel(str(self.certs[self.butStart+butNum])), row, col)
+                self.flowLayout.layout.setRowMinimumHeight(row, 20)
+                # self.flowCerts.layout.setColumnMinimumWidth(col, self.specH+10)
                 butNum += 1
 
                 if self.butStart+butNum==len(self.buttons):
@@ -2755,10 +2769,21 @@ class HumanClassify2(QDialog):
             if item is not None:
                 self.flowAxesT.layout.removeItem(item)
                 r,c = self.flowAxesT.items[item.widget()]
-                self.flowAxesT.layout.setColumnMinimumWidth(r, 1)
+                self.flowAxesT.layout.setColumnMinimumWidth(c, 1)
                 del self.flowAxesT.rows[r][c]
                 item.widget().hide()
         self.flowAxesT.update()
+
+        # clear certainties
+        for axnum in reversed(range(self.flowCerts.layout.count())):
+            item = self.flowCerts.layout.itemAt(axnum)
+            if item is not None:
+                self.flowCerts.layout.removeItem(item)
+                r,c = self.flowCerts.items[item.widget()]
+                self.flowCerts.layout.setColumnMinimumWidth(c, 1)
+                del self.flowCerts.rows[r][c]
+                item.widget().hide()
+        self.flowCerts.update()
 
     def toggleAll(self):
         buttonsPerPage = self.numPicsV * self.numPicsH

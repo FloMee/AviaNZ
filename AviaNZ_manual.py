@@ -115,7 +115,7 @@ class AviaNZ(QMainWindow):
             raise OSError("Bat list missing, cannot continue")
 
         # avoid comma/point problem in number parsing
-        QLocale.setDefault(QLocale(QLocale.English, QLocale.NewZealand))
+        # QLocale.setDefault(QLocale(QLocale.English, QLocale.NewZealand))
         print('Locale is set to ' + QLocale().name())
 
         # The data structures for the segments
@@ -600,11 +600,14 @@ class AviaNZ(QMainWindow):
         self.annotJumpLabel = QLabel("Jump to next mark:")
         self.annotJumpG = QToolButton()
         self.annotJumpG.setIcon(QIcon('img/findnext-g.png'))
-        self.annotJumpG.setToolTip("Any label")
+        self.annotJumpG.setToolTip("Any label [Ctrl+Right]")
         # self.annotJumpG.setAutoRaise(True)
         self.annotJumpG.setMinimumSize(35,30)
         self.annotJumpG.setIconSize(QtCore.QSize(20, 17))
         self.annotJumpG.clicked.connect(lambda: self.annotJumper(100))
+        self.annotJumpGKey = QShortcut(QKeySequence("Ctrl+Right"), self)
+        self.annotJumpGKey.activated.connect(lambda: self.annotJumper(100))
+
         self.annotJumpY = QToolButton()
         self.annotJumpY.setIcon(QIcon('img/findnext-y.png'))
         self.annotJumpY.setToolTip("Uncertain label")
@@ -748,28 +751,32 @@ class AviaNZ(QMainWindow):
         self.d_files.addWidget(self.w_files)
 
         # Button to move to the previous file in the list
-        self.previousFileBtn=QToolButton()
-        self.previousFileBtn.setIcon(self.style().standardIcon(QtGui.QStyle.SP_MediaSkipBackward))
-        self.previousFileBtn.clicked.connect(self.openPreviousFile)
-        self.previousFileBtn.setToolTip("Open next file")
-        self.w_files.addWidget(self.previousFileBtn,row=0,col=1)
-        self.skipBackwardKey = QShortcut(QKeySequence("Alt+Left"), self)
-        self.skipBackwardKey.activated.connect(self.openPreviousFile)
+        # self.previousFileBtn=QToolButton()
+        # self.previousFileBtn.setIcon(self.style().standardIcon(QtGui.QStyle.SP_MediaSkipBackward))
+        # self.previousFileBtn.clicked.connect(lambda: self.openPreviousFile(skipHidden=True))
+        # self.previousFileBtn.setToolTip("Open previous file [Up]")
+        # self.w_files.addWidget(self.previousFileBtn,row=6,col=0)
+        self.skipBackwardKey = QShortcut(QKeySequence("Up"), self)
+        self.skipBackwardKey.activated.connect(lambda: self.openPreviousFile(skipHidden=True))
+        self.skipBackwardHiddenKey = QShortcut(QKeySequence("Alt+Up"), self)
+        self.skipBackwardHiddenKey.activated.connect(lambda: self.openPreviousFile(skipHidden=False))
 
         # Button to move to the next file in the list
-        self.nextFileBtn=QToolButton()
-        self.nextFileBtn.setIcon(self.style().standardIcon(QtGui.QStyle.SP_MediaSkipForward))
-        self.nextFileBtn.clicked.connect(self.openNextFile)
-        self.nextFileBtn.setToolTip("Open next file")
-        self.w_files.addWidget(self.nextFileBtn,row=1,col=1)
-        self.skipForwardKey = QShortcut(QKeySequence("Alt+Right"), self)
-        self.skipForwardKey.activated.connect(self.openNextFile)
+        # self.nextFileBtn=QToolButton()
+        # self.nextFileBtn.setIcon(self.style().standardIcon(QtGui.QStyle.SP_MediaSkipForward))
+        # self.nextFileBtn.clicked.connect(lambda: self.openNextFile(skipHidden=True))
+        # self.nextFileBtn.setToolTip("Open next file [Down]")
+        # self.w_files.addWidget(self.nextFileBtn,row=6,col=1)
+        self.skipForwardKey = QShortcut(QKeySequence("Down"), self)
+        self.skipForwardKey.activated.connect(lambda: self.openNextFile(skipHidden=True))
+        self.skipForwardHiddenKey = QShortcut(QKeySequence("Alt+Down"), self)
+        self.skipForwardHiddenKey.activated.connect(lambda: self.openNextFile(skipHidden=False))
 
         # The buttons inside the controls dock
         self.playButton = QtGui.QToolButton()
         self.playButton.setIcon(self.style().standardIcon(QtGui.QStyle.SP_MediaPlay))
         self.playButton.setIconSize(QtCore.QSize(20, 20))
-        self.playButton.setToolTip("Play visible")
+        self.playButton.setToolTip("Play visible [Space]")
         self.playButton.clicked.connect(self.playVisible)
         self.playKey = QShortcut(QKeySequence("Space"), self)
         self.playKey.activated.connect(self.playVisible)
@@ -785,6 +792,8 @@ class AviaNZ(QMainWindow):
         self.playSegButton.setIconSize(QtCore.QSize(20, 20))
         self.playSegButton.setToolTip("Play selected")
         self.playSegButton.clicked.connect(self.playSelectedSegment)
+        self.playSegKey = QShortcut(QKeySequence("Ctrl+Space"), self)
+        self.playSegKey.activated.connect(self.playSelectedSegment)
 
         self.playSlowButton = QtGui.QToolButton()
         self.playSlowButton.setIcon(QIcon('img/playSlow-w.png'))
@@ -820,7 +829,7 @@ class AviaNZ(QMainWindow):
         self.viewSpButton = QtGui.QToolButton()
         self.viewSpButton.setIcon(QIcon('img/splarge-ct.png'))
         self.viewSpButton.setIconSize(QtCore.QSize(35, 20))
-        self.viewSpButton.setToolTip("Toggle between species/calltype views")
+        self.viewSpButton.setToolTip("Toggle between species/calltype views [Tab]")
         self.viewSpButton.clicked.connect(self.toggleViewSp)
 
         self.playBandLimitedSegButton = QtGui.QToolButton()
@@ -840,7 +849,10 @@ class AviaNZ(QMainWindow):
         self.confirmButton.clicked.connect(self.confirmSegment)
         self.confirmButton.setIcon(QIcon(QPixmap('img/check-mark2.png')))
         self.confirmButton.setStyleSheet("QPushButton {padding: 3px 3px 3px 3px}")
-        self.confirmButton.setToolTip("Set all labels in this segment as certain")
+        self.confirmButton.setToolTip("Set all labels in this segment as certain [Return]")
+
+        self.confirmKey = QShortcut(QKeySequence("Return"), self)
+        self.confirmKey.activated.connect(self.confirmSegment)
 
         # Delete segment button. We have to get rid of the extra event args
         self.deleteButton = QPushButton("  Delete segment")
@@ -930,16 +942,31 @@ class AviaNZ(QMainWindow):
         self.listFiles = SupportClasses_GUI.LightedFileList(self.ColourNone, self.ColourPossibleDark, self.ColourNamed)
         self.listFiles.itemDoubleClicked.connect(self.listLoadFile)
         self.listSpecies = QComboBox()
+        self.listSpecies.setToolTip("Select species and tick the Box to reduce filelist.")
         self.listSpecies.currentIndexChanged.connect(self.updateListFiles)
-        self.currentSpecies = "All"
-        self.tickSpecies = QCheckBox("Only files with selected species?")
-        self.tickSpecies.stateChanged.connect(self.updateListFiles)
+        self.currentSpecies = "Species"
+        # self.tickSpecies = QCheckBox("Only files with selected species?")
+        self.tickSpecies = QCheckBox()
+        self.tickSpecies.setToolTip("Tick to reduce filelist to current species.")
+        self.tickSpecies.stateChanged.connect(lambda: self.updateListFiles(True))
+        self.certSlider = QSlider(Qt.Horizontal)
+        self.certSlider.setToolTip("Select Minimum Certainty to reduce filelist.")
+        self.certSlider.setMinimum(0)
+        self.certSlider.setMaximum(100)
+        self.certSlider.setValue(0)
+        self.certSlider.valueChanged.connect(self.updateListFiles)
+        self.certValue = QLabel()
+        self.certValue.setToolTip("Current selected Minimum Certainty value.")
+        self.certValue.setText(str(self.certSlider.value()))
 
-        self.w_files.addWidget(QLabel('Double click to open'),row=0,col=0)
-        self.w_files.addWidget(QLabel('Icon marks annotation certainty'),row=1,col=0)
+        # self.w_files.addWidget(QLabel('Double click to open'),row=0,col=0)
+        # self.w_files.addWidget(QLabel('Icon marks annotation certainty'),row=1,col=0)
         self.w_files.addWidget(self.listSpecies, row=2, col=0)
-        self.w_files.addWidget(self.tickSpecies, row=3, col=0)
-        self.w_files.addWidget(self.listFiles,row=4, colspan=2)
+        self.w_files.addWidget(self.tickSpecies, row=2, col=1)
+        #self.w_files.addWidget(QLabel('Minimum Certainty'), row=4, col=0)
+        self.w_files.addWidget(self.certSlider, row=4, col=0)
+        self.w_files.addWidget(self.certValue, row=4, col=1)
+        self.w_files.addWidget(self.listFiles,row=5, colspan=2)
 
         # The context menu (drops down on mouse click) to select birds
         self.setContextMenuPolicy(Qt.CustomContextMenu)
@@ -1269,7 +1296,7 @@ class AviaNZ(QMainWindow):
             print("ERROR: directory %s doesn't exist" % dir)
             return
 
-        self.listFiles.fill(dir, fileName)
+        self.listFiles.fill(dir, fileName, self.certSlider.value(), self.currentSpecies)
         self.updateListSpecies()
     
     def updateListSpecies(self):
@@ -1277,14 +1304,14 @@ class AviaNZ(QMainWindow):
         currentSpecies = self.listSpecies.currentText()
         self.currentSpecies = ""
         self.listSpecies.clear()
-        self.listSpecies.insertItem(0, "All")
+        self.listSpecies.insertItem(0, "Species (All)")
         self.listSpecies.insertItems(1, sorted(["{} {:.0f}".format(key, value) for key, value in self.listFiles.spListCert.items()]))
         idx = self.listSpecies.findText(currentSpecies)
         if currentSpecies and idx != -1:           
             self.listSpecies.setCurrentIndex(idx)
         else:
             self.listSpecies.setCurrentIndex(0)
-        self.currentSpecies = self.listSpecies.currentText().split(" ")[0]
+        self.currentSpecies = self.listSpecies.currentText().rpartition(" ")[0]
 
     def resetStorageArrays(self):
         """ Called when new files are loaded.
@@ -1470,16 +1497,18 @@ class AviaNZ(QMainWindow):
 
         return(0)
 
-    def updateListFiles(self):
+    def updateListFiles(self, force=False):
         self.listFiles.showAll = not self.tickSpecies.isChecked()
         oldSpecies = self.currentSpecies
-        self.currentSpecies = self.listSpecies.currentText().split(" ")[0]
-        if oldSpecies:
-            if oldSpecies != "All" and self.currentSpecies == "All":
-                self.fillFileList(self.SoundFileDir, os.path.basename(self.filename))
-            # elif oldSpecies != self.currentSpecies:
-            else:
-                self.listFiles.restrict(self.currentSpecies)
+        self.currentSpecies = self.listSpecies.currentText().rpartition(" ")[0]
+        self.certValue.setText(str(self.certSlider.value()))
+        if force or oldSpecies != self.currentSpecies:
+            # if oldSpecies != "Species" and self.currentSpecies == "Species":
+            #     self.fillFileList(self.SoundFileDir, os.path.basename(self.filename))
+            # # elif oldSpecies != self.currentSpecies:
+            # else:
+            self.listFiles.restrict(self.currentSpecies, self.certSlider.value())
+            self.listFiles.scrollToItem(self.listFiles.currentItem(), 3)
 
     def loadFile(self, name=None, cs=False):
         """ This does the work of loading a file.
@@ -1763,7 +1792,7 @@ class AviaNZ(QMainWindow):
             self.w_spec.setFocus()
             self.statusLeft.setText("Ready")
 
-    def openPreviousFile(self):
+    def openPreviousFile(self, skipHidden=True):
         """ Listener for previous file << button.
         Get the previous file in the list and call the loader. """
 
@@ -1775,13 +1804,16 @@ class AviaNZ(QMainWindow):
         i=self.listFiles.currentRow()
         if i>1:
             self.listFiles.setCurrentRow(i-1)
-            self.listLoadFile(self.listFiles.currentItem())
+            if skipHidden and self.listFiles.currentItem().isHidden():
+                self.openPreviousFile()
+            else:
+                self.listLoadFile(self.listFiles.currentItem())
         else:
             # Tell the user they've finished
             msg = SupportClasses_GUI.MessagePopup("d", "First file", "This is already the first file")
             msg.exec_()
 
-    def openNextFile(self):
+    def openNextFile(self, skipHidden=True):
         """ Listener for next file >> button.
         Get the next file in the list and call the loader. """
 
@@ -1793,7 +1825,10 @@ class AviaNZ(QMainWindow):
         i=self.listFiles.currentRow()
         if i+1<len(self.listFiles):
             self.listFiles.setCurrentRow(i+1)
-            self.listLoadFile(self.listFiles.currentItem())
+            if skipHidden and self.listFiles.currentItem().isHidden():
+                self.openNextFile()
+            else:
+                self.listLoadFile(self.listFiles.currentItem())
         else:
             # Tell the user they've finished
             msg = SupportClasses_GUI.MessagePopup("d", "Last file", "You've finished processing the folder")
@@ -3853,7 +3888,7 @@ class AviaNZ(QMainWindow):
             if targetix is not None and seg[0]>=self.segments[targetix][0]:
                 continue
             for lab in seg[4]:
-                if lab["certainty"]<=maxcert and (lab["species"] == self.currentSpecies or self.currentSpecies == "All"):
+                if lab["certainty"]<=maxcert and (lab["species"] == self.currentSpecies or self.currentSpecies == "Species"):
                     targetix = segix
         if targetix is None:
             QApplication.restoreOverrideCursor()
@@ -6102,7 +6137,7 @@ class AviaNZ(QMainWindow):
             mincert = -1
             maxcert = 0
         else:
-            cert = [lab["certainty"] for seg in self.segments for lab in seg[4] if self.currentSpecies == "All" or lab["species"] == self.currentSpecies]
+            cert = [lab["certainty"] for seg in self.segments for lab in seg[4] if self.currentSpecies == "Species" or lab["species"] == self.currentSpecies]
             if cert:
                 mincert = min(cert)
                 maxcert = max(cert)
