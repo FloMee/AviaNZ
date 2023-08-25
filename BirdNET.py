@@ -33,7 +33,10 @@ class BirdNETDialog(QDialog):
 
         self.setWindowFlags((self.windowFlags() ^ Qt.WindowContextHelpButtonHint) | Qt.WindowCloseButtonHint)
 
-        lbltitle = QLabel("To analyze the audiofiles of the current directory, set the parameters for BirdNET-Lite or BirdNET-Analyzer. Be aware that the process might take several hours, depending on the number of files, calculation power and number of threads.")
+        lbltitle = QLabel("To analyze the audiofiles of the current directory, "
+        "set the parameters for BirdNET-Lite or BirdNET-Analyzer. Be aware "
+        "that the process might take several hours, depending on the number of "
+        "files, calculation power and number of threads.")
         lbltitle.setWordWrap(True)
 
         # BirdNET-Lite/BirdNET-Analyzer options
@@ -43,35 +46,50 @@ class BirdNETDialog(QDialog):
         self.analyzer.clicked.connect(self.updateDialog)
 
         self.lat_label = QLabel("Latitude")
+        self.lat_label.setToolTip("Recording location latitude; Values in "
+        "[-90; 90]; Defaults to -1.00.")
         self.lat = QDoubleSpinBox()
         self.lat.setRange(-90, 90)
         self.lat.setValue(-1.0)
         self.lat.valueChanged.connect(self.updateDialog)
 
         self.lon_label = QLabel("Longitude")
+        self.lon_label.setToolTip("Recording location longitude; Values in "
+        "[-180; 180]; Defaults to -1.00.")
         self.lon = QDoubleSpinBox()
         self.lon.setRange(-180, 180)
         self.lon.setValue(-1.0)
         self.lon.valueChanged.connect(self.updateDialog)
 
         self.week_label = QLabel("Week")
+        self.week_label.setToolTip("Week of the recording; Values in [0; 48]; "
+        "Divide year into 48 weeks — 4 weeks per month; Defaults to 0.")
         self.week = QSpinBox()
         self.week.setRange(0, 48)
         self.week.valueChanged.connect(self.updateDialog)
 
         self.overlap_label = QLabel("Overlap")
+        self.overlap_label.setToolTip("BirdNET cuts your recordings into "
+        "chunks of 3 s lenght internally; Overlap defines the number of "
+        "seconds the single segments overlap; Values in [0.0; 2.9]; Defaults "
+        "to 0.0.")
         self.overlap = QDoubleSpinBox()
         self.overlap.setRange(0, 2.9)
         self.overlap.setSingleStep(0.1)
         self.overlap.setValue(0.0)
 
         self.sensitivity_label = QLabel("Sensitivity")
+        self.sensitivity_label.setToolTip("Detection sensitivity; Higher "
+        "values result in higher sensitivity; Values in [0.5, 1.5]; Defaults "
+        "to 1.0.")
         self.sensitivity = QDoubleSpinBox()
         self.sensitivity.setRange(0.5, 1.5)
         self.sensitivity.setSingleStep(0.05)
         self.sensitivity.setValue(1.0)
 
-        self.min_conf_label = QLabel("Minimum Confidence")
+        self.min_conf_label = QLabel("Minimum certainty")
+        self.min_conf_label.setToolTip("Minimum certainty value in the output; "
+        "Values in [0.01;0.99]; Defaults to 0.1.")
         self.min_conf = QDoubleSpinBox()
         self.min_conf.setRange(0.01, 0.99)
         self.min_conf.setSingleStep(0.01)
@@ -83,15 +101,25 @@ class BirdNETDialog(QDialog):
         self.slist.findChild(QToolButton).setEnabled(True)
         self.slist.textChanged.connect(self.updateDialog)
 
-        self.btn_slist = QPushButton("Select Custom Species List")
+        self.btn_slist = QPushButton("Select custom species list")
+        self.btn_slist.setToolTip("A “white list” that includes the species of "
+        "interest; Must be a subset of the original species-lists of "
+        "BirdNET-Lite or BirdNET-Analyzer respectively and in the selected "
+        "language; Find these files in the installation directory of AviaNZ "
+        "under labels.")
         self.btn_slist.clicked.connect(self.chooseSpeciesList)
 
-        self.threads_label = QLabel("Number of Threads")
+        self.threads_label = QLabel("Number of threads")
+        self.threads_label.setToolTip("Number of threads used for calculation; "
+        "Defaults to the number of available cores of the CPU.")
         self.threads = QSpinBox()
         self.threads.setRange(1, os.cpu_count())
         self.threads.setValue(os.cpu_count())
 
-        self.mea = QCheckBox("Calculate moving exponential average?")
+        self.mea = QCheckBox("Calculate moving exponential average")
+        self.mea.setToolTip("If set, the original certainty values are "
+        "smoothed and pooled with a moving mean exponential average with a "
+        "width of 3 chunks; Used to potentially remove some false positives.")
         self.datetime_format_label = QLabel("Datetime format")
         self.datetime_format = QLineEdit()
         self.datetime_format.textChanged.connect(self.updateDialog)
@@ -129,10 +157,17 @@ class BirdNETDialog(QDialog):
         # Analyzer specific options
 
         self.batchsize_label = QLabel("Batchsize")
+        self.batchsize_label.setToolTip("Number of chunks that are analysed "
+        "concurrently; May influence the processing time but not the output; "
+        "Defaults to 1.")
         self.batchsize = QSpinBox()
         self.batchsize.setValue(1)
 
         self.sf_thresh_label = QLabel("Threshold for location filter")
+        self.sf_thresh_label.setToolTip("If Latitude, Longitude and Week are "
+        "set BirdNET-Analyzer calculates a custom species list; Species with a "
+        "calculated value below this threshold are not included in the output "
+        "list; Defaults to: 0,03.")
         self.sf_thresh = QDoubleSpinBox()
         self.sf_thresh.setRange(0.000001, 0.999999)
         self.sf_thresh.setSingleStep(0.000001)
@@ -288,7 +323,8 @@ class BirdNETDialog(QDialog):
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Critical)
             msg.setText("Parameters!")
-            msg.setInformativeText('You did not input correct values for parameters, please check the red parameters again!')
+            msg.setInformativeText('You did not input correct values for '
+            'parameters, please check the red parameters again!')
             msg.setWindowTitle("Warning")
             msg.exec_()
 
