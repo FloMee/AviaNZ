@@ -2,6 +2,7 @@
 # import statements for BirdNET-Lite
 
 import os
+import pathlib
 from tensorflow import lite as tflite
 import operator
 import librosa
@@ -362,7 +363,7 @@ class BirdNET(QWidget):
     def fillFileList(self, filelist):
         for file in filelist:
             if file.isFile():
-                self.filelist.append(file.absoluteFilePath())
+                self.filelist.append(str(pathlib.PurePath(file.absoluteFilePath())))
             if file.fileName() == "..":
                 continue
             elif file.isDir():
@@ -385,9 +386,10 @@ class BirdNET(QWidget):
         self.progress.setValue(self.progress.value() + 1)
         self.progress.setLabelText("Analyzing files... {}/{} done".format(self.progress.value(), len(self.filelist)))
 
-    @Slot()
-    def updateFilelist(self):
-        # self.AviaNZ.loadFile(name=self.AviaNZ.filename)
+    @Slot(list)
+    def updateFilelist(self, filelist):
+        if self.AviaNZ.filename in filelist:
+            self.AviaNZ.loadFile(name=self.AviaNZ.filename)
         self.AviaNZ.fillFileList(self.AviaNZ.SoundFileDir, os.path.basename(self.AviaNZ.filename))
 
     def main(self):
@@ -403,7 +405,7 @@ class BirdNET(QWidget):
             self.progress.show()
             for flist in file_threads:
                 worker = BirdNET_Worker(param=self.param, filelist=flist, labels=self.labels)
-                worker.fileProcessed.done.connect(self.updateProgress)
+                worker.fileProcessed.update.connect(self.updateProgress)
                 worker.filelistProcessed.done.connect(self.updateFilelist)
                 self.threadpool.start(worker)
 
@@ -417,7 +419,8 @@ class BirdNET(QWidget):
             print(traceback.format_exc())
 
 class MyEmitter(QObject):
-    done = Signal()
+    done = Signal(list)
+    update = Signal()
 
 class BirdNET_Worker(QRunnable):
 
@@ -448,7 +451,7 @@ class BirdNET_Worker(QRunnable):
     def run(self, *args, **kwargs):
         for file in self.filelist:
             self.analyze(file)
-        self.filelistProcessed.done.emit()
+        self.filelistProcessed.done.emit(self.filelist)
 
     def loadModel(self):
         try:
@@ -605,6 +608,7 @@ class BirdNET_Worker(QRunnable):
         try:
             sig, rate = librosa.load(path, sr=sample_rate, mono=True, res_type='kaiser_fast')
         except:
+            print(traceback.format_exc())
             sig, rate = [], sample_rate
 
         # Split audio into 3-second chunks
@@ -879,7 +883,7 @@ class BirdNET_Worker(QRunnable):
                 mea_det_convert = self.convert_mea_output(mea_det, file, timestamps)
                 self.writeAvianzOutput(mea_det_convert, file, white_list)
 
-            self.fileProcessed.done.emit()
+            self.fileProcessed.update.emit()
         except:
             print(traceback.format_exc())
 
