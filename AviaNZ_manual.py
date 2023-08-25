@@ -22,6 +22,7 @@
 # ? click, shutil
 
 import sys, os, json, platform, re, shutil
+import pathlib
 from shutil import copyfile
 
 from PyQt5 import QtCore, QtGui
@@ -1215,13 +1216,15 @@ class AviaNZ(QMainWindow):
                     if ctfile["species"] == lab["species"]:
                         possibleCTs.update(ctfile["calltypes"])
                 # add standard extras and self
-                possibleCTs.add("(Other)")
-                possibleCTs.add("Add calltype")
-                if "calltype" in lab:
+                if "calltype" in lab and lab["calltype"] != "(Other)":
                     possibleCTs.add(lab["calltype"])
 
+                possibleCT_list = []
+                possibleCT_list.append("Add calltype")
+                possibleCT_list.extend(sorted(possibleCTs))
+                possibleCT_list.append("(Other)")
                 # put them as actions in the species menu
-                for ct in possibleCTs:
+                for ct in possibleCT_list:
                     ctitem = spMenu.addAction(ct)
                     ctitem.setCheckable(True)
 
@@ -1437,8 +1440,7 @@ class AviaNZ(QMainWindow):
         if type(current) is QListWidgetItem:
             current = current.text()
             current = re.sub('\/.*', '', current)
-
-        fullcurrent = os.path.join(self.SoundFileDir, current)
+        fullcurrent = str(pathlib.PurePath(self.SoundFileDir, current))
         if not os.path.isdir(fullcurrent):
             if not os.path.isfile(fullcurrent):
                 print("File %s does not exist!" % fullcurrent)
@@ -3568,7 +3570,6 @@ class AviaNZ(QMainWindow):
         spmenu = ctitem.parentWidget().title()
         if type(ctitem) is not str:
             ctitem = ctitem.text()
-        print(ctitem, spmenu)
 
         if ctitem == 'Add calltype':
             ctitem, ok = QInputDialog.getText(self, 'Calltype', 'Enter the calltype')
@@ -3607,7 +3608,7 @@ class AviaNZ(QMainWindow):
         self.updateText()
         self.segInfo.setText(workingSeg.infoString())
         self.segmentsToSave = True
-        self.menuBirdList.hide()
+        # self.menuBirdList.hide()
 
     def saveCalltypeDicts(self):
         for species in self.CalltypeDicts:
