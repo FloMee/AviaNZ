@@ -2627,9 +2627,9 @@ class HumanClassify2(QDialog):
             # args: spectrogram height in spec units, min and max frq in kHz for axis ticks
             # print(self.numPicsV)
             sg_axis = SupportClasses_GUI.AxisWidget(SgSize, minFreq/1000, maxFreq/1000)
-            self.flowAxes.addWidget(sg_axis, row+1, 0)
-            self.flowAxes.layout.setRowMinimumHeight(row, 20)
-            self.flowAxes.layout.setRowMinimumHeight(row+1, self.specV+10)
+            self.flowAxes.addWidget(sg_axis, row*2+1, 0)
+            self.flowAxes.layout.setRowMinimumHeight(row*2, 20)
+            self.flowAxes.layout.setRowMinimumHeight(row*2+1, self.specV+10)
 
             # draw a row of buttons
             for col in range(1, self.numPicsH+1):
@@ -2641,13 +2641,13 @@ class HumanClassify2(QDialog):
 
                 # resizing shouldn't change which segments are displayed,
                 # so we use a fixed start point for counting shown buttons.
-                self.flowLayout.addWidget(self.buttons[self.butStart+butNum], row+1, col)
+                self.flowLayout.addWidget(self.buttons[self.butStart+butNum], row*2+1, col)
                 # just in case, update the bounds of grid on every redraw
                 self.flowLayout.layout.setColumnMinimumWidth(col, self.specH+10)
-                self.flowLayout.layout.setRowMinimumHeight(row+1, self.specV+10)
+                self.flowLayout.layout.setRowMinimumHeight(row*2+1, self.specV+10)
                 self.buttons[self.butStart+butNum].show()
-                self.flowLayout.addWidget(QLabel(str(self.certs[self.butStart+butNum])), row, col)
-                self.flowLayout.layout.setRowMinimumHeight(row, 20)
+                self.flowLayout.addWidget(QLabel(str(self.certs[self.butStart+butNum])), row*2, col)
+                self.flowLayout.layout.setRowMinimumHeight(row*2, 20)
                 # self.flowCerts.layout.setColumnMinimumWidth(col, self.specH+10)
                 butNum += 1
 
