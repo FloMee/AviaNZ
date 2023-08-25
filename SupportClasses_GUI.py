@@ -1219,7 +1219,7 @@ class LightedFileList(QListWidget):
         self.tempsl = Segment.SegmentList()
         self.setAutoScroll(False)
 
-    def fill(self, soundDir, fileName, mincertS, species, recursive=True, readFmt=False, addWavNum=False):
+    def fill(self, soundDir, fileName, mincertS=0, species="Species", recursive=True, readFmt=False, addWavNum=False):
         """ read folder contents, populate the list widget.
             soundDir: current dir
             fileName: file which should be selected, or None
@@ -1391,7 +1391,7 @@ class LightedFileList(QListWidget):
             curritem.setIcon(QIcon(self.pixmap))
             # self.minCertainty cannot be changed by a cert=100 segment
 
-    def paintItem(self, item, datafile, mincertS, species="Species"):
+    def paintItem(self, item, datafile, mincertS=0, species="Species"):
         """ Read the JSON and draw the traffic light for a single item """
         filesp = []
         filespcert = []
@@ -1483,7 +1483,7 @@ class LightedFileList(QListWidget):
             self.pixmap.fill(QColor(255,255,255,0))
             item.setIcon(QIcon(self.pixmap))
 
-    def restrict(self, species, mincertS):
+    def restrict(self, species, mincertS=0):
         """restrict the filelist to files where species occures with maxcert > mincertS"""
         
         for item in self.iterAllItems():
