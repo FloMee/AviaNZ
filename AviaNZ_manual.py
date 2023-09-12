@@ -21,7 +21,7 @@
 
 # ? click, shutil
 
-import sys, os, json, platform, re, shutil
+import sys, os, json, platform, re, shutil, fnmatch
 import pathlib
 from shutil import copyfile
 
@@ -413,7 +413,8 @@ class AviaNZ(QMainWindow):
             actionMenu.addAction("Analyse shapes", self.showShapesDialog)
             actionMenu.addAction("Cluster segments", self.classifySegments)
 
-        actionMenu.addAction("Export segments to excel", self.exportSeg)
+        actionMenu.addAction("Export file segments to excel", self.exportSeg)
+        actionMenu.addAction("Export all segments to excel", self.exportExcel)
         actionMenu.addSeparator()
         self.showInvSpec = actionMenu.addAction("Save sound file", self.invertSpectrogram)
 
@@ -460,12 +461,13 @@ class AviaNZ(QMainWindow):
 
     def showHelp(self):
         """ Show the user manual (a pdf file), make it offline for easy access"""
-        # webbrowser.open_new(r'file://' + os.path.realpath('./Docs/AviaNZManual.pdf'))
-        webbrowser.open_new(r'http://avianz.net/docs/AviaNZManual.pdf')
+        webbrowser.open_new(r'file://' + os.path.realpath('./Docs/AviaNZManual.pdf'))
+        # webbrowser.open_new(r'http://avianz.net/docs/AviaNZManual.pdf')
 
     def showCheatSheet(self):
         """ Show the cheatsheet of sample spectrograms"""
-        webbrowser.open_new(r'http://www.avianz.net/index.php/resources/cheat-sheet/about-cheat-sheet')
+        # webbrowser.open_new(r'http://www.avianz.net/index.php/resources/cheat-sheet/about-cheat-sheet')
+        webbrowser.open_new(r'file://' + os.path.realpath('./Docs/AviaNZCheatSheet.pdf'))
 
     def launchSplitter(self):
         """ Close the main window, start splitter QMainWindow """
@@ -5226,6 +5228,85 @@ class AviaNZ(QMainWindow):
             self.addSegment(seg[0], seg[1], seg[2], seg[3], seg[4], saveSeg=False, coordsAbsolute=True)
         self.segmentsToSave = True
 
+    def exportExcel(self):
+        """ Launched manually by pressing the button.
+            Cleans out old excels and creates a single new one.
+            Needs set self.species, self.SoundFileDir. """
+
+        # self.species = self.w_spe1.currentText()        
+        if self.SoundFileDir == '':
+            msg = SupportClasses_GUI.MessagePopup("w", "Select Folder", "Please select a folder to process!")
+            msg.exec_()
+            return
+
+        with pg.BusyCursor():
+            # delete old results (xlsx)
+            # ! WARNING: any Detection...xlsx files will be DELETED,
+            # ! ANYWHERE INSIDE the specified dir, recursively
+            self.statusBar().showMessage("Removing old Excel files...")
+            self.update()
+            self.repaint()
+            for root, dirs, files in os.walk(str(self.SoundFileDir)):
+                for filename in files:
+                    filenamef = os.path.join(root, filename)
+                    if fnmatch.fnmatch(filenamef, '*DetectionSummary_*.xlsx'):
+                        print("Removing excel file %s" % filenamef)
+                        os.remove(filenamef)
+
+        print("Exporting to Excel ...")
+        self.statusBar().showMessage("Exporting to Excel ...")
+        self.update()
+        self.repaint()
+
+        allsegs = []
+        # Note: one excel will always be generated for the currently selected species
+        # spList = set([self.currentSpecies])
+
+        # list all DATA files that can be processed
+        alldatas = []
+        for root, dirs, files in os.walk(str(self.SoundFileDir)):
+            for filename in files:
+                if filename.endswith('.data'):
+                    # print("Appending" ,filename)
+                    filenamef = os.path.join(root, filename)
+                    alldatas.append(filenamef)
+
+        with pg.BusyCursor():
+            i = 1
+            for filename in alldatas:
+                # print("Reading segments from", filename)
+                segments = Segment.SegmentList()
+                segments.parseJSON(filename, silent=True)
+
+                # # Determine all species detected in at least one file
+                # for seg in segments:
+                #     spList.update([lab["species"] for lab in seg[4]])
+
+                # sort by time and save
+                segments.orderTime()
+                # attach filename to be stored in Excel later
+                segments.filename = filename
+
+                # Collect all .data contents (as SegmentList objects)
+                # for the Excel output (no matter if review dialog exit was clean)
+                allsegs.append(segments)
+                print("{}/{}".format(i, len(alldatas)))
+                i += 1
+
+            # Export the actual Excel
+            excel = SupportClasses.ExcelIO()
+            excsuccess = excel.export(allsegs, self.SoundFileDir, "overwrite", simple=True)
+
+        if excsuccess!=1:
+            # if any file wasn't exported well, overwrite the message
+            msgtext = "Warning: Excel output at " + self.SoundFileDir + " was not stored properly"
+            print(msgtext)
+            msg = SupportClasses_GUI.MessagePopup("w", "Failed to export Excel file", msgtext)
+        else:
+            msgtext = "Excel output is stored in " + os.path.join(self.SoundFileDir, "DetectionSummary_*.xlsx")
+            msg = SupportClasses_GUI.MessagePopup("d", "Excel output produced", msgtext)
+        msg.exec_()
+    
     def exportSeg(self):
         # First, deal with older xls if present:
         foundxls = []

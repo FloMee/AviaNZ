@@ -626,7 +626,7 @@ class ExcelIO():
             ws.cell(row=r+1, column=c, value=QLocale.toString(QLocale(), detected[t]))
             c += 1
 
-    def export(self, segments, dirName, action, pagelenarg=None, numpages=1, speciesList=[], startTime=None, precisionMS=False, resolution=10):
+    def export(self, segments, dirName, action, pagelenarg=None, numpages=1, speciesList=[], startTime=None, precisionMS=False, resolution=10, simple=False):
         # will export species present in self, + passed as arg, + "all species" excel
         speciesList = set(speciesList)
         for segl in segments:
@@ -709,8 +709,8 @@ class ExcelIO():
 
             # export segments
             self.writeToExcelp1(wb, segments, species, startTime, precisionMS)
-
-            if species!="Any sound":
+            
+            if not simple and species!="Any sound":
                 # loop over all SegmentLists, i.e. for each wav file:
                 for segsl in segments:
                     # extract the certainty from each label for current species
