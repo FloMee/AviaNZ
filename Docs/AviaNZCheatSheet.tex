@@ -1,0 +1,240 @@
+\documentclass[final,hyperref={pdfpagelabels=false}]{beamer}
+\usepackage{verbatim}
+\usepackage{siunitx}
+\usepackage{enumitem}
+\usepackage{macros}
+
+\usefolder{.}
+\usetheme{CS}
+
+%%%%%% To change the theme color, uncomment the following lines and set your own color. %%%%%%
+%%%%%%%% You can also directly modify the colors in the file beamercolorthemeCS.sty %%%%%%%%
+%
+%\definecolor{descr}{rgb}{0, 0, 0}
+%\definecolor{mycodecolor}{rgb}{0.4, 0.6, 0.8}
+%\colorlet{codebg}{mycodecolor}
+% 
+%\setbeamercolor{description item}{fg = descr}
+%\setbeamerfont{description item}{series = \bf}
+%\setbeamercolor{title page}{fg = mycolor}
+%\setbeamercolor{alerted text}{fg = mycolor, bg = main}
+%\setbeamercolor{block title example}{fg = mycolor}
+
+\usepackage{times}
+\usepackage{amsmath,amsthm, amssymb, latexsym}
+\boldmath
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[orientation=landscape, size=a4, scale=1.5, debug]{beamerposter}
+\usepackage{tikz}
+\hyphenation{ana-lysed}
+\usetikzlibrary{arrows}
+
+\def\q{\textquotesingle}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+  \graphicspath{{figures/}}
+  
+  \title{AviaNZ + BirdNET}
+  \subtitle{Cheat Sheet}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{document}
+  
+  \begin{frame}[fragile]{} 
+    \vfill
+    \begin{columns}[t]
+      \begin{column}{.28\linewidth}
+        \maketitle
+	Use the \textbf{Manual Processing} mode to look at, listen to, and manually annotate individual audio files, to train your own recognisers and to classify your recordings with BirdNET.
+	\begin{block}{Basic Actions and Navigation}
+	A usual workflow with BirdNET in AviaNZ would consist of the following steps:
+	\begin{itemize}[label=$\triangleright$]
+		\item Open a folder with audio files to classify
+		\item Classify the recordings with BirdNET
+		\item Manually control the results of BirdNET, i.e. confirm, adjust, delete, label segments
+	\end{itemize}
+	\begin{subblock}{Basic Actions}
+		\begin{tabular}[]{ll}
+	  \textbf{Open file} & \inl{CTRL+O}\\
+	  \textbf{Restart program} & \inl{CTRL+R}\\
+	  \textbf{Quit program} & \inl{CTRL+Q}\\
+	  \textbf{Help/Open manual} & \inl{CTRL+H}\\
+	  \textbf{Spectrogram parameters} & \inl{CTRL+C}
+  \end{tabular}
+  \end{subblock}
+  \begin{subblock}{Navigation}
+	  \blocksubtitle{Navigate in the File List}
+  To navigate through the file list, use your mouse by double clicking on the file of interest or use the following shortcuts:\br
+  \begin{tabular}[]{ll}
+	  \textbf{Next file} & \inl{DOWN}\\
+	  \textbf{Previous file} & \inl{UP}\\
+	  \textbf{Next file (include invisible)} & \inl{ALT+DOWN}\\
+	  \textbf{Previous file (include invisible)} & \inl{ALT+UP}
+  \end{tabular}
+%	\inline{str(iris)}\\Get a summary of an object's structure.\br
+%  \inline{class(iris)}\\Find the class an object belongs to.
+  \blocksubtitle{Navigate in the Audio File}
+  To navigate within an audio file, use your mouse to click and drag the blue box, click on the boxes below the overview spectrogram or use the following shortcuts to navigate to the section of interest:\br
+  \begin{tabular}[]{ll}
+	  \textbf{Jump forward} & \inl{RIGHT}\\
+	  \textbf{Jump backward} & \inl{LEFT}\\
+	  \textbf{Jump to next page} & \inl{SHIFT+RIGHT}\\
+	  \textbf{Jump to previous page} & \inl{SHIFT+LEFT}\\
+	  \textbf{Jump to next segment} & \inl{CTRL+RIGHT}\\
+  \end{tabular}
+%\inline{eins}\\Das soll hier hin. \br
+   \end{subblock}
+  \end{block}
+      \end{column}
+      
+      \begin{column}{.31\linewidth}
+	\begin{block}{Segments and Review Process}
+%	\textbf{Segments} are \ldots
+	\begin{subblock}{Manipulate Segments}
+	\blocksubtitle{Create}
+	Choose in the interface settings whether to use left or right mouse button to create segments like this:\br
+	\begin{tabular}[]{p{9em}l}
+		\textbf{Create unlabeled} & \inl{CLICK+DRAG}\\
+		\textbf{Create uncertain} & \inl{CTRL+CLICK+DRAG} \\
+		\textbf{Create with last species label} & \inl{SHIFT+CLICK+DRAG}
+	\end{tabular}
+	\blocksubtitle{Move, Resize and Delete}
+	Segments can be moved by clicking and dragging. To resize do the same on the edges.\br
+
+	Delete a segment by selecting and using the ``Delete segment'' Button or with the following shortcuts:\br
+	\begin{tabular}[]{ll}
+	  \textbf{Delete selected segment} & \inl{DEL}\\
+	  \textbf{Delete all segments} & \inl{CTRL+D}\\
+	\end{tabular}
+\end{subblock}
+	\begin{subblock}{Review Results of Classification}
+		\blocksubtitle{File Icons}
+		The file icon color indicates the state of segments in the file for the selected species.
+
+		The grey frame marks the maximum certainty value of the segments for selected species.
+		\begin{tabular}[]{m{3.2em}m{18em}}
+			\includegraphics[height=4.5em]{/home/flo/Dokumente/Studium/Masterarbeit/Bilder/IconOverview} & 
+			\begin{itemize}[topsep=8pt, label = $\triangleright$]
+				\item cert. of every segment 100\%
+				\item max. cert. of segments \textless 100\%
+				\item segments with cert. 0\% present
+			\end{itemize}
+		\end{tabular}
+	  \blocksubtitle{Reduce Filelist}
+	 Reduce the filelist by selecting the species of interest in the dropdown menu and ticking the box next to it.
+	 Adapt the minimum certainty value to further shorten the filelist.
+
+	  Use the following shortcuts to quickly review the detections of the selected species:\br
+\begin{tabular}[]{ll}
+	  \textbf{Jump to next segment} & \inl{CTRL+RIGHT}\\
+	  \textbf{Confirm labels} &  \inl{ENTER}\\
+	  \textbf{Toggle label type} & \inl{TAB}\\
+	  \textbf{Playback sound} & \inl{SPACE}\\
+	  \textbf{Playback selected segment} & \inl{CTRL+SPACE}\\
+  \end{tabular}
+	  
+\end{subblock}
+	  \begin{comment}
+  \begin{subblock}{Creating Vectors}
+    \scriptsize\vspace{5pt}\hspace{-8pt}
+    \begin{tableau}{| >{\color{black}}m{2.2cm} | >{\color{white}\cellcolor{codebg}}m{1.401cm} | >{\color{black}\centering\arraybackslash}m{1.45cm} |}
+      \hline
+      \inl{c(2, 4, 6)} & \inl{2 4 6} & Join elements into a vector\\\hline
+      \rowcolor{secondary} \inl{2:6} & \inl{2 3 4 5 6} & An integer sequence\\\hline
+      \inl{seq(2, 3, by=0.5)} & \inl{2.0 2.5 3.0} & A complex sequence\\\hline
+      \rowcolor{secondary} \inl{rep(1:2, times=3)} & \inl{1 2 1 2 1 2} & Repeat a vector\\\hline
+      \inl{rep(1:2, each=3)} & \inl{1 1 1 2 2 2} & Repeat elements of a vector\\\hline
+    \end{tableau}
+    \vskip-1ex
+  \end{subblock}
+  
+  \begin{subblock}{Vectors Functions}
+    \begin{columns}[t]
+      \hspace{4ex}
+      \begin{column}{0.55\linewidth}
+        \inlc{sort(x)}\\Return x sorted.\br
+        \inlc{table(x)}\\See counts of values.
+      \end{column}
+      \begin{column}{0.49\linewidth}
+        \inlc{rev(x)}\\Return x reversed.\br
+        \inlc{unique(x)}\\See unique values.
+      \end{column}
+      \hspace{4ex}
+    \end{columns}
+  \end{subblock}
+  
+  \begin{subblock}{Selecting Vector Elements}
+    \renewcommand{\arraystretch}{1.411}\hspace{-17.5pt}
+    \begin{tabular}{>{\centering}m{0.48\linewidth} >{\centering\arraybackslash}m{0.47\linewidth}}
+      \multicolumn{2}{c}{\textcolor{gray}{\textbf{By Position}}}\\
+      \inlc{x[4]} & The fourth element.\\
+      \inlc{x[-4]} & All but the fourth.\\
+      \inlc{x[2:4]} & Elements two to four.\\
+      \inlc{x[-(2:4)]} & All elements except two to four.\\
+      \inlc{x[c(1, 5)]} & Elements one and five.\\
+      \multicolumn{2}{c}{\textcolor{gray}{\textbf{By Value}}}\\
+      \inlc{x[x == 10]} & Element which are equal to 10.\\
+      \inlc{x[which(x==10)]} & Element which are equal to 10.\\
+      \inlc{x[x < 0]} & All elements less than zero.\\
+      \inlc{x[x\%in\%c(1,2,5)]} & Elements in the set \{1, 2, 5\}.\\
+      \multicolumn{2}{c}{\textcolor{gray}{\textbf{Named Vectors}}}\\
+      \inlc{x['apple']} & Element with name 'apple".
+    \end{tabular}
+  \end{subblock}
+	  \end{comment}
+\end{block}
+      \end{column}
+      
+      \begin{column}{.43\linewidth}
+	\begin{block}{BirdNET}
+	\textbf{Start:} Menu$\,\to\,$Recognisers$\,\to\,$Classify recordings with BirdNET\\
+%	ATTENTION: BirdNET-Analyzer: entering a value here lets BirdtNET calculate a Custom Species List for you. ATTENTION: If you select a file here, you cannot set latitude and longitude and vice versa.
+	\begin{subblock}{Parameters}
+{\renewcommand{\arraystretch}{1.2}
+	\begin{tabular}{p{7em}p{25em}}
+%\textbf{Parameter} & \textbf{Explanation} \\
+		\textbf{Latitude} & Recording location latitude; Values in [-90; 90]; Defaults to -1.00.\\
+\textbf{Longitude} & Recording location longitude; Values in [-180; 180]; Defaults to -1.00.\\
+	\textbf{Week} & Week of the recording; Values in [0; 48]; Divide year into 48 weeks — 4 weeks per month; Defaults to 0.\\
+\textbf{Select custom species list} & A ``white list'' that includes the species of interest; Must be a subset of the original species-lists of BirdNET-Lite or BirdNET-Analyzer respectively and in the selected language; Find these files in the installation directory of AviaNZ under labels.\\ 
+\textbf{Language of species labels} & Self-explanatory; Not 100\% of the labels are translated in every language.\\
+\textbf{Overlap} & BirdNET cuts your recordings into chunks of \SI{3}{\second} lenght internally; Overlap defines the number of seconds the single segments overlap; Values in [0.0; 2.9]; Defaults to 0.0.\\
+\textbf{Sensitivity} & Detection sensitivity; Higher values result in higher sensitivity; Values in [0.5, 1.5]; Defaults to 1.0.\\
+\textbf{Minimum certainty} & Minimum certainty value in the output; Values in [0.01; 0.99]; Defaults to 0.1.\\
+\textbf{Number of threads} & Number of threads used for calculation; Defaults to the number of available cores of the CPU.\\
+\textbf{Calculate moving exp. average} & If set, the original certainty values are smoothed and pooled with a moving mean exponential average with a width of 3 chunks; Used to potentially remove some false positives; Described here: \url{https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13571}\\
+\textbf{Batchsize} & Only BirdNET-Analzyer; Number of chunks that are analysed concurrently; May influence the processing time but not the output; Defaults to 1.\\
+\textbf{Threshold for location filter} & Only BirdNET-Analyzer; If Latitude, Longitude and Week are set BirdNET-Analyzer calculates a custom species list; Species with a calculated value below this \mbox{threshold} are not included in the output list; Defaults to: 0,03. \\
+\end{tabular}
+}
+	\end{subblock}
+	\textbf{ATTENTION:} Most of the parameters are the same for both classifiers BirdNET-Lite and BirdNET-Analyzer, but there are a few distinct differences.
+	Whereas BirdNET-Lite accepts both, coordinates, week \textbf{and} a custom species list, BirdNET-Analyzer accepts only either coordinates and week \textbf{or} a custom species list.
+	This is because BirdNET-Analyzer calculates a custom species list if coordinates and week are set.
+	For that the threshold for the location filter can be set additionally.
+
+\end{block}
+      \end{column}
+    \end{columns}
+    \vfill
+  \end{frame}
+  \begin{comment}
+  
+  \begin{frame}[fragile]{}
+    \begin{columns}[t]
+      \begin{column}{0.33\linewidth}
+        \input{fourthcolumn}
+      \end{column}
+      
+      \begin{column}{0.33\linewidth}
+        \input{fifthcolumn}
+      \end{column}
+            
+      \begin{column}{0.33\linewidth}
+        \input{sixthcolumn}
+      \end{column}
+    \end{columns}
+  \end{frame}
+  \end{comment}
+\end{document}
