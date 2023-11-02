@@ -291,8 +291,7 @@ class BirdNETDialog(QDialog):
     def onClickanalyze(self):
 
         if self.validateInputParameters():
-            self.parent.BirdNET = BirdNET(self.parent)
-            birdnet = self.parent.BirdNET
+            
 
             param_dict = {"lite": self.lite.isChecked(),
                           "lat": self.lat.value(),
@@ -310,8 +309,25 @@ class BirdNETDialog(QDialog):
                           "sf_thresh": self.sf_thresh.value()
                           }
 
-            setattr(birdnet, "param", param_dict)
-            self.parent.BirdNET.main()
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+            msg.setText("Non-Commercial Licence!")
+            msg.setInformativeText('The model of {} is licenced under a '
+                                   'Attribution-NonCommercial-ShareAlike 4.0 '
+                                   'International Licence.\n\nYou accept the '
+                                   'licence by analysing your files.'.format(
+                                    'BirdNET-Lite' if self.lite.isChecked() else
+                                    'BirdNET-Analyzer'
+                                   ))
+            msg.setWindowTitle("Consent required")
+            msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+            response = msg.exec_()
+            if response == QMessageBox.Ok:
+                self.parent.BirdNET = BirdNET(self.parent)
+                birdnet = self.parent.BirdNET
+                setattr(birdnet, "param", param_dict)
+                self.parent.BirdNET.main()
+            
             self.close()
             # if self.parent.BirdNET.threadpool.waitForDone():
             #     self.parent.loadFile(name=self.parent.filename)
