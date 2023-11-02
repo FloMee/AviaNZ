@@ -752,7 +752,7 @@ class BirdNET_Worker(QRunnable):
 
         labels = self.model[3]
 
-        i = 0
+        j = 0
         if self.lite:
             # Convert and prepare metadata
             mdata = self.convertMetadata(file)
@@ -779,13 +779,13 @@ class BirdNET_Worker(QRunnable):
                         p_sorted[i] = (p_sorted[i][0], 0.0)
 
                 # Save result and timestamp
-                detections_mea[i] = p_sigmoid
+                detections_mea[j] = p_sigmoid
                 timestamps.append(pred_start)
 
                 pred_end = pred_start + sig_length
                 detections[file + ',' + str(pred_start) + ',' + str(pred_end)] = p_sorted[:10]
                 pred_start = pred_end - self.overlap
-                i += 1
+                j += 1
 
             print('DONE! TIME {:.1f} SECONDS'.format(time.time() - start))
             return (detections_mea.transpose(), timestamps, detections)
