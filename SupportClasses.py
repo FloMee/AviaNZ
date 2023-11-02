@@ -242,7 +242,7 @@ class ConfigLoader(object):
             if not callfile.endswith("txt"):
                 continue
             try:
-                ct = open(os.path.join(dir, callfile))
+                ct = open(os.path.join(dir, callfile), encoding='utf8')
                 calltypes = json.load(ct)
                 ct.close()
 
@@ -326,7 +326,7 @@ class ConfigLoader(object):
                 shortblfile = os.path.join(configdir, "ListCommonBirds.txt")
 
             try:
-                json_file = open(shortblfile)
+                json_file = open(shortblfile, encoding='utf8')
                 readlist = json.load(json_file)
                 json_file.close()
                 if len(readlist)>29:
@@ -362,7 +362,7 @@ class ConfigLoader(object):
                 longblfile = os.path.join(configdir, "ListDOCBirds.txt")
 
             try:
-                json_file = open(longblfile)
+                json_file = open(longblfile, encoding='utf8')
                 readlist = json.load(json_file)
                 json_file.close()
                 return readlist
@@ -393,7 +393,7 @@ class ConfigLoader(object):
                 blfile = os.path.join(configdir, "ListBats.txt")
 
             try:
-                json_file = open(blfile)
+                json_file = open(blfile, encoding='utf8')
                 readlist = json.load(json_file)
                 json_file.close()
                 return readlist

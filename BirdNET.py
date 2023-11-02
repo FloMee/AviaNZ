@@ -567,7 +567,7 @@ class BirdNET_Worker(QRunnable):
         slist = []
         if path:
             if os.path.isfile(path):
-                with open(path, 'r') as csfile:
+                with open(path, 'r', encoding='utf8') as csfile:
                     for line in csfile.readlines():
                         slist.append(line.replace('\r', '').replace('\n', ''))
             else:
