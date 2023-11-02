@@ -87,8 +87,8 @@ class BirdNETDialog(QDialog):
         self.sensitivity.setSingleStep(0.05)
         self.sensitivity.setValue(1.0)
 
-        self.min_conf_label = QLabel("Minimum certainty")
-        self.min_conf_label.setToolTip("Minimum certainty value in the output; "
+        self.min_conf_label = QLabel("Minimum confidence")
+        self.min_conf_label.setToolTip("Minimum confidence value in the output; "
         "Values in [0.01;0.99]; Defaults to 0.1.")
         self.min_conf = QDoubleSpinBox()
         self.min_conf.setRange(0.01, 0.99)
@@ -117,7 +117,7 @@ class BirdNETDialog(QDialog):
         self.threads.setValue(os.cpu_count())
 
         self.mea = QCheckBox("Calculate moving exponential average")
-        self.mea.setToolTip("If set, the original certainty values are "
+        self.mea.setToolTip("If set, the original confidence values are "
         "smoothed and pooled with a moving mean exponential average with a "
         "width of 3 chunks; Used to potentially remove some false positives.")
         self.datetime_format_label = QLabel("Datetime format")

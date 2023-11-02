@@ -674,10 +674,10 @@ class ExcelIO():
                 ws.cell(row=1, column=5, value="max freq. (Hz)")
                 if species=="Any sound":
                     ws.cell(row=1, column=6, value="species")
-                    ws.cell(row=1, column=7, value="certainty")
+                    ws.cell(row=1, column=7, value="confidence")
                     ws.cell(row=1, column=8, value="call type")
                 else:
-                    ws.cell(row=1, column=6, value="certainty")
+                    ws.cell(row=1, column=6, value="confidence")
                     ws.cell(row=1, column=7, value="call type")
 
                     # Second sheet
@@ -685,14 +685,14 @@ class ExcelIO():
                     ws = wb['Presence Absence']
                     ws.cell(row=1, column=1, value="File Name")
                     ws.cell(row=1, column=2, value="Present?")
-                    ws.cell(row=1, column=3, value="Certainty, %")
+                    ws.cell(row=1, column=3, value="Confidence, %")
 
                     # Third sheet
                     wb.create_sheet(title='Per Time Period', index=3)
                     ws = wb['Per Time Period']
                     ws.cell(row=1, column=1, value="File Name")
                     ws.cell(row=1, column=2, value="Page")
-                    ws.cell(row=1, column=3, value="Maximum certainty of species presence (0 = absent)")
+                    ws.cell(row=1, column=3, value="Maximum confidence of species presence (0 = absent)")
 
                 # Hack to delete original sheet
                 del wb['Sheet']

@@ -216,7 +216,7 @@ class Segment(list):
         """ Returns a nicely-formatted string of this segment's info."""
         s = []
         for lab in self[4]:
-            labs = "sp.: %s, cert.: %d%%" % (lab["species"], lab["certainty"])
+            labs = "sp.: %s, conf.: %d%%" % (lab["species"], lab["certainty"])
             if "filter" in lab and lab["filter"] != "M":
                 labs += ", filter: " + lab["filter"]
             if "calltype" in lab:

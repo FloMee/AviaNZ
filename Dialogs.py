@@ -2551,7 +2551,7 @@ class HumanClassify2(QDialog):
         for i in self.indices2show:
             # This will contain pre-made slices of spec and audio
             sp = self.sps[i]
-            self.certs.append("Certainty: {:.1f}%".format(max([j["certainty"] for j in self.segments[i][4] if j["species"] == self.species.text()])))
+            self.certs.append("Confidence: {:.1f}%".format(max([j["certainty"] for j in self.segments[i][4] if j["species"] == self.species.text()])))
             duration = len(sp.data)/sp.sampleRate
 
             # Seems that image is backwards?
