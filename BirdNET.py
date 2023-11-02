@@ -347,8 +347,8 @@ class BirdNETDialog(QDialog):
     def updateDialog(self):
         print("Update Dialog")
         if self.lite.isChecked():
-            self.datetime_format.setVisible(True)
-            self.datetime_format_label.setVisible(True)
+            self.datetime_format.setVisible(False)
+            self.datetime_format_label.setVisible(False)
             self.batchsize.setVisible(False)
             self.batchsize_label.setVisible(False)
             self.sf_thresh.setVisible(False)
@@ -456,7 +456,7 @@ class BirdNET(QWidget):
             self.progress.setLabelText("Analyzing {} files...".format(len(self.filelist)))
             self.progress.show()
             for flist in file_threads:
-                worker = BirdNET_Worker(param=self.param, filelist=flist, labels=self.labels)
+                worker = BirdNET_Worker(self, param=self.param, filelist=flist, labels=self.labels)
                 worker.fileProcessed.update.connect(self.updateProgress)
                 worker.filelistProcessed.done.connect(self.updateFilelist)
                 self.threadpool.start(worker)
@@ -476,8 +476,9 @@ class MyEmitter(QObject):
 
 class BirdNET_Worker(QRunnable):
 
-    def __init__(self, param, filelist, labels, *args, **kwargs):
+    def __init__(self, parent, param, filelist, labels, *args, **kwargs):
         super(BirdNET_Worker, self).__init__()
+        self.parent = parent
         self.filelist = filelist
         self.m_interpreter = None
         self.model = None
@@ -501,6 +502,7 @@ class BirdNET_Worker(QRunnable):
         self.initProcess()
 
     def run(self, *args, **kwargs):
+        self.parent.progress.activateWindow()
         for file in self.filelist:
             self.analyze(file)
         self.filelistProcessed.done.emit(self.filelist)
