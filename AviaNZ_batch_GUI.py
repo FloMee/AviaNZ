@@ -727,7 +727,7 @@ class AviaNZ_reviewAll(QMainWindow):
 
         # Simple certainty selector:
         self.certCombo = QComboBox()
-        self.certCombo.addItems(["Show all (even previously reviewed)", "Show only auto/unknown", "Custom certainty bounds"])
+        self.certCombo.addItems(["Show all (even previously reviewed)", "Show only auto/unknown", "Custom confidence bounds"])
         self.certCombo.setCurrentIndex(1)
         self.certCombo.activated.connect(self.changedCertSimple)
 
@@ -739,7 +739,7 @@ class AviaNZ_reviewAll(QMainWindow):
         self.d_detection.addWidget(self.w_speLabel1,row=2,col=0)
         self.d_detection.addWidget(self.w_spe1,row=2, col=1, colspan=2)
 
-        self.d_detection.addWidget(QLabel("Minimum certainty to show"), row=3, col=0)
+        self.d_detection.addWidget(QLabel("Minimum confidence to show"), row=3, col=0)
         self.d_detection.addWidget(self.certCombo, row=3, col=1, colspan=2)
 
         # self.d_detection.addWidget(self.w_processButton1, row=4, col=1)
@@ -851,9 +851,9 @@ class AviaNZ_reviewAll(QMainWindow):
 
         # Advanced Settings Layout
         self.d_settings.addWidget(self.toggleSettingsBtn, row=0, col=2, colspan=2, rowspan=1)
-        self.d_settings.addWidget(QLabel("Skip if certainty above:"), row=1, col=0, colspan=2, rowspan=1)
+        self.d_settings.addWidget(QLabel("Skip if confidence above:"), row=1, col=0, colspan=2, rowspan=1)
         self.d_settings.addWidget(self.certBox, row=1, col=2, colspan=2, rowspan=1)
-        self.d_settings.addWidget(QLabel("Skip if certainty below:"), row=2, col=0, colspan=2, rowspan=1)
+        self.d_settings.addWidget(QLabel("Skip if confidence below:"), row=2, col=0, colspan=2, rowspan=1)
         self.d_settings.addWidget(self.minCertBox, row=2, col=2, colspan=2, rowspan=1)
         self.d_settings.addWidget(self.fLowcheck, row=3, col=0)
         self.d_settings.addWidget(self.fLowtext, row=3, col=1)
@@ -1332,7 +1332,7 @@ class AviaNZ_reviewAll(QMainWindow):
         # END of review and exporting. Final cleanup
         self.ConfigLoader.configwrite(self.config, self.configfile)
         if filesuccess == 1:
-            msgtext = "All files checked. If you expected to see more calls, is the certainty setting too low?\n Remember to press the 'Generate Excel' button if you want the Excel-format output.\nWould you like to return to the start screen?"
+            msgtext = "All files checked. If you expected to see more calls, is the confidence setting too low?\n Remember to press the 'Generate Excel' button if you want the Excel-format output.\nWould you like to return to the start screen?"
             msg = SupportClasses_GUI.MessagePopup("d", "Finished", msgtext)
             msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
             reply = msg.exec_()
