@@ -866,7 +866,11 @@ class BirdNET_Worker(QRunnable):
         else:
             # TODO: get Duration from file
 
-            seg_list.metadata = {"Operator": "Auto", "Reviewer": "", "Duration": 60}
+            seg_list.metadata = {
+                "Operator": self.parent.AviaNZ.operator,
+                "Reviewer": self.parent.AviaNZ.reviewer,
+                "Duration": 60,
+            }
 
         for d in detections:
             save = True
