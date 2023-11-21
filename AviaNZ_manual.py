@@ -3085,7 +3085,11 @@ class AviaNZ(QMainWindow):
                 # If they pressed Control, add ? to the names
                 modifiers = QApplication.keyboardModifiers()
                 if modifiers == Qt.ShiftModifier:
-                    self.addSegment(self.start_ampl_loc, max(mousePoint.x(),0.0),species=self.lastSpecies)
+                    self.addSegment(
+                        self.start_ampl_loc,
+                        max(mousePoint.x(), 0.0),
+                        species=copy.deepcopy(self.lastSpecies),
+                    )
                 elif modifiers == Qt.ControlModifier:
                     self.addSegment(self.start_ampl_loc,max(mousePoint.x(),0.0))
                     # Context menu
@@ -3257,7 +3261,9 @@ class AviaNZ(QMainWindow):
                 # note: Ctrl+Shift combo doesn't have a Qt modifier and is ignored.
                 modifiers = QApplication.keyboardModifiers()
                 if modifiers == Qt.ShiftModifier:
-                    self.addSegment(x1, x2, y1, y2, species=self.lastSpecies)
+                    self.addSegment(
+                        x1, x2, y1, y2, species=copy.deepcopy(self.lastSpecies)
+                    )
                 elif modifiers == Qt.ControlModifier:
                     self.addSegment(x1, x2, y1, y2)
                     # Context menu
@@ -3607,6 +3613,9 @@ class AviaNZ(QMainWindow):
         for lab in workingSeg[4]:
             if lab["species"] == spmenu:
                 lab["calltype"] = ctitem
+        self.lastSpecies = [
+            {"species": spmenu, "certainty": 100, "filter": "M", "calltype": ctitem}
+        ]
         self.updateText()
         self.segInfo.setText(workingSeg.infoString())
         self.segmentsToSave = True
