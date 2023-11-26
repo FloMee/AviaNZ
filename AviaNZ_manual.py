@@ -1305,14 +1305,23 @@ class AviaNZ(QMainWindow):
         self.updateListSpecies()
     
     def updateListSpecies(self):
-
-        currentSpecies = self.listSpecies.currentText()
+        currentSpecies = self.listSpecies.currentText().rpartition(" ")[0]
         self.currentSpecies = ""
         self.listSpecies.clear()
         self.listSpecies.insertItem(0, "Species (All)")
-        self.listSpecies.insertItems(1, sorted(["{} {:.0f}".format(key, value) for key, value in self.listFiles.spListCert.items()]))
-        idx = self.listSpecies.findText(currentSpecies)
-        if currentSpecies and idx != -1:           
+        self.listSpecies.insertItems(
+            1,
+            sorted(
+                [
+                    "{} {:.0f}".format(key, value)
+                    for key, value in self.listFiles.spListCert.items()
+                ]
+            ),
+        )
+        idx = self.listSpecies.findText(
+            currentSpecies, QtCore.Qt.MatchFlag.MatchStartsWith
+        )
+        if currentSpecies and idx != -1:
             self.listSpecies.setCurrentIndex(idx)
         else:
             self.listSpecies.setCurrentIndex(0)
