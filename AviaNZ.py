@@ -29,27 +29,65 @@ import sys
 # For training
 # python AviaNZ.py -c -t -d "/home/marslast/Projects/AviaNZ/Sound Files/train5" -e "/home/marslast/Projects/AviaNZ/Sound Files/train6" -r "Morepork" -x 2
 
+
 # For testing
 # python AviaNZ.py -c -u -d "/home/marslast/Projects/AviaNZ/Sound Files/test1" -r "Kiwi (Tokoeka Rakiura)"
 @click.command()
-@click.option('-c', '--cli', is_flag=True, help='Run in command-line mode')
-@click.option('-s', '--cheatsheet', is_flag=True, help='Make the cheatsheet images')
-@click.option('-z', '--zooniverse', is_flag=True, help='Make the Zooniverse images and sounds')
-@click.option('-f', '--infile', type=click.Path(), help='Input wav file (mandatory in CLI mode)')
-@click.option('-o', '--imagefile', type=click.Path(), help='If specified, a spectrogram will be saved to this file')
-@click.option('-b', '--batchmode', is_flag=True, help='Batch processing')
-@click.option('-t', '--training', is_flag=True, help='Train a CNN recogniser')
-@click.option('-u', '--testing', is_flag=True, help='Train a recogniser')
-@click.option('-d', '--sdir1', type=click.Path(), help='Input sound directory, training or batch processing')
-@click.option('-e', '--sdir2', type=click.Path(), help='Second input sound directory, training')
-@click.option('-r', '--recogniser', type=str, help='Recogniser name (without ".txt"), batch processing')
-@click.option('-w', '--wind', is_flag=True, help='Apply wind filter')
-@click.option('-x', '--width', type=float, help='Width of windows for CNN')
-@click.argument('command', nargs=-1)
-def mainlauncher(cli, cheatsheet, zooniverse, infile, imagefile, batchmode, training, testing, sdir1, sdir2, recogniser, wind, width, command):
+@click.option("-c", "--cli", is_flag=True, help="Run in command-line mode")
+@click.option("-s", "--cheatsheet", is_flag=True, help="Make the cheatsheet images")
+@click.option(
+    "-z", "--zooniverse", is_flag=True, help="Make the Zooniverse images and sounds"
+)
+@click.option(
+    "-f", "--infile", type=click.Path(), help="Input wav file (mandatory in CLI mode)"
+)
+@click.option(
+    "-o",
+    "--imagefile",
+    type=click.Path(),
+    help="If specified, a spectrogram will be saved to this file",
+)
+@click.option("-b", "--batchmode", is_flag=True, help="Batch processing")
+@click.option("-t", "--training", is_flag=True, help="Train a CNN recogniser")
+@click.option("-u", "--testing", is_flag=True, help="Train a recogniser")
+@click.option(
+    "-d",
+    "--sdir1",
+    type=click.Path(),
+    help="Input sound directory, training or batch processing",
+)
+@click.option(
+    "-e", "--sdir2", type=click.Path(), help="Second input sound directory, training"
+)
+@click.option(
+    "-r",
+    "--recogniser",
+    type=str,
+    help='Recogniser name (without ".txt"), batch processing',
+)
+@click.option("-w", "--wind", is_flag=True, help="Apply wind filter")
+@click.option("-x", "--width", type=float, help="Width of windows for CNN")
+@click.argument("command", nargs=-1)
+def mainlauncher(
+    cli,
+    cheatsheet,
+    zooniverse,
+    infile,
+    imagefile,
+    batchmode,
+    training,
+    testing,
+    sdir1,
+    sdir2,
+    recogniser,
+    wind,
+    width,
+    command,
+):
     # adapt path to allow this to be launched from wherever
     import sys, os
-    if getattr(sys, 'frozen', False):
+
+    if getattr(sys, "frozen", False):
         appdir = sys._MEIPASS
     else:
         appdir = os.path.dirname(os.path.abspath(__file__))
@@ -68,10 +106,10 @@ def mainlauncher(cli, cheatsheet, zooniverse, infile, imagefile, batchmode, trai
         raise
 
     # determine location of config file and bird lists
-    if platform.system() == 'Windows':
+    if platform.system() == "Windows":
         # Win
         configdir = os.path.expandvars(os.path.join("%APPDATA%", "AviaNZ"))
-    elif platform.system() == 'Linux' or platform.system() == 'Darwin':
+    elif platform.system() == "Linux" or platform.system() == "Darwin":
         # Unix
         configdir = os.path.expanduser("~/.avianz/")
     else:
@@ -97,7 +135,9 @@ def mainlauncher(cli, cheatsheet, zooniverse, infile, imagefile, batchmode, trai
     try:
         config = confloader.config(os.path.join(configdir, "AviaNZconfig.txt"))
         validate(instance=config, schema=configschema)
-        learnpar = confloader.learningParams(os.path.join(configdir, "LearningParams.txt"))
+        learnpar = confloader.learningParams(
+            os.path.join(configdir, "LearningParams.txt")
+        )
         validate(instance=learnpar, schema=learnparschema)
         print("successfully validated config file")
     except Exception as e:
@@ -112,7 +152,12 @@ def mainlauncher(cli, cheatsheet, zooniverse, infile, imagefile, batchmode, trai
             raise
 
     # check and if needed copy any other necessary files
-    necessaryFiles = ["ListCommonBirds.txt", "ListDOCBirds.txt", "ListBats.txt", "LearningParams.txt"]
+    necessaryFiles = [
+        "ListCommonBirds.txt",
+        "ListDOCBirds.txt",
+        "ListBats.txt",
+        "LearningParams.txt",
+    ]
     for f in necessaryFiles:
         if not os.path.isfile(os.path.join(configdir, f)):
             print("File %s not found in config dir, providing default" % f)
@@ -129,11 +174,11 @@ def mainlauncher(cli, cheatsheet, zooniverse, infile, imagefile, batchmode, trai
         print("Creating filter dir %s" % filterdir)
         os.makedirs(filterdir)
     for f in os.listdir("Filters"):
-        ff = os.path.join("Filters", f) # Kiwi.txt
-        if not os.path.isfile(os.path.join(filterdir, f)): # ~/.avianz/Filters/Kiwi.txt
+        ff = os.path.join("Filters", f)  # Kiwi.txt
+        if not os.path.isfile(os.path.join(filterdir, f)):  # ~/.avianz/Filters/Kiwi.txt
             print("Recogniser %s not found, providing default" % f)
             try:
-                shutil.copy2(ff, filterdir) # cp Filters/Kiwi.txt ~/.avianz/Filters/
+                shutil.copy2(ff, filterdir)  # cp Filters/Kiwi.txt ~/.avianz/Filters/
             except Exception as e:
                 print("Warning: failed to copy recogniser %s to %s" % (ff, filterdir))
                 print(e)
@@ -143,35 +188,71 @@ def mainlauncher(cli, cheatsheet, zooniverse, infile, imagefile, batchmode, trai
         print("Starting AviaNZ in CLI mode")
         if batchmode:
             import AviaNZ_batch
-            if os.path.isdir(sdir1) and recogniser in confloader.filters(filterdir).keys():
-                avianzbatch = AviaNZ_batch.AviaNZ_batchProcess(parent=None, mode="CLI", configdir=configdir, sdir=sdir1, recogniser=recogniser, wind=wind)
+
+            if (
+                os.path.isdir(sdir1)
+                and recogniser in confloader.filters(filterdir).keys()
+            ):
+                avianzbatch = AviaNZ_batch.AviaNZ_batchProcess(
+                    parent=None,
+                    mode="CLI",
+                    configdir=configdir,
+                    sdir=sdir1,
+                    recogniser=recogniser,
+                    wind=wind,
+                )
                 print("Analysis complete, closing AviaNZ")
             else:
-                print("ERROR: valid input dir (-d) and recogniser name (-r) are essential for batch processing")
+                print(
+                    "ERROR: valid input dir (-d) and recogniser name (-r) are essential for batch processing"
+                )
                 raise
         elif training:
             import Training
-            if os.path.isdir(sdir1) and os.path.isdir(sdir2) and recogniser in confloader.filters(filterdir).keys() and width>0:
-                training = Training.CNNtrain(configdir,filterdir,sdir1,sdir2,recogniser,width,CLI=True)
+
+            if (
+                os.path.isdir(sdir1)
+                and os.path.isdir(sdir2)
+                and recogniser in confloader.filters(filterdir).keys()
+                and width > 0
+            ):
+                training = Training.CNNtrain(
+                    configdir, filterdir, sdir1, sdir2, recogniser, width, CLI=True
+                )
                 training.cliTrain()
                 print("Training complete, closing AviaNZ")
             else:
-                print("ERROR: valid input dirs (-d and -e) and recogniser name (-r) are essential for training")
+                print(
+                    "ERROR: valid input dirs (-d and -e) and recogniser name (-r) are essential for training"
+                )
                 raise
         elif testing:
             import Training
+
             filts = confloader.filters(filterdir)
             if os.path.isdir(sdir1) and recogniser in filts:
-                testing = Training.CNNtest(sdir1, filts[recogniser], recogniser, configdir,filterdir,CLI=True)
+                testing = Training.CNNtest(
+                    sdir1, filts[recogniser], recogniser, configdir, filterdir, CLI=True
+                )
                 print("Testing complete, closing AviaNZ")
             else:
-                print("ERROR: valid input dir (-d) and recogniser name (-r) are essential for training")
+                print(
+                    "ERROR: valid input dir (-d) and recogniser name (-r) are essential for training"
+                )
                 raise
         else:
             if (cheatsheet or zooniverse) and isinstance(infile, str):
                 import AviaNZ
-                avianz = AviaNZ(configdir=configdir, CLI=True, cheatsheet=cheatsheet, zooniverse=zooniverse,
-                                firstFile=infile, imageFile=imagefile, command=command)
+
+                avianz = AviaNZ(
+                    configdir=configdir,
+                    CLI=True,
+                    cheatsheet=cheatsheet,
+                    zooniverse=zooniverse,
+                    firstFile=infile,
+                    imageFile=imagefile,
+                    command=command,
+                )
                 print("Analysis complete, closing AviaNZ")
             else:
                 print("ERROR: valid input file (-f) is needed")
@@ -180,6 +261,7 @@ def mainlauncher(cli, cheatsheet, zooniverse, infile, imagefile, batchmode, trai
         task = None
         print("Starting AviaNZ in GUI mode")
         from PyQt5.QtWidgets import QApplication
+
         app = QApplication(sys.argv)
         # a hack to fix default font size (Win 10 suggests 7 pt for QLabels for some reason)
         QApplication.setFont(QApplication.font("QMenu"))
@@ -189,6 +271,7 @@ def mainlauncher(cli, cheatsheet, zooniverse, infile, imagefile, batchmode, trai
             if task is None:
                 # This screen asks what you want to do, then processes the response
                 import Dialogs
+
                 first = Dialogs.StartScreen()
                 first.show()
                 app.exec_()
@@ -197,15 +280,19 @@ def mainlauncher(cli, cheatsheet, zooniverse, infile, imagefile, batchmode, trai
             avianz = None
             if task == 1:
                 import AviaNZ_manual
+
                 avianz = AviaNZ_manual.AviaNZ(configdir=configdir)
-            elif task==2:
+            elif task == 2:
                 import AviaNZ_batch_GUI
+
                 avianz = AviaNZ_batch_GUI.AviaNZ_batchWindow(configdir=configdir)
-            elif task==3:
+            elif task == 3:
                 import AviaNZ_batch_GUI
+
                 avianz = AviaNZ_batch_GUI.AviaNZ_reviewAll(configdir=configdir)
-            elif task==4:
+            elif task == 4:
                 import SplitAnnotations
+
                 avianz = SplitAnnotations.SplitData()
 
             # catch bad initialiation
@@ -236,6 +323,9 @@ try:
     mainlauncher()
 except Exception:
     import traceback
+
     print(traceback.format_exc())
-    input("Encountered error. Report it with the text above to AviaNZ team at www.avianz.net.\nPress ENTER to exit")
+    input(
+        "Encountered error. Report it with the text above to AviaNZ team at www.avianz.net.\nPress ENTER to exit"
+    )
     raise

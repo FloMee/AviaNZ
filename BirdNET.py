@@ -1,4 +1,3 @@
-
 # import statements for BirdNET-Lite
 
 import os
@@ -13,30 +12,55 @@ import copy
 import traceback
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt, QThreadPool, QRunnable, Signal, Slot, QObject, QDir
-from PyQt5.QtWidgets import QDialog, QSlider, QGridLayout, QGridLayout, QLabel, QComboBox, QHBoxLayout, QLineEdit, QPushButton, QRadioButton, QVBoxLayout, QCheckBox, QFileDialog, QMessageBox, QDoubleSpinBox, QSpinBox, QGroupBox, QWidget, QProgressDialog, QToolButton
+from PyQt5.QtWidgets import (
+    QDialog,
+    QSlider,
+    QGridLayout,
+    QGridLayout,
+    QLabel,
+    QComboBox,
+    QHBoxLayout,
+    QLineEdit,
+    QPushButton,
+    QRadioButton,
+    QVBoxLayout,
+    QCheckBox,
+    QFileDialog,
+    QMessageBox,
+    QDoubleSpinBox,
+    QSpinBox,
+    QGroupBox,
+    QWidget,
+    QProgressDialog,
+    QToolButton,
+)
 
 import Segment
 
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-os.environ['CUDA_VISIBLE_DEVICES'] = ''
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+os.environ["CUDA_VISIBLE_DEVICES"] = ""
 
 
 class BirdNETDialog(QDialog):
-
     def __init__(self, parent=None):
         super(BirdNETDialog, self).__init__(parent)
         self.parent = parent
 
         self.slist_path = ""
         self.setWindowTitle("Classify Recordings with BirdNET")
-        self.setWindowIcon(QIcon('img/Avianz.ico'))
+        self.setWindowIcon(QIcon("img/Avianz.ico"))
 
-        self.setWindowFlags((self.windowFlags() ^ Qt.WindowContextHelpButtonHint) | Qt.WindowCloseButtonHint)
+        self.setWindowFlags(
+            (self.windowFlags() ^ Qt.WindowContextHelpButtonHint)
+            | Qt.WindowCloseButtonHint
+        )
 
-        lbltitle = QLabel("To analyze the audiofiles of the current directory, "
-        "set the parameters for BirdNET-Lite or BirdNET-Analyzer. Be aware "
-        "that the process might take several hours, depending on the number of "
-        "files, calculation power and number of threads.")
+        lbltitle = QLabel(
+            "To analyze the audiofiles of the current directory, "
+            "set the parameters for BirdNET-Lite or BirdNET-Analyzer. Be aware "
+            "that the process might take several hours, depending on the number of "
+            "files, calculation power and number of threads."
+        )
         lbltitle.setWordWrap(True)
 
         # BirdNET-Lite/BirdNET-Analyzer options
@@ -46,50 +70,60 @@ class BirdNETDialog(QDialog):
         self.analyzer.clicked.connect(self.updateDialog)
 
         self.lat_label = QLabel("Latitude")
-        self.lat_label.setToolTip("Recording location latitude; Values in "
-        "[-90; 90]; Defaults to -1.00.")
+        self.lat_label.setToolTip(
+            "Recording location latitude; Values in " "[-90; 90]; Defaults to -1.00."
+        )
         self.lat = QDoubleSpinBox()
         self.lat.setRange(-90, 90)
         self.lat.setValue(-1.0)
         self.lat.valueChanged.connect(self.updateDialog)
 
         self.lon_label = QLabel("Longitude")
-        self.lon_label.setToolTip("Recording location longitude; Values in "
-        "[-180; 180]; Defaults to -1.00.")
+        self.lon_label.setToolTip(
+            "Recording location longitude; Values in " "[-180; 180]; Defaults to -1.00."
+        )
         self.lon = QDoubleSpinBox()
         self.lon.setRange(-180, 180)
         self.lon.setValue(-1.0)
         self.lon.valueChanged.connect(self.updateDialog)
 
         self.week_label = QLabel("Week")
-        self.week_label.setToolTip("Week of the recording; Values in [0; 48]; "
-        "Divide year into 48 weeks — 4 weeks per month; Defaults to 0.")
+        self.week_label.setToolTip(
+            "Week of the recording; Values in [0; 48]; "
+            "Divide year into 48 weeks — 4 weeks per month; Defaults to 0."
+        )
         self.week = QSpinBox()
         self.week.setRange(0, 48)
         self.week.valueChanged.connect(self.updateDialog)
 
         self.overlap_label = QLabel("Overlap")
-        self.overlap_label.setToolTip("BirdNET cuts your recordings into "
-        "chunks of 3 s lenght internally; Overlap defines the number of "
-        "seconds the single segments overlap; Values in [0.0; 2.9]; Defaults "
-        "to 0.0.")
+        self.overlap_label.setToolTip(
+            "BirdNET cuts your recordings into "
+            "chunks of 3 s lenght internally; Overlap defines the number of "
+            "seconds the single segments overlap; Values in [0.0; 2.9]; Defaults "
+            "to 0.0."
+        )
         self.overlap = QDoubleSpinBox()
         self.overlap.setRange(0, 2.9)
         self.overlap.setSingleStep(0.1)
         self.overlap.setValue(0.0)
 
         self.sensitivity_label = QLabel("Sensitivity")
-        self.sensitivity_label.setToolTip("Detection sensitivity; Higher "
-        "values result in higher sensitivity; Values in [0.5, 1.5]; Defaults "
-        "to 1.0.")
+        self.sensitivity_label.setToolTip(
+            "Detection sensitivity; Higher "
+            "values result in higher sensitivity; Values in [0.5, 1.5]; Defaults "
+            "to 1.0."
+        )
         self.sensitivity = QDoubleSpinBox()
         self.sensitivity.setRange(0.5, 1.5)
         self.sensitivity.setSingleStep(0.05)
         self.sensitivity.setValue(1.0)
 
         self.min_conf_label = QLabel("Minimum confidence")
-        self.min_conf_label.setToolTip("Minimum confidence value in the output; "
-        "Values in [0.01;0.99]; Defaults to 0.1.")
+        self.min_conf_label.setToolTip(
+            "Minimum confidence value in the output; "
+            "Values in [0.01;0.99]; Defaults to 0.1."
+        )
         self.min_conf = QDoubleSpinBox()
         self.min_conf.setRange(0.01, 0.99)
         self.min_conf.setSingleStep(0.01)
@@ -102,72 +136,86 @@ class BirdNETDialog(QDialog):
         self.slist.textChanged.connect(self.updateDialog)
 
         self.btn_slist = QPushButton("Select custom species list")
-        self.btn_slist.setToolTip("A “white list” that includes the species of "
-        "interest; Must be a subset of the original species-lists of "
-        "BirdNET-Lite or BirdNET-Analyzer respectively and in the selected "
-        "language; Find these files in the installation directory of AviaNZ "
-        "under labels.")
+        self.btn_slist.setToolTip(
+            "A “white list” that includes the species of "
+            "interest; Must be a subset of the original species-lists of "
+            "BirdNET-Lite or BirdNET-Analyzer respectively and in the selected "
+            "language; Find these files in the installation directory of AviaNZ "
+            "under labels."
+        )
         self.btn_slist.clicked.connect(self.chooseSpeciesList)
 
         self.threads_label = QLabel("Number of threads")
-        self.threads_label.setToolTip("Number of threads used for calculation; "
-        "Defaults to the number of available cores of the CPU.")
+        self.threads_label.setToolTip(
+            "Number of threads used for calculation; "
+            "Defaults to the number of available cores of the CPU."
+        )
         self.threads = QSpinBox()
         self.threads.setRange(1, os.cpu_count())
         self.threads.setValue(os.cpu_count())
 
         self.mea = QCheckBox("Calculate moving exponential average")
-        self.mea.setToolTip("If set, the original confidence values are "
-        "smoothed and pooled with a moving mean exponential average with a "
-        "width of 3 chunks; Used to potentially remove some false positives.")
+        self.mea.setToolTip(
+            "If set, the original confidence values are "
+            "smoothed and pooled with a moving mean exponential average with a "
+            "width of 3 chunks; Used to potentially remove some false positives."
+        )
         self.datetime_format_label = QLabel("Datetime format")
         self.datetime_format = QLineEdit()
         self.datetime_format.textChanged.connect(self.updateDialog)
 
         self.locale = QComboBox()
         # TODO: get list of possible languages from labels_directory?
-        self.locale.addItems(['af',
-                              'ar',
-                              'cs',
-                              'da',
-                              'de',
-                              'en',
-                              'es',
-                              'fi',
-                              'fr',
-                              'hu',
-                              'it',
-                              'ja',
-                              'ko',
-                              'nl',
-                              'no',
-                              'pl',
-                              'pt',
-                              'ro',
-                              'ru',
-                              'sk',
-                              'sl',
-                              'sv',
-                              'th',
-                              'tr',
-                              'uk',
-                              'zh'])
+        self.locale.addItems(
+            [
+                "af",
+                "ar",
+                "cs",
+                "da",
+                "de",
+                "en",
+                "es",
+                "fi",
+                "fr",
+                "hu",
+                "it",
+                "ja",
+                "ko",
+                "nl",
+                "no",
+                "pl",
+                "pt",
+                "ro",
+                "ru",
+                "sk",
+                "sl",
+                "sv",
+                "th",
+                "tr",
+                "uk",
+                "zh",
+            ]
+        )
         self.locale.setCurrentIndex(5)
 
         # Analyzer specific options
 
         self.batchsize_label = QLabel("Batchsize")
-        self.batchsize_label.setToolTip("Number of chunks that are analysed "
-        "concurrently; May influence the processing time but not the output; "
-        "Defaults to 1.")
+        self.batchsize_label.setToolTip(
+            "Number of chunks that are analysed "
+            "concurrently; May influence the processing time but not the output; "
+            "Defaults to 1."
+        )
         self.batchsize = QSpinBox()
         self.batchsize.setValue(1)
 
         self.sf_thresh_label = QLabel("Threshold for location filter")
-        self.sf_thresh_label.setToolTip("If Latitude, Longitude and Week are "
-        "set BirdNET-Analyzer calculates a custom species list; Species with a "
-        "calculated value below this threshold are not included in the output "
-        "list; Defaults to: 0,03.")
+        self.sf_thresh_label.setToolTip(
+            "If Latitude, Longitude and Week are "
+            "set BirdNET-Analyzer calculates a custom species list; Species with a "
+            "calculated value below this threshold are not included in the output "
+            "list; Defaults to: 0,03."
+        )
         self.sf_thresh = QDoubleSpinBox()
         self.sf_thresh.setRange(0.000001, 0.999999)
         self.sf_thresh.setSingleStep(0.000001)
@@ -175,13 +223,13 @@ class BirdNETDialog(QDialog):
         self.sf_thresh.setDecimals(6)
         self.sf_thresh.setDisabled(True)
 
-        self.btnAdvanced = QPushButton('Show Advanced Settings')
+        self.btnAdvanced = QPushButton("Show Advanced Settings")
         self.btnAdvanced.clicked.connect(self.updateSettings)
 
         # Button to start analysis
-        self.btnAnalyze = QPushButton('Analyze')
+        self.btnAnalyze = QPushButton("Analyze")
         self.btnAnalyze.clicked.connect(self.onClickanalyze)
-        
+
         # labels for QLineEdit analyze options
 
         # parameter layout
@@ -267,10 +315,12 @@ class BirdNETDialog(QDialog):
         self.adjustSize()
 
     def chooseSpeciesList(self):
-        species_list = QFileDialog.getOpenFileName(self, 'Choose filter species list', filter='Text (*.txt)')
+        species_list = QFileDialog.getOpenFileName(
+            self, "Choose filter species list", filter="Text (*.txt)"
+        )
         self.slist.setText(os.path.basename(species_list[0]))
         self.slist_path = species_list[0]
-        #self.updateDialog()
+        # self.updateDialog()
 
     def validateInputParameters(self):
         correct = True
@@ -280,7 +330,14 @@ class BirdNETDialog(QDialog):
                 param.setStyleSheet("background-color: red")
             else:
                 param.setStyleSheet("background-color: white")
-        for param in [self.overlap, self.sensitivity, self.min_conf, self.threads, self.sf_thresh, self.batchsize]:
+        for param in [
+            self.overlap,
+            self.sensitivity,
+            self.min_conf,
+            self.threads,
+            self.sf_thresh,
+            self.batchsize,
+        ]:
             if not param.hasAcceptableInput():
                 correct = False
                 param.setStyleSheet("background-color: red")
@@ -289,36 +346,35 @@ class BirdNETDialog(QDialog):
         return correct
 
     def onClickanalyze(self):
-
         if self.validateInputParameters():
-            
-
-            param_dict = {"lite": self.lite.isChecked(),
-                          "lat": self.lat.value(),
-                          "lon": self.lon.value(),
-                          "week": self.week.value() if self.week.value() > 0 else -1,
-                          "overlap": self.overlap.value(),
-                          "sensitivity": (1 - (self.sensitivity.value() - 1)),
-                          "min_conf": self.min_conf.value(),
-                          "slist": self.slist_path,
-                          "threads": self.threads.value(),
-                          "mea": self.mea.isChecked(),
-                          "datetime_format": self.datetime_format.text(),
-                          "locale": self.locale.currentText(),
-                          "batchsize": self.batchsize.value(),
-                          "sf_thresh": self.sf_thresh.value()
-                          }
+            param_dict = {
+                "lite": self.lite.isChecked(),
+                "lat": self.lat.value(),
+                "lon": self.lon.value(),
+                "week": self.week.value() if self.week.value() > 0 else -1,
+                "overlap": self.overlap.value(),
+                "sensitivity": (1 - (self.sensitivity.value() - 1)),
+                "min_conf": self.min_conf.value(),
+                "slist": self.slist_path,
+                "threads": self.threads.value(),
+                "mea": self.mea.isChecked(),
+                "datetime_format": self.datetime_format.text(),
+                "locale": self.locale.currentText(),
+                "batchsize": self.batchsize.value(),
+                "sf_thresh": self.sf_thresh.value(),
+            }
 
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
             msg.setText("Non-Commercial Licence!")
-            msg.setInformativeText('The model of {} is licenced under a '
-                                   'Attribution-NonCommercial-ShareAlike 4.0 '
-                                   'International Licence.\n\nYou accept the '
-                                   'licence by analysing your files.'.format(
-                                    'BirdNET-Lite' if self.lite.isChecked() else
-                                    'BirdNET-Analyzer'
-                                   ))
+            msg.setInformativeText(
+                "The model of {} is licenced under a "
+                "Attribution-NonCommercial-ShareAlike 4.0 "
+                "International Licence.\n\nYou accept the "
+                "licence by analysing your files.".format(
+                    "BirdNET-Lite" if self.lite.isChecked() else "BirdNET-Analyzer"
+                )
+            )
             msg.setWindowTitle("Consent required")
             msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
             response = msg.exec_()
@@ -327,20 +383,20 @@ class BirdNETDialog(QDialog):
                 birdnet = self.parent.BirdNET
                 setattr(birdnet, "param", param_dict)
                 self.parent.BirdNET.main()
-            
+
             self.close()
             # if self.parent.BirdNET.threadpool.waitForDone():
             #     self.parent.loadFile(name=self.parent.filename)
             #     self.parent.fillFileList(self.parent.SoundFileDir, os.path.basename(self.parent.filename))
 
-
-
         else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Critical)
             msg.setText("Parameters!")
-            msg.setInformativeText('You did not input correct values for '
-            'parameters, please check the red parameters again!')
+            msg.setInformativeText(
+                "You did not input correct values for "
+                "parameters, please check the red parameters again!"
+            )
             msg.setWindowTitle("Warning")
             msg.exec_()
 
@@ -419,16 +475,28 @@ class BirdNET(QWidget):
             if file.fileName() == "..":
                 continue
             elif file.isDir():
-                self.fillFileList(QDir(file.absoluteFilePath()).entryInfoList(['..','*.wav','*.bmp'], filters=QDir.AllDirs | QDir.NoDot | QDir.Files,sort=QDir.DirsFirst))
+                self.fillFileList(
+                    QDir(file.absoluteFilePath()).entryInfoList(
+                        ["..", "*.wav", "*.bmp"],
+                        filters=QDir.AllDirs | QDir.NoDot | QDir.Files,
+                        sort=QDir.DirsFirst,
+                    )
+                )
 
     def loadLabels(self):
         # Load labels
         if self.param["lite"]:
-            lblpath = os.path.join('labels', 'Lite', 'labels_{}.txt'.format(self.param["locale"]))
+            lblpath = os.path.join(
+                "labels", "Lite", "labels_{}.txt".format(self.param["locale"])
+            )
         else:
-            lblpath = os.path.join('labels', 'Analyzer', 'BirdNET_GLOBAL_6K_V2.4_Labels_{}.txt'.format(self.param["locale"]))
+            lblpath = os.path.join(
+                "labels",
+                "Analyzer",
+                "BirdNET_GLOBAL_6K_V2.4_Labels_{}.txt".format(self.param["locale"]),
+            )
 
-        with open(lblpath, 'r', encoding='utf8') as lfile:
+        with open(lblpath, "r", encoding="utf8") as lfile:
             classes = [line[:-1] for line in lfile]
 
         return classes
@@ -436,27 +504,38 @@ class BirdNET(QWidget):
     @Slot()
     def updateProgress(self):
         self.progress.setValue(self.progress.value() + 1)
-        self.progress.setLabelText("Analyzing files... {}/{} done".format(self.progress.value(), len(self.filelist)))
+        self.progress.setLabelText(
+            "Analyzing files... {}/{} done".format(
+                self.progress.value(), len(self.filelist)
+            )
+        )
 
     @Slot(list)
     def updateFilelist(self, filelist):
         if self.AviaNZ.filename in filelist:
             self.AviaNZ.loadFile(name=self.AviaNZ.filename)
-        self.AviaNZ.fillFileList(self.AviaNZ.SoundFileDir, os.path.basename(self.AviaNZ.filename))
+        self.AviaNZ.fillFileList(
+            self.AviaNZ.SoundFileDir, os.path.basename(self.AviaNZ.filename)
+        )
 
     def main(self):
-
         try:
             self.labels = self.loadLabels()
 
             # create list of lists of filenames to pass to different threads
-            step = -(-len(self.filelist)//self.param["threads"])
-            file_threads = [self.filelist[i:i + step] for i in range(0, len(self.filelist), step)]
+            step = -(-len(self.filelist) // self.param["threads"])
+            file_threads = [
+                self.filelist[i : i + step] for i in range(0, len(self.filelist), step)
+            ]
             self.progress.setValue(0)
-            self.progress.setLabelText("Analyzing {} files...".format(len(self.filelist)))
+            self.progress.setLabelText(
+                "Analyzing {} files...".format(len(self.filelist))
+            )
             self.progress.show()
             for flist in file_threads:
-                worker = BirdNET_Worker(self, param=self.param, filelist=flist, labels=self.labels)
+                worker = BirdNET_Worker(
+                    self, param=self.param, filelist=flist, labels=self.labels
+                )
                 worker.fileProcessed.update.connect(self.updateProgress)
                 worker.filelistProcessed.done.connect(self.updateFilelist)
                 self.threadpool.start(worker)
@@ -470,12 +549,13 @@ class BirdNET(QWidget):
         except:
             print(traceback.format_exc())
 
+
 class MyEmitter(QObject):
     done = Signal(list)
     update = Signal()
 
-class BirdNET_Worker(QRunnable):
 
+class BirdNET_Worker(QRunnable):
     def __init__(self, parent, param, filelist, labels, *args, **kwargs):
         super(BirdNET_Worker, self).__init__()
         self.parent = parent
@@ -509,12 +589,16 @@ class BirdNET_Worker(QRunnable):
 
     def loadModel(self):
         try:
-            print('Loading BirdNET model...', end=' ')
+            print("Loading BirdNET model...", end=" ")
 
             if self.lite:
-                mdlpath = os.path.join('models', 'Lite', 'BirdNET_6K_GLOBAL_MODEL.tflite')
+                mdlpath = os.path.join(
+                    "models", "Lite", "BirdNET_6K_GLOBAL_MODEL.tflite"
+                )
             else:
-                mdlpath = os.path.join('models', 'Analyzer', 'BirdNET_GLOBAL_6K_V2.4_Model_FP32.tflite')
+                mdlpath = os.path.join(
+                    "models", "Analyzer", "BirdNET_GLOBAL_6K_V2.4_Model_FP32.tflite"
+                )
             print(mdlpath)
             # Load TFLite model and allocate tensors.
             interpreter = tflite.Interpreter(model_path=mdlpath)
@@ -524,17 +608,23 @@ class BirdNET_Worker(QRunnable):
             output_details = interpreter.get_output_details()
 
             # Get input tensor index
-            input_layer_index = input_details[0]['index']
+            input_layer_index = input_details[0]["index"]
             if self.lite:
-                mdata_input_index = input_details[1]['index']
+                mdata_input_index = input_details[1]["index"]
             else:
                 mdata_input_index = None
-            output_layer_index = output_details[0]['index']
+            output_layer_index = output_details[0]["index"]
 
             # TODO: check if self.labels works or if deepcopy is needed
-            model = [input_layer_index, mdata_input_index, output_layer_index, copy.deepcopy(self.labels), interpreter]
+            model = [
+                input_layer_index,
+                mdata_input_index,
+                output_layer_index,
+                copy.deepcopy(self.labels),
+                interpreter,
+            ]
 
-            print('DONE!')
+            print("DONE!")
         except Exception() as e:
             print(traceback.format_exc())
 
@@ -543,7 +633,11 @@ class BirdNET_Worker(QRunnable):
     def loadMetaModel(self):
         print("load MetaModel", flush=True)
         # Load TFLite model and allocate tensors.
-        self.m_interpreter = tflite.Interpreter(model_path=os.path.join('models', 'Analyzer', 'BirdNET_GLOBAL_6K_V2.4_MData_Model_FP16.tflite'))
+        self.m_interpreter = tflite.Interpreter(
+            model_path=os.path.join(
+                "models", "Analyzer", "BirdNET_GLOBAL_6K_V2.4_MData_Model_FP16.tflite"
+            )
+        )
         self.m_interpreter.allocate_tensors()
 
         # Get input and output tensors.
@@ -551,8 +645,8 @@ class BirdNET_Worker(QRunnable):
         output_details = self.m_interpreter.get_output_details()
 
         # Get input tensor index
-        self.m_intput_layer_index = input_details[0]['index']
-        self.m_output_layer_index = output_details[0]['index']
+        self.m_intput_layer_index = input_details[0]["index"]
+        self.m_output_layer_index = output_details[0]["index"]
 
     def getSpeciesList(self, path):
         if self.lite:
@@ -567,11 +661,11 @@ class BirdNET_Worker(QRunnable):
         slist = []
         if path:
             if os.path.isfile(path):
-                with open(path, 'r', encoding='utf8') as csfile:
+                with open(path, "r", encoding="utf8") as csfile:
                     for line in csfile.readlines():
-                        slist.append(line.replace('\r', '').replace('\n', ''))
+                        slist.append(line.replace("\r", "").replace("\n", ""))
             else:
-                raise Exception('Custom species list file or file path does not exist!')
+                raise Exception("Custom species list file or file path does not exist!")
         return slist
 
     def predictSpeciesList(self):
@@ -585,7 +679,6 @@ class BirdNET_Worker(QRunnable):
         return slist
 
     def explore(self):
-
         # Make filter prediction
         l_filter = self.predictFilter()
 
@@ -606,7 +699,9 @@ class BirdNET_Worker(QRunnable):
             self.loadMetaModel()
 
         # Prepare mdata as sample
-        sample = np.expand_dims(np.array([self.lat, self.lon, self.week], dtype='float32'), 0)
+        sample = np.expand_dims(
+            np.array([self.lat, self.lon, self.week], dtype="float32"), 0
+        )
 
         # Run inference
         self.m_interpreter.set_tensor(self.m_intput_layer_index, sample)
@@ -615,11 +710,10 @@ class BirdNET_Worker(QRunnable):
         return self.m_interpreter.get_tensor(self.m_output_layer_index)[0]
 
     def splitSignal(self, sig, rate, seconds=3.0, minlen=1.5):
-
         # Split signal with overlap
         sig_splits = []
         for i in range(0, len(sig), int((seconds - self.overlap) * rate)):
-            split = sig[i:i + int(seconds * rate)]
+            split = sig[i : i + int(seconds * rate)]
 
             # End of signal?
             if len(split) < int(minlen * rate):
@@ -629,10 +723,15 @@ class BirdNET_Worker(QRunnable):
             if len(split) < int(rate * seconds):
                 if self.lite:
                     temp = np.zeros((int(rate * seconds)))
-                    temp[:len(split)] = split
+                    temp[: len(split)] = split
                     split = temp
                 else:
-                    split = np.hstack((split, self.noise(split, (int(rate * seconds) - len(split)), 0.5)))
+                    split = np.hstack(
+                        (
+                            split,
+                            self.noise(split, (int(rate * seconds) - len(split)), 0.5),
+                        )
+                    )
 
             sig_splits.append(split)
 
@@ -652,15 +751,20 @@ class BirdNET_Worker(QRunnable):
         except:
             noise = np.zeros(shape)
 
-        return noise.astype('float32')
+        return noise.astype("float32")
 
     def readAudioData(self, path, sample_rate=48000):
-
-        print('READING AUDIO DATA FROM FILE {}...'.format(os.path.split(path)[1]), end=' ', flush=True)
+        print(
+            "READING AUDIO DATA FROM FILE {}...".format(os.path.split(path)[1]),
+            end=" ",
+            flush=True,
+        )
 
         # TODO: Does the following makes sense? Taken from BirdNET-Analyzer
         try:
-            sig, rate = librosa.load(path, sr=sample_rate, mono=True, res_type='kaiser_fast')
+            sig, rate = librosa.load(
+                path, sr=sample_rate, mono=True, res_type="kaiser_fast"
+            )
         except:
             print(traceback.format_exc())
             sig, rate = [], sample_rate
@@ -668,15 +772,14 @@ class BirdNET_Worker(QRunnable):
         # Split audio into 3-second chunks
         chunks = self.splitSignal(sig, rate)
 
-        print('DONE! READ {} CHUNKS.'.format(len(chunks)))
+        print("DONE! READ {} CHUNKS.".format(len(chunks)))
 
         return chunks
 
     def convertMetadata(self, filename):
-
         if self.datetime_format:
             day = time.strptime(os.path.split(filename)[1], self.datetime_format)[7]
-            week = math.cos(math.radians(day/365*360)) + 1
+            week = math.cos(math.radians(day / 365 * 360)) + 1
 
         else:
             # Convert week to cosine
@@ -692,14 +795,12 @@ class BirdNET_Worker(QRunnable):
         if week == -1:
             mask[2] = 0.0
 
-        return (np.concatenate([np.array([self.lat, self.lon, week]), mask]))
+        return np.concatenate([np.array([self.lat, self.lon, week]), mask])
 
     def custom_sigmoid(self, x):
-
         return 1 / (1.0 + np.exp(-self.sensitivity * x))
 
     def flat_sigmoid(self, x, sensitivity=-1):
-
         return 1 / (1.0 + np.exp(sensitivity * np.clip(x, -15, 15)))
 
     def predict(self, samples):
@@ -711,8 +812,12 @@ class BirdNET_Worker(QRunnable):
 
         if self.lite:
             # Make a prediction
-            interpreter.set_tensor(input_layer_index, np.array(samples[0], dtype='float32'))
-            interpreter.set_tensor(mdata_input_index, np.array(samples[1], dtype='float32'))
+            interpreter.set_tensor(
+                input_layer_index, np.array(samples[0], dtype="float32")
+            )
+            interpreter.set_tensor(
+                mdata_input_index, np.array(samples[1], dtype="float32")
+            )
             interpreter.invoke()
             prediction = interpreter.get_tensor(output_layer_index)[0]
 
@@ -721,31 +826,37 @@ class BirdNET_Worker(QRunnable):
             p_sigmoid = self.custom_sigmoid(prediction)
 
         else:
-
             # Prepare sample and pass through model
-            data = np.array(samples, dtype='float32')
+            data = np.array(samples, dtype="float32")
 
             # Reshape input tensor
-            interpreter.resize_tensor_input(input_layer_index, [len(data), *data[0].shape])
+            interpreter.resize_tensor_input(
+                input_layer_index, [len(data), *data[0].shape]
+            )
             interpreter.allocate_tensors()
 
             # Make a prediction (Audio only for now)
-            interpreter.set_tensor(input_layer_index, np.array(data, dtype='float32'))
+            interpreter.set_tensor(input_layer_index, np.array(data, dtype="float32"))
             interpreter.invoke()
             prediction = interpreter.get_tensor(output_layer_index)
 
-            p_sigmoid = self.flat_sigmoid(np.array(prediction), sensitivity=-self.sensitivity)
+            p_sigmoid = self.flat_sigmoid(
+                np.array(prediction), sensitivity=-self.sensitivity
+            )
 
         return p_sigmoid
 
     def analyzeAudioData(self, chunks, file):
-
         # different format for standard and post-processing (mea) approach
         detections = {}
         detections_mea = np.zeros(shape=(len(chunks), len(self.model[3])))
 
         start = time.time()
-        print('ANALYZING AUDIO FROM {} ...'.format(os.path.basename(file)), end=' ', flush=True)
+        print(
+            "ANALYZING AUDIO FROM {} ...".format(os.path.basename(file)),
+            end=" ",
+            flush=True,
+        )
 
         # Parse every chunk
         timestamps = []
@@ -760,7 +871,6 @@ class BirdNET_Worker(QRunnable):
             mdata = self.convertMetadata(file)
             mdata = np.expand_dims(mdata, 0)
             for c in chunks:
-
                 # Prepare as input signal
                 sig = np.expand_dims(c, 0)
 
@@ -773,11 +883,17 @@ class BirdNET_Worker(QRunnable):
                 p_labels = dict(zip(labels, p_sigmoid))
 
                 # Sort by score
-                p_sorted = sorted(p_labels.items(), key=operator.itemgetter(1), reverse=True)
+                p_sorted = sorted(
+                    p_labels.items(), key=operator.itemgetter(1), reverse=True
+                )
 
                 # Remove species that are on blacklist
                 for i in range(min(10, len(p_sorted))):
-                    if p_sorted[i][0] in ['Human_Human', 'Non-bird_Non-bird', 'Noise_Noise']:
+                    if p_sorted[i][0] in [
+                        "Human_Human",
+                        "Non-bird_Non-bird",
+                        "Noise_Noise",
+                    ]:
                         p_sorted[i] = (p_sorted[i][0], 0.0)
 
                 # Save result and timestamp
@@ -785,11 +901,13 @@ class BirdNET_Worker(QRunnable):
                 timestamps.append(pred_start)
 
                 pred_end = pred_start + sig_length
-                detections[file + ',' + str(pred_start) + ',' + str(pred_end)] = p_sorted[:10]
+                detections[
+                    file + "," + str(pred_start) + "," + str(pred_end)
+                ] = p_sorted[:10]
                 pred_start = pred_end - self.overlap
                 j += 1
 
-            print('DONE! TIME {:.1f} SECONDS'.format(time.time() - start))
+            print("DONE! TIME {:.1f} SECONDS".format(time.time() - start))
             return (detections_mea.transpose(), timestamps, detections)
 
         else:
@@ -797,7 +915,6 @@ class BirdNET_Worker(QRunnable):
             start, end = 0, sig_length
             samples = []
             for c in range(len(chunks)):
-
                 # Add to batch
                 samples.append(chunks[c])
                 timestamps.append([start, end])
@@ -815,7 +932,6 @@ class BirdNET_Worker(QRunnable):
 
                 # Add to results
                 for i in range(len(samples)):
-
                     # Get timestamp
                     s_start, s_end = timestamps[i]
 
@@ -830,10 +946,12 @@ class BirdNET_Worker(QRunnable):
                     p_labels = dict(zip(labels, pred))
 
                     # Sort by score
-                    p_sorted = sorted(p_labels.items(), key=operator.itemgetter(1), reverse=True)
+                    p_sorted = sorted(
+                        p_labels.items(), key=operator.itemgetter(1), reverse=True
+                    )
 
                     # Store top 5 results and advance indicies
-                    detections[file + ',' + str(s_start) + ',' + str(s_end)] = p_sorted
+                    detections[file + "," + str(s_start) + "," + str(s_end)] = p_sorted
 
                 # Clear batch
                 samples = []
@@ -852,8 +970,8 @@ class BirdNET_Worker(QRunnable):
         return detections
 
     def writeAvianzOutput(self, detections, file, white_list, append=True):
-        """ Write detections to Segments, write Segments to SegmentList, save
-            SegmentList.
+        """Write detections to Segments, write Segments to SegmentList, save
+        SegmentList.
         """
         seg_list = Segment.SegmentList()
         rfilepath = file + ".data"
@@ -874,32 +992,35 @@ class BirdNET_Worker(QRunnable):
 
         for d in detections:
             save = True
-            seg = seg_list.getSegment([float(d.split(",")[1]), float(d.split(",")[2]), 0.0, 0.0, []])
+            seg = seg_list.getSegment(
+                [float(d.split(",")[1]), float(d.split(",")[2]), 0.0, 0.0, []]
+            )
             if len(seg[4]) > 0:
                 save = False
             for entry in detections[d]:
-                if entry[1] >= self.min_conf and (entry[0] in white_list or len(white_list) == 0):
+                if entry[1] >= self.min_conf and (
+                    entry[0] in white_list or len(white_list) == 0
+                ):
                     seg.addLabel(
-                            entry[0].split("_")[1],
-                            float(entry[1])*100,
-                            filter="BirdNET-Lite" if self.lite else "BirdNET-Analyzer",
-                            calltype="non-specified"
-                            )
+                        entry[0].split("_")[1],
+                        float(entry[1]) * 100,
+                        filter="BirdNET-Lite" if self.lite else "BirdNET-Analyzer",
+                        calltype="non-specified",
+                    )
             if len(seg[4]) > 0 and save:
                 seg_list.addSegment(seg)
 
         seg_list.saveJSON(rfilepath)
 
     def movingExpAverage(self, timetable, n=3):
-        """Calculate moving exponential average over 3 Segments per Default.
-        """
+        """Calculate moving exponential average over 3 Segments per Default."""
 
-        weights = np.exp(np.linspace(-1., 0., n))
+        weights = np.exp(np.linspace(-1.0, 0.0, n))
         weights /= weights.sum()
         i = 0
         for row in timetable:
             # a = np.convolve(row, weights, mode='full')[:len(row)]
-            a = np.convolve(row, weights, mode='full')[n-1:]
+            a = np.convolve(row, weights, mode="full")[n - 1 :]
             # a[:n-1] = row[:n-1]
             # a[:n-1] = a[n-1]
             timetable[i] = a
@@ -910,7 +1031,11 @@ class BirdNET_Worker(QRunnable):
         detections = {}
         i = 0
         for j in timetable:
-            if (self.model[3][i] in white_list) or (len(white_list) == 0 and self.model[3][i] not in ['Human_Human', 'Non-bird_Non-bird', 'Noise_Noise']):
+            if (self.model[3][i] in white_list) or (
+                len(white_list) == 0
+                and self.model[3][i]
+                not in ["Human_Human", "Non-bird_Non-bird", "Noise_Noise"]
+            ):
                 detections[self.model[3][i]] = j
             i += 1
         return detections

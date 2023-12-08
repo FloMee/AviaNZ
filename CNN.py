@@ -1,4 +1,3 @@
-
 # CNN.py
 #
 # CNN for the AviaNZ program
@@ -43,11 +42,22 @@ import wavio
 # import pyqtgraph as pg
 # import SupportClasses
 
-class CNN:
-    """ This class implements CNN training and data augmentation in AviaNZ.
-    """
 
-    def __init__(self, configdir, species, calltypes, fs, length, windowwidth, inc, imageheight, imagewidth):
+class CNN:
+    """This class implements CNN training and data augmentation in AviaNZ."""
+
+    def __init__(
+        self,
+        configdir,
+        species,
+        calltypes,
+        fs,
+        length,
+        windowwidth,
+        inc,
+        imageheight,
+        imagewidth,
+    ):
         self.species = species
         self.length = length
         self.windowwidth = windowwidth
@@ -58,56 +68,68 @@ class CNN:
         self.fs = fs
 
         cl = SupportClasses.ConfigLoader()
-        self.LearningDict = cl.learningParams(os.path.join(configdir, "LearningParams.txt"))
+        self.LearningDict = cl.learningParams(
+            os.path.join(configdir, "LearningParams.txt")
+        )
 
     # Custom data augmentation
     def addNoise(self, image, noise_image):
-        ''' Add random percentage of noiseImage to image.
+        """Add random percentage of noiseImage to image.
         :param image: original image
         :param noiseImage: noise image
         :return: new image
-        '''
-        new_image = image + noise_image*np.random.uniform(0.2, 0.8)
+        """
+        new_image = image + noise_image * np.random.uniform(0.2, 0.8)
         return new_image
 
     def genBatchNoise(self, images, noise_pool, n):
-        ''' Generate a batch of n new images
+        """Generate a batch of n new images
         :param images: a set of original images
         :param noise_pool: noise pool images
         :param n: number of new images to generate
         :return: new images
-        '''
-        new_images = np.ndarray(shape=(n, self.imageheight, self.imagewidth, 1), dtype=float)
+        """
+        new_images = np.ndarray(
+            shape=(n, self.imageheight, self.imagewidth, 1), dtype=float
+        )
         for i in range(0, n):
             # pick a random image and add a random % of random noise from the noise_pool
-            new_images[i][:] = self.addNoise(images[np.random.randint(0, np.shape(images)[0])],
-                                             noise_pool[np.random.randint(0, np.shape(noise_pool)[0])])
+            new_images[i][:] = self.addNoise(
+                images[np.random.randint(0, np.shape(images)[0])],
+                noise_pool[np.random.randint(0, np.shape(noise_pool)[0])],
+            )
         return new_images
 
     def genBatchNoise2(self, audios, noise_pool, n):
-        ''' Generate a batch of n new images, add audios -> generate images
+        """Generate a batch of n new images, add audios -> generate images
         :param images: a set of original images
         :param noise_pool: noise pool images
         :param n: number of new images to generate
         :return: new images
-        '''
-        new_audios = np.ndarray(shape=(n, self.fs*self.length), dtype=float)
+        """
+        new_audios = np.ndarray(shape=(n, self.fs * self.length), dtype=float)
         for i in range(0, n):
             # pick a random image and add a random % of random noise from the noise_pool
-            new_audios[i][:] = self.addNoise(audios[np.random.randint(0, np.shape(audios)[0])],
-                                             noise_pool[np.random.randint(0, np.shape(noise_pool)[0])])
+            new_audios[i][:] = self.addNoise(
+                audios[np.random.randint(0, np.shape(audios)[0])],
+                noise_pool[np.random.randint(0, np.shape(noise_pool)[0])],
+            )
 
-        new_images = np.ndarray(shape=(n, self.imageheight, self.imagewidth), dtype=float)
+        new_images = np.ndarray(
+            shape=(n, self.imageheight, self.imagewidth), dtype=float
+        )
         for i in range(0, n):
             new_images[i][:] = self.generateImage(new_audios[i][:])
-        return new_images.reshape(new_images.shape[0], self.imageheight, self.imagewidth, 1)
+        return new_images.reshape(
+            new_images.shape[0], self.imageheight, self.imagewidth, 1
+        )
 
     def timeStretch(self, data, rate):
-        ''' Time stretch audio data by given rate
+        """Time stretch audio data by given rate
         :param data: audio data
         :param rate: stretch rate
         :return: new audio data
-        '''
+        """
         input_length = len(data)
         data = librosa.effects.time_stretch(data, rate)
         if len(data) > input_length:
@@ -117,7 +139,7 @@ class CNN:
         return data
 
     def generateImage(self, audiodata):
-        ''' Generate spectrogram image'''
+        """Generate spectrogram image"""
         sp = SignalProc.SignalProc(self.windowwidth, self.inc)
         sp.data = audiodata
         sp.sampleRate = self.fs
@@ -126,10 +148,10 @@ class CNN:
         return np.rot90(sgRaw / maxg).tolist()
 
     def changeSpeed(self, audiodata):
-        ''' Change the speed of the audio data (time stretch) and then generate spectrogram image
+        """Change the speed of the audio data (time stretch) and then generate spectrogram image
         :param data: audio data
         :return: new image
-        '''
+        """
         # choose rate
         mu, sigma = 1, 0.05  # mean and standard deviation
         s = np.random.normal(mu, sigma, 1000)
@@ -139,15 +161,20 @@ class CNN:
         return img
 
     def genBatchChangeSpeed(self, audios, n):
-        ''' Generate a batch of n new images, change speed
+        """Generate a batch of n new images, change speed
         :param audios:
         :param n:
         :return:
-        '''
-        new_images = np.ndarray(shape=(np.shape(audios)[0], self.imageheight, self.imagewidth, 1), dtype=float)
+        """
+        new_images = np.ndarray(
+            shape=(np.shape(audios)[0], self.imageheight, self.imagewidth, 1),
+            dtype=float,
+        )
         for i in range(0, n):
             # pick a random audio to time stretch
-            new_images[i][:] = self.changeSpeed(audios[np.random.randint(0, np.shape(audios)[0])])
+            new_images[i][:] = self.changeSpeed(
+                audios[np.random.randint(0, np.shape(audios)[0])]
+            )
         return new_images
 
     # def pitchShift(self, audiodata):
@@ -161,44 +188,59 @@ class CNN:
     #     return librosa.effects.pitch_shift(audiodata, fs, pitch_factor)
 
     def genBatchPitchShift(self, audios, n):
-        ''' Generate a batch of n new images
+        """Generate a batch of n new images
         :param audios:
         :param n:
         :return:
-        '''
-        new_images = np.ndarray(shape=(np.shape(audios)[0], self.imageheight, self.imagewidth, 1), dtype=float)
+        """
+        new_images = np.ndarray(
+            shape=(np.shape(audios)[0], self.imageheight, self.imagewidth, 1),
+            dtype=float,
+        )
         for i in range(0, n):
             # pick a random audio to time stretch
-            new_images[i][:] = self.pitchShift(audios[np.random.randint(0, np.shape(audios)[0])])
+            new_images[i][:] = self.pitchShift(
+                audios[np.random.randint(0, np.shape(audios)[0])]
+            )
         return new_images
 
     def loadCTImg(self, dirName):
-        ''' Returns images of the call type subdirectory dirName'''
+        """Returns images of the call type subdirectory dirName"""
         filenames, labels = self.getImglist(dirName)
 
-        return np.array([resize(np.load(file_name), (self.imageheight, self.imagewidth, 1)) for file_name in
-                         filenames])
+        return np.array(
+            [
+                resize(np.load(file_name), (self.imageheight, self.imagewidth, 1))
+                for file_name in filenames
+            ]
+        )
 
     def loadImgBatch(self, filenames):
-        ''' Returns images given the list of file names'''
-        return np.array([resize(np.load(file_name), (self.imageheight, self.imagewidth, 1)) for file_name in
-                         filenames])
+        """Returns images given the list of file names"""
+        return np.array(
+            [
+                resize(np.load(file_name), (self.imageheight, self.imagewidth, 1))
+                for file_name in filenames
+            ]
+        )
 
     def loadImageData(self, file, noisepool=False):
-        '''
+        """
         :param file: JSON file with extracted features and labels
         :return:
-        '''
+        """
         npzfile = file
         dataz = np.load(npzfile)
         numarrays = len(dataz)
 
-        labfile = file[:-4] + '_labels.json'
+        labfile = file[:-4] + "_labels.json"
         with open(labfile) as f:
             labels = json.load(f)
 
         # initialize output
-        features = np.ndarray(shape=(numarrays, self.imageheight, self.imagewidth), dtype=float)
+        features = np.ndarray(
+            shape=(numarrays, self.imageheight, self.imagewidth), dtype=float
+        )
 
         badind = []
         if noisepool:
@@ -230,13 +272,13 @@ class CNN:
             return features, targets
 
     def loadAudioData(self, file, noisepool=False):
-        '''
+        """
         :param file: JSON file with extracted features and labels
         :return:
-        '''
+        """
         with open(file) as f:
             data = json.load(f)
-        nsamp = self.fs*self.length
+        nsamp = self.fs * self.length
         features = np.ndarray(shape=(np.shape(data)[0], nsamp), dtype=float)
         badind = []
         if noisepool:
@@ -265,14 +307,14 @@ class CNN:
             return features, targets
 
     def loadAllImageData(self, dirName):
-        ''' Read datasets from dirName, return a list of ct arrays'''
+        """Read datasets from dirName, return a list of ct arrays"""
         sg = None
         target = None
         pos = 0
         for root, dirs, files in os.walk(str(dirName)):
             for file in files:
-                if file.endswith('.npz'):
-                    print('reading ', file)
+                if file.endswith(".npz"):
+                    print("reading ", file)
                     sg1, target1 = self.loadImageData(os.path.join(dirName, file))
                     if not pos:
                         sg = sg1
@@ -284,9 +326,17 @@ class CNN:
                         pos += np.shape(target1)[0]
 
         # Separate into classes
-        ns = [np.shape(np.where(target == i)[0])[0] for i in range(len(self.calltypes) + 1)]
-        sgCT = [np.empty((n, self.imageheight, self.imagewidth), dtype=float) for n in ns]
-        idxs = [np.random.permutation(np.where(target == i)[0]).tolist() for i in range(len(self.calltypes) + 1)]
+        ns = [
+            np.shape(np.where(target == i)[0])[0]
+            for i in range(len(self.calltypes) + 1)
+        ]
+        sgCT = [
+            np.empty((n, self.imageheight, self.imagewidth), dtype=float) for n in ns
+        ]
+        idxs = [
+            np.random.permutation(np.where(target == i)[0]).tolist()
+            for i in range(len(self.calltypes) + 1)
+        ]
         for ct in range(len(self.calltypes) + 1):
             i = 0
             for j in idxs[ct]:
@@ -295,88 +345,112 @@ class CNN:
         return sgCT, ns
 
     def getImglist(self, dirName):
-        ''' Returns the image filenames and labels in dirName:
-        '''
+        """Returns the image filenames and labels in dirName:"""
         filenames = []
         labels = []
 
         for root, dirs, files in os.walk(dirName):
             for file in files:
-                if file.endswith('.npy'):
+                if file.endswith(".npy"):
                     filenames.append(os.path.join(root, file))
-                    lbl = file.split('_')[0]
+                    lbl = file.split("_")[0]
                     labels.append(int(lbl))
 
         # One hot vector representation of the labels
-        labels = tf.keras.utils.to_categorical(np.array(labels), len(self.calltypes) + 1)
+        labels = tf.keras.utils.to_categorical(
+            np.array(labels), len(self.calltypes) + 1
+        )
 
         return filenames, labels
 
     def getOriginalImglist(self, dirName):
-        ''' Returns only the original image filenames and labels in dirName:
-        '''
+        """Returns only the original image filenames and labels in dirName:"""
         filenames = []
         labels = []
 
         for root, dirs, files in os.walk(dirName):
             for file in files:
-                if file.endswith('.npy') and '_aug' not in file:
+                if file.endswith(".npy") and "_aug" not in file:
                     filenames.append(os.path.join(root, file))
-                    lbl = file.split('_')[0]
+                    lbl = file.split("_")[0]
                     labels.append(int(lbl))
 
         # One hot vector representation of the labels
-        labels = tf.keras.utils.to_categorical(np.array(labels), len(self.calltypes) + 1)
+        labels = tf.keras.utils.to_categorical(
+            np.array(labels), len(self.calltypes) + 1
+        )
 
         return filenames, labels
 
     def createArchitecture(self):
-        '''
+        """
         Sets self.model
-        '''
+        """
         self.model = tf.keras.models.Sequential()
-        self.model.add(tf.keras.layers.Conv2D(32, kernel_size=(7, 7), activation='relu', input_shape=[self.imageheight, self.imagewidth, 1], padding='Same'))
-        self.model.add(tf.keras.layers.Conv2D(64, (7, 7), activation='relu'))
+        self.model.add(
+            tf.keras.layers.Conv2D(
+                32,
+                kernel_size=(7, 7),
+                activation="relu",
+                input_shape=[self.imageheight, self.imagewidth, 1],
+                padding="Same",
+            )
+        )
+        self.model.add(tf.keras.layers.Conv2D(64, (7, 7), activation="relu"))
         self.model.add(tf.keras.layers.MaxPooling2D(pool_size=(3, 3)))
         self.model.add(tf.keras.layers.Dropout(0.2))
-        self.model.add(tf.keras.layers.Conv2D(64, (5, 5), activation='relu'))
+        self.model.add(tf.keras.layers.Conv2D(64, (5, 5), activation="relu"))
         self.model.add(tf.keras.layers.MaxPooling2D(pool_size=(2, 2)))
         self.model.add(tf.keras.layers.Dropout(0.2))
-        self.model.add(tf.keras.layers.Conv2D(64, (5, 5), activation='relu'))
+        self.model.add(tf.keras.layers.Conv2D(64, (5, 5), activation="relu"))
         self.model.add(tf.keras.layers.MaxPooling2D(pool_size=(2, 2)))
         self.model.add(tf.keras.layers.Dropout(0.2))
-        self.model.add(tf.keras.layers.Conv2D(64, (3, 3), activation='relu'))
+        self.model.add(tf.keras.layers.Conv2D(64, (3, 3), activation="relu"))
         self.model.add(tf.keras.layers.MaxPooling2D(pool_size=(2, 2)))
         self.model.add(tf.keras.layers.Dropout(0.2))
         # Flatten the results to one dimension for passing into our final layer
         self.model.add(tf.keras.layers.Flatten())
         # A hidden layer to learn with
-        self.model.add(tf.keras.layers.Dense(256, activation='relu'))
+        self.model.add(tf.keras.layers.Dense(256, activation="relu"))
         # Another dropout
         self.model.add(tf.keras.layers.Dropout(0.5))
         # Final categorization from 0-ct+1 with softmax
-        self.model.add(tf.keras.layers.Dense(len(self.calltypes)+1, activation='softmax'))
+        self.model.add(
+            tf.keras.layers.Dense(len(self.calltypes) + 1, activation="softmax")
+        )
         self.model.summary()
 
     def train2(self, modelsavepath):
-        ''' Train the model - keep all in memory '''
+        """Train the model - keep all in memory"""
 
-        self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+        self.model.compile(
+            loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"]
+        )
 
         if not os.path.exists(modelsavepath):
             os.makedirs(modelsavepath)
         checkpoint = tf.keras.callbacks.ModelCheckpoint(
             modelsavepath + "/weights.{epoch:02d}-{val_loss:.2f}-{val_accuracy:.2f}.h5",
-            monitor='val_accuracy', verbose=1, save_best_only=True, save_weights_only=True, mode='auto',
-            save_freq='epoch')
-        early = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', min_delta=0, patience=5, verbose=1, mode='auto')
-        self.history = self.model.fit(self.train_images, self.train_labels,
-                                      batch_size=32,
-                                      epochs=50,
-                                      verbose=2,
-                                      validation_data=(self.val_images, self.val_labels),
-                                      callbacks=[checkpoint, early],
-                                      shuffle=True)
+            monitor="val_accuracy",
+            verbose=1,
+            save_best_only=True,
+            save_weights_only=True,
+            mode="auto",
+            save_freq="epoch",
+        )
+        early = tf.keras.callbacks.EarlyStopping(
+            monitor="val_accuracy", min_delta=0, patience=5, verbose=1, mode="auto"
+        )
+        self.history = self.model.fit(
+            self.train_images,
+            self.train_labels,
+            batch_size=32,
+            epochs=50,
+            verbose=2,
+            validation_data=(self.val_images, self.val_labels),
+            callbacks=[checkpoint, early],
+            shuffle=True,
+        )
         # Save the model
         # Serialize model to JSON
         model_json = self.model.to_json()
@@ -386,25 +460,47 @@ class CNN:
         # self.model.save_weights(modelsavepath + "/weights.h5")
         print("Saved model to ", modelsavepath)
 
-    def train(self, modelsavepath, training_batch_generator, validation_batch_generator):
-        ''' Train the model - use image generator '''
+    def train(
+        self, modelsavepath, training_batch_generator, validation_batch_generator
+    ):
+        """Train the model - use image generator"""
 
         # self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-        self.model.compile(loss=self.LearningDict['loss'], optimizer=self.LearningDict['optimizer'], metrics=self.LearningDict['metrics'])
+        self.model.compile(
+            loss=self.LearningDict["loss"],
+            optimizer=self.LearningDict["optimizer"],
+            metrics=self.LearningDict["metrics"],
+        )
 
         if not os.path.exists(modelsavepath):
             os.makedirs(modelsavepath)
         # checkpoint = tf.keras.callbacks.ModelCheckpoint(modelsavepath + "/weights.{epoch:02d}-{val_loss:.2f}-{val_accuracy:.2f}.h5", monitor='val_accuracy', verbose=1, save_best_only=True, save_weights_only=True, mode='auto', save_freq='epoch')
         # early = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', min_delta=0, patience=3, verbose=1, mode='auto')
-        checkpoint = tf.keras.callbacks.ModelCheckpoint(modelsavepath + "/weights.{epoch:02d}-{val_loss:.2f}-{val_accuracy:.2f}.h5", monitor=self.LearningDict['monitor'], verbose=1, save_best_only=True, save_weights_only=True, mode='auto', save_freq='epoch')
-        early = tf.keras.callbacks.EarlyStopping(monitor=self.LearningDict['monitor'], min_delta=0, patience=self.LearningDict['patience'], verbose=1, mode='auto')
+        checkpoint = tf.keras.callbacks.ModelCheckpoint(
+            modelsavepath + "/weights.{epoch:02d}-{val_loss:.2f}-{val_accuracy:.2f}.h5",
+            monitor=self.LearningDict["monitor"],
+            verbose=1,
+            save_best_only=True,
+            save_weights_only=True,
+            mode="auto",
+            save_freq="epoch",
+        )
+        early = tf.keras.callbacks.EarlyStopping(
+            monitor=self.LearningDict["monitor"],
+            min_delta=0,
+            patience=self.LearningDict["patience"],
+            verbose=1,
+            mode="auto",
+        )
 
-        epochs = self.LearningDict['epochs']
-        self.history = self.model.fit(training_batch_generator,
-                                      epochs=epochs,
-                                      verbose=1,
-                                      validation_data=validation_batch_generator,
-                                      callbacks=[checkpoint, early])
+        epochs = self.LearningDict["epochs"]
+        self.history = self.model.fit(
+            training_batch_generator,
+            epochs=epochs,
+            verbose=1,
+            validation_data=validation_batch_generator,
+            callbacks=[checkpoint, early],
+        )
 
         # Save the model
         # Serialize model to JSON
@@ -413,8 +509,9 @@ class CNN:
             json_file.write(model_json)
         print("Saved model to ", modelsavepath)
 
+
 class GenerateData:
-    """ This class implements CNN data preparation. There are different ways:
+    """This class implements CNN data preparation. There are different ways:
     1. when manually annotated recordings are presented (.wav and GT.data along with call type info). In this case run
     the existing recogniser (WF) over the data set and get the diff to find FP segments (Noise class). And .data has TP/
     call type segments
@@ -422,17 +519,20 @@ class GenerateData:
     .correction has segments for the noise class
     3. when extracted pieces of sounds (of call types and noise) are presented TODO
     """
-    def __init__(self, filter, length, windowwidth, inc, imageheight, imagewidth, f1, f2):
+
+    def __init__(
+        self, filter, length, windowwidth, inc, imageheight, imagewidth, f1, f2
+    ):
         self.filter = filter
         self.species = filter["species"]
         # not sure if this is needed?
-        ind = self.species.find('>')
+        ind = self.species.find(">")
         if ind != -1:
-            self.species = self.species.replace('>', '(')
-            self.species = self.species + ')'
+            self.species = self.species.replace(">", "(")
+            self.species = self.species + ")"
         self.calltypes = []
-        for fi in filter['Filters']:
-            self.calltypes.append(fi['calltype'])
+        for fi in filter["Filters"]:
+            self.calltypes.append(fi["calltype"])
         self.fs = filter["SampleRate"]
         self.f1 = f1
         self.f2 = f2
@@ -443,26 +543,31 @@ class GenerateData:
         self.imagewidth = imagewidth
 
     def findCTsegments(self, dirName, calltypei):
-        ''' dirName got reviewed.data or manual.data
-            Find calltype segments
-            :returns ct segments [[filename, seg, label], ...]
-        '''
+        """dirName got reviewed.data or manual.data
+        Find calltype segments
+        :returns ct segments [[filename, seg, label], ...]
+        """
 
         calltypeSegments = []
         for root, dirs, files in os.walk(dirName):
             for file in files:
                 wavFile = os.path.join(root, file)
-                if file.lower().endswith('.wav') and file + '.data' in files:
+                if file.lower().endswith(".wav") and file + ".data" in files:
                     segments = Segment.SegmentList()
-                    segments.parseJSON(wavFile + '.data')
+                    segments.parseJSON(wavFile + ".data")
                     if len(self.calltypes) == 1:
                         ctSegments = segments.getSpecies(self.species)
                     else:
-                        ctSegments = segments.getCalltype(self.species, self.calltypes[calltypei])
+                        ctSegments = segments.getCalltype(
+                            self.species, self.calltypes[calltypei]
+                        )
                     for indx in ctSegments:
                         seg = segments[indx]
                         # skip uncertain segments
-                        cert = [lab["certainty"] if lab["species"] == self.species else 100 for lab in seg[4]]
+                        cert = [
+                            lab["certainty"] if lab["species"] == self.species else 100
+                            for lab in seg[4]
+                        ]
                         if cert:
                             mincert = min(cert)
                             if mincert == 100:
@@ -471,21 +576,25 @@ class GenerateData:
         return calltypeSegments
 
     def findNoisesegments(self, dirName):
-        ''' dirName got manually annotated GT.data
+        """dirName got manually annotated GT.data
         Generates auto segments by running wavelet detection
         Find noise segments by diff of auto segments and GT.data
         :returns noise segments [[filename, seg, label], ...]
-        '''
+        """
         manSegNum = 0
         noiseSegments = []
         # Generate GT files from annotations in dir1
-        print('Generating GT...')
+        print("Generating GT...")
         for root, dirs, files in os.walk(dirName):
             for file in files:
                 wavFile = os.path.join(root, file)
-                if file.lower().endswith('.wav') and os.stat(wavFile).st_size != 0 and file + '.data' in files:
+                if (
+                    file.lower().endswith(".wav")
+                    and os.stat(wavFile).st_size != 0
+                    and file + ".data" in files
+                ):
                     segments = Segment.SegmentList()
-                    segments.parseJSON(wavFile + '.data')
+                    segments.parseJSON(wavFile + ".data")
                     sppSegments = segments.getSpecies(self.species)
                     manSegNum += len(sppSegments)
 
@@ -496,8 +605,10 @@ class GenerateData:
             print("ERROR: no segments for species %s found" % self.species)
             return
 
-        ws = WaveletSegment.WaveletSegment(self.filter, 'dmey2')
-        autoSegments = ws.waveletSegment_cnn(dirName, self.filter)  # [(filename, [segments]), ...]
+        ws = WaveletSegment.WaveletSegment(self.filter, "dmey2")
+        autoSegments = ws.waveletSegment_cnn(
+            dirName, self.filter
+        )  # [(filename, [segments]), ...]
 
         #  now the diff between segment and autoSegments
         print("autoSeg", autoSegments)
@@ -506,10 +617,12 @@ class GenerateData:
             wavFile = item[0]
             if os.stat(wavFile).st_size != 0:
                 sppSegments = []
-                if os.path.isfile(wavFile + '.data'):
+                if os.path.isfile(wavFile + ".data"):
                     segments = Segment.SegmentList()
-                    segments.parseJSON(wavFile + '.data')
-                    sppSegments = [segments[i] for i in segments.getSpecies(self.species)]
+                    segments.parseJSON(wavFile + ".data")
+                    sppSegments = [
+                        segments[i] for i in segments.getSpecies(self.species)
+                    ]
                 for segAuto in item[1]:
                     overlappedwithGT = False
                     for segGT in sppSegments:
@@ -521,22 +634,26 @@ class GenerateData:
         return noiseSegments
 
     def findAllsegments(self, dirName):
-        ''' dirName got manually annotated GT.data
+        """dirName got manually annotated GT.data
         Generates noise segments as the complement to GT segments
         (i.e. every not marked second is used as noise)
         :returns noise segments [[filename, seg, label], ...]
-        '''
+        """
         manSegNum = 0
         noiseSegments = []
         segmenter = Segment.Segmenter()
-        print('Generating GT...')
+        print("Generating GT...")
         for root, dirs, files in os.walk(dirName):
             for file in files:
                 wavFile = os.path.join(root, file)
-                if file.lower().endswith('.wav') and os.stat(wavFile).st_size != 0 and file + '.data' in files:
+                if (
+                    file.lower().endswith(".wav")
+                    and os.stat(wavFile).st_size != 0
+                    and file + ".data" in files
+                ):
                     # Generate GT files from annotations in dir1
                     segments = Segment.SegmentList()
-                    segments.parseJSON(wavFile + '.data')
+                    segments.parseJSON(wavFile + ".data")
                     sppSegments = segments.getSpecies(self.species)
                     manSegNum += len(sppSegments)
 
@@ -544,10 +661,10 @@ class GenerateData:
                     # look for all calls for the target species.
                     segments.exportGT(wavFile, self.species, resolution=1.0)
 
-                    print('Determining noise...')
+                    print("Determining noise...")
                     autoseg = Segment.SegmentList()
-                    for sec in range(math.floor(segments.metadata["Duration"])-1):
-                        autoseg.addSegment([sec, sec+1, 0, 0, []])
+                    for sec in range(math.floor(segments.metadata["Duration"]) - 1):
+                        autoseg.addSegment([sec, sec + 1, 0, 0, []])
                     autoSegments = segmenter.joinGaps(autoseg, maxgap=0)
 
                     print("autoSeg, file", wavFile, autoSegments)
@@ -562,15 +679,15 @@ class GenerateData:
 
     def Overlap(self, segGT, seg):
         # return True if the two segments, segGT and seg overlap
-        return seg[0]<=segGT[1] and seg[1]>=segGT[0]
+        return seg[0] <= segGT[1] and seg[1] >= segGT[0]
 
     def getImgCount(self, dirName, dataset, hop):
-        '''
+        """
         Read the segment library and estimate the number of CNN images per class
         :param dataset: segments in the form of [[file, [segment], label], ..]
         :param hop: list of hops for different classes
         :return: a list
-        '''
+        """
         dhop = hop
         eps = 0.0005
         N = [0 for i in range(len(self.calltypes) + 1)]
@@ -581,8 +698,8 @@ class GenerateData:
             hop = dhop[record[-1]]
             if duration < self.length:
                 fileduration = wavio.readFmt(record[0])[1]
-                record[1][0] = record[1][0] - (self.length - duration)/2 - eps
-                record[1][1] = record[1][1] + (self.length - duration)/2 + eps
+                record[1][0] = record[1][0] - (self.length - duration) / 2 - eps
+                record[1][1] = record[1][1] + (self.length - duration) / 2 + eps
                 if record[1][0] < 0:
                     record[1][0] = 0
                     record[1][1] = self.length + eps
@@ -600,18 +717,20 @@ class GenerateData:
         return N
 
     def generateFeatures(self, dirName, dataset, hop):
-        '''
+        """
         Read the segment library and generate features, training.
         Similar to SignalProc.generateFeaturesCNN, except this one saves images
             to disk instead of returning them.
         :param dataset: segments in the form of [[file, [segment], label], ..]
         :param hop:
         :return: save the preferred features into JSON files + save images. Currently the spectrogram images.
-        '''
+        """
         count = 0
         dhop = hop
         eps = 0.0005
-        specFrameSize = len(range(0, int(self.length * self.fs - self.windowwidth), self.inc))
+        specFrameSize = len(
+            range(0, int(self.length * self.fs - self.windowwidth), self.inc)
+        )
         N = [0 for i in range(len(self.calltypes) + 1)]
         sp = SignalProc.SignalProc(self.windowwidth, self.inc)
         sp.sampleRate = self.fs
@@ -637,8 +756,8 @@ class GenerateData:
                 else:
                     continue
             else:
-                n = math.ceil((record[1][1]-record[1][0]-self.length) / hop + 1)
-            print('* hop:', hop, 'n:', n, 'label:', record[-1])
+                n = math.ceil((record[1][1] - record[1][0] - self.length) / hop + 1)
+            print("* hop:", hop, "n:", n, "label:", record[-1])
 
             try:
                 # load file
@@ -662,7 +781,9 @@ class GenerateData:
             sgRaw[:, ub:] = 0.0
 
             for i in range(int(n)):
-                print('**', record[0], self.length, record[1][0]+hop*i, self.fs, '**')
+                print(
+                    "**", record[0], self.length, record[1][0] + hop * i, self.fs, "**"
+                )
                 # Sgram images
                 sgstart = int(hop * i * self.fs / sp.incr)
                 sgend = sgstart + specFrameSize
@@ -677,18 +798,36 @@ class GenerateData:
                 sgRaw_i = np.rot90(sgRaw_i / maxg)
 
                 # Save train data: individual images as npy
-                np.save(os.path.join(dirName, str(record[-1]),
-                        str(record[-1]) + '_' + "%06d" % count + '_' + record[0].split(os.sep)[-1][:-4] + '.npy'),
-                        sgRaw_i)
+                np.save(
+                    os.path.join(
+                        dirName,
+                        str(record[-1]),
+                        str(record[-1])
+                        + "_"
+                        + "%06d" % count
+                        + "_"
+                        + record[0].split(os.sep)[-1][:-4]
+                        + ".npy",
+                    ),
+                    sgRaw_i,
+                )
                 count += 1
 
-        print('\n\nCompleted feature extraction')
+        print("\n\nCompleted feature extraction")
         return specFrameSize, N
 
 
 class CustomGenerator(tf.keras.utils.Sequence):
-
-    def __init__(self, image_filenames, labels, batch_size, traindir, imghight, imgwidth, channels):
+    def __init__(
+        self,
+        image_filenames,
+        labels,
+        batch_size,
+        traindir,
+        imghight,
+        imgwidth,
+        channels,
+    ):
         self.image_filenames = image_filenames
         self.labels = labels
         self.batch_size = batch_size
@@ -698,11 +837,22 @@ class CustomGenerator(tf.keras.utils.Sequence):
         self.channels = channels
 
     def __len__(self):
-        return (np.ceil(len(self.image_filenames) / float(self.batch_size))).astype(np.int)
+        return (np.ceil(len(self.image_filenames) / float(self.batch_size))).astype(
+            np.int
+        )
 
     def __getitem__(self, idx):
-        batch_x = self.image_filenames[idx * self.batch_size: (idx + 1) * self.batch_size]
-        batch_y = self.labels[idx * self.batch_size: (idx + 1) * self.batch_size]
+        batch_x = self.image_filenames[
+            idx * self.batch_size : (idx + 1) * self.batch_size
+        ]
+        batch_y = self.labels[idx * self.batch_size : (idx + 1) * self.batch_size]
 
         # return np.array([resize(imread(os.path.join(self.train_dir , str(file_name))), (self.imgheight, self.imgwidth, self.channels)) for file_name in batch_x]) / 255.0, np.array(batch_y)
-        return np.array([resize(np.load(file_name), (self.imgheight, self.imgwidth, self.channels)) for file_name in batch_x]), np.array(batch_y)
+        return np.array(
+            [
+                resize(
+                    np.load(file_name), (self.imgheight, self.imgwidth, self.channels)
+                )
+                for file_name in batch_x
+            ]
+        ), np.array(batch_y)
