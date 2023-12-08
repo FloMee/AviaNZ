@@ -1195,6 +1195,42 @@ class Layout(pg.LayoutWidget):
         ev.accept()
 
 
+class SortableListWidgetItem(QListWidgetItem):
+    """Custom QListWidgetItem to allow for different sorting depending on set item data and rank_sort option"""
+
+    def __init__(self, parent=None):
+        super(SortableListWidgetItem, self).__init__(parent)
+        self.parent = parent
+
+    def __lt__(self, other):
+        print("sort function called")
+        if self.text() == "../":
+            return True
+
+        elif other.text() == "../":
+            return False
+
+        elif self.parent.rank_sort:
+            thisdata = self.data(QtCore.Qt.UserRole)
+            otherdata = other.data(QtCore.Qt.UserRole)
+
+            # if self.get_max_cert(thisdata) == 0 and self.get_max_cert(otherdata) == 0:
+            #     return self.text() < other.text()
+            # else:
+            return self.get_max_cert(thisdata) > self.get_max_cert(otherdata)
+        else:
+            return self.text() < other.text()
+
+    def get_max_cert(self, data):
+        species = self.parent.currentSpecies
+        max_cert = 0
+        if data:
+            for sp, cert in data:
+                if (sp == species or species == "Species") and cert > max_cert:
+                    max_cert = cert
+        return max_cert
+
+
 class LightedFileList(QListWidget):
     """ File list with traffic light icons.
         On init (or after any change), pass the red, darkyellow, and green colors.
@@ -1218,6 +1254,7 @@ class LightedFileList(QListWidget):
         self.blackpen = fn.mkPen(color=(160,160,160,255), width=2)
         self.tempsl = Segment.SegmentList()
         self.setAutoScroll(False)
+        self.rank_sort = False
 
     def fill(self, soundDir, fileName, mincertS=0, species="Species", recursive=True, readFmt=False, addWavNum=False):
         """ read folder contents, populate the list widget.
@@ -1236,7 +1273,8 @@ class LightedFileList(QListWidget):
         self.spListCert = dict()
         self.fsList = set()
         self.listOfFiles = []
-        self.minCertainty = 100     # TODO: not used in training, can remove?
+        self.minCertainty = 100  # TODO: not used in training, can remove?
+        self.currentSpecies = species
 
         with pg.BusyCursor():
             # Read contents of current dir
@@ -1485,7 +1523,12 @@ class LightedFileList(QListWidget):
 
     def restrict(self, species, mincertS=0):
         """restrict the filelist to files where species occures with maxcert > mincertS"""
-        
+        # do not sort while restricting filelist
+        self.setSortingEnabled(False)
+
+        # save current species for use in sorting later
+        self.currentSpecies = species
+
         for item in self.iterAllItems():
             # if not item.text().endswith("/"):
             if not item.text() == "../":
@@ -1526,6 +1569,8 @@ class LightedFileList(QListWidget):
                         mincert = -1
                 self.paintIcon(item, datafile, mincert, maxcert)
 
+        # enable sorting again
+        self.setSortingEnabled(True)
 
     def iterAllItems(self):
         for i in range(self.count()):

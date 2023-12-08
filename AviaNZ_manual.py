@@ -386,7 +386,12 @@ class AviaNZ(QMainWindow):
 
         self.readonly = specMenu.addAction("Make read only",self.makeReadOnly)
         self.readonly.setCheckable(True)
-        self.readonly.setChecked(self.config['readOnly'])
+        self.readonly.setChecked(self.config["readOnly"])
+
+        self.rank_sort = specMenu.addAction(
+            "Sort files by maximum confidence", self.toggleRankSort
+        )
+        self.rank_sort.setCheckable(True)
 
         specMenu.addSeparator()
         specMenu.addAction("Interface settings", self.changeSettings)
@@ -1522,7 +1527,11 @@ class AviaNZ(QMainWindow):
 
         # self.listFiles.setCurrentItem(current)
 
-        return(0)
+
+    def toggleRankSort(self):
+        self.listFiles.rank_sort = self.rank_sort.isChecked()
+        self.listFiles.setSortingEnabled(True)
+        self.listFiles.sortItems()
 
     def updateListFiles(self, force=False):
         self.listFiles.showAll = not self.tickSpecies.isChecked()
@@ -1535,6 +1544,7 @@ class AviaNZ(QMainWindow):
             # # elif oldSpecies != self.currentSpecies:
             # else:
             self.listFiles.restrict(self.currentSpecies, self.certSlider.value())
+            self.listFiles.sortItems()
             self.listFiles.scrollToItem(self.listFiles.currentItem(), 3)
 
     def loadFile(self, name=None, cs=False):
