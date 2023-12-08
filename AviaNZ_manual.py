@@ -1305,8 +1305,15 @@ class AviaNZ(QMainWindow):
         self.updateListSpecies()
     
     def updateListSpecies(self):
+        # save current species for later
         currentSpecies = self.listSpecies.currentText().rpartition(" ")[0]
+
+        # disconnect updateListFiles from listSpecies to avoid several function calls
+        self.listSpecies.currentIndexChanged.disconnect()
+
         self.currentSpecies = ""
+
+        # clear species list and insert Items afterwards
         self.listSpecies.clear()
         self.listSpecies.insertItem(0, "Species (All)")
         self.listSpecies.insertItems(
@@ -1318,14 +1325,21 @@ class AviaNZ(QMainWindow):
                 ]
             ),
         )
+
+        # find index of current species
         idx = self.listSpecies.findText(
             currentSpecies, QtCore.Qt.MatchFlag.MatchStartsWith
         )
+
+        # show current species in the list if it still exists
         if currentSpecies and idx != -1:
             self.listSpecies.setCurrentIndex(idx)
         else:
             self.listSpecies.setCurrentIndex(0)
         self.currentSpecies = self.listSpecies.currentText().rpartition(" ")[0]
+
+        # reconnect updateListFiles to listSpecies
+        self.listSpecies.currentIndexChanged.connect(self.updateListFiles)
 
     def resetStorageArrays(self):
         """ Called when new files are loaded.
