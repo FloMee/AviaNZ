@@ -3,8 +3,8 @@
 # Wrapper script to SplitWav audio splitter.
 # Splits wavs, and AviaNZ-format annotation files.
 
-# Version 3.0 14/09/20
-# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti
+# Version 3.2-BirdNET 21/03/2024
+# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti, Florian Meerheim
 # This file: Julius Juodakis
 
 #    AviaNZ bioacoustic analysis program

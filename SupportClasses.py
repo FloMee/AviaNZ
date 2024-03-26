@@ -1,11 +1,11 @@
 # SupportClasses.py
 # Support classes for the AviaNZ program
 
-# Version 3.0 14/09/20
-# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti
+# Version 3.2-BirdNET 21/03/2024
+# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti, Florian Meerheim
 
 #    AviaNZ bioacoustic analysis program
-#    Copyright (C) 2017--2020
+#    Copyright (C) 2017--2024
 
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by

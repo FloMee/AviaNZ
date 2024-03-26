@@ -1,5 +1,5 @@
-# Version 3.0 14/09/20
-# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti
+# Version 3.2-BirdNET 21/03/2024
+# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti, Florian Meerheim
 
 #    AviaNZ bioacoustic analysis program
 #    Copyright (C) 2017--2020
@@ -563,9 +563,11 @@ class CNNtrain:
                 FPs[ct][i] / (TNs[ct][i] + FPs[ct][i]) for i in range(len(self.Thrs))
             ]
             self.Precisions[ct] = [
-                0.0
-                if (TPs[ct][i] + FPs[ct][i]) == 0
-                else TPs[ct][i] / (TPs[ct][i] + FPs[ct][i])
+                (
+                    0.0
+                    if (TPs[ct][i] + FPs[ct][i]) == 0
+                    else TPs[ct][i] / (TPs[ct][i] + FPs[ct][i])
+                )
                 for i in range(len(self.Thrs))
             ]
             self.Accs[ct] = [

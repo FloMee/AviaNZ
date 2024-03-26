@@ -1,8 +1,8 @@
 # WaveletSegment.py
 # Wavelet Segmentation
 
-# Version 3.0 14/09/20
-# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti
+# Version 3.2-BirdNET 21/03/2024
+# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti, Florian Meerheim
 
 #    AviaNZ bioacoustic analysis program
 #    Copyright (C) 2017--2020
@@ -548,9 +548,9 @@ class WaveletSegment:
                         thrdetbin[start:end] = 1
 
                     # store the detections
-                    alldetections[
-                        indexn, indext, foffs : (foffs + filenwins)
-                    ] = thrdetbin
+                    alldetections[indexn, indext, foffs : (foffs + filenwins)] = (
+                        thrdetbin
+                    )
         # alldetections is now a 3d np.array of 0/1 over nodes x thr x windows over all files
         print("Detections completed in", time.time() - opstartingtime)
 
@@ -899,9 +899,7 @@ class WaveletSegment:
             and precision is not None
             and not (recall == 0 and precision == 0)
         ):
-            fB = ((1.0 + beta**2) * recall * precision) / (
-                recall + beta**2 * precision
-            )
+            fB = ((1.0 + beta**2) * recall * precision) / (recall + beta**2 * precision)
         else:
             fB = None
         if recall is None and precision is None:

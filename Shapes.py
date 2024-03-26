@@ -1,8 +1,8 @@
 # Shapes.py
 # Shape container class and detection functions for the AviaNZ program
 
-# Version 3.3 25/06/21
-# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti
+# Version 3.2-BirdNET 21/03/2024
+# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti, Florian Meerheim
 
 #    AviaNZ bioacoustic analysis program
 #    Copyright (C) 2017--2021

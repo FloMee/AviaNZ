@@ -1,11 +1,11 @@
 # Features.py
 #
 # Code to extract various features from sound files
-# Version 1.3 23/10/18
-# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis
+# Version 3.2-BirdNET 21/03/2024
+# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti, Florian Meerheim
 
 #    AviaNZ birdsong analysis program
-#    Copyright (C) 2017--2018
+#    Copyright (C) 2017--2024
 
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by

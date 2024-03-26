@@ -1,8 +1,8 @@
 # WaveletFunctions.py
 # Class containing wavelet specific methods
 
-# Version 3.0 14/09/20
-# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti
+# Version 3.2-BirdNET 21/03/2024
+# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti, Florian Meerheim
 
 #    AviaNZ bioacoustic analysis program
 #    Copyright (C) 2017--2020
@@ -566,9 +566,7 @@ class WaveletFunctions:
         # Determine the best basis, or use all leaves ("fixed")
         # NOTE: nodes must be sorted here, very important!
         if costfn == "fixed":
-            bestleaves = list(
-                range(2**self.maxLevel - 1, 2 ** (self.maxLevel + 1) - 1)
-            )
+            bestleaves = list(range(2**self.maxLevel - 1, 2 ** (self.maxLevel + 1) - 1))
         else:
             # NOTE: using same MAD threshold for basis selection.
             # it isn't even needed if entropy costfn is used here

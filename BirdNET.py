@@ -1,3 +1,32 @@
+# BirdNET.py
+# Interface and algorithms for the BirdNET classifiers - taken and adapted
+# from Stefan Kahl
+# BirdNET-Lite: https://github.com/kahst/BirdNET-Lite
+# BirdNET-Analyzer: https://github.com/kahst/BirdNET-Analyzer
+
+# Version 3.2-BirdNET 21/03/2024
+# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti, Florian Meerheim
+
+#    AviaNZ bioacoustic analysis program
+#    Copyright (C) 2017--2024
+
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+#    Note that the BirdNET models are licensed under: CC-BY-NC-SA 4.0
+#    see https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en
+
+
 # import statements for BirdNET-Lite
 
 import os
@@ -901,9 +930,9 @@ class BirdNET_Worker(QRunnable):
                 timestamps.append(pred_start)
 
                 pred_end = pred_start + sig_length
-                detections[
-                    file + "," + str(pred_start) + "," + str(pred_end)
-                ] = p_sorted[:10]
+                detections[file + "," + str(pred_start) + "," + str(pred_end)] = (
+                    p_sorted[:10]
+                )
                 pred_start = pred_end - self.overlap
                 j += 1
 

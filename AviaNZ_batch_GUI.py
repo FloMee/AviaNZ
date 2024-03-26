@@ -1,5 +1,5 @@
-# Version 3.0 14/09/20
-# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti
+# Version 3.2-BirdNET 21/03/2024
+# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti, Florian Meerheim
 
 # This contains all the GUI parts for batch running of AviaNZ.
 
@@ -1729,12 +1729,12 @@ class AviaNZ_reviewAll(QMainWindow):
         # store position etc to carry over to the next file dialog
         self.dialogSize = self.humanClassifyDialog2.size()
         self.dialogPos = self.humanClassifyDialog2.pos()
-        self.config[
-            "brightness"
-        ] = self.humanClassifyDialog2.specControls.brightSlider.value()
-        self.config[
-            "contrast"
-        ] = self.humanClassifyDialog2.specControls.contrSlider.value()
+        self.config["brightness"] = (
+            self.humanClassifyDialog2.specControls.brightSlider.value()
+        )
+        self.config["contrast"] = (
+            self.humanClassifyDialog2.specControls.contrSlider.value()
+        )
         if not self.config["invertColourMap"]:
             self.config["brightness"] = 100 - self.config["brightness"]
         self.humanClassifyDialog2.done(1)
@@ -2069,12 +2069,12 @@ class AviaNZ_reviewAll(QMainWindow):
             self.dialogSize = self.humanClassifyDialog1.size()
             self.dialogPos = self.humanClassifyDialog1.pos()
             self.dialogPlotAspect = self.humanClassifyDialog1.plotAspect
-            self.config[
-                "brightness"
-            ] = self.humanClassifyDialog1.specControls.brightSlider.value()
-            self.config[
-                "contrast"
-            ] = self.humanClassifyDialog1.specControls.contrSlider.value()
+            self.config["brightness"] = (
+                self.humanClassifyDialog1.specControls.brightSlider.value()
+            )
+            self.config["contrast"] = (
+                self.humanClassifyDialog1.specControls.contrSlider.value()
+            )
             if not self.config["invertColourMap"]:
                 self.config["brightness"] = 100 - self.config["brightness"]
 
