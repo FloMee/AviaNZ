@@ -6090,7 +6090,8 @@ class AviaNZ(QMainWindow):
         for root, dirs, files in os.walk(src):
             for d in dirs:
                 # print(dst,root,dirs)
-                os.mkdir(os.path.join(dst, root[l + 1 :], d))
+                if not os.path.exists(os.path.join(dst, root[l + 1 :], d)):
+                    os.mkdir(os.path.join(dst, root[l + 1 :], d))
             for f in files:
                 if (
                     f[-5:].lower() == ".data"
