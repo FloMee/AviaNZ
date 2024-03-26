@@ -2140,11 +2140,13 @@ class AviaNZ(QMainWindow):
             self.fillFileList(self.SoundFileDir, os.path.basename(self.filename))
 
         i = self.listFiles.currentRow()
-        currentIndex = self.listFiles.currentIndices.index(i)
         if not skipHidden and i > 1:
             self.listFiles.setCurrentRow(i - 1)
+            self.listLoadFile(self.listFiles.currentItem())
+            return
 
-        elif skipHidden and currentIndex > 0:
+        currentIndex = self.listFiles.currentIndices.index(i)
+        if skipHidden and currentIndex > 0:
             self.listFiles.setCurrentRow(
                 self.listFiles.currentIndices[currentIndex - 1]
             )
@@ -2168,11 +2170,13 @@ class AviaNZ(QMainWindow):
             self.fillFileList(self.SoundFileDir, os.path.basename(self.filename))
 
         i = self.listFiles.currentRow()
-        currentIndex = self.listFiles.currentIndices.index(i)
         if not skipHidden and i + 1 < len(self.listFiles):
             self.listFiles.setCurrentRow(i + 1)
+            self.listLoadFile(self.listFiles.currentItem())
+            return
 
-        elif skipHidden and currentIndex + 1 < len(self.listFiles.currentIndices):
+        currentIndex = self.listFiles.currentIndices.index(i)
+        if skipHidden and currentIndex + 1 < len(self.listFiles.currentIndices):
             self.listFiles.setCurrentRow(
                 self.listFiles.currentIndices[currentIndex + 1]
             )

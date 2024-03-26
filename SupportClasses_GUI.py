@@ -1559,14 +1559,13 @@ class LightedFileList(QListWidget):
             items = self.findItems(fileName, Qt.MatchExactly)
             if len(items) > 0:
                 self.setCurrentItem(items[0])
+                index = self.indexFromItem(items[0]).row()
+
+                if not index in self.currentIndices:
+                    self.currentIndices.append(index)
+                    self.currentIndices.sort()
             else:
                 self.setCurrentRow(0)
-
-            index = self.indexFromItem(items[0]).row()
-
-            if not index in self.currentIndices:
-                self.currentIndices.append(index)
-                self.currentIndices.sort()
 
     def refreshFile(self, fileName, mincert, maxcert):
         """Repaint a single file icon with the provided certainty.
