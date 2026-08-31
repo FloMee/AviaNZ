@@ -36,7 +36,7 @@ On Ubuntu, install from source as follows:
 
 # Manual
 
-We provide an in-depth manual in the 'Help' menu of the software or under [Docs/PAMalyzerManual.pdf](https://github.com/FloMee/PAMalyzer/blob/master/Docs/AviaNZManual.pdf).
+We provide an in-depth manual in the 'Help' menu of the software or under [Docs/PAMalyzerManual.pdf](https://github.com/FloMee/PAMalyzer/blob/master/Docs/PAMalyzerManual.pdf).
 
 # Acknowledgements
 
