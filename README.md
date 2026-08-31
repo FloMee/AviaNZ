@@ -1,20 +1,48 @@
+# PAMalyzer - Audio anaylsis software based on AviaNZ
 
-# AviaNZ: open-source software for manual and automatic analysis of bio-acoustic recordings
+# Description
 
-**This version of AviaNZ was developed within the scope of a master's thesis at the [Unviversity of Applied Sciences Dresden](https://www.htw-dresden.de)
-and introduces the two BirdNET classifiers [BirdNET-Lite](https://github.com/kahst/BirdNET-Lite) and [BirdNET-Analyzer](https://github.com/kahst/BirdNET-Analyzer) into the [original Version of AviaNZ](https://github.com/smarsland/AviaNZ).**
+PAMalyzer enables you to:
 
+- Show and navigate through spectrograms of audio files
+- Annotate audio files
+- Use the [BirdNET](https://github.com/birdnet-team/birdnet) classification models on your data
+- Review the results of the classification process
 
-This software enables you to:
-* classify recordings with BirdNET
-* review and listen to wav files from acoustic field recorders, 
-* segment and annotate the recordings, 
-* train filters to recognise calls from particular species, 
-* use filters that others have provided to batch process many files
-* review annotations
-* produce output in spreadsheet form, or as files ready for further statistical analyses
+# Installation
 
-For more information about the project, see http://www.avianz.net
+Depending on your operating system we provide different solutions to install and run PAMalyzer:
+
+## Windows
+
+Windows binaries are available under [realeases](https://github.com/FloMee/PAMalyzer/releases).
+To install from source, follow the Linux instructions.
+
+## Linux/MacOS
+
+No binaries are available. The following procedure was succesfully testet with Python 3.11
+On Ubuntu, install from source as follows:
+
+1. Ensure Python, pip and git are available on your system. these can be installed by running the following from the command line:
+   > sudo apt install python3-pip git
+2. Clone the repository by running:
+   > git clone https://github.com/FloMee/PAMalyzer.git
+3. Install the required packages by running:
+   > pip3 install -r requirements.txt --user
+4. Build the Cython extensions by running:
+   > cd ext; python3 setup.py build_ext -i; cd ..
+5. Done! Launch the software with:
+   > python3 AviaNZ.py
+
+# Manual
+
+We provide an in-depth manual in the 'Help' menu of the software or under [Docs/AviaNZManual.pdf](https://github.com/FloMee/PAMalyzer/blob/master/Docs/AviaNZManual.pdf).
+
+# Acknowledgements
+
+PAMalyzer is a fork of [AviaNZ](https://github.com/smarsland/AviaNZ) and is based on PyQtGraph and PyQt, and uses Librosa and Scikit-learn amongst others.
+
+The development of this software is supported by the European Union through the European Social Fund Plus (ESF+) within the framework of the ESF PLUS programme “Cooperative State Innovation Doctorates” and the State of Saxony.
 
 # Citation
 
@@ -31,35 +59,3 @@ If you use this software, please credit us in any papers that you write. An appr
   year = 2019
 }
 ```
-
-# Installation
-
-## Windows
-Windows binaries are available under [realeases](https://github.com/FloMee/AviaNZ/releases).
-To install from source, follow the Linux instructions.
-<!-- 
-## macOS
-An installer script is available at http://www.avianz.net.
-To install from source, follow the Linux instructions. -->
-
-## Linux
-
-No binaries are available. The following procedure was succesfully testet with Python 3.9.16.
-On Ubuntu, install from source as follows:
-
-1. Ensure Python, pip and git are available on your system. these can be installed by running the following from the command line:  
->sudo apt install python3-pip git
-2. Clone the repository by running:
->git clone https://github.com/FloMee/AviaNZ.git
-3. Install the required packages by running:
->pip3 install -r requirements.txt --user
-4. Build the Cython extensions by running:
->cd ext; python3 setup.py build_ext -i; cd ..  
-5. Done! Launch the software with:
->python3 AviaNZ.py
-
-# Acknowledgements
-
-AviaNZ is based on PyQtGraph and PyQt, and uses Librosa and Scikit-learn amongst others.
-
-Development of this software was supported by the RSNZ Marsden Fund, and the NZ Department of Conservation.
