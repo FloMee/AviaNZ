@@ -74,14 +74,14 @@ def mainlauncher():
     confloader = SupportClasses.ConfigLoader()
     configschema = json.load(open("Config/config.schema"))
     try:
-        config = confloader.config(os.path.join(configdir, "AviaNZconfig.txt"))
+        config = confloader.config(os.path.join(configdir, "PAMalyzerConfig.txt"))
         validate(instance=config, schema=configschema)
         print("successfully validated config file")
     except Exception as e:
         print("Warning: config file failed validation with:")
         print(e)
         try:
-            shutil.copy2("Config/AviaNZconfig.txt", configdir)
+            shutil.copy2("Config/PAMalyzerConfig.txt", configdir)
         except Exception as e:
             print("ERROR: failed to copy essential config files")
             print(e)
@@ -112,9 +112,9 @@ def mainlauncher():
     QApplication.setFont(QApplication.font("QMenu"))
 
     while True:
-        import AviaNZ_manual
+        import PAMalyzer_manual
 
-        avianz = AviaNZ_manual.AviaNZ(configdir=configdir)
+        avianz = PAMalyzer_manual.PAMalyzer(configdir=configdir)
 
         if avianz:
             avianz.activateWindow()

@@ -32,11 +32,11 @@ On Ubuntu, install from source as follows:
 4. Build the Cython extensions by running:
    > cd ext; python3 setup.py build_ext -i; cd ..
 5. Done! Launch the software with:
-   > python3 AviaNZ.py
+   > python3 PAMalyzer.py
 
 # Manual
 
-We provide an in-depth manual in the 'Help' menu of the software or under [Docs/AviaNZManual.pdf](https://github.com/FloMee/PAMalyzer/blob/master/Docs/AviaNZManual.pdf).
+We provide an in-depth manual in the 'Help' menu of the software or under [Docs/PAMalyzerManual.pdf](https://github.com/FloMee/PAMalyzer/blob/master/Docs/AviaNZManual.pdf).
 
 # Acknowledgements
 

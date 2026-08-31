@@ -110,7 +110,7 @@ print("Package import complete.")
 #     set_trace()
 
 
-class AviaNZ(QMainWindow):
+class PAMalyzer(QMainWindow):
     """Main class for the user interface.
     Contains most of the user interface and plotting code"""
 
@@ -122,12 +122,12 @@ class AviaNZ(QMainWindow):
         """
         print("Starting PAMalyzer...")
 
-        super(AviaNZ, self).__init__()
+        super(PAMalyzer, self).__init__()
 
         # configdir passes the standard user app dir based on OS.
         # At this point, the main config file should already be ensured to exist.
         self.configdir = configdir
-        self.configfile = os.path.join(configdir, "AviaNZconfig.txt")
+        self.configfile = os.path.join(configdir, "PAMalyzerConfig.txt")
         self.ConfigLoader = SupportClasses.ConfigLoader()
         self.config = self.ConfigLoader.config(self.configfile)
         self.saveConfig = True
@@ -445,14 +445,14 @@ class AviaNZ(QMainWindow):
 
     def showHelp(self):
         """Show the user manual (a pdf file), make it offline for easy access"""
-        webbrowser.open_new(r"file://" + os.path.realpath("./Docs/AviaNZManual.pdf"))
+        webbrowser.open_new(r"file://" + os.path.realpath("./Docs/PAMalyzerManual.pdf"))
         # webbrowser.open_new(r'http://avianz.net/docs/AviaNZManual.pdf')
 
     def showCheatSheet(self):
         """Show the cheatsheet of sample spectrograms"""
         # webbrowser.open_new(r'http://www.avianz.net/index.php/resources/cheat-sheet/about-cheat-sheet')
         webbrowser.open_new(
-            r"file://" + os.path.realpath("./Docs/AviaNZCheatSheet.pdf")
+            r"file://" + os.path.realpath("./Docs/PAMalyzerCheatSheet.pdf")
         )
 
     def createFrame(self):

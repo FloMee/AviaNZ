@@ -571,11 +571,11 @@ class BirdNETDialog(QDialog):
 
 
 class BirdNET(QWidget):
-    def __init__(self, AviaNZmanual):
+    def __init__(self, PAMalyzerManual):
         super(BirdNET, self).__init__()
-        self.AviaNZ = AviaNZmanual
+        self.PAMalyzer = PAMalyzerManual
         self.filelist = []
-        self.fillFileList(AviaNZmanual.listFiles.listOfFiles)
+        self.fillFileList(PAMalyzerManual.listFiles.listOfFiles)
         self.param = None
         self.progress = QProgressDialog()
         self.progress.setCancelButton(None)
@@ -636,10 +636,10 @@ class BirdNET(QWidget):
     def updateFilelist(self, filelist):
         self.workers_done += 1
         if self.workers_done == self.total_workers:
-            self.AviaNZ.db.commit()
-            self.AviaNZ.loadFile(name=self.AviaNZ.filename)
-            self.AviaNZ.fillFileList(
-                self.AviaNZ.SoundFileDir, os.path.basename(self.AviaNZ.filename)
+            self.PAMalyzer.db.commit()
+            self.PAMalyzer.loadFile(name=self.PAMalyzer.filename)
+            self.PAMalyzer.fillFileList(
+                self.PAMalyzer.SoundFileDir, os.path.basename(self.PAMalyzer.filename)
             )
             end_time = time.time()
             print(
@@ -652,7 +652,7 @@ class BirdNET(QWidget):
 
     @pyqtSlot(Segment.SegmentList, str)
     def updateDatabase(self, segList, filename):
-        segList.parent = self.AviaNZ
+        segList.parent = self.PAMalyzer
         segList.save_to_database(filename)
 
     def main(self):
@@ -677,7 +677,7 @@ class BirdNET(QWidget):
                 )
                 worker.fileProcessed.update.connect(self.updateProgress)
                 worker.filelistProcessed.done.connect(self.updateFilelist)
-                worker.sendSegList.send.connect(self.AviaNZ.db.insert_segments)
+                worker.sendSegList.send.connect(self.PAMalyzer.db.insert_segments)
                 self.threadpool.start(worker)
 
         except:
@@ -1107,7 +1107,7 @@ class BirdNET_Worker(QRunnable):
         # TODO: get Duration from file
 
         seg_list.metadata = {
-            "Operator": self.parent.AviaNZ.operator,
+            "Operator": self.parent.PAMalyzer.operator,
             "Duration": 60,
         }
 
