@@ -383,7 +383,7 @@ class PAMalyzer(QMainWindow):
         analysisMenu.addAction("Classify recordings with BirdNET", self.classifyBirdNET)
         analysisMenu.addSeparator()
         self.denoiseAction = analysisMenu.addAction("Denoise", self.showDenoiseDialog)
-        analysisMenu.addAction("Add metadata about noise", self.addNoiseData, "Ctrl+N")
+        # analysisMenu.addAction("Add metadata about noise", self.addNoiseData, "Ctrl+N")
 
         # analysisMenu.addAction("Filter spectrogram", self.medianFilterSpec)
 
