@@ -4772,6 +4772,8 @@ class PAMalyzer(QMainWindow):
             msg.exec_()
             return
 
+        all_files = []
+
         with pg.BusyCursor():
             # delete old results (xlsx)
             # ! WARNING: any Detection...xlsx files will be DELETED,
@@ -4785,6 +4787,8 @@ class PAMalyzer(QMainWindow):
                     if fnmatch.fnmatch(filenamef, "*DetectionSummary_*.xlsx"):
                         print("Removing excel file %s" % filenamef)
                         os.remove(filenamef)
+                    if filename.endswith(".wav"):
+                        all_files.append(filenamef)
 
         print("Exporting to Excel ...")
         self.statusBar().showMessage("Exporting to Excel ...")
@@ -4806,12 +4810,6 @@ class PAMalyzer(QMainWindow):
                 self.currentSpecies,
                 self.confidenceRange,
             )
-
-        all_files = []
-        for segment in segment_data:
-            filepath = os.path.join(segment[0], segment[1])
-            if filepath not in all_files:
-                all_files.append(filepath)
 
         with pg.BusyCursor():
             i = 1
@@ -4856,7 +4854,6 @@ class PAMalyzer(QMainWindow):
                 allsegs,
                 self.SoundFileDir,
                 "overwrite",
-                simple=True,
                 fileperspecies=False,
                 species=self.currentSpecies,
                 precisionMS=True,

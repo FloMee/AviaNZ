@@ -707,15 +707,15 @@ class ExcelIO:
                     ws.cell(row=1, column=3, value="Confidence, %")
 
                     # Third sheet
-                    wb.create_sheet(title="Per Time Period", index=3)
-                    ws = wb["Per Time Period"]
-                    ws.cell(row=1, column=1, value="File Name")
-                    ws.cell(row=1, column=2, value="Page")
-                    ws.cell(
-                        row=1,
-                        column=3,
-                        value="Maximum confidence of species presence (0 = absent)",
-                    )
+                    # wb.create_sheet(title="Per Time Period", index=3)
+                    # ws = wb["Per Time Period"]
+                    # ws.cell(row=1, column=1, value="File Name")
+                    # ws.cell(row=1, column=2, value="Page")
+                    # ws.cell(
+                    #     row=1,
+                    #     column=3,
+                    #     value="Maximum confidence of species presence (0 = absent)",
+                    # )
 
                 # Hack to delete original sheet
                 del wb["Sheet"]
@@ -753,22 +753,22 @@ class ExcelIO:
                     # either read duration from this SegList
                     # or need current page length if called from manual
                     # (assuming all pages are of same length as current data)
-                    if pagelenarg is None:
-                        pagelen = math.ceil(segsl.metadata["Duration"])
-                    else:
-                        pagelen = pagelenarg
-
-                    # Generate pres/abs per custom resolution windows
-                    for p in range(0, numpages):
-                        self.writeToExcelp3(
-                            wb,
-                            speciesCerts,
-                            segsl.filename,
-                            p,
-                            pagelen,
-                            numpages,
-                            resolution,
-                        )
+                    # if pagelenarg is None:
+                    #     pagelen = math.ceil(segsl.metadata["Duration"])
+                    # else:
+                    #     pagelen = pagelenarg
+                    #
+                    # # Generate pres/abs per custom resolution windows
+                    # for p in range(0, numpages):
+                    #     self.writeToExcelp3(
+                    #         wb,
+                    #         speciesCerts,
+                    #         segsl.filename,
+                    #         p,
+                    #         pagelen,
+                    #         numpages,
+                    #         resolution,
+                    #     )
 
             # Save the file
             try:
