@@ -5530,7 +5530,7 @@ class PAMalyzer(QMainWindow):
                 filter = "BirdNET-Analyzer"
 
             # create a directory of segment list. The keys are the filenames, the entries the lists of segments
-            with open(filename, "r") as infile:
+            with open(filename, "r", encoding="utf8") as infile:
                 next(infile)
                 for line in infile:
                     l = line.split("\t")
