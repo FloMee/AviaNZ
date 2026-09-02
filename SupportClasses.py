@@ -1,11 +1,11 @@
 # SupportClasses.py
-# Support classes for the AviaNZ program
+# Support classes for the PAMalyzer program
 
-# Version 3.2-BirdNET 21/03/2024
-# Authors: Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti, Florian Meerheim
+# Version 0.0.1-PAMalyzer 09/2026
+# Authors: Florian Meerheim + The AviaNZ Team
+# Note: PAMalyzer is a fork of the original AviaNZ project. The AviaNZ codebase has been re-branded and further developed by a new team. The original AviaNZ team (Stephen Marsland, Nirosha Priyadarshani, Julius Juodakis, Virginia Listanti) is not longer involved in this project.
 
-#    AviaNZ bioacoustic analysis program
-#    Copyright (C) 2017--2024
+#    Copyright (C) 2017--2026
 
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
