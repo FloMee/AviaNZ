@@ -2014,9 +2014,9 @@ class PAMalyzer(QMainWindow):
     def showOverviewSegsCheck(self):
         """Listener to process if the user swaps the check menu item to see the overview segment boxes."""
         if self.showOverviewSegsTick.isChecked():
-            self.p_overview2.show()
+            self.d_overview.show()
         else:
-            self.p_overview2.hide()
+            self.d_overview.hide()
         self.config["showAnnotationOverview"] = self.showOverviewSegsTick.isChecked()
 
     def makeReadOnly(self):
