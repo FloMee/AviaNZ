@@ -1887,7 +1887,7 @@ class PAMalyzer(QMainWindow):
             dlg += 1
             dlg.update()
             self.drawfigMain()
-            self.setWindowTitle("PAMalyzer - Manual Processing " + self.filename)
+            self.setWindowTitle("PAMalyzer - " + self.filename)
             dlg += 1
             dlg.update()
             self.w_spec.setFocus()
@@ -5906,11 +5906,11 @@ class PAMalyzer(QMainWindow):
                 "type": "bool",
                 "value": self.config["StartMaximized"],
             },
-            {
-                "name": "Require noise data",
-                "type": "bool",
-                "value": self.config["RequireNoiseData"],
-            },
+            # {
+            #     "name": "Require noise data",
+            #     "type": "bool",
+            #     "value": self.config["RequireNoiseData"],
+            # },
         ]
         self.settingsChanged = False
         self.updateFileIcons = False
@@ -5981,8 +5981,8 @@ class PAMalyzer(QMainWindow):
                 self.config["ReorderList"] = data
             elif childName == "Bird List.Default to multiple species":
                 self.config["MultipleSpecies"] = data
-            elif childName == "Require noise data":
-                self.config["RequireNoiseData"] = data
+            # elif childName == "Require noise data":
+            #     self.config["RequireNoiseData"] = data
             elif childName == "Bird List.Common Bird List.Filename":
                 self.config["BirdListShort"] = data
             elif childName == "Bird List.Full Bird List.Filename":
